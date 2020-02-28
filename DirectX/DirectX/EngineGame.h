@@ -5,15 +5,10 @@ namespace MyEngine
 {
 	class EngineGame
 	{
-	private:
-		static EngineGame* GAME_INSTANCE;
-		
 	protected:
-		EngineGame(EngineGame* game);
+		EngineGame();
 	
 	public:
-		static EngineGame* Get();
-		
 		virtual void Init() = 0;
 		virtual void DeInit() = 0;
 		virtual void Update(float dt) = 0;

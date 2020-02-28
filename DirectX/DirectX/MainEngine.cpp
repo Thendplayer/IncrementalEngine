@@ -25,10 +25,10 @@ namespace MyEngine
 		ENGINE_INSTANCE = nullptr;
 	}
 
-	void Engine::Run(HINSTANCE hInstance)
+	void Engine::Run(HINSTANCE hInstance, EngineGame* game)
 	{
 		Init();
-		EngineGame::Get()->Init();
+		game->Init();
 
 		//Update and things...
 	}

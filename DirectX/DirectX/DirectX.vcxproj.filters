@@ -22,7 +22,7 @@
     <Filter Include="Source Files\Engine\RenderingEngine">
       <UniqueIdentifier>{66585748-d4ca-4726-8bf0-e64ce903f536}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\BaseGame">
+    <Filter Include="Source Files\Engine\EngineGame">
       <UniqueIdentifier>{6d80e838-5405-4872-93ed-93245b1107f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -37,7 +37,7 @@
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="EngineGame.cpp">
-      <Filter>Source Files\Engine\BaseGame</Filter>
+      <Filter>Source Files\Engine\EngineGame</Filter>
     </ClCompile>
     <ClCompile Include="ExampleGame.cpp">
       <Filter>Source Files\Game</Filter>
@@ -48,7 +48,7 @@
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="EngineGame.h">
-      <Filter>Source Files\Engine\BaseGame</Filter>
+      <Filter>Source Files\Engine\EngineGame</Filter>
     </ClInclude>
     <ClInclude Include="ExampleGame.h">
       <Filter>Source Files\Game</Filter>

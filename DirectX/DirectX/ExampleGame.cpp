@@ -2,7 +2,7 @@
 
 namespace MyGame
 {
-	ExampleGame::ExampleGame(): EngineGame(this)
+	ExampleGame::ExampleGame(): EngineGame()
 	{
 	}
 

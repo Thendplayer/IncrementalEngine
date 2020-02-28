@@ -9,7 +9,7 @@ using namespace MyEngine;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	auto a = new ExampleGame;
-	Engine::Get()->Run(hInstance);
+	auto game = new ExampleGame;
+	Engine::Get()->Run(hInstance, game);
 	return 0;
 }

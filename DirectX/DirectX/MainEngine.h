@@ -2,6 +2,7 @@
 #define _Engine_H
 
 #include <windows.h>
+#include "EngineGame.h"
 
 namespace MyEngine
 {
@@ -18,7 +19,7 @@ namespace MyEngine
 
 	public:
 		static Engine* Get();
-		void Run(HINSTANCE hInstance);
+		void Run(HINSTANCE hInstance, EngineGame* game);
 
 		~Engine();
 	};
