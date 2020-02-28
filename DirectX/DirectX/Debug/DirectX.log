@@ -1,3 +1,7 @@
-﻿  ExampleGame.cpp
+﻿  MainEngine.cpp
+  EngineGame.cpp
+  ExampleGame.cpp
+  RenderingEngine.cpp
   WinMain.cpp
-  DirectX.vcxproj -> D:\User\Pol\Tecnocampus\4t Curs\TFG\C++ Projects\2. Basic DirectX Shapes\DirectX\DirectX\Debug\DirectX.exe
+  LINK : D:\User\Pol\Tecnocampus\4t Curs\TFG\IncrementalEngine\DirectX\Debug\DirectX.exe not found or not built by the last incremental link; performing full link
+  DirectX.vcxproj -> D:\User\Pol\Tecnocampus\4t Curs\TFG\IncrementalEngine\DirectX\Debug\DirectX.exe
