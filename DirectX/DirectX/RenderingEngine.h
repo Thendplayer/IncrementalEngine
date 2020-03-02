@@ -20,6 +20,7 @@ namespace MyEngine
 		ID3D11Texture2D* depthStencil;
 		ID3D11DepthStencilView* depthStencilView;
 		HWND hWnd;
+		WNDCLASSEX wc;
 
 		void InitWindow();
 		HRESULT InitD3D();

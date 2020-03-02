@@ -3,10 +3,11 @@
 
 #include "RenderingEngine.h"
 #include "Config.h"
-#include "Math.h"
 
 namespace MyEngine
 {
+	#define CHECKED_RELEASE(x) if(x!=NULL) {x->Release(); x=NULL;}
+	
 	RenderingEngine::RenderingEngine(HINSTANCE _hInstance) :
 		device(NULL),
 		deviceContext(NULL),
@@ -21,12 +22,16 @@ namespace MyEngine
 
 	RenderingEngine::~RenderingEngine()
 	{
+		swapChain->SetFullscreenState(FALSE, NULL);
+		
 		if (deviceContext)
 			deviceContext->ClearState();
 		CHECKED_RELEASE(renderTargetView);
 		CHECKED_RELEASE(swapChain);
 		CHECKED_RELEASE(deviceContext);
 		CHECKED_RELEASE(device);
+
+		UnregisterClass(APPLICATION_NAME, wc.hInstance);
 	}
 
 	void RenderingEngine::Init()
@@ -35,6 +40,8 @@ namespace MyEngine
 		
 		HRESULT hr = InitD3D();
 		assert(SUCCEEDED(hr));
+
+		UpdateWindow(hWnd);
 	}
 
 	void RenderingEngine::Update(float dt)
@@ -56,8 +63,6 @@ namespace MyEngine
 
 	void RenderingEngine::InitWindow()
 	{
-		WNDCLASSEX wc;
-
         ZeroMemory(&wc, sizeof(WNDCLASSEX));
 
         wc.cbSize = sizeof(WNDCLASSEX);

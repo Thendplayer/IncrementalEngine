@@ -6,14 +6,13 @@
 
 namespace MyEngine
 {
+	#define CHECKED_DELETE(x) if(x!=NULL) {delete x; x=NULL;}
+
+	#define FPS 60
+	#define DELTA_SECONDS (1.0 / FPS)
+	
 	Engine* Engine::ENGINE_INSTANCE = nullptr;
 
-	const int FPS = 60;
-    const double DELTA_SECONDS = 1.0 / FPS;
-
-    const double MAX_TIME_DIFF = 5.0;
-    const int MAX_SKIPPED_FRAMES = 5;
-	
 	Engine* Engine::Get()
 	{
 		if (ENGINE_INSTANCE == nullptr)
@@ -40,44 +39,23 @@ namespace MyEngine
         Init();
         game->Init();
 
-        auto initialTime = std::chrono::system_clock::now();
-        auto skippedFrames = 1;
-		auto nextTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - initialTime).count() / 1000.0;
-
-        while (IsOpen())
+        MSG msg;
+        ZeroMemory(&msg, sizeof(msg));
+		
+        while (msg.message != WM_QUIT)
         {
-            auto currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - initialTime).count() / 1000.0;
-
-            if (currentTime - nextTime > MAX_TIME_DIFF)
-            {
-                nextTime = currentTime;
-            }
-
-            if (currentTime >= nextTime)
-            {
-                nextTime += DELTA_SECONDS;
-
-                Update((float)DELTA_SECONDS);
-                game->Update((float)DELTA_SECONDS);
-            	
-                if (currentTime < nextTime || skippedFrames > MAX_SKIPPED_FRAMES)
-                {
-                    Draw();
-                    skippedFrames = 1;
-                }
-                else
-                {
-                    skippedFrames++;
-                }
-            }
-            else
-            {
-	            auto sleepTime = (int)(1000.0 * (nextTime - currentTime));
-                if (sleepTime > 0)
-                {
-                    std::this_thread::sleep_for(std::chrono::milliseconds(sleepTime));
-                }
-            }
+			if (PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+			else
+			{
+				Update(float(DELTA_SECONDS));
+				game->Update(float(DELTA_SECONDS));
+				
+				Draw();
+			}
         }
 
         game->DeInit();
@@ -101,6 +79,8 @@ namespace MyEngine
 
     void Engine::DeInit()
     {
+		delete renderingEngine;
+		CHECKED_DELETE(renderingEngine);
     }
 
 	bool Engine::IsOpen()
