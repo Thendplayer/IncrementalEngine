@@ -7,12 +7,13 @@ namespace MyGame
 {
 	class ExampleGame : public EngineGame
 	{
-		public:
+	public:
 		void Init() override;
 		void DeInit() override;
 		void Update(float dt) override;
 
 		ExampleGame();
+	protected:
 		~ExampleGame();
 	};
 }

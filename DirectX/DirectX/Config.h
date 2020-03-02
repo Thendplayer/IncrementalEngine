@@ -1,0 +1,10 @@
+#ifndef _CONFIG_H
+#define _CONFIG_H
+
+#define APPLICATION_NAME L"MyGame"
+#define SCREEN_WIDTH 960
+#define SCREEN_HEIGHT 540
+#define WINDOW_POSITION_X 300
+#define WINDOW_POSITION_Y 300
+
+#endif

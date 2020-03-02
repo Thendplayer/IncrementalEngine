@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include "EngineGame.h"
+#include "RenderingEngine.h"
 
 namespace MyEngine
 {
@@ -10,15 +11,19 @@ namespace MyEngine
 	{
 	private:
 		static Engine* ENGINE_INSTANCE;
+		HINSTANCE hInstance;
+		RenderingEngine* renderingEngine;
 
 		void Init();
-		void Update();
+		void Update(float dt);
 		void Draw();
 
 		Engine();
 
 	public:
 		static Engine* Get();
+		void DeInit();
+		bool IsOpen();
 		void Run(HINSTANCE hInstance, EngineGame* game);
 
 		~Engine();

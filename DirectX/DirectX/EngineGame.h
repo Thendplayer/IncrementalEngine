@@ -5,14 +5,12 @@ namespace MyEngine
 {
 	class EngineGame
 	{
-	protected:
-		EngineGame();
-	
 	public:
 		virtual void Init() = 0;
 		virtual void DeInit() = 0;
 		virtual void Update(float dt) = 0;
-
+	protected:
+		EngineGame();
 		~EngineGame();
 	};
 }
