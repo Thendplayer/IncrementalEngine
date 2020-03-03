@@ -4,26 +4,29 @@
 #include "MouseInput.h"
 #include "KeyboardInput.h"
 
-class InputManager
+namespace MyEngine
 {
-private:
-	MouseInput* mouseInput;
-	KeyboardInput* keyboardInput;
-public:
-	InputManager(HWND hWnd);
-	~InputManager();  
+	class InputManager
+	{
+	private:
+		MouseInput* mouseInput;
+		KeyboardInput* keyboardInput;
+	public:
+		InputManager(HWND hWnd);
+		~InputManager();  
 
-	void Update();
+		void Update();
 	
-	MouseInput* GetMouse()
-	{
-		return mouseInput;
-	}
+		MouseInput* GetMouse()
+		{
+			return mouseInput;
+		}
 
-	KeyboardInput* GetKeyboard()
-	{
-		return keyboardInput;
-	}
-};
+		KeyboardInput* GetKeyboard()
+		{
+			return keyboardInput;
+		}
+	};
+}
 
 #endif

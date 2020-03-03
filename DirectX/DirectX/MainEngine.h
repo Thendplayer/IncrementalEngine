@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include "EngineGame.h"
+#include "InputManager.h"
 #include "RenderingEngine.h"
 
 namespace MyEngine
@@ -13,6 +14,7 @@ namespace MyEngine
 		static Engine* ENGINE_INSTANCE;
 		HINSTANCE hInstance;
 		RenderingEngine* renderingEngine;
+		InputManager* inputManager;
 
 		void Init();
 		void Update(float dt);

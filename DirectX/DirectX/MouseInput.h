@@ -2,15 +2,15 @@
 #define INC_MOUSE_H_
 
 #include <dinput.h>
-#include "Math.h"
+#include <Eigen>
 
 class MouseInput
 {
 private:
 	LPDIRECTINPUT8 directInput;
-	LPDIRECTINPUTDEVICE8 mouseInput;	
+	LPDIRECTINPUTDEVICE8 mouseInput;
 
-	Vector2Int movement;
+	Eigen::Vector3i movement;
 	bool buttonRight, previousButtonRight;
 	bool buttonLeft, previousButtonLeft;
 	bool buttonMiddle, previousButtonMiddle;
@@ -19,9 +19,7 @@ public:
 	virtual ~MouseInput();
 	
 	bool Update();
-	int GetMovementX() const;
-	int GetMovementY() const;
-	int GetMovementZ() const;
+	Eigen::Vector3i GetMovement() const;
 	bool IsLeftButtonPressed() const;
 	bool IsMiddleButtonPressed() const;
 	bool IsRightButtonPressed() const;

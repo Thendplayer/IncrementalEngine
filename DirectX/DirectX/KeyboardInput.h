@@ -6,18 +6,18 @@
 class KeyboardInput
 {
 private:
-	char								m_PreviousDiks[256];
-	char								m_Diks[256];
-	LPDIRECTINPUT8						m_DI;
-	LPDIRECTINPUTDEVICE8				m_Keyboard;
+	char previousDiks[256];
+	char diks[256];
+	LPDIRECTINPUT8 dI;
+	LPDIRECTINPUTDEVICE8 keyboard;
 public:
 	KeyboardInput(HWND hWnd);
-	virtual ~KeyboardInput();
+	~KeyboardInput();
 
 	bool Update();
-	bool IsKeyPressed(int KeyCode);
-	bool KeyBecomesPressed(int KeyCode);
-	bool KeyBecomesReleased(int KeyCode);
+	bool IsKeyPressed(int keyCode);
+	bool KeyBecomesPressed(int keyCode);
+	bool KeyBecomesReleased(int keyCode);
 };
 
 #endif

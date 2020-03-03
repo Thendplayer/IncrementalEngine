@@ -26,7 +26,7 @@ namespace MyEngine
 		HRESULT InitD3D();
 
 	public:
-		void Init();
+		HWND Init();
 		void Update(float dt);
 		void Draw();
 

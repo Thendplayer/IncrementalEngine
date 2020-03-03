@@ -83,5 +83,8 @@
     <ClInclude Include="MouseInput.h">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

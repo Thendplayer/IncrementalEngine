@@ -1,13 +1,13 @@
-#include "MainEngine.h"
-#include "EngineGame.h"
 #include <cassert>
 #include <chrono>
 #include <thread>
 
+#include "MainEngine.h"
+#include "EngineGame.h"
+#include "Utils.h"
+
 namespace MyEngine
 {
-	#define CHECKED_DELETE(x) if(x!=NULL) {delete x; x=NULL;}
-
 	#define FPS 60
 	#define DELTA_SECONDS (1.0 / FPS)
 	
@@ -23,7 +23,10 @@ namespace MyEngine
 		return ENGINE_INSTANCE;
 	}
 
-	Engine::Engine()
+	Engine::Engine() :
+	renderingEngine(NULL),
+	inputManager(NULL),
+	hInstance(NULL)
 	{
 	}
 
@@ -67,6 +70,9 @@ namespace MyEngine
         _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
         renderingEngine = new RenderingEngine(hInstance);
+		auto hWnd = renderingEngine->Init();
+
+		inputManager = new InputManager(hWnd);
 	}
 
 	void Engine::Update(float dt)

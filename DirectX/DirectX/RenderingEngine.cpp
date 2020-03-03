@@ -3,11 +3,10 @@
 
 #include "RenderingEngine.h"
 #include "Config.h"
+#include "Utils.h"
 
 namespace MyEngine
 {
-	#define CHECKED_RELEASE(x) if(x!=NULL) {x->Release(); x=NULL;}
-	
 	RenderingEngine::RenderingEngine(HINSTANCE _hInstance) :
 		device(NULL),
 		deviceContext(NULL),
@@ -17,7 +16,6 @@ namespace MyEngine
 		depthStencilView(NULL)
 	{
         hInstance = _hInstance;
-		Init();
 	}
 
 	RenderingEngine::~RenderingEngine()
@@ -34,7 +32,7 @@ namespace MyEngine
 		UnregisterClass(APPLICATION_NAME, wc.hInstance);
 	}
 
-	void RenderingEngine::Init()
+	HWND RenderingEngine::Init()
 	{
 		InitWindow();
 		
@@ -42,6 +40,7 @@ namespace MyEngine
 		assert(SUCCEEDED(hr));
 
 		UpdateWindow(hWnd);
+		return hWnd;
 	}
 
 	void RenderingEngine::Update(float dt)
