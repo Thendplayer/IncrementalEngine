@@ -148,16 +148,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Config.h" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="MainEngine.cpp" />
     <ClCompile Include="EngineGame.cpp" />
     <ClCompile Include="ExampleGame.cpp" />
+    <ClCompile Include="MouseInput.cpp" />
     <ClCompile Include="RenderingEngine.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineGame.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="MainEngine.h" />
     <ClInclude Include="ExampleGame.h" />
+    <ClInclude Include="MouseInput.h" />
     <ClInclude Include="RenderingEngine.h" />
     <ClInclude Include="Math.h" />
   </ItemGroup>

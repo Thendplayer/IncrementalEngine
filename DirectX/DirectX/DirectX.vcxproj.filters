@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Engine\EngineGame">
       <UniqueIdentifier>{6d80e838-5405-4872-93ed-93245b1107f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\HumanInterfaceDevices">
+      <UniqueIdentifier>{b69ee674-e18e-4f59-8de6-4c3e388d8978}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -45,6 +48,15 @@
     <ClCompile Include="Config.h">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInput.cpp">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseInput.cpp">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h">
@@ -61,6 +73,15 @@
     </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInput.h">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseInput.h">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
