@@ -3,21 +3,24 @@
 
 #include <dinput.h>
 
-class KeyboardInput
+namespace MyEngine
 {
-private:
-	char previousDiks[256];
-	char diks[256];
-	LPDIRECTINPUT8 dI;
-	LPDIRECTINPUTDEVICE8 keyboard;
-public:
-	KeyboardInput(HWND hWnd);
-	~KeyboardInput();
+	class KeyboardInput
+	{
+	private:
+		char previousDiks[256];
+		char diks[256];
+		LPDIRECTINPUT8 dI;
+		LPDIRECTINPUTDEVICE8 keyboard;
+	public:
+		KeyboardInput(HWND hWnd);
+		~KeyboardInput();
 
-	bool Update();
-	bool IsKeyPressed(int keyCode);
-	bool KeyBecomesPressed(int keyCode);
-	bool KeyBecomesReleased(int keyCode);
-};
+		bool Update();
+		bool IsKeyPressed(int keyCode);
+		bool KeyBecomesPressed(int keyCode);
+		bool KeyBecomesReleased(int keyCode);
+	};
+}
 
 #endif

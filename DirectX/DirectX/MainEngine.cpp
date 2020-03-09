@@ -35,9 +35,9 @@ namespace MyEngine
 		ENGINE_INSTANCE = nullptr;
 	}
 
-	void Engine::Run(HINSTANCE hInstance, EngineGame* game)
+	void Engine::Run(HINSTANCE _hInstance, EngineGame* game)
 	{
-        this->hInstance = hInstance;
+        hInstance = _hInstance;
 		
         Init();
         game->Init();
@@ -69,10 +69,12 @@ namespace MyEngine
 	{
         _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-        renderingEngine = new RenderingEngine(hInstance);
-		auto hWnd = renderingEngine->Init();
+		renderWindow = new RenderWindow;
+		
+        renderingEngine = new RenderingEngine;
+		renderingEngine->Init(renderWindow);
 
-		inputManager = new InputManager(hWnd);
+		inputManager = new InputManager(renderWindow->GetHWND());
 	}
 
 	void Engine::Update(float dt)

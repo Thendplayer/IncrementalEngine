@@ -1,8 +1,8 @@
 #ifndef _INPUTMANAGER_H
 #define _INPUTMANAGER_H
 
-#include "MouseInput.h"
 #include "KeyboardInput.h"
+#include "MouseInput.h"
 
 namespace MyEngine
 {

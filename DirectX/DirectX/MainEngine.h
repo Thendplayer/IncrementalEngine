@@ -5,6 +5,7 @@
 #include "EngineGame.h"
 #include "InputManager.h"
 #include "RenderingEngine.h"
+#include "RenderWindow.h"
 
 namespace MyEngine
 {
@@ -14,6 +15,7 @@ namespace MyEngine
 		static Engine* ENGINE_INSTANCE;
 		HINSTANCE hInstance;
 		RenderingEngine* renderingEngine;
+		RenderWindow* renderWindow;
 		InputManager* inputManager;
 
 		void Init();

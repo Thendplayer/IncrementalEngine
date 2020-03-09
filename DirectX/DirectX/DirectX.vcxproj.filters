@@ -57,6 +57,9 @@
     <ClCompile Include="MouseInput.cpp">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClCompile>
+    <ClCompile Include="RenderWindow.cpp">
+      <Filter>Source Files\Engine\RenderingEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderWindow.h">
+      <Filter>Source Files\Engine\RenderingEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

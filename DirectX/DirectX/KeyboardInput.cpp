@@ -1,99 +1,104 @@
 #include "KeyboardInput.h"
 #include "Utils.h"
 
-KeyboardInput::KeyboardInput(HWND hWnd)
+namespace MyEngine
 {
-	ZeroMemory(diks, 256);
-	ZeroMemory(previousDiks, 256);
-
-	HRESULT hr;
-    DWORD coopFlags = DISCL_NONEXCLUSIVE | DISCL_FOREGROUND;
-
-    hr = DirectInput8Create(
-        GetModuleHandle(NULL), 
-        DIRECTINPUT_VERSION, 
-        IID_IDirectInput8, 
-        (VOID**)&dI, 
-        NULL
-    );
-	
-    if(FAILED(hr))
-    {
-	    return;
-    }
-
-    hr = dI->CreateDevice(GUID_SysKeyboard, &keyboard, NULL);
-	
-	if(FAILED(hr))
+	KeyboardInput::KeyboardInput(HWND hWnd)
 	{
-		return;
-	}
+		ZeroMemory(diks, 256);
+		ZeroMemory(previousDiks, 256);
+
+		HRESULT result;
+		DWORD coopFlags = DISCL_NONEXCLUSIVE | DISCL_FOREGROUND;
+
+		result = DirectInput8Create(
+			GetModuleHandle(NULL), 
+			DIRECTINPUT_VERSION, 
+			IID_IDirectInput8, 
+			(VOID**)&dI, 
+			NULL
+		);
 	
-    hr = keyboard->SetDataFormat(&c_dfDIKeyboard);
+		if(FAILED(result))
+		{
+			return;
+		}
+
+		result = dI->CreateDevice(GUID_SysKeyboard, &keyboard, NULL);
 	
-	if(FAILED(hr))
-	{
-		return;
-	}
+		if(FAILED(result))
+		{
+			return;
+		}
+	
+		result = keyboard->SetDataFormat(&c_dfDIKeyboard);
+	
+		if(FAILED(result))
+		{
+			return;
+		}
     
-    hr = keyboard->SetCooperativeLevel(hWnd, coopFlags);
+		result = keyboard->SetCooperativeLevel(hWnd, coopFlags);
  
-    if(FAILED(hr))
-    {
-	    return;
-    }
+		if(FAILED(result))
+		{
+			return;
+		}
 
-    keyboard->Acquire();
-}
-
-KeyboardInput::~KeyboardInput()
-{
-	if(keyboard)
-	{
-		keyboard->Unacquire();
+		keyboard->Acquire();
 	}
+
+	KeyboardInput::~KeyboardInput()
+	{
+		if(keyboard)
+		{
+			keyboard->Unacquire();
+		}
     
-    CHECKED_RELEASE(keyboard);
-    CHECKED_RELEASE(dI);
-}
+		CHECKED_RELEASE(keyboard);
+		CHECKED_RELEASE(dI);
+	}
 
-bool KeyboardInput::Update()
-{
-	HRESULT hr;
+	bool KeyboardInput::Update()
+	{
+		HRESULT result;
 	
-    if(NULL == keyboard)
-    {
-	    return false;
-    }
+		if(NULL == keyboard)
+		{
+			return false;
+		}
     
-	memcpy(previousDiks, diks, 256);
-    ZeroMemory(diks, 256);
+		memcpy(previousDiks, diks, 256);
+		ZeroMemory(diks, 256);
 
-	hr = keyboard->GetDeviceState(sizeof(diks), (LPVOID)&diks);
+		result = keyboard->GetDeviceState(sizeof(diks), (LPVOID)&diks);
 
-	if(FAILED(hr)) 
-    {
-        hr = keyboard->Acquire();
-        while(hr == DIERR_INPUTLOST)
-            hr = keyboard->Acquire();
+		if(FAILED(result)) 
+		{
+			result = keyboard->Acquire();
+			while(result == DIERR_INPUTLOST)
+			{
+				result = keyboard->Acquire();
+			}
 
-        return true;
-    }
+			return true;
+		}
 	
-    return true;
-}
+		return true;
+	}
 
-bool KeyboardInput::IsKeyPressed(int keyCode)
-{
-	return (diks[keyCode]&0x80) != 0;
-}
+	bool KeyboardInput::IsKeyPressed(int keyCode)
+	{
+		return (diks[keyCode]&0x80) != 0;
+	}
 
-bool KeyboardInput::KeyBecomesPressed(int keyCode)
-{
-	return diks[keyCode]&0x80 && !(previousDiks[keyCode]&0x80);
-}
+	bool KeyboardInput::KeyBecomesPressed(int keyCode)
+	{
+		return diks[keyCode]&0x80 && !(previousDiks[keyCode]&0x80);
+	}
 
-bool KeyboardInput::KeyBecomesReleased(int keyCode)
-{
-	return !(diks[keyCode]&0x80) && previousDiks[keyCode]&0x80;
+	bool KeyboardInput::KeyBecomesReleased(int keyCode)
+	{
+		return !(diks[keyCode]&0x80) && previousDiks[keyCode]&0x80;
+	}
 }
