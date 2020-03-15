@@ -2,6 +2,7 @@
 #define _Engine_H
 
 #include <windows.h>
+
 #include "EngineGame.h"
 #include "InputManager.h"
 #include "RenderingEngine.h"
@@ -26,9 +27,12 @@ namespace MyEngine
 
 	public:
 		static Engine* Get();
+
 		void DeInit();
 		bool IsOpen();
 		void Run(HINSTANCE hInstance, EngineGame* game);
+
+		LRESULT CALLBACK MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 		~Engine();
 	};

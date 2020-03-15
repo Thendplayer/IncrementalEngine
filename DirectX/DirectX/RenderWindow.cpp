@@ -1,31 +1,26 @@
 #include <Windows.h>
-#include <cassert>
 
 #include "RenderWindow.h"
+#include "WindowsInput.h"
 #include "Config.h"
 
 namespace MyEngine
-{
-	LRESULT WINAPI WindowProc(
-		HWND hWnd,
-		UINT message,
-		WPARAM wParam,
-		LPARAM lParam
-	);
-	
+{	
+	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
 	RenderWindow::RenderWindow()
 	{
 		WNDCLASSEX wc;
 		DEVMODE dmScreenSettings;
 		int posX, posY;
 
-		m_hinstance = GetModuleHandle(NULL);
+		_hinstance = GetModuleHandle(NULL);
 
 		wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
 		wc.lpfnWndProc = WindowProc;
 		wc.cbClsExtra = 0;
 		wc.cbWndExtra = 0;
-		wc.hInstance = m_hinstance;
+		wc.hInstance = _hinstance;
 		wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
 		wc.hIconSm = wc.hIcon;
 		wc.hCursor = LoadCursor(NULL, IDC_ARROW);
@@ -61,7 +56,7 @@ namespace MyEngine
 			posY = (GetSystemMetrics(SM_CYSCREEN) - ScreenHeight) / 2;
 		}
 
-		hWnd = CreateWindowEx(
+		_hWnd = CreateWindowEx(
 			WS_EX_APPWINDOW,
 			APPLICATION_NAME,
 			APPLICATION_NAME,
@@ -72,13 +67,13 @@ namespace MyEngine
 			ScreenHeight,
 			NULL,
 			NULL,
-			m_hinstance,
+			_hinstance,
 			NULL
 		);
 
-		ShowWindow(hWnd, SW_SHOW);
-		SetForegroundWindow(hWnd);
-		SetFocus(hWnd);
+		ShowWindow(_hWnd, SW_SHOW);
+		SetForegroundWindow(_hWnd);
+		SetFocus(_hWnd);
 
 		ShowCursor(SHOW_CURSOR);
 	}
@@ -99,25 +94,28 @@ namespace MyEngine
 
 	HWND RenderWindow::GetHWND()
 	{
-		return hWnd;
+		return _hWnd;
 	}
 
-	LRESULT WINAPI WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
 		switch (message)
 		{
 			case WM_DESTROY:
+			{
 				PostQuitMessage(0);
 				return 0;
-			case WM_KEYDOWN:
+			}
+
+			case WM_CLOSE:
 			{
-				switch (wParam)
-				{
-					case VK_ESCAPE:
-						PostQuitMessage(0);
-						return 0;
-						break;
-				}
+				PostQuitMessage(0);
+				return 0;
+			}
+
+			default:
+			{
+				return WindowsInput::WINDOWS_INPUT->MessageHandler(hWnd, message, wParam, lParam);
 			}
 		}
 

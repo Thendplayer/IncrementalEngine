@@ -1,31 +1,27 @@
-#ifndef _INPUTMANAGER_H
-#define _INPUTMANAGER_H
+#ifndef _INPUTCLASS_H
+#define _INPUTCLASS_H
 
-#include "KeyboardInput.h"
-#include "MouseInput.h"
+#include "WindowsInput.h"
 
 namespace MyEngine
 {
-	class InputManager
+	#define KEY_NUM 256
+	
+	class InputManager : public WindowsInput
 	{
 	private:
-		MouseInput* mouseInput;
-		KeyboardInput* keyboardInput;
+		bool _keys[KEY_NUM];
+		
+		void KeyDown(unsigned int input);
+		void KeyUp(unsigned int input);
+		
 	public:
-		InputManager(HWND hWnd);
-		~InputManager();  
+		InputManager();
+		~InputManager();
 
-		void Update();
-	
-		MouseInput* GetMouse()
-		{
-			return mouseInput;
-		}
+		bool IsKeyDown(unsigned int key);
 
-		KeyboardInput* GetKeyboard()
-		{
-			return keyboardInput;
-		}
+		virtual LRESULT MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) override;
 	};
 }
 

@@ -48,17 +48,14 @@
     <ClCompile Include="Config.h">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="RenderWindow.cpp">
+      <Filter>Source Files\Engine\RenderingEngine</Filter>
+    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClCompile>
-    <ClCompile Include="KeyboardInput.cpp">
+    <ClCompile Include="WindowsInput.cpp">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseInput.cpp">
-      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderWindow.cpp">
-      <Filter>Source Files\Engine\RenderingEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,20 +74,17 @@
     <ClInclude Include="Math.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardInput.h">
-      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseInput.h">
-      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="RenderWindow.h">
       <Filter>Source Files\Engine\RenderingEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsInput.h">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

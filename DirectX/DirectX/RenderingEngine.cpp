@@ -54,7 +54,8 @@ namespace MyEngine
 			MessageBox(renderWindow->GetHWND(), L"Could not initialize Direct3D.", L"Error", MB_OK);
 			return FALSE;
 		}
-
+		
+		TurnZBufferOff();
 		UpdateWindow(renderWindow->GetHWND());
 
 		return S_OK;
@@ -62,6 +63,10 @@ namespace MyEngine
 
 	void RenderingEngine::Update(float dt)
 	{
+		float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		m_deviceContext->ClearRenderTargetView(m_renderTargetView, color);
+		m_deviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+
 		
 	}
 

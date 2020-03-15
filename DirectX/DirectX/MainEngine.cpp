@@ -25,7 +25,6 @@ namespace MyEngine
 
 	Engine::Engine() :
 	renderingEngine(NULL),
-	inputManager(NULL),
 	hInstance(NULL)
 	{
 	}
@@ -65,16 +64,20 @@ namespace MyEngine
         DeInit();
 	}
 
+	LRESULT Engine::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+	{
+		return inputManager->MessageHandler(hWnd, message, wParam, lParam);
+	}
+
 	void Engine::Init()
 	{
         _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
+		inputManager = new InputManager;
 		renderWindow = new RenderWindow;
-		
         renderingEngine = new RenderingEngine;
-		renderingEngine->Init(renderWindow);
 
-		inputManager = new InputManager(renderWindow->GetHWND());
+		renderingEngine->Init(renderWindow);
 	}
 
 	void Engine::Update(float dt)

@@ -9,8 +9,8 @@ namespace MyEngine
 	class RenderWindow
 	{
 		private:
-			HINSTANCE m_hinstance;
-			HWND hWnd;
+			HINSTANCE _hinstance;
+			HWND _hWnd;
 
 		public:
 			int ScreenWidth, ScreenHeight;
