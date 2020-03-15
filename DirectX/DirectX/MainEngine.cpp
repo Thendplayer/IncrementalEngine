@@ -1,5 +1,4 @@
 #include <cassert>
-#include <chrono>
 #include <thread>
 
 #include "MainEngine.h"
@@ -24,8 +23,8 @@ namespace MyEngine
 	}
 
 	Engine::Engine() :
-	renderingEngine(NULL),
-	hInstance(NULL)
+	_renderingEngine(NULL),
+	_hInstance(NULL)
 	{
 	}
 
@@ -34,9 +33,9 @@ namespace MyEngine
 		ENGINE_INSTANCE = nullptr;
 	}
 
-	void Engine::Run(HINSTANCE _hInstance, EngineGame* game)
+	void Engine::Run(HINSTANCE hInstance, EngineGame* game)
 	{
-        hInstance = _hInstance;
+        _hInstance = hInstance;
 		
         Init();
         game->Init();
@@ -64,20 +63,15 @@ namespace MyEngine
         DeInit();
 	}
 
-	LRESULT Engine::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-	{
-		return inputManager->MessageHandler(hWnd, message, wParam, lParam);
-	}
-
 	void Engine::Init()
 	{
         _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-		inputManager = new InputManager;
-		renderWindow = new RenderWindow;
-        renderingEngine = new RenderingEngine;
+		_inputManager = new InputManager;
+		_renderWindow = new RenderWindow;
+        _renderingEngine = new RenderingEngine;
 
-		renderingEngine->Init(renderWindow);
+		_renderingEngine->Init(_renderWindow);
 	}
 
 	void Engine::Update(float dt)
@@ -90,8 +84,8 @@ namespace MyEngine
 
     void Engine::DeInit()
     {
-		delete renderingEngine;
-		CHECKED_DELETE(renderingEngine);
+		delete _renderingEngine;
+		CHECKED_DELETE(_renderingEngine);
     }
 
 	bool Engine::IsOpen()

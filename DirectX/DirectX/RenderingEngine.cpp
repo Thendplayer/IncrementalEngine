@@ -8,55 +8,55 @@
 namespace MyEngine
 {
 	RenderingEngine::RenderingEngine() :
-		m_swapChain(0),
-		m_device(0),
-		m_deviceContext(0),
-		m_renderTargetView(0),
-		m_depthStencilBuffer(0),
-		m_depthStencilState(0),
-		m_depthStencilView(0),
-		m_rasterState(0),
-		m_depthDisabledStencilState(0)
+		_swapChain(0),
+		_device(0),
+		_deviceContext(0),
+		_renderTargetView(0),
+		_depthStencilBuffer(0),
+		_depthStencilState(0),
+		_depthStencilView(0),
+		_rasterState(0),
+		_depthDisabledStencilState(0)
 	{
 	}
 
 	RenderingEngine::~RenderingEngine()
 	{
-		if (m_swapChain)
+		if (_swapChain)
 		{
-			m_swapChain->SetFullscreenState(FALSE, NULL);
+			_swapChain->SetFullscreenState(FALSE, NULL);
 		}
 		
-		if (m_deviceContext)
+		if (_deviceContext)
 		{
-			m_deviceContext->ClearState();
+			_deviceContext->ClearState();
 		}
 		
-		CHECKED_RELEASE(m_depthDisabledStencilState);
-		CHECKED_RELEASE(m_rasterState);
-		CHECKED_RELEASE(m_depthStencilView);
-		CHECKED_RELEASE(m_depthStencilState);
-		CHECKED_RELEASE(m_depthStencilBuffer);
-		CHECKED_RELEASE(m_renderTargetView);
-		CHECKED_RELEASE(m_deviceContext);
-		CHECKED_RELEASE(m_device);
-		CHECKED_RELEASE(m_swapChain);
+		CHECKED_RELEASE(_depthDisabledStencilState);
+		CHECKED_RELEASE(_rasterState);
+		CHECKED_RELEASE(_depthStencilView);
+		CHECKED_RELEASE(_depthStencilState);
+		CHECKED_RELEASE(_depthStencilBuffer);
+		CHECKED_RELEASE(_renderTargetView);
+		CHECKED_RELEASE(_deviceContext);
+		CHECKED_RELEASE(_device);
+		CHECKED_RELEASE(_swapChain);
 	}
 
-	HRESULT RenderingEngine::Init(RenderWindow* _renderWindow)
+	HRESULT RenderingEngine::Init(RenderWindow* renderWindow)
 	{
 		HRESULT result;
-		renderWindow = _renderWindow;
+		_renderWindow = renderWindow;
 		
 		result = InitD3D();
 		if (FAILED(result))
 		{
-			MessageBox(renderWindow->GetHWND(), L"Could not initialize Direct3D.", L"Error", MB_OK);
+			MessageBox(_renderWindow->GetHWND(), L"Could not initialize Direct3D.", L"Error", MB_OK);
 			return FALSE;
 		}
 		
 		TurnZBufferOff();
-		UpdateWindow(renderWindow->GetHWND());
+		UpdateWindow(_renderWindow->GetHWND());
 
 		return S_OK;
 	}
@@ -64,8 +64,8 @@ namespace MyEngine
 	void RenderingEngine::Update(float dt)
 	{
 		float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-		m_deviceContext->ClearRenderTargetView(m_renderTargetView, color);
-		m_deviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+		_deviceContext->ClearRenderTargetView(_renderTargetView, color);
+		_deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
 		
 	}
@@ -186,9 +186,9 @@ namespace MyEngine
 
 		for (unsigned int i = 0; i < numModes; i++)
 		{
-			if (displayModeList[i].Width == (unsigned int)renderWindow->ScreenWidth)
+			if (displayModeList[i].Width == (unsigned int)_renderWindow->ScreenWidth)
 			{
-				if (displayModeList[i].Height == (unsigned int)renderWindow->ScreenHeight)
+				if (displayModeList[i].Height == (unsigned int)_renderWindow->ScreenHeight)
 				{
 					numerator = displayModeList[i].RefreshRate.Numerator;
 					denominator = displayModeList[i].RefreshRate.Denominator;
@@ -202,11 +202,11 @@ namespace MyEngine
 			return FALSE;
 		}
 
-		m_videoCardMemory = (int)(adapterDesc.DedicatedVideoMemory / 1024 / 1024);
+		_videoCardMemory = (int)(adapterDesc.DedicatedVideoMemory / 1024 / 1024);
 
 		int error = wcstombs_s(
 			&stringLength, 
-			m_videoCardDescription, 
+			_videoCardDescription, 
 			128, 
 			adapterDesc.Description, 
 			128
@@ -242,8 +242,8 @@ namespace MyEngine
 
 		swapChainDesc.BufferCount = 1;
 
-		swapChainDesc.BufferDesc.Width = renderWindow->ScreenWidth;
-		swapChainDesc.BufferDesc.Height = renderWindow->ScreenHeight;
+		swapChainDesc.BufferDesc.Width = _renderWindow->ScreenWidth;
+		swapChainDesc.BufferDesc.Height = _renderWindow->ScreenHeight;
 		swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 
 		if (VSYNC_ENABLED)
@@ -259,7 +259,7 @@ namespace MyEngine
 
 		swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 
-		swapChainDesc.OutputWindow = renderWindow->GetHWND();
+		swapChainDesc.OutputWindow = _renderWindow->GetHWND();
 
 		swapChainDesc.SampleDesc.Count = 1;
 		swapChainDesc.SampleDesc.Quality = 0;
@@ -291,10 +291,10 @@ namespace MyEngine
 			1, 
 			D3D11_SDK_VERSION, 
 			&swapChainDesc, 
-			&m_swapChain,
-			&m_device, 
+			&_swapChain,
+			&_device, 
 			NULL, 
-			&m_deviceContext
+			&_deviceContext
 		);
 		
 		if (FAILED(result))
@@ -310,13 +310,13 @@ namespace MyEngine
 		HRESULT result;
 		ID3D11Texture2D* backBufferPtr;
 
-		result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);
+		result = _swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);
 		if (FAILED(result))
 		{
 			return FALSE;
 		}
 
-		result = m_device->CreateRenderTargetView(backBufferPtr, NULL, &m_renderTargetView);
+		result = _device->CreateRenderTargetView(backBufferPtr, NULL, &_renderTargetView);
 		if (FAILED(result))
 		{
 			return FALSE;
@@ -336,8 +336,8 @@ namespace MyEngine
 		
 		ZeroMemory(&depthBufferDesc, sizeof(depthBufferDesc));
 
-		depthBufferDesc.Width = renderWindow->ScreenWidth;
-		depthBufferDesc.Height = renderWindow->ScreenHeight;
+		depthBufferDesc.Width = _renderWindow->ScreenWidth;
+		depthBufferDesc.Height = _renderWindow->ScreenHeight;
 		depthBufferDesc.MipLevels = 1;
 		depthBufferDesc.ArraySize = 1;
 		depthBufferDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -348,7 +348,7 @@ namespace MyEngine
 		depthBufferDesc.CPUAccessFlags = 0;
 		depthBufferDesc.MiscFlags = 0;
 
-		result = m_device->CreateTexture2D(&depthBufferDesc, NULL, &m_depthStencilBuffer);
+		result = _device->CreateTexture2D(&depthBufferDesc, NULL, &_depthStencilBuffer);
 		if (FAILED(result))
 		{
 			return FALSE;
@@ -357,7 +357,7 @@ namespace MyEngine
 		const bool depth = true;
 		CreateDepthStencilState(depth);
 
-		m_deviceContext->OMSetDepthStencilState(m_depthStencilState, 1);
+		_deviceContext->OMSetDepthStencilState(_depthStencilState, 1);
 
 		ZeroMemory(&depthStencilViewDesc, sizeof(depthStencilViewDesc));
 
@@ -365,13 +365,13 @@ namespace MyEngine
 		depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 		depthStencilViewDesc.Texture2D.MipSlice = 0;
 
-		result = m_device->CreateDepthStencilView(m_depthStencilBuffer, &depthStencilViewDesc, &m_depthStencilView);
+		result = _device->CreateDepthStencilView(_depthStencilBuffer, &depthStencilViewDesc, &_depthStencilView);
 		if (FAILED(result))
 		{
 			return FALSE;
 		}
 
-		m_deviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
+		_deviceContext->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView);
 
 		return S_OK;
 	}
@@ -392,13 +392,13 @@ namespace MyEngine
 		rasterDesc.ScissorEnable = false;
 		rasterDesc.SlopeScaledDepthBias = 0.0f;
 
-		result = m_device->CreateRasterizerState(&rasterDesc, &m_rasterState);
+		result = _device->CreateRasterizerState(&rasterDesc, &_rasterState);
 		if (FAILED(result))
 		{
 			return FALSE;
 		}
 
-		m_deviceContext->RSSetState(m_rasterState);
+		_deviceContext->RSSetState(_rasterState);
 
 		return S_OK;
 	}
@@ -407,26 +407,26 @@ namespace MyEngine
 	{
 		D3D11_VIEWPORT viewport;
 		
-		viewport.Width = (float)renderWindow->ScreenWidth;
-		viewport.Height = (float)renderWindow->ScreenHeight;
+		viewport.Width = (float)_renderWindow->ScreenWidth;
+		viewport.Height = (float)_renderWindow->ScreenHeight;
 		viewport.MinDepth = 0.0f;
 		viewport.MaxDepth = 1.0f;
 		viewport.TopLeftX = 0.0f;
 		viewport.TopLeftY = 0.0f;
 
-		m_deviceContext->RSSetViewports(1, &viewport);
+		_deviceContext->RSSetViewports(1, &viewport);
 	}
 
 	void RenderingEngine::SetupD3DMatrices()
 	{
 		float fieldOfView = (float)D3DX_PI / 4.0f;
-		float screenAspect = (float)renderWindow->ScreenWidth / (float)renderWindow->ScreenHeight;
+		float screenAspect = (float)_renderWindow->ScreenWidth / (float)_renderWindow->ScreenHeight;
 
-		D3DXMatrixPerspectiveFovLH(&m_projectionMatrix, fieldOfView, screenAspect, SCREEN_NEAR, SCREEN_DEPTH);
+		D3DXMatrixPerspectiveFovLH(&_projectionMatrix, fieldOfView, screenAspect, SCREEN_NEAR, SCREEN_DEPTH);
 
-		D3DXMatrixIdentity(&m_worldMatrix);
+		D3DXMatrixIdentity(&_worldMatrix);
 
-		D3DXMatrixOrthoLH(&m_orthoMatrix, (float)renderWindow->ScreenWidth, (float)renderWindow->ScreenHeight, SCREEN_NEAR, SCREEN_DEPTH);
+		D3DXMatrixOrthoLH(&_orthoMatrix, (float)_renderWindow->ScreenWidth, (float)_renderWindow->ScreenHeight, SCREEN_NEAR, SCREEN_DEPTH);
 	}
 
 	HRESULT RenderingEngine::CreateDepthStencilState(bool enableZBuffer)
@@ -451,7 +451,7 @@ namespace MyEngine
 		depthStencilDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
 		depthStencilDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
 
-		result = m_device->CreateDepthStencilState(&depthStencilDesc, &m_depthStencilState);
+		result = _device->CreateDepthStencilState(&depthStencilDesc, &_depthStencilState);
 		if (FAILED(result))
 		{
 			return FALSE;
@@ -462,43 +462,43 @@ namespace MyEngine
 
 	ID3D11Device* RenderingEngine::GetDevice()
 	{
-		return m_device;
+		return _device;
 	}
 
 	ID3D11DeviceContext* RenderingEngine::GetDeviceContext()
 	{
-		return m_deviceContext;
+		return _deviceContext;
 	}
 
 	void RenderingEngine::GetProjectionMatrix(D3DXMATRIX& projectionMatrix)
 	{
-		projectionMatrix = m_projectionMatrix;
+		projectionMatrix = _projectionMatrix;
 	}
 
 	void RenderingEngine::GetWorldMatrix(D3DXMATRIX& worldMatrix)
 	{
-		worldMatrix = m_worldMatrix;
+		worldMatrix = _worldMatrix;
 		return;
 	}
 
 	void RenderingEngine::GetOrthoMatrix(D3DXMATRIX& orthoMatrix)
 	{
-		orthoMatrix = m_orthoMatrix;
+		orthoMatrix = _orthoMatrix;
 	}
 
 	void RenderingEngine::GetVideoCardInfo(char* cardName, int& memory)
 	{
-		strcpy_s(cardName, 128, m_videoCardDescription);
-		memory = m_videoCardMemory;
+		strcpy_s(cardName, 128, _videoCardDescription);
+		memory = _videoCardMemory;
 	}
 
 	void RenderingEngine::TurnZBufferOn()
 	{
-		m_deviceContext->OMSetDepthStencilState(m_depthStencilState, 1);
+		_deviceContext->OMSetDepthStencilState(_depthStencilState, 1);
 	}
 
 	void RenderingEngine::TurnZBufferOff()
 	{
-		m_deviceContext->OMSetDepthStencilState(m_depthDisabledStencilState, 1);
+		_deviceContext->OMSetDepthStencilState(_depthDisabledStencilState, 1);
 	}
 }

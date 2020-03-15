@@ -14,10 +14,11 @@ namespace MyEngine
 	{
 	private:
 		static Engine* ENGINE_INSTANCE;
-		HINSTANCE hInstance;
-		RenderingEngine* renderingEngine;
-		RenderWindow* renderWindow;
-		InputManager* inputManager;
+
+		HINSTANCE _hInstance;
+		RenderingEngine* _renderingEngine;
+		RenderWindow* _renderWindow;
+		InputManager* _inputManager;
 
 		void Init();
 		void Update(float dt);
@@ -31,8 +32,6 @@ namespace MyEngine
 		void DeInit();
 		bool IsOpen();
 		void Run(HINSTANCE hInstance, EngineGame* game);
-
-		LRESULT CALLBACK MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 		~Engine();
 	};
