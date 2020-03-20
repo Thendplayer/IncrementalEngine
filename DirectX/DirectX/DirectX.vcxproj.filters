@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{fa0fb1b9-9723-42fc-ab6b-27d74ef3ea67}</UniqueIdentifier>
     </Filter>
@@ -28,13 +24,26 @@
     <Filter Include="Source Files\Engine\HumanInterfaceDevices">
       <UniqueIdentifier>{b69ee674-e18e-4f59-8de6-4c3e388d8978}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\RenderWindow">
+      <UniqueIdentifier>{70ba7f77-c267-4d85-8e4d-fdb89aaf79d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\D3DImplementation">
+      <UniqueIdentifier>{543f34f1-a0e6-4f39-80d4-1d03da83971a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\RenderCamera">
+      <UniqueIdentifier>{ded5669c-2cf5-4188-bdde-ab927a15c578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\TextureShaderRenderer">
+      <UniqueIdentifier>{2945c586-bfb3-49f3-8f7c-bea40c10a906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderingEngine.cpp">
-      <Filter>Source Files\Engine\RenderingEngine</Filter>
     </ClCompile>
     <ClCompile Include="MainEngine.cpp">
       <Filter>Source Files\Engine</Filter>
@@ -48,14 +57,26 @@
     <ClCompile Include="Config.h">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="RenderWindow.cpp">
-      <Filter>Source Files\Engine\RenderingEngine</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClCompile>
     <ClCompile Include="WindowsInput.cpp">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderWindow.cpp">
+      <Filter>Source Files\Engine\RenderWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DImplementation.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\D3DImplementation</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderingEngine.cpp">
+      <Filter>Source Files\Engine\RenderingEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderCamera.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\RenderCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShaderRenderer.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\TextureShaderRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,17 +89,11 @@
     <ClInclude Include="ExampleGame.h">
       <Filter>Source Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="RenderingEngine.h">
-      <Filter>Source Files\Engine\RenderingEngine</Filter>
-    </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Source Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderWindow.h">
-      <Filter>Source Files\Engine\RenderingEngine</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
@@ -86,5 +101,28 @@
     <ClInclude Include="WindowsInput.h">
       <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
     </ClInclude>
+    <ClInclude Include="RenderWindow.h">
+      <Filter>Source Files\Engine\RenderWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DImplementation.h">
+      <Filter>Source Files\Engine\RenderingEngine\D3DImplementation</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingEngine.h">
+      <Filter>Source Files\Engine\RenderingEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderCamera.h">
+      <Filter>Source Files\Engine\RenderingEngine\RenderCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderRenderer.h">
+      <Filter>Source Files\Engine\RenderingEngine\TextureShaderRenderer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\texture.ps">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="Shaders\texture.vs">
+      <Filter>Shader Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

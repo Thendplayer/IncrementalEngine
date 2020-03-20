@@ -156,8 +156,11 @@
     <ClCompile Include="MainEngine.cpp" />
     <ClCompile Include="EngineGame.cpp" />
     <ClCompile Include="ExampleGame.cpp" />
+    <ClCompile Include="D3DImplementation.cpp" />
+    <ClCompile Include="RenderCamera.cpp" />
     <ClCompile Include="RenderingEngine.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
+    <ClCompile Include="TextureShaderRenderer.cpp" />
     <ClCompile Include="WindowsInput.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -166,11 +169,18 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainEngine.h" />
     <ClInclude Include="ExampleGame.h" />
-    <ClInclude Include="RenderingEngine.h" />
+    <ClInclude Include="D3DImplementation.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="RenderCamera.h" />
+    <ClInclude Include="RenderingEngine.h" />
     <ClInclude Include="RenderWindow.h" />
+    <ClInclude Include="TextureShaderRenderer.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="WindowsInput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\texture.ps" />
+    <None Include="Shaders\texture.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

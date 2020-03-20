@@ -1,8 +1,10 @@
 #ifndef _Math_H
 #define _Math_H
 
+#define PI 3.14159265358979323846
+
 #define LENGTH(a,b) sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y)+(a.z-b.z)*(a.z-b.z))
-#define DEG2RAD(x) x*XM_PI/180.0f
-#define RAD2DEG(x) x*180.0f/XM_PI
+#define DEG2RAD(x) x*PI/180.0f
+#define RAD2DEG(x) x*180.0f/PI
 
 #endif

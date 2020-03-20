@@ -84,8 +84,9 @@ namespace MyEngine
 
     void Engine::DeInit()
     {
-		delete _renderingEngine;
 		CHECKED_DELETE(_renderingEngine);
+		CHECKED_DELETE(_renderWindow);
+		CHECKED_DELETE(_inputManager);
     }
 
 	bool Engine::IsOpen()
