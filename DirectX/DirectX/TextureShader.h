@@ -1,5 +1,5 @@
-#ifndef _TEXTURE_SHADER_RENDERER_H
-#define _TEXTURE_SHADER_RENDERER_H
+#ifndef _TEXTURE_SHADER_H
+#define _TEXTURE_SHADER_H
 
 #include <d3d11.h>
 #include <d3dx10math.h>
@@ -10,13 +10,13 @@ using namespace std;
 
 namespace MyEngine 
 {
-	class TextureShaderRenderer
+	class TextureShader
 	{
 	public:
-		TextureShaderRenderer();
-		~TextureShaderRenderer();
+		TextureShader();
+		~TextureShader();
 
-		HRESULT Initialize(ID3D11Device* device, HWND hwnd);
+		HRESULT Init(ID3D11Device* device, HWND hwnd);
 
 		HRESULT Draw(
 			ID3D11DeviceContext* deviceContext,

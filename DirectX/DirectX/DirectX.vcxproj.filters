@@ -33,12 +33,27 @@
     <Filter Include="Source Files\Engine\RenderingEngine\RenderCamera">
       <UniqueIdentifier>{ded5669c-2cf5-4188-bdde-ab927a15c578}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\RenderingEngine\TextureShaderRenderer">
-      <UniqueIdentifier>{2945c586-bfb3-49f3-8f7c-bea40c10a906}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Shader Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\Bitmap">
+      <UniqueIdentifier>{a10f8a73-4b77-4cef-b44f-99aa98f11f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\Bitmap\Texture">
+      <UniqueIdentifier>{0eb0eb9a-5b70-454e-af43-2cbece43ff27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Scene">
+      <UniqueIdentifier>{11c14920-6142-4415-ad5d-d145c2788588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Actor">
+      <UniqueIdentifier>{477ef3d0-b1b9-4733-b906-ac0ef26526e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\Shaders">
+      <UniqueIdentifier>{3945f2a8-6a03-43f9-94e3-2a3b5bb27d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\RenderingEngine\Shaders\TextureShader">
+      <UniqueIdentifier>{2945c586-bfb3-49f3-8f7c-bea40c10a906}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,8 +90,23 @@
     <ClCompile Include="RenderCamera.cpp">
       <Filter>Source Files\Engine\RenderingEngine\RenderCamera</Filter>
     </ClCompile>
-    <ClCompile Include="TextureShaderRenderer.cpp">
-      <Filter>Source Files\Engine\RenderingEngine\TextureShaderRenderer</Filter>
+    <ClCompile Include="Bitmap.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\Bitmap\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShader.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\Shaders\TextureShader</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source Files\Engine\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>Source Files\Engine\RenderingEngine\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,8 +143,29 @@
     <ClInclude Include="RenderCamera.h">
       <Filter>Source Files\Engine\RenderingEngine\RenderCamera</Filter>
     </ClInclude>
-    <ClInclude Include="TextureShaderRenderer.h">
-      <Filter>Source Files\Engine\RenderingEngine\TextureShaderRenderer</Filter>
+    <ClInclude Include="Bitmap.h">
+      <Filter>Source Files\Engine\RenderingEngine\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Engine\RenderingEngine\Bitmap\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShader.h">
+      <Filter>Source Files\Engine\RenderingEngine\Shaders\TextureShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Source Files\Engine\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>Source Files\Engine\RenderingEngine\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInputKey.h">
+      <Filter>Source Files\Engine\HumanInterfaceDevices</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Source Files\Engine\RenderingEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

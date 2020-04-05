@@ -430,16 +430,16 @@ SelfAdjointEigenSolver<MatrixType>& SelfAdjointEigenSolver<MatrixType>
 
   // map the matrix coefficients to [-1:1] to avoid over- and underflow.
   mat = matrix.template triangularView<Lower>();
-  RealScalar scale = mat.cwiseAbs().maxCoeff();
-  if(scale==RealScalar(0)) scale = RealScalar(1);
-  mat.template triangularView<Lower>() /= scale;
+  RealScalar Scale = mat.cwiseAbs().maxCoeff();
+  if(Scale==RealScalar(0)) Scale = RealScalar(1);
+  mat.template triangularView<Lower>() /= Scale;
   m_subdiag.resize(n-1);
   internal::tridiagonalization_inplace(mat, diag, m_subdiag, computeEigenvectors);
 
   m_info = internal::computeFromTridiagonal_impl(diag, m_subdiag, m_maxIterations, computeEigenvectors, m_eivec);
   
   // scale back the eigen values
-  m_eivalues *= scale;
+  m_eivalues *= Scale;
 
   m_isInitialized = true;
   m_eigenvectorsOk = computeEigenvectors;
@@ -639,8 +639,8 @@ template<typename SolverType> struct direct_selfadjoint_eigenvalues<SolverType,3
     // TODO Avoid this copy. Currently it is necessary to suppress bogus values when determining maxCoeff and for computing the eigenvectors later
     MatrixType scaledMat = mat.template selfadjointView<Lower>();
     scaledMat.diagonal().array() -= shift;
-    Scalar scale = scaledMat.cwiseAbs().maxCoeff();
-    if(scale > 0) scaledMat /= scale;   // TODO for scale==0 we could save the remaining operations
+    Scalar Scale = scaledMat.cwiseAbs().maxCoeff();
+    if(Scale > 0) scaledMat /= Scale;   // TODO for scale==0 we could save the remaining operations
 
     // compute the eigenvalues
     computeRoots(scaledMat,eivals);
@@ -698,7 +698,7 @@ template<typename SolverType> struct direct_selfadjoint_eigenvalues<SolverType,3
     }
 
     // Rescale back to the original size.
-    eivals *= scale;
+    eivals *= Scale;
     eivals.array() += shift;
     
     solver.m_info = Success;
@@ -746,9 +746,9 @@ struct direct_selfadjoint_eigenvalues<SolverType,2,false>
     MatrixType scaledMat = mat;
     scaledMat.coeffRef(0,1) = mat.coeff(1,0);
     scaledMat.diagonal().array() -= shift;
-    Scalar scale = scaledMat.cwiseAbs().maxCoeff();
-    if(scale > Scalar(0))
-      scaledMat /= scale;
+    Scalar Scale = scaledMat.cwiseAbs().maxCoeff();
+    if(Scale > Scalar(0))
+      scaledMat /= Scale;
 
     // Compute the eigenvalues
     computeRoots(scaledMat,eivals);
@@ -782,7 +782,7 @@ struct direct_selfadjoint_eigenvalues<SolverType,2,false>
     }
 
     // Rescale back to the original size.
-    eivals *= scale;
+    eivals *= Scale;
     eivals.array() += shift;
 
     solver.m_info = Success;

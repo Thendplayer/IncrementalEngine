@@ -150,7 +150,7 @@ class Array
 #if EIGEN_HAS_RVALUE_REFERENCES
     EIGEN_DEVICE_FUNC
     Array(Array&& other) EIGEN_NOEXCEPT_IF(std::is_nothrow_move_constructible<Scalar>::value)
-      : Base(std::move(other))
+      : Base(std::Move(other))
     {
       Base::_check_template_params();
     }

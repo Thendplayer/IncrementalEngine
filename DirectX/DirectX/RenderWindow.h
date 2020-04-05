@@ -9,16 +9,16 @@ namespace MyEngine
 	class RenderWindow
 	{
 		private:
-			HINSTANCE _hinstance;
+			HINSTANCE _hInstance;
 			HWND _hWnd;
+			int _screenWidth, _screenHeight;
 
 		public:
-			int ScreenWidth, ScreenHeight;
-
-			void Update(float dt);
-			void Draw();
 
 			HWND GetHWND();
+			HINSTANCE* GetHInstance();
+			int GetScreenWidth();
+			int GetScreenHeight();
 
 			RenderWindow();
 			~RenderWindow();

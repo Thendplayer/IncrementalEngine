@@ -23,20 +23,23 @@ namespace MyEngine
 	}
 
 	Engine::Engine() :
-	_renderingEngine(NULL),
-	_hInstance(NULL)
+		_renderingEngine(NULL),
+		_renderWindow(NULL),
+		_inputManager(NULL),
+		_scene(NULL)
 	{
 	}
 
 	Engine::~Engine()
 	{
-		ENGINE_INSTANCE = nullptr;
+		if (ENGINE_INSTANCE == this)
+		{
+			ENGINE_INSTANCE = nullptr;
+		}
 	}
 
-	void Engine::Run(HINSTANCE hInstance, EngineGame* game)
+	void Engine::Run(EngineGame* game)
 	{
-        _hInstance = hInstance;
-		
         Init();
         game->Init();
 
@@ -67,23 +70,49 @@ namespace MyEngine
 	{
         _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
+		HRESULT result;
+
 		_inputManager = new InputManager;
 		_renderWindow = new RenderWindow;
-        _renderingEngine = new RenderingEngine;
+		result = _inputManager->Init(_renderWindow);
 
-		_renderingEngine->Init(_renderWindow);
+		if (FAILED(result))
+		{
+			MessageBox(_renderWindow->GetHWND(), L"Could not initialize InputManager.", L"Error", MB_OK);
+			return;
+		}
+
+		_renderingEngine = new RenderingEngine;
+		result = _renderingEngine->Init(_renderWindow);
+
+		if (FAILED(result))
+		{
+			MessageBox(_renderWindow->GetHWND(), L"Could not initialize RenderingEngine.", L"Error", MB_OK);
+			return;
+		}
+
+		auto direct3D = _renderingEngine->GetDirect3DImplementation();
+		_scene = new Scene(
+			_renderWindow,
+			_renderingEngine->GetShaderManager(),
+			direct3D->GetDevice()
+		);
 	}
 
 	void Engine::Update(float dt)
 	{
+		_renderingEngine->Update(dt);
+		_scene->Update(dt);
 	}
 
 	void Engine::Draw()
 	{
+		_renderingEngine->Draw(_scene);
 	}
 
     void Engine::DeInit()
     {
+		CHECKED_DELETE(_scene);
 		CHECKED_DELETE(_renderingEngine);
 		CHECKED_DELETE(_renderWindow);
 		CHECKED_DELETE(_inputManager);
@@ -92,5 +121,15 @@ namespace MyEngine
 	bool Engine::IsOpen()
 	{
         return true;
+	}
+
+	Scene* Engine::GetScene()
+	{
+		return _scene;
+	}
+
+	InputManager* Engine::GetInput()
+	{
+		return _inputManager;
 	}
 }

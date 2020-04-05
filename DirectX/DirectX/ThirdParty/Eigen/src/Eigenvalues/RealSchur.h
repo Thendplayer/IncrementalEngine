@@ -255,8 +255,8 @@ RealSchur<MatrixType>& RealSchur<MatrixType>::compute(const EigenBase<InputType>
   if (maxIters == -1)
     maxIters = m_maxIterationsPerRow * matrix.rows();
 
-  Scalar scale = matrix.derived().cwiseAbs().maxCoeff();
-  if(scale<considerAsZero)
+  Scalar Scale = matrix.derived().cwiseAbs().maxCoeff();
+  if(Scale<considerAsZero)
   {
     m_matT.setZero(matrix.rows(),matrix.cols());
     if(computeU)
@@ -268,12 +268,12 @@ RealSchur<MatrixType>& RealSchur<MatrixType>::compute(const EigenBase<InputType>
   }
 
   // Step 1. Reduce to Hessenberg form
-  m_hess.compute(matrix.derived()/scale);
+  m_hess.compute(matrix.derived()/Scale);
 
   // Step 2. Reduce to real Schur form  
   computeFromHessenberg(m_hess.matrixH(), m_hess.matrixQ(), computeU);
 
-  m_matT *= scale;
+  m_matT *= Scale;
   
   return *this;
 }

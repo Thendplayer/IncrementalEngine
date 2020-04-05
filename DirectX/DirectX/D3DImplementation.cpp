@@ -46,8 +46,7 @@ namespace MyEngine
 	HRESULT D3DImplementation::Init(RenderWindow* renderWindow)
 	{
 		HRESULT result;
-		unsigned int numerator;
-		unsigned int denominator;
+		unsigned int numerator, denominator;
 		
 		_renderWindow = renderWindow;
 
@@ -99,16 +98,31 @@ namespace MyEngine
 
 	void D3DImplementation::Update(float dt)
 	{
-		float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-		_deviceContext->ClearRenderTargetView(_renderTargetView, color);
-		_deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
-		
 	}
 
 	void D3DImplementation::Draw()
 	{
 		
+	}
+
+	void D3DImplementation::BeginScene(float red, float green, float blue, float alpha)
+	{
+		float color[4] = { red, green, blue, alpha };
+		_deviceContext->ClearRenderTargetView(_renderTargetView, color);
+		_deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	}
+
+	void D3DImplementation::EndScene()
+	{
+		if (VSYNC_ENABLED)
+		{
+			_swapChain->Present(1, 0);
+		}
+		else
+		{
+			_swapChain->Present(0, 0);
+		}
 	}
 
 	HRESULT D3DImplementation::SetupAdapterOutput(unsigned int& numerator, unsigned int& denominator)
@@ -171,9 +185,9 @@ namespace MyEngine
 
 		for (unsigned int i = 0; i < numModes; i++)
 		{
-			if (displayModeList[i].Width == (unsigned int)_renderWindow->ScreenWidth)
+			if (displayModeList[i].Width == (unsigned int)_renderWindow->GetScreenWidth())
 			{
-				if (displayModeList[i].Height == (unsigned int)_renderWindow->ScreenHeight)
+				if (displayModeList[i].Height == (unsigned int)_renderWindow->GetScreenHeight())
 				{
 					numerator = displayModeList[i].RefreshRate.Numerator;
 					denominator = displayModeList[i].RefreshRate.Denominator;
@@ -227,8 +241,8 @@ namespace MyEngine
 
 		swapChainDesc.BufferCount = 1;
 
-		swapChainDesc.BufferDesc.Width = _renderWindow->ScreenWidth;
-		swapChainDesc.BufferDesc.Height = _renderWindow->ScreenHeight;
+		swapChainDesc.BufferDesc.Width = _renderWindow->GetScreenWidth();
+		swapChainDesc.BufferDesc.Height = _renderWindow->GetScreenHeight();
 		swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 
 		if (VSYNC_ENABLED)
@@ -321,8 +335,8 @@ namespace MyEngine
 		
 		ZeroMemory(&depthBufferDesc, sizeof(depthBufferDesc));
 
-		depthBufferDesc.Width = _renderWindow->ScreenWidth;
-		depthBufferDesc.Height = _renderWindow->ScreenHeight;
+		depthBufferDesc.Width = _renderWindow->GetScreenWidth();
+		depthBufferDesc.Height = _renderWindow->GetScreenHeight();
 		depthBufferDesc.MipLevels = 1;
 		depthBufferDesc.ArraySize = 1;
 		depthBufferDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -392,8 +406,8 @@ namespace MyEngine
 	{
 		D3D11_VIEWPORT viewport;
 		
-		viewport.Width = (float)_renderWindow->ScreenWidth;
-		viewport.Height = (float)_renderWindow->ScreenHeight;
+		viewport.Width = (float)_renderWindow->GetScreenWidth();
+		viewport.Height = (float)_renderWindow->GetScreenHeight();
 		viewport.MinDepth = 0.0f;
 		viewport.MaxDepth = 1.0f;
 		viewport.TopLeftX = 0.0f;
@@ -405,13 +419,13 @@ namespace MyEngine
 	void D3DImplementation::SetupD3DMatrices()
 	{
 		float fieldOfView = (float)D3DX_PI / 4.0f;
-		float screenAspect = (float)_renderWindow->ScreenWidth / (float)_renderWindow->ScreenHeight;
+		float screenAspect = (float)_renderWindow->GetScreenWidth() / (float)_renderWindow->GetScreenHeight();
 
 		D3DXMatrixPerspectiveFovLH(&_projectionMatrix, fieldOfView, screenAspect, SCREEN_NEAR, SCREEN_DEPTH);
 
 		D3DXMatrixIdentity(&_worldMatrix);
 
-		D3DXMatrixOrthoLH(&_orthoMatrix, (float)_renderWindow->ScreenWidth, (float)_renderWindow->ScreenHeight, SCREEN_NEAR, SCREEN_DEPTH);
+		D3DXMatrixOrthoLH(&_orthoProjectionMatrix, (float)_renderWindow->GetScreenWidth(), (float)_renderWindow->GetScreenHeight(), SCREEN_NEAR, SCREEN_DEPTH);
 	}
 
 	HRESULT D3DImplementation::CreateDepthStencilState(bool enableZBuffer)
@@ -463,12 +477,11 @@ namespace MyEngine
 	void D3DImplementation::GetWorldMatrix(D3DXMATRIX& worldMatrix)
 	{
 		worldMatrix = _worldMatrix;
-		return;
 	}
 
-	void D3DImplementation::GetOrthoMatrix(D3DXMATRIX& orthoMatrix)
+	void D3DImplementation::GetOrthoProjectionMatrix(D3DXMATRIX& orthoProjectionMatrix)
 	{
-		orthoMatrix = _orthoMatrix;
+		orthoProjectionMatrix = _orthoProjectionMatrix;
 	}
 
 	void D3DImplementation::GetVideoCardInfo(char* cardName, int& memory)

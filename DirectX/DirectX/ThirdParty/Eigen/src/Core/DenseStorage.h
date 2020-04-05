@@ -370,9 +370,9 @@ template<typename T, int _Options> class DenseStorage<T, Dynamic, Dynamic, Dynam
 #if EIGEN_HAS_RVALUE_REFERENCES
     EIGEN_DEVICE_FUNC
     DenseStorage(DenseStorage&& other) EIGEN_NOEXCEPT
-      : m_data(std::move(other.m_data))
-      , m_rows(std::move(other.m_rows))
-      , m_cols(std::move(other.m_cols))
+      : m_data(std::Move(other.m_data))
+      , m_rows(std::Move(other.m_rows))
+      , m_cols(std::Move(other.m_cols))
     {
       other.m_data = nullptr;
       other.m_rows = 0;
@@ -450,8 +450,8 @@ template<typename T, int _Rows, int _Options> class DenseStorage<T, Dynamic, _Ro
 #if EIGEN_HAS_RVALUE_REFERENCES
     EIGEN_DEVICE_FUNC
     DenseStorage(DenseStorage&& other) EIGEN_NOEXCEPT
-      : m_data(std::move(other.m_data))
-      , m_cols(std::move(other.m_cols))
+      : m_data(std::Move(other.m_data))
+      , m_cols(std::Move(other.m_cols))
     {
       other.m_data = nullptr;
       other.m_cols = 0;
@@ -524,8 +524,8 @@ template<typename T, int _Cols, int _Options> class DenseStorage<T, Dynamic, Dyn
 #if EIGEN_HAS_RVALUE_REFERENCES
     EIGEN_DEVICE_FUNC
     DenseStorage(DenseStorage&& other) EIGEN_NOEXCEPT
-      : m_data(std::move(other.m_data))
-      , m_rows(std::move(other.m_rows))
+      : m_data(std::Move(other.m_data))
+      , m_rows(std::Move(other.m_rows))
     {
       other.m_data = nullptr;
       other.m_rows = 0;

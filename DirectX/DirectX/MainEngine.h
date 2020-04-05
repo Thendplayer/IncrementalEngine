@@ -7,33 +7,37 @@
 #include "InputManager.h"
 #include "RenderingEngine.h"
 #include "RenderWindow.h"
+#include "Scene.h"
 
 namespace MyEngine
 {
 	class Engine
 	{
+	public:
+		static Engine* Get();
+
+		Engine();
+		~Engine();
+		
+		void Run(EngineGame* game);
+		
+		Scene* GetScene();
+		InputManager* GetInput();
+
 	private:
 		static Engine* ENGINE_INSTANCE;
 
-		HINSTANCE _hInstance;
 		RenderingEngine* _renderingEngine;
 		RenderWindow* _renderWindow;
 		InputManager* _inputManager;
+		Scene* _scene;
 
 		void Init();
 		void Update(float dt);
 		void Draw();
-
-		Engine();
-
-	public:
-		static Engine* Get();
-
 		void DeInit();
-		bool IsOpen();
-		void Run(HINSTANCE hInstance, EngineGame* game);
 
-		~Engine();
+		bool IsOpen();
 	};
 }
 

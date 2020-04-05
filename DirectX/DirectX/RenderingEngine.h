@@ -3,7 +3,8 @@
 
 #include "D3DImplementation.h"
 #include "RenderCamera.h"
-#include "TextureShaderRenderer.h"
+#include "ShaderManager.h"
+#include "Bitmap.h"
 
 namespace MyEngine
 {
@@ -14,7 +15,11 @@ namespace MyEngine
 	public:
 		HRESULT Init(RenderWindow* renderWindow);
 		void Update(float dt);
-		void Draw();
+		HRESULT Draw(Drawable* target);
+
+		D3DImplementation* GetDirect3DImplementation();
+		RenderCamera* GetCamera();
+		ShaderManager* GetShaderManager();
 	
 		RenderingEngine();
 		~RenderingEngine();
@@ -22,7 +27,7 @@ namespace MyEngine
 	private:
 		D3DImplementation* _direct3D;
 		RenderCamera* _camera;
-		TextureShaderRenderer* _textureShaderRenderer;
+		ShaderManager* _shaderManager;
 	};
 }
 

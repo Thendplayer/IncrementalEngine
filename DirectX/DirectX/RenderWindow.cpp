@@ -14,13 +14,13 @@ namespace MyEngine
 		DEVMODE dmScreenSettings;
 		int posX, posY;
 
-		_hinstance = GetModuleHandle(NULL);
+		_hInstance = GetModuleHandle(NULL);
 
 		wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
 		wc.lpfnWndProc = WindowProc;
 		wc.cbClsExtra = 0;
 		wc.cbWndExtra = 0;
-		wc.hInstance = _hinstance;
+		wc.hInstance = _hInstance;
 		wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
 		wc.hIconSm = wc.hIcon;
 		wc.hCursor = LoadCursor(NULL, IDC_ARROW);
@@ -31,15 +31,15 @@ namespace MyEngine
 
 		RegisterClassEx(&wc);
 
-		ScreenWidth = GetSystemMetrics(SM_CXSCREEN);
-		ScreenHeight = GetSystemMetrics(SM_CYSCREEN);
+		_screenWidth = GetSystemMetrics(SM_CXSCREEN);
+		_screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
 		if (FULLSCREEN)
 		{
 			memset(&dmScreenSettings, 0, sizeof(dmScreenSettings));
 			dmScreenSettings.dmSize = sizeof(dmScreenSettings);
-			dmScreenSettings.dmPelsWidth = (unsigned long)ScreenWidth;
-			dmScreenSettings.dmPelsHeight = (unsigned long)ScreenHeight;
+			dmScreenSettings.dmPelsWidth = (unsigned long)_screenWidth;
+			dmScreenSettings.dmPelsHeight = (unsigned long)_screenHeight;
 			dmScreenSettings.dmBitsPerPel = 32;
 			dmScreenSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
 
@@ -49,11 +49,11 @@ namespace MyEngine
 		}
 		else
 		{
-			ScreenWidth = DEFAULT_WINDOWED_SCREEN_WIDTH;
-			ScreenHeight = DEFAULT_WINDOWED_SCREEN_HEIGHT;
+			_screenWidth = DEFAULT_WINDOWED_SCREEN_WIDTH;
+			_screenHeight = DEFAULT_WINDOWED_SCREEN_HEIGHT;
 
-			posX = (GetSystemMetrics(SM_CXSCREEN) - ScreenWidth) / 2;
-			posY = (GetSystemMetrics(SM_CYSCREEN) - ScreenHeight) / 2;
+			posX = (GetSystemMetrics(SM_CXSCREEN) - _screenWidth) / 2;
+			posY = (GetSystemMetrics(SM_CYSCREEN) - _screenHeight) / 2;
 		}
 
 		_hWnd = CreateWindowEx(
@@ -63,11 +63,11 @@ namespace MyEngine
 			WS_OVERLAPPEDWINDOW,
 			posX,
 			posY,
-			ScreenWidth,
-			ScreenHeight,
+			_screenWidth,
+			_screenHeight,
 			NULL,
 			NULL,
-			_hinstance,
+			_hInstance,
 			NULL
 		);
 
@@ -80,21 +80,38 @@ namespace MyEngine
 
 	RenderWindow::~RenderWindow()
 	{
-	}
+		ShowCursor(true);
 
-	void RenderWindow::Update(float dt)
-	{
+		if (FULLSCREEN)
+		{
+			ChangeDisplaySettings(NULL, 0);
+		}
 
-	}
+		DestroyWindow(_hWnd);
+		_hWnd = NULL;
 
-	void RenderWindow::Draw()
-	{
-
+		UnregisterClass(APPLICATION_NAME, _hInstance);
+		_hInstance = NULL;
 	}
 
 	HWND RenderWindow::GetHWND()
 	{
 		return _hWnd;
+	}
+
+	HINSTANCE* RenderWindow::GetHInstance()
+	{
+		return &_hInstance;
+	}
+
+	int RenderWindow::GetScreenWidth()
+	{
+		return _screenWidth;
+	}
+
+	int RenderWindow::GetScreenHeight()
+	{
+		return _screenHeight;
 	}
 
 	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

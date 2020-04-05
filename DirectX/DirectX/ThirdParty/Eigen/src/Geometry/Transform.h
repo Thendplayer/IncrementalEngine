@@ -543,13 +543,13 @@ public:
 
   template<typename OtherDerived>
   EIGEN_DEVICE_FUNC 
-  inline Transform& scale(const MatrixBase<OtherDerived> &other);
+  inline Transform& Scale(const MatrixBase<OtherDerived> &other);
 
   template<typename OtherDerived>
   EIGEN_DEVICE_FUNC
   inline Transform& prescale(const MatrixBase<OtherDerived> &other);
 
-  EIGEN_DEVICE_FUNC inline Transform& scale(const Scalar& s);
+  EIGEN_DEVICE_FUNC inline Transform& Scale(const Scalar& s);
   EIGEN_DEVICE_FUNC inline Transform& prescale(const Scalar& s);
 
   template<typename OtherDerived>
@@ -562,7 +562,7 @@ public:
 
   template<typename RotationType>
   EIGEN_DEVICE_FUNC
-  inline Transform& rotate(const RotationType& rotation);
+  inline Transform& Rotate(const RotationType& rotation);
 
   template<typename RotationType>
   EIGEN_DEVICE_FUNC
@@ -582,13 +582,13 @@ public:
   inline Transform& operator=(const UniformScaling<Scalar>& t);
   
   EIGEN_DEVICE_FUNC
-  inline Transform& operator*=(const UniformScaling<Scalar>& s) { return scale(s.factor()); }
+  inline Transform& operator*=(const UniformScaling<Scalar>& s) { return Scale(s.factor()); }
   
   EIGEN_DEVICE_FUNC
   inline TransformTimeDiagonalReturnType operator*(const UniformScaling<Scalar>& s) const
   {
     TransformTimeDiagonalReturnType res = *this;
-    res.scale(s.factor());
+    res.Scale(s.factor());
     return res;
   }
 
@@ -598,7 +598,7 @@ public:
   template<typename Derived>
   EIGEN_DEVICE_FUNC inline Transform& operator=(const RotationBase<Derived,Dim>& r);
   template<typename Derived>
-  EIGEN_DEVICE_FUNC inline Transform& operator*=(const RotationBase<Derived,Dim>& r) { return rotate(r.toRotationMatrix()); }
+  EIGEN_DEVICE_FUNC inline Transform& operator*=(const RotationBase<Derived,Dim>& r) { return Rotate(r.toRotationMatrix()); }
   template<typename Derived>
   EIGEN_DEVICE_FUNC inline Transform operator*(const RotationBase<Derived,Dim>& r) const;
 
@@ -613,7 +613,7 @@ public:
   template<typename PositionDerived, typename OrientationType, typename ScaleDerived>
   EIGEN_DEVICE_FUNC
   Transform& fromPositionOrientationScale(const MatrixBase<PositionDerived> &position,
-    const OrientationType& orientation, const MatrixBase<ScaleDerived> &scale);
+    const OrientationType& orientation, const MatrixBase<ScaleDerived> &Scale);
 
   EIGEN_DEVICE_FUNC
   inline Transform inverse(TransformTraits traits = (TransformTraits)Mode) const;
@@ -841,7 +841,7 @@ QTransform Transform<Scalar,Dim,Mode,Options>::toQTransform(void) const
 template<typename Scalar, int Dim, int Mode, int Options>
 template<typename OtherDerived>
 EIGEN_DEVICE_FUNC Transform<Scalar,Dim,Mode,Options>&
-Transform<Scalar,Dim,Mode,Options>::scale(const MatrixBase<OtherDerived> &other)
+Transform<Scalar,Dim,Mode,Options>::Scale(const MatrixBase<OtherDerived> &other)
 {
   EIGEN_STATIC_ASSERT_VECTOR_SPECIFIC_SIZE(OtherDerived,int(Dim))
   EIGEN_STATIC_ASSERT(Mode!=int(Isometry), THIS_METHOD_IS_ONLY_FOR_SPECIFIC_TRANSFORMATIONS)
@@ -854,7 +854,7 @@ Transform<Scalar,Dim,Mode,Options>::scale(const MatrixBase<OtherDerived> &other)
   * \sa prescale(Scalar)
   */
 template<typename Scalar, int Dim, int Mode, int Options>
-EIGEN_DEVICE_FUNC inline Transform<Scalar,Dim,Mode,Options>& Transform<Scalar,Dim,Mode,Options>::scale(const Scalar& s)
+EIGEN_DEVICE_FUNC inline Transform<Scalar,Dim,Mode,Options>& Transform<Scalar,Dim,Mode,Options>::Scale(const Scalar& s)
 {
   EIGEN_STATIC_ASSERT(Mode!=int(Isometry), THIS_METHOD_IS_ONLY_FOR_SPECIFIC_TRANSFORMATIONS)
   linearExt() *= s;
@@ -939,7 +939,7 @@ Transform<Scalar,Dim,Mode,Options>::pretranslate(const MatrixBase<OtherDerived> 
 template<typename Scalar, int Dim, int Mode, int Options>
 template<typename RotationType>
 EIGEN_DEVICE_FUNC Transform<Scalar,Dim,Mode,Options>&
-Transform<Scalar,Dim,Mode,Options>::rotate(const RotationType& rotation)
+Transform<Scalar,Dim,Mode,Options>::Rotate(const RotationType& rotation)
 {
   linearExt() *= internal::toRotationMatrix<Scalar,Dim>(rotation);
   return *this;
@@ -1038,7 +1038,7 @@ template<typename Derived>
 EIGEN_DEVICE_FUNC inline Transform<Scalar,Dim,Mode,Options> Transform<Scalar,Dim,Mode,Options>::operator*(const RotationBase<Derived,Dim>& r) const
 {
   Transform res = *this;
-  res.rotate(r.derived());
+  res.Rotate(r.derived());
   return res;
 }
 
@@ -1128,10 +1128,10 @@ template<typename Scalar, int Dim, int Mode, int Options>
 template<typename PositionDerived, typename OrientationType, typename ScaleDerived>
 EIGEN_DEVICE_FUNC Transform<Scalar,Dim,Mode,Options>&
 Transform<Scalar,Dim,Mode,Options>::fromPositionOrientationScale(const MatrixBase<PositionDerived> &position,
-  const OrientationType& orientation, const MatrixBase<ScaleDerived> &scale)
+  const OrientationType& orientation, const MatrixBase<ScaleDerived> &Scale)
 {
   linear() = internal::toRotationMatrix<Scalar,Dim>(orientation);
-  linear() *= scale.asDiagonal();
+  linear() *= Scale.asDiagonal();
   translation() = position;
   makeAffine();
   return *this;

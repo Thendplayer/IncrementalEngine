@@ -24,11 +24,14 @@ namespace MyEngine
 		void Update(float dt);
 		void Draw();
 
+		void BeginScene(float red, float green, float blue, float alpha);
+		void EndScene();
+
 		ID3D11Device* GetDevice();
 		ID3D11DeviceContext* GetDeviceContext();
 		void GetProjectionMatrix(D3DXMATRIX& projectionMatrix);
 		void GetWorldMatrix(D3DXMATRIX& worldMatrix);
-		void GetOrthoMatrix(D3DXMATRIX& orthoMatrix);
+		void GetOrthoProjectionMatrix(D3DXMATRIX& orthoMatrix);
 		void GetVideoCardInfo(char* cardName, int& memory);
 		void TurnZBufferOn();
 		void TurnZBufferOff();
@@ -50,7 +53,7 @@ namespace MyEngine
 		ID3D11RasterizerState* _rasterState;
 		D3DXMATRIX _projectionMatrix;
 		D3DXMATRIX _worldMatrix;
-		D3DXMATRIX _orthoMatrix;
+		D3DXMATRIX _orthoProjectionMatrix;
 		ID3D11DepthStencilState* _depthDisabledStencilState;
 
 		HRESULT SetupAdapterOutput(unsigned int& numerator, unsigned int& denominator);

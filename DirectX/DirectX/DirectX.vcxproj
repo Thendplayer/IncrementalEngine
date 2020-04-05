@@ -93,7 +93,8 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>Default</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\cpplinq;$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,7 +107,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\cpplinq;$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -124,7 +126,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions); NDEBUG</PreprocessorDefinitions>
       <LanguageStandard>Default</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\cpplinq;$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -141,7 +144,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\DirectX\ThirdParty\cpplinq;$(SolutionDir)\DirectX\ThirdParty\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,6 +155,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Config.h" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MainEngine.cpp" />
@@ -160,11 +166,18 @@
     <ClCompile Include="RenderCamera.cpp" />
     <ClCompile Include="RenderingEngine.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
-    <ClCompile Include="TextureShaderRenderer.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureShader.cpp" />
     <ClCompile Include="WindowsInput.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="DirectInputKey.h" />
+    <ClInclude Include="Drawable.h" />
     <ClInclude Include="EngineGame.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainEngine.h" />
@@ -174,7 +187,10 @@
     <ClInclude Include="RenderCamera.h" />
     <ClInclude Include="RenderingEngine.h" />
     <ClInclude Include="RenderWindow.h" />
-    <ClInclude Include="TextureShaderRenderer.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureShader.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="WindowsInput.h" />
   </ItemGroup>

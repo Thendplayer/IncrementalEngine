@@ -129,10 +129,10 @@ class SimplicialCholeskyBase : public SparseSolverBase<Derived>
       *
       * \returns a reference to \c *this.
       */
-    Derived& setShift(const RealScalar& offset, const RealScalar& scale = 1)
+    Derived& setShift(const RealScalar& offset, const RealScalar& Scale = 1)
     {
       m_shiftOffset = offset;
-      m_shiftScale = scale;
+      m_shiftScale = Scale;
       return derived();
     }
 

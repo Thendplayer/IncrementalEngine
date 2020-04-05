@@ -1,10 +1,10 @@
-#include "TextureShaderRenderer.h"
+#include "TextureShader.h"
 #include "Utils.h"
 #include "Config.h"
 
 namespace MyEngine
 {
-	TextureShaderRenderer::TextureShaderRenderer() :
+	TextureShader::TextureShader() :
 		_vertexShader(NULL),
 		_pixelShader(NULL),
 		_layout(NULL),
@@ -13,7 +13,7 @@ namespace MyEngine
 	{
 	}
 
-	TextureShaderRenderer::~TextureShaderRenderer()
+	TextureShader::~TextureShader()
 	{
 		CHECKED_RELEASE(_sampleState);
 		CHECKED_RELEASE(_matrixBuffer);
@@ -22,7 +22,7 @@ namespace MyEngine
 		CHECKED_RELEASE(_vertexShader);
 	}
 
-	HRESULT TextureShaderRenderer::Initialize(ID3D11Device* device, HWND hwnd)
+	HRESULT TextureShader::Init(ID3D11Device* device, HWND hwnd)
 	{
 		HRESULT result;
 
@@ -33,7 +33,7 @@ namespace MyEngine
 			(WCHAR*)PIXEL_SHADER_PATH
 		);
 
-		if (!result)
+		if (FAILED(result))
 		{
 			return FALSE;
 		}
@@ -41,12 +41,12 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	HRESULT TextureShaderRenderer::Draw(
+	HRESULT TextureShader::Draw(
 		ID3D11DeviceContext* deviceContext,
 		int indexCount,
 		D3DXMATRIX worldMatrix,
 		D3DXMATRIX viewMatrix,
-		D3DXMATRIX projectionMatrix,
+		D3DXMATRIX orthoProjectionMatrix,
 		ID3D11ShaderResourceView* texture
 	)
 	{
@@ -56,11 +56,11 @@ namespace MyEngine
 			deviceContext, 
 			worldMatrix, 
 			viewMatrix, 
-			projectionMatrix, 
+			orthoProjectionMatrix, 
 			texture
 		);
 
-		if (!result)
+		if (FAILED(result))
 		{
 			return FALSE;
 		}
@@ -70,7 +70,7 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	HRESULT TextureShaderRenderer::InitializeShader(
+	HRESULT TextureShader::InitializeShader(
 		ID3D11Device* device, 
 		HWND hwnd, 
 		WCHAR* vsFilename, 
@@ -215,7 +215,7 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	HRESULT TextureShaderRenderer::CompileShader(
+	HRESULT TextureShader::CompileShader(
 		HWND hwnd,
 		ID3D10Blob*& buffer,
 		WCHAR* filename, 
@@ -256,7 +256,7 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	void TextureShaderRenderer::OutputShaderErrorMessage(
+	void TextureShader::OutputShaderErrorMessage(
 		ID3D10Blob* errorMessage, 
 		HWND hwnd, 
 		WCHAR* shaderFilename
@@ -280,11 +280,11 @@ namespace MyEngine
 		MessageBox(hwnd, L"Error compiling shader. Check shader-error.txt for message.", shaderFilename, MB_OK);
 	}
 
-	HRESULT TextureShaderRenderer::SetShaderParameters(
+	HRESULT TextureShader::SetShaderParameters(
 		ID3D11DeviceContext* deviceContext, 
 		D3DXMATRIX worldMatrix, 
 		D3DXMATRIX viewMatrix,
-		D3DXMATRIX projectionMatrix, 
+		D3DXMATRIX orthoProjectionMatrix, 
 		ID3D11ShaderResourceView* texture
 	)
 	{
@@ -295,7 +295,7 @@ namespace MyEngine
 
 		D3DXMatrixTranspose(&worldMatrix, &worldMatrix);
 		D3DXMatrixTranspose(&viewMatrix, &viewMatrix);
-		D3DXMatrixTranspose(&projectionMatrix, &projectionMatrix);
+		D3DXMatrixTranspose(&orthoProjectionMatrix, &orthoProjectionMatrix);
 
 		result = deviceContext->Map(
 			_matrixBuffer, 
@@ -314,7 +314,7 @@ namespace MyEngine
 
 		dataPtr->world = worldMatrix;
 		dataPtr->view = viewMatrix;
-		dataPtr->projection = projectionMatrix;
+		dataPtr->projection = orthoProjectionMatrix;
 
 		deviceContext->Unmap(_matrixBuffer, 0);
 
@@ -326,7 +326,7 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	void TextureShaderRenderer::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)
+	void TextureShader::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)
 	{
 		deviceContext->IASetInputLayout(_layout);
 

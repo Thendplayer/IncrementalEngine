@@ -15,38 +15,38 @@ namespace Eigen {
 namespace internal {
 
 template<typename ExpressionType, typename Scalar>
-inline void stable_norm_kernel(const ExpressionType& bl, Scalar& ssq, Scalar& scale, Scalar& invScale)
+inline void stable_norm_kernel(const ExpressionType& bl, Scalar& ssq, Scalar& Scale, Scalar& invScale)
 {
   Scalar maxCoeff = bl.cwiseAbs().maxCoeff();
   
-  if(maxCoeff>scale)
+  if(maxCoeff>Scale)
   {
-    ssq = ssq * numext::abs2(scale/maxCoeff);
+    ssq = ssq * numext::abs2(Scale/maxCoeff);
     Scalar tmp = Scalar(1)/maxCoeff;
     if(tmp > NumTraits<Scalar>::highest())
     {
       invScale = NumTraits<Scalar>::highest();
-      scale = Scalar(1)/invScale;
+      Scale = Scalar(1)/invScale;
     }
     else if(maxCoeff>NumTraits<Scalar>::highest()) // we got a INF
     {
       invScale = Scalar(1);
-      scale = maxCoeff;
+      Scale = maxCoeff;
     }
     else
     {
-      scale = maxCoeff;
+      Scale = maxCoeff;
       invScale = tmp;
     }
   }
   else if(maxCoeff!=maxCoeff) // we got a NaN
   {
-    scale = maxCoeff;
+    Scale = maxCoeff;
   }
   
   // TODO if the maxCoeff is much much smaller than the current scale,
   // then we can neglect this sub vector
-  if(scale>Scalar(0)) // if scale==0, then bl is 0 
+  if(Scale>Scalar(0)) // if scale==0, then bl is 0 
     ssq += (bl*invScale).squaredNorm();
 }
 
@@ -159,7 +159,7 @@ MatrixBase<Derived>::stableNorm() const
   using std::sqrt;
   using std::abs;
   const Index blockSize = 4096;
-  RealScalar scale(0);
+  RealScalar Scale(0);
   RealScalar invScale(1);
   RealScalar ssq(0); // sum of square
   
@@ -182,10 +182,10 @@ MatrixBase<Derived>::stableNorm() const
   
   Index bi = internal::first_default_aligned(copy);
   if (bi>0)
-    internal::stable_norm_kernel(copy.head(bi), ssq, scale, invScale);
+    internal::stable_norm_kernel(copy.head(bi), ssq, Scale, invScale);
   for (; bi<n; bi+=blockSize)
-    internal::stable_norm_kernel(SegmentWrapper(copy.segment(bi,numext::mini(blockSize, n - bi))), ssq, scale, invScale);
-  return scale * sqrt(ssq);
+    internal::stable_norm_kernel(SegmentWrapper(copy.segment(bi,numext::mini(blockSize, n - bi))), ssq, Scale, invScale);
+  return Scale * sqrt(ssq);
 }
 
 /** \returns the \em l2 norm of \c *this using the Blue's algorithm.

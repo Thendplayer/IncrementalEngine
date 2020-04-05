@@ -259,11 +259,11 @@ BDCSVD<MatrixType>& BDCSVD<MatrixType>::compute(const MatrixType& matrix, unsign
   }
   
   //**** step 0 - Copy the input matrix and apply scaling to reduce over/under-flows
-  RealScalar scale = matrix.cwiseAbs().maxCoeff();
-  if(scale==Literal(0)) scale = Literal(1);
+  RealScalar Scale = matrix.cwiseAbs().maxCoeff();
+  if(Scale==Literal(0)) Scale = Literal(1);
   MatrixX copy;
-  if (m_isTranspose) copy = matrix.adjoint()/scale;
-  else               copy = matrix/scale;
+  if (m_isTranspose) copy = matrix.adjoint()/Scale;
+  else               copy = matrix/Scale;
   
   //**** step 1 - Bidiagonalization
   // FIXME this line involves temporaries
@@ -281,7 +281,7 @@ BDCSVD<MatrixType>& BDCSVD<MatrixType>::compute(const MatrixType& matrix, unsign
   for (int i=0; i<m_diagSize; i++)
   {
     RealScalar a = abs(m_computed.coeff(i, i));
-    m_singularValues.coeffRef(i) = a * scale;
+    m_singularValues.coeffRef(i) = a * Scale;
     if (a<considerZero)
     {
       m_nonzeroSingularValues = i;

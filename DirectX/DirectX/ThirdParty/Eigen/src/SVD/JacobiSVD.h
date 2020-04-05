@@ -673,20 +673,20 @@ JacobiSVD<MatrixType, QRPreconditioner>::compute(const MatrixType& matrix, unsig
   const RealScalar considerAsZero = (std::numeric_limits<RealScalar>::min)();
 
   // Scaling factor to reduce over/under-flows
-  RealScalar scale = matrix.cwiseAbs().maxCoeff();
-  if(scale==RealScalar(0)) scale = RealScalar(1);
+  RealScalar Scale = matrix.cwiseAbs().maxCoeff();
+  if(Scale==RealScalar(0)) Scale = RealScalar(1);
   
   /*** step 1. The R-SVD step: we use a QR decomposition to reduce to the case of a square matrix */
 
   if(m_rows!=m_cols)
   {
-    m_scaledMatrix = matrix / scale;
+    m_scaledMatrix = matrix / Scale;
     m_qr_precond_morecols.run(*this, m_scaledMatrix);
     m_qr_precond_morerows.run(*this, m_scaledMatrix);
   }
   else
   {
-    m_workMatrix = matrix.block(0,0,m_diagSize,m_diagSize) / scale;
+    m_workMatrix = matrix.block(0,0,m_diagSize,m_diagSize) / Scale;
     if(m_computeFullU) m_matrixU.setIdentity(m_rows,m_rows);
     if(m_computeThinU) m_matrixU.setIdentity(m_rows,m_diagSize);
     if(m_computeFullV) m_matrixV.setIdentity(m_cols,m_cols);
@@ -758,7 +758,7 @@ JacobiSVD<MatrixType, QRPreconditioner>::compute(const MatrixType& matrix, unsig
     }
   }
   
-  m_singularValues *= scale;
+  m_singularValues *= Scale;
 
   /*** step 4. Sort singular values in descending order and compute the number of nonzero singular values ***/
 

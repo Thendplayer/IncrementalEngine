@@ -7,9 +7,14 @@
 using namespace MyGame;
 using namespace MyEngine;
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	auto game = new ExampleGame;
-	Engine::Get()->Run(hInstance, game);
+	auto engine = Engine::Get();
+	
+	engine->Run(game);
+	
+	delete engine;
+	
 	return 0;
 }
