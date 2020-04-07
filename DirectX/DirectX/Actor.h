@@ -2,10 +2,9 @@
 #define _ACTOR_H
 
 #include<vector>
+#include<algorithm>
 #include"Drawable.h"
 #include"Transformable.h"
-
-using namespace std;
 
 namespace MyEngine
 {
@@ -33,8 +32,8 @@ namespace MyEngine
 
 		Transform* GetWorldTransform() const;
 		
-		Vector2f* GetWorldPosition() const;
-		void SetWorldPosition(Vector2f* value);
+		D3DXVECTOR2* GetWorldPosition() const;
+		void SetWorldPosition(D3DXVECTOR2* value);
 
 		Actor* GetParent() const;
 		void SetParent(Actor* value);

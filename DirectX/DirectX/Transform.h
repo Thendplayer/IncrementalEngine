@@ -31,9 +31,10 @@
 #define _TRANSFORM_H
 
 #include <Windows.h>
-#include<Eigen>
+#include <D3DX10.h>
+#include <iostream>
 
-using Eigen::Vector2f;
+using namespace std;
 
 namespace MyEngine
 {
@@ -53,24 +54,24 @@ namespace MyEngine
         const float* GetMatrix() const;
         Transform GetInverse() const;
 
-        Vector2f TransformPoint(float x, float y) const;
-        Vector2f TransformPoint(const Vector2f& point) const;
+        D3DXVECTOR2 TransformPoint(float x, float y) const;
+        D3DXVECTOR2 TransformPoint(const D3DXVECTOR2& point) const;
 
         RECT TransformRect(const RECT& rectangle) const;
 
         Transform& Combine(const Transform& transform);
 
         Transform& Translate(float x, float y);
-        Transform& Translate(const Vector2f& offset);
+        Transform& Translate(const D3DXVECTOR2& offset);
 
         Transform& Rotate(float angle);
         Transform& Rotate(float angle, float centerX, float centerY);
-        Transform& Rotate(float angle, const Vector2f& center);
+        Transform& Rotate(float angle, const D3DXVECTOR2& center);
 
         Transform& Scale(float scaleX, float scaleY);
         Transform& Scale(float scaleX, float scaleY, float centerX, float centerY);
-        Transform& Scale(const Vector2f& factors);
-        Transform& Scale(const Vector2f& factors, const Vector2f& center);
+        Transform& Scale(const D3DXVECTOR2& factors);
+        Transform& Scale(const D3DXVECTOR2& factors, const D3DXVECTOR2& center);
 
     private:
 
@@ -79,7 +80,7 @@ namespace MyEngine
 
     Transform operator *(const Transform& left, const Transform& right);
     Transform& operator *=(Transform& left, const Transform& right);
-    Vector2f operator *(const Transform& left, const Vector2f& right);
+    D3DXVECTOR2 operator *(const Transform& left, const D3DXVECTOR2& right);
     bool operator ==(const Transform& left, const Transform& right);
     bool operator !=(const Transform& left, const Transform& right);
 }

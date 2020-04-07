@@ -41,33 +41,33 @@ namespace MyEngine
         ~Transformable();
 
         void SetPosition(float x, float y);
-        void SetPosition(const Vector2f& position);
+        void SetPosition(const D3DXVECTOR2& position);
         void SetRotation(float angle);
         void SetScale(float factorX, float factorY);
-        void SetScale(const Vector2f& factors);
+        void SetScale(const D3DXVECTOR2& factors);
         void SetOrigin(float x, float y);
-        void SetOrigin(const Vector2f& origin);
-        const Vector2f& GetPosition() const;
+        void SetOrigin(const D3DXVECTOR2& origin);
+        const D3DXVECTOR2& GetPosition() const;
         float GetRotation() const;
-        const Vector2f& GetScale() const;
-        const Vector2f& GetOrigin() const;
+        const D3DXVECTOR2& GetScale() const;
+        const D3DXVECTOR2& GetOrigin() const;
 
         void Move(float offsetX, float offsetY);
-        void Move(const Vector2f& offset);
+        void Move(const D3DXVECTOR2& offset);
 
         void Rotate(float angle);
 
         void Scale(float factorX, float factorY);
-        void Scale(const Vector2f& factor);
+        void Scale(const D3DXVECTOR2& factor);
 
         const Transform& GetTransform() const;
         const Transform& GetInverseTransform() const;
 
-    private:
-        Vector2f _origin;
-        Vector2f _position;
+        private:
+        D3DXVECTOR2 _origin;
+        D3DXVECTOR2 _position;
         float _rotation;
-        Vector2f _scale;
+        D3DXVECTOR2 _scale;
         mutable Transform _transform;
         mutable bool _transformNeedUpdate;
         mutable Transform _inverseTransform;

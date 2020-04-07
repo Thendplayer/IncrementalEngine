@@ -55,11 +55,11 @@ namespace MyEngine
         _inverseTransformNeedUpdate = true;
     }
 
-    void Transformable::SetPosition(const Vector2f& position)
+    void Transformable::SetPosition(const D3DXVECTOR2& position)
     {
         SetPosition(position.x, position.y);
     }
-    
+
     void Transformable::SetRotation(float angle)
     {
         _rotation = static_cast<float>(fmod(angle, 360));
@@ -78,7 +78,7 @@ namespace MyEngine
         _inverseTransformNeedUpdate = true;
     }
 
-    void Transformable::SetScale(const Vector2f& factors)
+    void Transformable::SetScale(const D3DXVECTOR2& factors)
     {
         SetScale(factors.x, factors.y);
     }
@@ -91,12 +91,12 @@ namespace MyEngine
         _inverseTransformNeedUpdate = true;
     }
 
-    void Transformable::SetOrigin(const Vector2f& origin)
+    void Transformable::SetOrigin(const D3DXVECTOR2& origin)
     {
         SetOrigin(origin.x, origin.y);
     }
 
-    const Vector2f& Transformable::GetPosition() const
+    const D3DXVECTOR2& Transformable::GetPosition() const
     {
         return _position;
     }
@@ -106,12 +106,12 @@ namespace MyEngine
         return _rotation;
     }
 
-    const Vector2f& Transformable::GetScale() const
+    const D3DXVECTOR2& Transformable::GetScale() const
     {
         return _scale;
     }
 
-    const Vector2f& Transformable::GetOrigin() const
+    const D3DXVECTOR2& Transformable::GetOrigin() const
     {
         return _origin;
     }
@@ -121,7 +121,7 @@ namespace MyEngine
         SetPosition(_position.x + offsetX, _position.y + offsetY);
     }
 
-    void Transformable::Move(const Vector2f& offset)
+    void Transformable::Move(const D3DXVECTOR2& offset)
     {
         SetPosition(_position.x + offset.x, _position.y + offset.y);
     }
@@ -136,7 +136,7 @@ namespace MyEngine
         SetScale(_scale.x * factorX, _scale.y * factorY);
     }
 
-    void Transformable::Scale(const Vector2f& factor)
+    void Transformable::Scale(const D3DXVECTOR2& factor)
     {
         SetScale(_scale.x * factor.x, _scale.y * factor.y);
     }

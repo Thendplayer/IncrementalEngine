@@ -83,35 +83,35 @@ namespace MyEngine
         }
     }
 
-    Vector2f Transform::TransformPoint(float x, float y) const
+    D3DXVECTOR2 Transform::TransformPoint(float x, float y) const
     {
-        return Vector2f(_matrix[0] * x + _matrix[4] * y + _matrix[12],
+        return D3DXVECTOR2(_matrix[0] * x + _matrix[4] * y + _matrix[12],
             _matrix[1] * x + _matrix[5] * y + _matrix[13]);
     }
 
-    Vector2f Transform::TransformPoint(const Vector2f& point) const
+    D3DXVECTOR2 Transform::TransformPoint(const D3DXVECTOR2& point) const
     {
         return TransformPoint(point.x, point.y);
     }
 
     RECT Transform::TransformRect(const RECT& rectangle) const
     {
-        const Vector2f points[] =
+        const D3DXVECTOR2 points[] =
         {
             TransformPoint(
-                rectangle.left, 
+                rectangle.left,
                 rectangle.top
             ),
             TransformPoint(
-                rectangle.left, 
+                rectangle.left,
                 rectangle.top + (rectangle.bottom - rectangle.top)
             ),
             TransformPoint(
-                rectangle.left + (rectangle.right - rectangle.left), 
+                rectangle.left + (rectangle.right - rectangle.left),
                 rectangle.top
             ),
             TransformPoint(
-                rectangle.left + (rectangle.right - rectangle.left), 
+                rectangle.left + (rectangle.right - rectangle.left),
                 rectangle.top + (rectangle.bottom - rectangle.top)
             )
         };
@@ -160,7 +160,7 @@ namespace MyEngine
         return Combine(translation);
     }
 
-    Transform& Transform::Translate(const Vector2f& offset)
+    Transform& Transform::Translate(const D3DXVECTOR2& offset)
     {
         return Translate(offset.x, offset.y);
     }
@@ -191,7 +191,7 @@ namespace MyEngine
         return Combine(rotation);
     }
 
-    Transform& Transform::Rotate(float angle, const Vector2f& center)
+    Transform& Transform::Rotate(float angle, const D3DXVECTOR2& center)
     {
         return Rotate(angle, center.x, center.y);
     }
@@ -214,12 +214,12 @@ namespace MyEngine
         return Combine(scaling);
     }
 
-    Transform& Transform::Scale(const Vector2f& factors)
+    Transform& Transform::Scale(const D3DXVECTOR2& factors)
     {
         return Scale(factors.x, factors.y);
     }
 
-    Transform& Transform::Scale(const Vector2f& factors, const Vector2f& center)
+    Transform& Transform::Scale(const D3DXVECTOR2& factors, const D3DXVECTOR2& center)
     {
         return Scale(factors.x, factors.y, center.x, center.y);
     }
@@ -234,7 +234,7 @@ namespace MyEngine
         return left.Combine(right);
     }
 
-    Vector2f operator *(const Transform& left, const Vector2f& right)
+    D3DXVECTOR2 operator *(const Transform& left, const D3DXVECTOR2& right)
     {
         return left.TransformPoint(right);
     }
