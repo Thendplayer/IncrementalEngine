@@ -3,6 +3,7 @@
 
 #include <d3d11.h>
 #include <d3dx11tex.h>
+#include <D3DX10.h>
 
 namespace MyEngine 
 {
@@ -17,6 +18,7 @@ namespace MyEngine
 
 	private:
 		ID3D11ShaderResourceView* _texture;
+		D3DXVECTOR2 _size;
 	};
 }
 

@@ -108,6 +108,12 @@
     <ClCompile Include="ShaderManager.cpp">
       <Filter>Source Files\Engine\RenderingEngine\Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="Transformable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h">
@@ -166,6 +172,12 @@
     </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Source Files\Engine\RenderingEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -170,6 +170,8 @@
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureShader.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="WindowsInput.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -191,6 +193,8 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureShader.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Transformable.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="WindowsInput.h" />
   </ItemGroup>
