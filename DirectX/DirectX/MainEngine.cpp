@@ -26,7 +26,8 @@ namespace MyEngine
 		_renderingEngine(NULL),
 		_renderWindow(NULL),
 		_inputManager(NULL),
-		_scene(NULL)
+		_scene(NULL),
+		_resources(NULL)
 	{
 	}
 
@@ -97,12 +98,20 @@ namespace MyEngine
 			_renderingEngine->GetShaderManager(),
 			direct3D->GetDevice()
 		);
+
+		_resources = new Resources;
+		result = _resources->Load(direct3D->GetDevice());
+	
+		if (FAILED(result))
+		{
+			MessageBox(_renderWindow->GetHWND(), _resources->Error, L"Error", MB_OK);
+		}
 	}
 
 	void Engine::Update(float dt)
 	{
 		_renderingEngine->Update(dt);
-		_scene->Update(dt);
+		_scene->Update();
 	}
 
 	void Engine::Draw()
@@ -112,6 +121,7 @@ namespace MyEngine
 
     void Engine::DeInit()
     {
+		CHECKED_DELETE(_resources);
 		CHECKED_DELETE(_scene);
 		CHECKED_DELETE(_renderingEngine);
 		CHECKED_DELETE(_renderWindow);

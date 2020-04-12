@@ -22,35 +22,35 @@ namespace MyEngine
 		{
 			for (int i = 0; i < _items.size(); i++)
 			{
-				CHECKED_DELETE(_items[i].Drawable);
+				CHECKED_DELETE(_items[i].Actor);
 			}
 			_items.clear();
 		}
 	}
 
-	void Scene::Destroy(Drawable* drawable)
+	void Scene::Destroy(Actor* drawable)
 	{
 		for (int i = 0; i < _items.size(); i++)
 		{
-			if (_items[i].Drawable == drawable)
+			if (_items[i].Actor == drawable)
 			{
 				_items[i].Destroy = true;
 				break;
 			}
 		}
 
-		destroyInUpdate = true;
+		_destroyInUpdate = true;
 	}
 
-	void Scene::Update(float dt)
+	void Scene::Update()
 	{
-		if (destroyInUpdate)
+		if (_destroyInUpdate)
 		{
 			for (int i = 0; i < _items.size(); i++)
 			{
 				if (_items[i].Destroy)
 				{
-					CHECKED_DELETE(_items[i].Drawable);
+					CHECKED_DELETE(_items[i].Actor);
 				}
 			}
 		
@@ -65,7 +65,15 @@ namespace MyEngine
 				_items.end()
 			);
 
-			destroyInUpdate = false;
+			_destroyInUpdate = false;
+		}
+
+		for (int i = 0; i < _items.size(); i++)
+		{
+			if (IS_ROOT(_items[i].Actor))
+			{
+				_items[i].Actor->UpdateRecursive();
+			}
 		}
 	}
 
@@ -75,11 +83,14 @@ namespace MyEngine
 
 		for (int i = 0; i < _items.size(); i++)
 		{
-			result = _items[i].Drawable->Draw(deviceContext);
-			
-			if (FAILED(result))
+			if (IS_ROOT(_items[i].Actor))
 			{
-				return FALSE;
+				result = _items[i].Actor->DrawRecursive(deviceContext);
+
+				if (FAILED(result))
+				{
+					return FALSE;
+				}
 			}
 		}
 

@@ -36,7 +36,7 @@ namespace MyEngine
 {
     class Transformable
     {
-        public:
+    public:
         Transformable();
         ~Transformable();
 
@@ -63,11 +63,13 @@ namespace MyEngine
         const Transform& GetTransform() const;
         const Transform& GetInverseTransform() const;
 
-        private:
+    protected:
         D3DXVECTOR2 _origin;
         D3DXVECTOR2 _position;
         float _rotation;
         D3DXVECTOR2 _scale;
+
+    private:
         mutable Transform _transform;
         mutable bool _transformNeedUpdate;
         mutable Transform _inverseTransform;

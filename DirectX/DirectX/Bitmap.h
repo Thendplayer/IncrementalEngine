@@ -13,11 +13,7 @@ namespace MyEngine
 	class Bitmap : public Drawable
 	{
 	public:
-		void Init(
-			const wchar_t* textureFilename,
-			int bitmapWidth,
-			int bitmapHeight
-		);
+		void Init(const wchar_t* textureFilename);
 
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
 
@@ -41,7 +37,8 @@ namespace MyEngine
 
 		int _vertexCount, _indexCount;
 		Texture* _texture;
-		int _bitmapWidth, _bitmapHeight;
+		D3DXVECTOR2 _textureSize;
+
 		D3DXVECTOR2 _previousPosition;
 		D3DXVECTOR2 _position;
 

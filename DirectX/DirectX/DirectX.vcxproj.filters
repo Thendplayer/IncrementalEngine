@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Engine\RenderingEngine\Shaders\TextureShader">
       <UniqueIdentifier>{2945c586-bfb3-49f3-8f7c-bea40c10a906}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ThirdParty">
+      <UniqueIdentifier>{42494a71-4a1e-4d8a-b77f-bcec495b7fba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ThirdParty\json11">
+      <UniqueIdentifier>{07c3fb65-9996-447e-999e-428e3ca5742f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -112,6 +118,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\json11\json11.cpp">
+      <Filter>Source Files\ThirdParty\json11</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -179,6 +191,15 @@
     <ClInclude Include="Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdParty\json11\json11.hpp">
+      <Filter>Source Files\ThirdParty\json11</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\texture.ps">
@@ -186,6 +207,9 @@
     </None>
     <None Include="Shaders\texture.vs">
       <Filter>Shader Files</Filter>
+    </None>
+    <None Include="ThirdParty\json11\json11.pc.in">
+      <Filter>Source Files\ThirdParty\json11</Filter>
     </None>
   </ItemGroup>
 </Project>

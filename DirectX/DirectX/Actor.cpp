@@ -8,20 +8,54 @@ namespace MyEngine
 	
 	Actor::~Actor()
 	{
+		vector<Actor*> children = _children;
+		for (int i = 0; i < children.size(); i++)
+		{
+			children[i]->SetParent(nullptr);
+		}
+		children.clear();
 	}
 
-	void Actor::Center()
+	void Actor::Init()
 	{
-		auto width = (*GetLocalBounds()).right - (*GetLocalBounds()).left;
-		auto height = (*GetLocalBounds()).bottom - (*GetLocalBounds()).top;
-
-		auto origin = D3DXVECTOR2(width, height) / 2.0f;
-		SetOrigin(origin);
 	}
 
-	RECT* Actor::GetLocalBounds()
+	void Actor::Update()
 	{
-		return nullptr; //TODO: Continue from here
+	}
+
+	void Actor::UpdateRecursive()
+	{
+		Update();
+
+		for (int i = 0; i < _children.size(); i++)
+		{
+			_children[i]->UpdateRecursive();
+		}
+	}
+
+	HRESULT Actor::DrawRecursive(ID3D11DeviceContext* deviceContext)
+	{
+		HRESULT result;
+
+		result = Draw(deviceContext);
+
+		if (FAILED(result))
+		{
+			return FALSE;
+		}
+
+		for (int i = 0; i < _children.size(); i++)
+		{
+			result = _children[i]->DrawRecursive(deviceContext);
+			
+			if (FAILED(result))
+			{
+				return FALSE;
+			}
+		}
+
+		return S_OK;
 	}
 
 	HRESULT Actor::Draw(ID3D11DeviceContext* deviceContext)
@@ -29,30 +63,66 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	Transform* Actor::GetWorldTransform() const
+	void Actor::SetTexture(Texture* texture)
+	{
+		_texture = texture;
+	}
+
+	void Actor::Center()
+	{
+		auto width = (GetLocalBounds()).right - (GetLocalBounds()).left;
+		auto height = (GetLocalBounds()).bottom - (GetLocalBounds()).top;
+
+		auto origin = D3DXVECTOR2(width, height) / 2.0f;
+		SetOrigin(origin);
+	}
+
+	RECT Actor::GetLocalBounds()
+	{
+		D3DXVECTOR2 size;
+		_texture->GetTextureSize(size);
+
+		size = D3DXVECTOR2(
+			size.x * _scale.x, 
+			size.y * _scale.y
+		);
+
+		RECT rc = { 
+			_position.x, 
+			_position.y, 
+			size.x, 
+			size.y 
+		};
+
+		return rc;
+	}
+
+	const Transform* Actor::GetWorldTransform() const
 	{
 		if (_parent != nullptr)
 		{
 			return &(GetTransform() * *_parent->GetWorldTransform());
 		}
+
+		return &GetTransform();
 	}
 
-	D3DXVECTOR2* Actor::GetWorldPosition() const
+	D3DXVECTOR2 Actor::GetWorldPosition() const
 	{
-		return &(*GetWorldTransform() * GetOrigin());
+		return (*GetWorldTransform() * GetOrigin());
 	}
 
-	void Actor::SetWorldPosition(D3DXVECTOR2* value)
+	void Actor::SetWorldPosition(D3DXVECTOR2 value)
 	{
 		D3DXVECTOR2 newPosition;
 
 		if (_parent != nullptr)
 		{
-			newPosition = _parent->GetWorldTransform()->GetInverse().TransformPoint(*value);
+			newPosition = _parent->GetWorldTransform()->GetInverse().TransformPoint(value);
 		}
 		else 
 		{
-			newPosition = *value;
+			newPosition = value;
 		}
 
 		SetPosition(newPosition);

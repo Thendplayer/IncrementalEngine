@@ -8,6 +8,7 @@
 #include "RenderingEngine.h"
 #include "RenderWindow.h"
 #include "Scene.h"
+#include "Resources.h"
 
 namespace MyEngine
 {
@@ -31,6 +32,7 @@ namespace MyEngine
 		RenderWindow* _renderWindow;
 		InputManager* _inputManager;
 		Scene* _scene;
+		Resources* _resources;
 
 		void Init();
 		void Update(float dt);

@@ -3,8 +3,10 @@
 
 #include<vector>
 #include<algorithm>
-#include"Drawable.h"
-#include"Transformable.h"
+
+#include "Drawable.h"
+#include "Transformable.h"
+#include "Texture.h"
 
 namespace MyEngine
 {
@@ -14,29 +16,33 @@ namespace MyEngine
 		Actor();
 		~Actor();
 
+		void SetTexture(Texture* texture);
+
 		void Center();
 
-		RECT* GetLocalBounds();
-		RECT* GetGlobalBounds();
+		RECT GetLocalBounds();
+		RECT GetGlobalBounds();
 
-		void Update(float dt);
-		void UpdateRecursive(float dt);
+		Actor* GetParent() const;
+		void SetParent(Actor* value);
 
-		void DrawRecursive(ID3D11DeviceContext* deviceContext);
+		virtual void Init();
+		virtual void Update();
+
+		void UpdateRecursive();
+		HRESULT DrawRecursive(ID3D11DeviceContext* deviceContext);
 
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
 
 	private:
 		Actor* _parent;
 		vector<Actor*> _children;
+		Texture* _texture;
 
-		Transform* GetWorldTransform() const;
+		const Transform* GetWorldTransform() const;
 		
-		D3DXVECTOR2* GetWorldPosition() const;
-		void SetWorldPosition(D3DXVECTOR2* value);
-
-		Actor* GetParent() const;
-		void SetParent(Actor* value);
+		D3DXVECTOR2 GetWorldPosition() const;
+		void SetWorldPosition(D3DXVECTOR2 value);
 	};
 }
 

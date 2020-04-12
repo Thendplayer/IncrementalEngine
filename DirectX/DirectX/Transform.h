@@ -40,8 +40,7 @@ namespace MyEngine
 {
     class Transform
     {
-        public:
-
+    public:
         static const Transform Identity;
 
         Transform();
@@ -74,7 +73,6 @@ namespace MyEngine
         Transform& Scale(const D3DXVECTOR2& factors, const D3DXVECTOR2& center);
 
     private:
-
         float _matrix[16];
     };
 

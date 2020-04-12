@@ -2,7 +2,7 @@
 #define _SCENE_H
 
 #include <vector>
-#include "Drawable.h"
+#include "Actor.h"
 
 using namespace std;
 
@@ -10,6 +10,8 @@ namespace MyEngine
 {
 	class Scene : public Drawable
 	{
+	#define IS_ROOT(actor) actor->GetParent() == nullptr
+
 	public:
 		Scene(
 			RenderWindow* renderWindow,
@@ -18,35 +20,36 @@ namespace MyEngine
 		);
 		~Scene();
 		
-		void Destroy(Drawable* drawable);
+		void Destroy(Actor* drawable);
 
-		void Update(float dt);
+		void Update();
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
 
 	private:
 		struct SceneItem 
 		{
 			bool Destroy;
-			Drawable* Drawable;
+			Actor* Actor;
 		};
 
 		vector<SceneItem> _items;
-		bool destroyInUpdate;
+		bool _destroyInUpdate;
 
 	public:
+		//T must inherit from Actor
 		template<typename T>
-		T* Create()
+		typename std::enable_if<std::is_base_of<Actor, T>::value, T*>::type Create()
 		{
-			static_assert(std::is_base_of<Drawable, T>::value, L"T must inherit from Drawable");
+			T* actor = new T();
+			CopyParameters(actor);
 
-			T* drawable = new T();
-			CopyParameters(drawable);
+			actor->Init();
 
 			auto newItem = SceneItem();
-			newItem.Drawable = drawable;
+			newItem.Actor = actor;
 
 			_items.push_back(newItem);
-			return drawable;
+			return actor;
 		}
 	};
 }

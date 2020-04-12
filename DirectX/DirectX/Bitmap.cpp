@@ -20,16 +20,9 @@ namespace MyEngine
 		CHECKED_RELEASE(_vertexBuffer);
 	}
 
-	void Bitmap::Init(
-		const wchar_t* textureFilename,
-		int bitmapWidth,
-		int bitmapHeight
-	)
+	void Bitmap::Init(const wchar_t* textureFilename)
 	{
 		HRESULT result;
-
-		_bitmapWidth = bitmapWidth;
-		_bitmapHeight = bitmapHeight;
 
 		_previousPosition = D3DXVECTOR2(-1, -1);
 
@@ -176,11 +169,13 @@ namespace MyEngine
 		_previousPosition.x = positionX;
 		_previousPosition.y = positionY;
 
+		_texture->GetTextureSize(_textureSize);
+
 		left = (float)((_renderWindow->GetScreenWidth() / 2) * -1) + (float)positionX;
-		right = left + (float)_bitmapWidth;
+		right = left + (float)_textureSize.x;
 		
 		top = (float)(_renderWindow->GetScreenHeight() / 2) - (float)positionY;
-		bottom = top - (float)_bitmapHeight;
+		bottom = top - (float)_textureSize.y;
 
 		vertices = new VertexType[_vertexCount];
 		if (!vertices)

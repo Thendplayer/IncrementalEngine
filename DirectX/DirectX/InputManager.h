@@ -22,7 +22,6 @@ namespace MyEngine
 		~InputManager();
 
 		HRESULT Init(RenderWindow* renderWindow);
-
 		HRESULT Update();
 
 		bool IsKeyDown(DirectInputKey key);

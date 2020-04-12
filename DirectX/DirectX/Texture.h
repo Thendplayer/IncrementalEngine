@@ -11,14 +11,18 @@ namespace MyEngine
 	{
 	public:
 		HRESULT Init(ID3D11Device* device, WCHAR* filename);
+		
 		ID3D11ShaderResourceView* GetTexture();
+		void GetTextureSize(D3DXVECTOR2& size);
 
 		Texture();
 		~Texture();
 
+	protected:
+		D3DXVECTOR2 _size;
+
 	private:
 		ID3D11ShaderResourceView* _texture;
-		D3DXVECTOR2 _size;
 	};
 }
 

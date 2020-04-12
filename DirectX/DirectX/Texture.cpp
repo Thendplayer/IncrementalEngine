@@ -5,7 +5,7 @@ namespace MyEngine
 {
 	Texture::Texture() :
 		_texture(NULL),
-		_size(-1, -1)
+		_size(0, 0)
 	{
 	}
 
@@ -51,5 +51,10 @@ namespace MyEngine
 	ID3D11ShaderResourceView* Texture::GetTexture()
 	{
 		return _texture;
+	}
+	
+	void Texture::GetTextureSize(D3DXVECTOR2& size)
+	{
+		size = _size;
 	}
 }

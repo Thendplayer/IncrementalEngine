@@ -1,0 +1,10 @@
+{
+	"Avatar" : {
+		"Fileroute" : "../DirectX/Data/avatar.png",
+		"Type" : "Texture"
+	},
+	"Sonic" : {
+		"Fileroute" : "../DirectX/Data/pp.jpg",
+		"Type" : "Texture"
+	}
+}
