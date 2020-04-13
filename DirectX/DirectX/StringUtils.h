@@ -10,15 +10,7 @@
 
 using namespace std;
 
-static class StringUtils 
-{
-public:
-	static WCHAR* AsWCHAR_ptr(string string) 
-	{
-		wstring_convert<codecvt_utf8_utf16<wchar_t>> converter;
-		wstring result = converter.from_bytes(string); 
-		return (WCHAR*)(result.c_str());
-	}
-};
+#define StringAsWCHAR_ptr(s, w) wstring_convert<codecvt_utf8_utf16<wchar_t>> c; \
+								wstring r = c.from_bytes(s); w = (WCHAR*)(r.c_str());
 
 #endif

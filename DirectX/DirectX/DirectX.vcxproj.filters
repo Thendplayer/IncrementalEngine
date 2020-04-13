@@ -126,6 +126,12 @@
     <ClCompile Include="Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextureBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatRect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h">
@@ -200,6 +206,15 @@
     <ClInclude Include="StringUtils.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatRect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\texture.ps">
@@ -210,6 +225,9 @@
     </None>
     <None Include="ThirdParty\json11\json11.pc.in">
       <Filter>Source Files\ThirdParty\json11</Filter>
+    </None>
+    <None Include="Config\Resources.json">
+      <Filter>Source Files\Game</Filter>
     </None>
   </ItemGroup>
 </Project>

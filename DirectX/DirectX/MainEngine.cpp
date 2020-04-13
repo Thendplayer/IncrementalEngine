@@ -100,11 +100,12 @@ namespace MyEngine
 		);
 
 		_resources = new Resources;
-		result = _resources->Load(direct3D->GetDevice());
+		result = _resources->Load();
 	
 		if (FAILED(result))
 		{
 			MessageBox(_renderWindow->GetHWND(), _resources->Error, L"Error", MB_OK);
+			return;
 		}
 	}
 
@@ -136,6 +137,11 @@ namespace MyEngine
 	Scene* Engine::GetScene()
 	{
 		return _scene;
+	}
+
+	Resources* Engine::GetResources()
+	{
+		return _resources;
 	}
 
 	InputManager* Engine::GetInput()

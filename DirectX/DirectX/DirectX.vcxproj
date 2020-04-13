@@ -158,6 +158,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Config.h" />
+    <ClCompile Include="FloatRect.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="MainEngine.cpp" />
     <ClCompile Include="EngineGame.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureBase.cpp" />
     <ClCompile Include="TextureShader.cpp" />
     <ClCompile Include="ThirdParty\json11\json11.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -183,6 +185,7 @@
     <ClInclude Include="DirectInputKey.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EngineGame.h" />
+    <ClInclude Include="FloatRect.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainEngine.h" />
     <ClInclude Include="ExampleGame.h" />
@@ -191,11 +194,13 @@
     <ClInclude Include="RenderCamera.h" />
     <ClInclude Include="RenderingEngine.h" />
     <ClInclude Include="RenderWindow.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="StringUtils.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureBase.h" />
     <ClInclude Include="TextureShader.h" />
     <ClInclude Include="ThirdParty\json11\json11.hpp" />
     <ClInclude Include="Transform.h" />
@@ -204,6 +209,7 @@
     <ClInclude Include="WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\Resources.json" />
     <None Include="Shaders\texture.ps" />
     <None Include="Shaders\texture.vs" />
     <None Include="ThirdParty\json11\json11.pc.in" />

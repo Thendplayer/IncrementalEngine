@@ -1,10 +1,10 @@
 {
 	"Avatar" : {
-		"Fileroute" : "../DirectX/Data/avatar.png",
+		"Fileroute" : "../DirectX/data/avatar.png",
 		"Type" : "Texture"
 	},
 	"Sonic" : {
-		"Fileroute" : "../DirectX/Data/pp.jpg",
+		"Fileroute" : "../DirectX/data/pp.jpg",
 		"Type" : "Texture"
 	}
 }

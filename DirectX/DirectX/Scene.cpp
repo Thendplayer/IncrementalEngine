@@ -89,7 +89,7 @@ namespace MyEngine
 
 				if (FAILED(result))
 				{
-					return FALSE;
+					return CO_E_ERRORINAPP;
 				}
 			}
 		}

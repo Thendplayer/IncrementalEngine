@@ -30,9 +30,9 @@
 #ifndef _TRANSFORM_H
 #define _TRANSFORM_H
 
-#include <Windows.h>
-#include <D3DX10.h>
+#include "FloatRect.h"
 #include <iostream>
+#include <D3DX10.h>
 
 using namespace std;
 
@@ -56,7 +56,7 @@ namespace MyEngine
         D3DXVECTOR2 TransformPoint(float x, float y) const;
         D3DXVECTOR2 TransformPoint(const D3DXVECTOR2& point) const;
 
-        RECT TransformRect(const RECT& rectangle) const;
+        FloatRect TransformRect(const FloatRect& rectangle) const;
 
         Transform& Combine(const Transform& transform);
 

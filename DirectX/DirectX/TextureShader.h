@@ -12,6 +12,9 @@ namespace MyEngine
 {
 	class TextureShader
 	{
+	#define VERTEX_SHADER_PATH L"../DirectX/Shaders/texture.vs"
+	#define PIXEL_SHADER_PATH L"../DirectX/Shaders/texture.ps"
+
 	public:
 		TextureShader();
 		~TextureShader();

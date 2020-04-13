@@ -23,6 +23,7 @@ namespace MyEngine
 		void Run(EngineGame* game);
 		
 		Scene* GetScene();
+		Resources* GetResources();
 		InputManager* GetInput();
 
 	private:

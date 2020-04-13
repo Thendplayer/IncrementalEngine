@@ -1,6 +1,5 @@
 #include "TextureShader.h"
 #include "Utils.h"
-#include "Config.h"
 
 namespace MyEngine
 {
@@ -35,7 +34,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -62,7 +61,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		RenderShader(deviceContext, indexCount);
@@ -96,7 +95,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = CompileShader(
@@ -109,7 +108,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = device->CreateVertexShader(
@@ -121,7 +120,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = device->CreatePixelShader(
@@ -133,7 +132,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		polygonLayout[0].SemanticName = "POSITION";
@@ -164,7 +163,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		CHECKED_RELEASE(vertexShaderBuffer);
@@ -185,7 +184,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
@@ -209,7 +208,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -250,7 +249,7 @@ namespace MyEngine
 				MessageBox(hwnd, filename, L"Missing Shader File", MB_OK);
 			}
 
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -307,7 +306,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		dataPtr = (MatrixBufferType*)mappedResource.pData;

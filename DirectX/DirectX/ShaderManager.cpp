@@ -23,14 +23,14 @@ namespace MyEngine
 		_textureShader = new TextureShader;
 		if (!_textureShader)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _textureShader->Init(_direct3D->GetDevice(), hWnd);
 		if (FAILED(result))
 		{
 			MessageBox(hWnd, L"Could not initialize the Texture Shader Renderer.", L"Error", MB_OK);
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -63,7 +63,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;

@@ -5,24 +5,25 @@
 #include <d3dx11tex.h>
 #include <D3DX10.h>
 
+#include "StringUtils.h"
+
 namespace MyEngine 
 {
 	class Texture
 	{
 	public:
-		HRESULT Init(ID3D11Device* device, WCHAR* filename);
+		HRESULT Init(ID3D11Device* device);
 		
 		ID3D11ShaderResourceView* GetTexture();
-		void GetTextureSize(D3DXVECTOR2& size);
+		D3DXVECTOR2 GetSize();
 
-		Texture();
+		Texture(string filename);
 		~Texture();
-
-	protected:
-		D3DXVECTOR2 _size;
 
 	private:
 		ID3D11ShaderResourceView* _texture;
+		string _filename;
+		D3DXVECTOR2 _size;
 	};
 }
 

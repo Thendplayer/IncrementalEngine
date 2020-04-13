@@ -11,9 +11,10 @@ namespace MyEngine
 
 	Resources::~Resources()
 	{
+		DELETE_RESOURCES(_textures);
 	}
 
-	HRESULT Resources::Load(ID3D11Device* device)
+	HRESULT Resources::Load()
 	{
 		ifstream t(PATH);
 		string json(
@@ -26,15 +27,15 @@ namespace MyEngine
 
 		if (error != "")
 		{
-			Error = StringUtils::AsWCHAR_ptr(error);
-			return FALSE;
+			StringAsWCHAR_ptr(error, Error)
+			return CO_E_ERRORINAPP;
 		}
 
 		auto items = _loadedResources.object_items();
 		if (items.empty())
 		{
 			Error = L"Resources load failed. Check file structure.";
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		HRESULT result;
@@ -45,10 +46,10 @@ namespace MyEngine
 
 			if (FAILED(result))
 			{
-				return FALSE;
+				return CO_E_ERRORINAPP;
 			}
 
-			LoadResource(device, resourceItem);
+			LoadResource(resourceItem);
 		}
 
 		return S_OK;
@@ -68,7 +69,7 @@ namespace MyEngine
 			resourceItem = ResourceItem{
 				item.first, //Name
 				item.second["Type"].string_value(), //Type
-				StringUtils::AsWCHAR_ptr(item.second["Fileroute"].string_value()) //Filename
+				item.second["Fileroute"].string_value() //Fileroute
 			};
 
 			return S_OK;
@@ -76,24 +77,23 @@ namespace MyEngine
 		catch (const std::exception& e)
 		{
 			string error = "Item load failed. Check file structure. [" + (string)e.what() + "]";
-			Error = StringUtils::AsWCHAR_ptr(error);
-			return FALSE;
+			StringAsWCHAR_ptr(error, Error);
+			return CO_E_ERRORINAPP;
 		}
 	}
 	
-	void Resources::LoadResource(ID3D11Device* device, ResourceItem item)
+	void Resources::LoadResource(ResourceItem item)
 	{
 		if (item.Type == "Texture")
 		{
-			LoadTextures(device, item);
+			LoadTextures(item);
 			return;
 		}
 	}
 
-	void Resources::LoadTextures(ID3D11Device* device, ResourceItem item)
+	void Resources::LoadTextures(ResourceItem item)
 	{
-		auto texture = new Texture();
-		texture->Init(device, item.Fileroute);
+		auto texture = new Texture(item.Fileroute);
 		_textures.insert(_textures.begin(), pair<string, Texture*>(item.Name, texture));
 	}
 }

@@ -94,26 +94,14 @@ namespace MyEngine
         return TransformPoint(point.x, point.y);
     }
 
-    RECT Transform::TransformRect(const RECT& rectangle) const
+    FloatRect Transform::TransformRect(const FloatRect& rectangle) const
     {
         const D3DXVECTOR2 points[] =
         {
-            TransformPoint(
-                rectangle.left,
-                rectangle.top
-            ),
-            TransformPoint(
-                rectangle.left,
-                rectangle.top + (rectangle.bottom - rectangle.top)
-            ),
-            TransformPoint(
-                rectangle.left + (rectangle.right - rectangle.left),
-                rectangle.top
-            ),
-            TransformPoint(
-                rectangle.left + (rectangle.right - rectangle.left),
-                rectangle.top + (rectangle.bottom - rectangle.top)
-            )
+            TransformPoint(rectangle.left(), rectangle.top()),
+            TransformPoint(rectangle.left(), rectangle.top() + rectangle.height()),
+            TransformPoint(rectangle.left() + rectangle.width(), rectangle.top()),
+            TransformPoint(rectangle.left() + rectangle.width(), rectangle.top() + rectangle.height())
         };
 
         float left = points[0].x;
@@ -129,8 +117,7 @@ namespace MyEngine
             else if (points[i].y > bottom) bottom = points[i].y;
         }
 
-        RECT rc = { left, top, right - left, bottom - top };
-        return rc;
+        return FloatRect(left, top, right - left, bottom - top);
     }
 
     Transform& Transform::Combine(const Transform& transform)

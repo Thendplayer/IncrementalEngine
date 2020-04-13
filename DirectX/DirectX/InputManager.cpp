@@ -41,7 +41,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _directInput->CreateDevice(
@@ -52,14 +52,14 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _mouseInput->SetDataFormat(&c_dfDIMouse);
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _mouseInput->SetCooperativeLevel(
@@ -69,14 +69,14 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _mouseInput->Acquire();
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -89,7 +89,7 @@ namespace MyEngine
 		result = ReadMouse();
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		ProcessInput();
@@ -110,7 +110,7 @@ namespace MyEngine
 			}
 			else
 			{
-				return FALSE;
+				return CO_E_ERRORINAPP;
 			}
 		}
 

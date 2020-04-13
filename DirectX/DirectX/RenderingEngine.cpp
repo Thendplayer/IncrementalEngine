@@ -25,14 +25,14 @@ namespace MyEngine
 		_direct3D = new D3DImplementation;
 		if (!_direct3D)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _direct3D->Init(renderWindow);
 		if (FAILED(result))
 		{
 			MessageBox(renderWindow->GetHWND(), L"Could not initialize Direct3D.", L"Error", MB_OK);
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		UpdateWindow(renderWindow->GetHWND());
@@ -40,7 +40,7 @@ namespace MyEngine
 		_camera = new RenderCamera;
 		if (!_camera)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		_camera->SetPosition(DEFAULT_2D_CAMERA_POSITION);
@@ -48,13 +48,13 @@ namespace MyEngine
 		_shaderManager = new ShaderManager;
 		if (!_shaderManager)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _shaderManager->Init(_direct3D, _camera, renderWindow->GetHWND());
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -74,7 +74,7 @@ namespace MyEngine
 		result = target->Draw(_direct3D->GetDeviceContext());
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		_direct3D->EndScene();

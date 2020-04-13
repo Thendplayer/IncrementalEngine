@@ -3,9 +3,10 @@
 
 namespace MyEngine 
 {
-	Texture::Texture() :
+	Texture::Texture(string filename) :
 		_texture(NULL),
-		_size(0, 0)
+		_size(0, 0),
+		_filename(filename)
 	{
 	}
 
@@ -14,15 +15,16 @@ namespace MyEngine
 		CHECKED_RELEASE(_texture);
 	}
 
-	HRESULT Texture::Init(ID3D11Device* device, WCHAR* filename)
+	HRESULT Texture::Init(ID3D11Device* device)
 	{
 		ID3D11Resource* resource;
 		ID3D11Texture2D* texture2D;
 		D3D11_TEXTURE2D_DESC desc;
 
+		StringAsWCHAR_ptr(_filename, WCHAR* filename);
 		HRESULT result = D3DX11CreateShaderResourceViewFromFile(
 			device, 
-			filename, 
+			filename,
 			NULL, 
 			NULL, 
 			&_texture, 
@@ -31,7 +33,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		_texture->GetResource(&resource);
@@ -39,7 +41,7 @@ namespace MyEngine
 
 		if (texture2D == nullptr)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		texture2D->GetDesc(&desc);
@@ -53,8 +55,8 @@ namespace MyEngine
 		return _texture;
 	}
 	
-	void Texture::GetTextureSize(D3DXVECTOR2& size)
+	D3DXVECTOR2 Texture::GetSize()
 	{
-		size = _size;
+		return _size;
 	}
 }

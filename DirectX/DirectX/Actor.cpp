@@ -1,13 +1,17 @@
 #include "Actor.h"
+#include "Utils.h"
 
 namespace MyEngine 
 {
-	Actor::Actor()
+	Actor::Actor() :
+		_texture(NULL)
 	{
 	}
 	
 	Actor::~Actor()
 	{
+		CHECKED_DELETE(_texture);
+
 		vector<Actor*> children = _children;
 		for (int i = 0; i < children.size(); i++)
 		{
@@ -16,12 +20,43 @@ namespace MyEngine
 		children.clear();
 	}
 
+	void Actor::SetTexture(Texture* texture)
+	{
+		if (_texture != nullptr)
+		{
+			if (_texture->GetTexture() == texture)
+			{
+				return;
+			}
+
+			CHECKED_DELETE(_texture);
+		}
+
+		auto bitmap = new Bitmap;
+		CopyParameters(bitmap);
+		HRESULT result = bitmap->Create(texture);
+
+		if (FAILED(result)) 
+		{
+			throw;
+		}
+
+		_texture = bitmap;
+		Center();
+	}
+
+	void Actor::ClearTexture()
+	{
+		CHECKED_DELETE(_texture);
+	}
+
 	void Actor::Init()
 	{
 	}
 
 	void Actor::Update()
 	{
+		_texture->Update(GetWorldPosition(), _scale);
 	}
 
 	void Actor::UpdateRecursive()
@@ -42,7 +77,7 @@ namespace MyEngine
 
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		for (int i = 0; i < _children.size(); i++)
@@ -51,7 +86,7 @@ namespace MyEngine
 			
 			if (FAILED(result))
 			{
-				return FALSE;
+				return CO_E_ERRORINAPP;
 			}
 		}
 
@@ -60,34 +95,37 @@ namespace MyEngine
 
 	HRESULT Actor::Draw(ID3D11DeviceContext* deviceContext)
 	{
-		return S_OK;
-	}
+		HRESULT result;
 
-	void Actor::SetTexture(Texture* texture)
-	{
-		_texture = texture;
+		if (_texture != nullptr)
+		{
+			result = _texture->Draw(deviceContext);
+		
+			if (FAILED(result))
+			{
+				return CO_E_ERRORINAPP;
+			}
+		}
+
+		return S_OK;
 	}
 
 	void Actor::Center()
 	{
-		auto width = (GetLocalBounds()).right - (GetLocalBounds()).left;
-		auto height = (GetLocalBounds()).bottom - (GetLocalBounds()).top;
-
-		auto origin = D3DXVECTOR2(width, height) / 2.0f;
+		auto origin = D3DXVECTOR2(GetLocalBounds().width(), GetLocalBounds().height()) / 2.0f;
 		SetOrigin(origin);
 	}
 
-	RECT Actor::GetLocalBounds()
+	FloatRect Actor::GetLocalBounds()
 	{
-		D3DXVECTOR2 size;
-		_texture->GetTextureSize(size);
+		D3DXVECTOR2 size(0.0f, 0.0f);
 
-		size = D3DXVECTOR2(
-			size.x * _scale.x, 
-			size.y * _scale.y
-		);
+		if (_texture != nullptr)
+		{
+			size = _texture->GetScaledSize();
+		}
 
-		RECT rc = { 
+		FloatRect rc = { 
 			_position.x, 
 			_position.y, 
 			size.x, 
@@ -95,6 +133,11 @@ namespace MyEngine
 		};
 
 		return rc;
+	}
+
+	FloatRect Actor::GetGlobalBounds()
+	{
+		return GetWorldTransform()->TransformRect(GetLocalBounds());
 	}
 
 	const Transform* Actor::GetWorldTransform() const

@@ -6,49 +6,51 @@ namespace MyEngine
 	Bitmap::Bitmap() : 
 		_vertexBuffer(NULL),
 		_indexBuffer(NULL),
-		_texture(NULL),
-		_position(-1, -1),
-		_previousPosition(-1, -1)
+		_previousPosition(-1, -1),
+		_previousScale(0, 0)
 	{
 	}
 
 	Bitmap::~Bitmap()
 	{
-		CHECKED_DELETE(_texture);
-
 		CHECKED_RELEASE(_indexBuffer);
 		CHECKED_RELEASE(_vertexBuffer);
 	}
 
-	void Bitmap::Init(const wchar_t* textureFilename)
+	HRESULT Bitmap::Create(Texture* texture)
 	{
 		HRESULT result;
 
 		_previousPosition = D3DXVECTOR2(-1, -1);
+		_previousScale = D3DXVECTOR2(0, 0);
 
 		result = InitializeBuffers();
 		if (FAILED(result))
 		{
 			MessageBox(_renderWindow->GetHWND(), L"Could not initialize Bitmap Buffers.", L"Error", MB_OK);
-			throw textureFilename;
+			return CO_E_ERRORINAPP;
 		}
 
-		result = LoadTexture((WCHAR*)textureFilename);
+		result = texture->Init(_device);
 		if (FAILED(result))
 		{
 			MessageBox(_renderWindow->GetHWND(), L"Could not load Bitmap Texture.", L"Error", MB_OK);
-			throw textureFilename;
+			return CO_E_ERRORINAPP;
 		}
+
+		_texture = texture;
+
+		return S_OK;
 	}
 
 	HRESULT Bitmap::Draw(ID3D11DeviceContext* deviceContext)
 	{
 		HRESULT result;
 
-		result = UpdateBuffers(deviceContext, _position.x, _position.y);
+		result = UpdateBuffers(deviceContext);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		RenderBuffers(deviceContext);
@@ -56,25 +58,15 @@ namespace MyEngine
 		result = _shaderManager->RenderTextureShader(_indexCount, _texture->GetTexture());
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
 	}
 
-	void Bitmap::SetPosition(float x, float y)
-	{
-		_position = D3DXVECTOR2(x, y);
-	}
-
 	int Bitmap::GetIndexCount()
 	{
 		return _indexCount;
-	}
-
-	ID3D11ShaderResourceView* Bitmap::GetTexture()
-	{
-		return _texture->GetTexture();
 	}
 
 	HRESULT Bitmap::InitializeBuffers()
@@ -90,13 +82,13 @@ namespace MyEngine
 		vertices = new VertexType[_vertexCount];
 		if (!vertices)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		indices = new unsigned long[_indexCount];
 		if (!indices)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		memset(vertices, 0, (sizeof(VertexType) * _vertexCount));
@@ -120,7 +112,7 @@ namespace MyEngine
 		result = _device->CreateBuffer(&vertexBufferDesc, &vertexData, &_vertexBuffer);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -137,7 +129,7 @@ namespace MyEngine
 		result = _device->CreateBuffer(&indexBufferDesc, &indexData, &_indexBuffer);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		delete[] vertices;
@@ -149,13 +141,9 @@ namespace MyEngine
 		return S_OK;
 	}
 
-	HRESULT Bitmap::UpdateBuffers(
-		ID3D11DeviceContext* deviceContext, 
-		int positionX, 
-		int positionY
-	)
+	HRESULT Bitmap::UpdateBuffers(ID3D11DeviceContext* deviceContext)
 	{
-		if ((positionX == _previousPosition.x) && (positionY == _previousPosition.y))
+		if (_position == _previousPosition && _scale == _previousScale)
 		{
 			return S_OK;
 		}
@@ -166,21 +154,19 @@ namespace MyEngine
 		VertexType* verticesPtr;
 		HRESULT result;
 
-		_previousPosition.x = positionX;
-		_previousPosition.y = positionY;
+		_previousPosition = _position;
+		_previousScale = _scale;
 
-		_texture->GetTextureSize(_textureSize);
-
-		left = (float)((_renderWindow->GetScreenWidth() / 2) * -1) + (float)positionX;
-		right = left + (float)_textureSize.x;
+		left = (float)((_renderWindow->GetScreenWidth() / 2) * -1) + (float)_position.x;
+		right = left + (float)GetScaledSize().x;
 		
-		top = (float)(_renderWindow->GetScreenHeight() / 2) - (float)positionY;
-		bottom = top - (float)_textureSize.y;
+		top = (float)(_renderWindow->GetScreenHeight() / 2) - (float)_position.y;
+		bottom = top - (float)GetScaledSize().y;
 
 		vertices = new VertexType[_vertexCount];
 		if (!vertices)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		vertices[0].position = D3DXVECTOR3(left, top, 0.0f);  // Top left.
@@ -205,7 +191,7 @@ namespace MyEngine
 		result = deviceContext->Map(_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		verticesPtr = (VertexType*)mappedResource.pData;
@@ -227,24 +213,5 @@ namespace MyEngine
 		deviceContext->IASetVertexBuffers(0, 1, &_vertexBuffer, &stride, &offset);
 		deviceContext->IASetIndexBuffer(_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	}
-
-	HRESULT Bitmap::LoadTexture(WCHAR* filename)
-	{
-		HRESULT result;
-
-		_texture = new Texture;
-		if (!_texture)
-		{
-			return FALSE;
-		}
-
-		result = _texture->Init(_device, filename);
-		if (FAILED(result))
-		{
-			return FALSE;
-		}
-
-		return S_OK;
 	}
 }

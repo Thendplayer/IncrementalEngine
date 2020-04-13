@@ -53,31 +53,31 @@ namespace MyEngine
 		result = SetupAdapterOutput(numerator, denominator);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = CreateDeviceAndSwapChain(numerator, denominator);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = SetupRenderTarget();
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = SetupDepthStencilBufferAndState();
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = SetupDeviceRasterizerState();
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		SetupViewport();
@@ -88,7 +88,7 @@ namespace MyEngine
 		result = CreateDepthStencilState(enable2dRendering);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		TurnZBufferOff();
@@ -138,19 +138,19 @@ namespace MyEngine
 		result = CreateDXGIFactory(__uuidof(IDXGIFactory), (void**)&factory);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = factory->EnumAdapters(0, &adapter);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = adapter->EnumOutputs(0, &adapterOutput);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = adapterOutput->GetDisplayModeList(
@@ -162,13 +162,13 @@ namespace MyEngine
 		
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		displayModeList = new DXGI_MODE_DESC[numModes];
 		if (!displayModeList)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = adapterOutput->GetDisplayModeList(
@@ -180,7 +180,7 @@ namespace MyEngine
 		
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		for (unsigned int i = 0; i < numModes; i++)
@@ -198,7 +198,7 @@ namespace MyEngine
 		result = adapter->GetDesc(&adapterDesc);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		_videoCardMemory = (int)(adapterDesc.DedicatedVideoMemory / 1024 / 1024);
@@ -213,7 +213,7 @@ namespace MyEngine
 		
 		if (error != 0)
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		delete[] displayModeList;
@@ -298,7 +298,7 @@ namespace MyEngine
 		
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 		
 		return S_OK;
@@ -312,13 +312,13 @@ namespace MyEngine
 		result = _swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferPtr);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		result = _device->CreateRenderTargetView(backBufferPtr, NULL, &_renderTargetView);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		backBufferPtr->Release();
@@ -350,7 +350,7 @@ namespace MyEngine
 		result = _device->CreateTexture2D(&depthBufferDesc, NULL, &_depthStencilBuffer);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		const bool depth = true;
@@ -367,7 +367,7 @@ namespace MyEngine
 		result = _device->CreateDepthStencilView(_depthStencilBuffer, &depthStencilViewDesc, &_depthStencilView);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		_deviceContext->OMSetRenderTargets(1, &_renderTargetView, _depthStencilView);
@@ -394,7 +394,7 @@ namespace MyEngine
 		result = _device->CreateRasterizerState(&rasterDesc, &_rasterState);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		_deviceContext->RSSetState(_rasterState);
@@ -453,7 +453,7 @@ namespace MyEngine
 		result = _device->CreateDepthStencilState(&depthStencilDesc, &_depthStencilState);
 		if (FAILED(result))
 		{
-			return FALSE;
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
