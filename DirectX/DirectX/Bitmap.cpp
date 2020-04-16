@@ -1,14 +1,15 @@
 #include "bitmap.h"
 #include "Utils.h"
+#include "Transform.h"
 
 namespace MyEngine 
 {
 	Bitmap::Bitmap() : 
 		_vertexBuffer(NULL),
-		_indexBuffer(NULL),
-		_previousPosition(-1, -1),
-		_previousScale(0, 0)
+		_indexBuffer(NULL)
 	{
+		_previousTransform = Transform();
+		_previousBounds = { 0, 0, 0, 0 };
 	}
 
 	Bitmap::~Bitmap()
@@ -21,8 +22,7 @@ namespace MyEngine
 	{
 		HRESULT result;
 
-		_previousPosition = D3DXVECTOR2(-1, -1);
-		_previousScale = D3DXVECTOR2(0, 0);
+		_previousTransform = Transform();
 
 		result = InitializeBuffers();
 		if (FAILED(result))
@@ -143,25 +143,18 @@ namespace MyEngine
 
 	HRESULT Bitmap::UpdateBuffers(ID3D11DeviceContext* deviceContext)
 	{
-		if (_position == _previousPosition && _scale == _previousScale)
+		if (_transform == _previousTransform && _bounds == _previousBounds)
 		{
 			return S_OK;
 		}
 
-		float left, right, top, bottom;
 		VertexType* vertices;
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
 		VertexType* verticesPtr;
 		HRESULT result;
 
-		_previousPosition = _position;
-		_previousScale = _scale;
-
-		left = (float)((_renderWindow->GetScreenWidth() / 2) * -1) + (float)_position.x;
-		right = left + (float)GetScaledSize().x;
-		
-		top = (float)(_renderWindow->GetScreenHeight() / 2) - (float)_position.y;
-		bottom = top - (float)GetScaledSize().y;
+		_previousTransform = _transform;
+		_previousBounds = _bounds;
 
 		vertices = new VertexType[_vertexCount];
 		if (!vertices)
@@ -169,23 +162,33 @@ namespace MyEngine
 			return CO_E_ERRORINAPP;
 		}
 
-		vertices[0].position = D3DXVECTOR3(left, top, 0.0f);  // Top left.
-		vertices[0].texture = D3DXVECTOR2(0.0f, 0.0f);
+		float left = _bounds.left();
+		float right = left + _bounds.width();
+		float top = _bounds.top();
+		float bottom = top + _bounds.height();
 
-		vertices[1].position = D3DXVECTOR3(right, bottom, 0.0f);  // Bottom right.
-		vertices[1].texture = D3DXVECTOR2(1.0f, 1.0f);
+		D3DXVECTOR2 topLeft = { left, top };
+		D3DXVECTOR2 bottomRight = { right, bottom };
+		D3DXVECTOR2 topRight = { right, top };
+		D3DXVECTOR2 bottomLeft = { left, bottom };
 
+		topLeft = _transform * topLeft;
+		bottomRight = _transform * bottomRight;
+		topRight = _transform * topRight;
+		bottomLeft = _transform * bottomLeft;
 		
-		vertices[2].position = D3DXVECTOR3(left, bottom, 0.0f);  // Bottom left.
+		vertices[0].position = D3DXVECTOR3(topLeft.x, topLeft.y, 0.0f);
+		vertices[0].texture = D3DXVECTOR2(0.0f, 0.0f);
+		vertices[1].position = D3DXVECTOR3(bottomRight.x, bottomRight.y, 0.0f);
+		vertices[1].texture = D3DXVECTOR2(1.0f, 1.0f);
+		vertices[2].position = D3DXVECTOR3(bottomLeft.x, bottomLeft.y, 0.0f);
 		vertices[2].texture = D3DXVECTOR2(0.0f, 1.0f);
-
-		vertices[3].position = D3DXVECTOR3(left, top, 0.0f);  // Top left.
+		
+		vertices[3].position = D3DXVECTOR3(topLeft.x, topLeft.y, 0.0f);
 		vertices[3].texture = D3DXVECTOR2(0.0f, 0.0f);
-
-		vertices[4].position = D3DXVECTOR3(right, top, 0.0f);  // Top right.
+		vertices[4].position = D3DXVECTOR3(topRight.x, topRight.y, 0.0f);
 		vertices[4].texture = D3DXVECTOR2(1.0f, 0.0f);
-
-		vertices[5].position = D3DXVECTOR3(right, bottom, 0.0f);  // Bottom right.
+		vertices[5].position = D3DXVECTOR3(bottomRight.x, bottomRight.y, 0.0f);
 		vertices[5].texture = D3DXVECTOR2(1.0f, 1.0f);
 
 		result = deviceContext->Map(_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

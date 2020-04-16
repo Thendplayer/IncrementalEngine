@@ -28,8 +28,9 @@ namespace MyEngine
 		ID3D11Buffer* _indexBuffer;
 
 		int _vertexCount, _indexCount;
-		D3DXVECTOR2 _previousPosition;
-		D3DXVECTOR2 _previousScale;
+		
+		Transform _previousTransform;
+		FloatRect _previousBounds;
 
 		HRESULT InitializeBuffers();
 		HRESULT UpdateBuffers(ID3D11DeviceContext* deviceContext);

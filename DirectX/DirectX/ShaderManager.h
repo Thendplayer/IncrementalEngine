@@ -18,6 +18,8 @@ namespace MyEngine
 			ID3D11ShaderResourceView* texture
 		);
 
+		void SetWorldMatrix(D3DXMATRIX& worldMatrix);
+
 		ShaderManager();
 		~ShaderManager();
 

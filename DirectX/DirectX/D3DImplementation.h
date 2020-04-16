@@ -31,6 +31,7 @@ namespace MyEngine
 		ID3D11DeviceContext* GetDeviceContext();
 		void GetProjectionMatrix(D3DXMATRIX& projectionMatrix);
 		void GetWorldMatrix(D3DXMATRIX& worldMatrix);
+		void SetWorldMatrix(D3DXMATRIX& worldMatrix);
 		void GetOrthoProjectionMatrix(D3DXMATRIX& orthoMatrix);
 		void GetVideoCardInfo(char* cardName, int& memory);
 		void TurnZBufferOn();

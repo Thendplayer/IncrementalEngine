@@ -6,6 +6,8 @@
 
 #include "Texture.h"
 #include "Drawable.h"
+#include "Transform.h"
+#include "FloatRect.h"
 
 namespace MyEngine 
 {
@@ -14,16 +16,15 @@ namespace MyEngine
 	public:
 		TextureBase();
 
-		void Update(D3DXVECTOR2 position, D3DXVECTOR2 scale);
+		void Update(Transform transform, FloatRect bounds);
 
 		Texture* GetTexture();
-		D3DXVECTOR2 GetScaledSize();
+		D3DXVECTOR2 GetSize();
 
 	protected:
 		Texture* _texture;
-
-		D3DXVECTOR2 _position;
-		D3DXVECTOR2 _scale;
+		Transform _transform;
+		FloatRect _bounds;
 	};
 }
 

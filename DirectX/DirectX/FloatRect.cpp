@@ -7,9 +7,9 @@ namespace MyEngine
 		rect = D2D1_RECT_F{ 0, 0, 0, 0 };
 	}
 
-	FloatRect::FloatRect(float top, float left, float width, float height)
+	FloatRect::FloatRect(float left, float top, float width, float height)
 	{
-		rect = D2D1_RECT_F{ top, left, height, width };
+		rect = D2D1_RECT_F{ left, top, width, height };
 	}
 
 	float FloatRect::top() const
@@ -50,5 +50,32 @@ namespace MyEngine
 	void FloatRect::height(float value)
 	{
 		rect.bottom = value;
+	}
+	
+	D2D1_RECT_F FloatRect::GetRect()
+	{
+		D2D1_RECT_F rc = {
+			rect.left,
+			rect.top,
+			rect.left + rect.right,
+			rect.top + rect.bottom
+		};
+
+		return rc;
+	}
+
+	bool operator ==(const FloatRect& left, const FloatRect& right)
+	{
+		return (
+			left.top() == right.top() &&
+			left.left() == right.left() &&
+			left.height() == right.height() &&
+			left.width() == right.width()
+		);
+	}
+
+	bool operator !=(const FloatRect& left, const FloatRect& right)
+	{
+		return !(left == right);
 	}
 }

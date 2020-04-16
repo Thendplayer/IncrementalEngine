@@ -8,10 +8,8 @@ namespace MyEngine
 	struct FloatRect 
 	{
 	public:
-		D2D1_RECT_F rect;
-		
 		FloatRect();
-		FloatRect(float top, float left, float width, float height);
+		FloatRect(float left, float top, float width, float height);
 
 		float top() const;
 		void top(float value);
@@ -24,7 +22,15 @@ namespace MyEngine
 		
 		float height() const;
 		void height(float value);
+		
+		D2D1_RECT_F GetRect();
+
+	private:
+		D2D1_RECT_F rect;
 	};
+
+	bool operator ==(const FloatRect& left, const FloatRect& right);
+	bool operator !=(const FloatRect& left, const FloatRect& right);
 }
 
 #endif

@@ -426,6 +426,17 @@ namespace MyEngine
 		D3DXMatrixIdentity(&_worldMatrix);
 
 		D3DXMatrixOrthoLH(&_orthoProjectionMatrix, (float)_renderWindow->GetScreenWidth(), (float)_renderWindow->GetScreenHeight(), SCREEN_NEAR, SCREEN_DEPTH);
+	
+		D3DXMATRIX scaling, rotation, translation, worldMatrix;
+		
+		D3DXMatrixScaling(&scaling, 1, -1, 1);
+		D3DXMatrixRotationZ(&rotation, 0);
+		D3DXMatrixTranslation(&translation, 0, 0, 0);
+
+		D3DXMatrixMultiply(&worldMatrix, &scaling, &rotation);
+		D3DXMatrixMultiply(&worldMatrix, &worldMatrix, &translation);
+
+		SetWorldMatrix(worldMatrix);
 	}
 
 	HRESULT D3DImplementation::CreateDepthStencilState(bool enableZBuffer)
@@ -477,6 +488,11 @@ namespace MyEngine
 	void D3DImplementation::GetWorldMatrix(D3DXMATRIX& worldMatrix)
 	{
 		worldMatrix = _worldMatrix;
+	}
+
+	void D3DImplementation::SetWorldMatrix(D3DXMATRIX& worldMatrix)
+	{
+		_worldMatrix = worldMatrix;
 	}
 
 	void D3DImplementation::GetOrthoProjectionMatrix(D3DXMATRIX& orthoProjectionMatrix)

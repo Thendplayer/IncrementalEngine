@@ -56,7 +56,7 @@ namespace MyEngine
 
 	void Actor::Update()
 	{
-		_texture->Update(GetWorldPosition(), _scale);
+		_texture->Update(GetTransform(), GetLocalBounds());
 	}
 
 	void Actor::UpdateRecursive()
@@ -122,17 +122,20 @@ namespace MyEngine
 
 		if (_texture != nullptr)
 		{
-			size = _texture->GetScaledSize();
+			size = D3DXVECTOR2(
+				_texture->GetSize().x * _scale.x, 
+				_texture->GetSize().y * _scale.y
+			);
 		}
 
-		FloatRect rc = { 
+		FloatRect bounds = { 
 			_position.x, 
 			_position.y, 
 			size.x, 
 			size.y 
 		};
 
-		return rc;
+		return bounds;
 	}
 
 	FloatRect Actor::GetGlobalBounds()

@@ -3,16 +3,16 @@
 namespace MyEngine 
 {
 	TextureBase::TextureBase() :
-		_texture(NULL),
-		_position(0, 0),
-		_scale(1, 1)
+		_texture(NULL)
 	{
+		_transform = Transform();
+		_bounds = { 0, 0, 0, 0 };
 	}
 
-	void TextureBase::Update(D3DXVECTOR2 position, D3DXVECTOR2 scale)
+	void TextureBase::Update(Transform transform, FloatRect bounds)
 	{
-		_position = position;
-		_scale = scale;
+		_transform = transform;
+		_bounds = bounds;
 	}
 
 	Texture* TextureBase::GetTexture()
@@ -20,9 +20,8 @@ namespace MyEngine
 		return _texture;
 	}
 	
-	D3DXVECTOR2 TextureBase::GetScaledSize()
+	D3DXVECTOR2 TextureBase::GetSize()
 	{
-		auto textureSize = _texture->GetSize();
-		return D3DXVECTOR2(textureSize.x * _scale.x, textureSize.y * _scale.y);
+		return _texture->GetSize();
 	}
 }

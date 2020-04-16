@@ -68,4 +68,9 @@ namespace MyEngine
 
 		return S_OK;
 	}
+	
+	void ShaderManager::SetWorldMatrix(D3DXMATRIX& worldMatrix)
+	{
+		_direct3D->SetWorldMatrix(worldMatrix);
+	}
 }
