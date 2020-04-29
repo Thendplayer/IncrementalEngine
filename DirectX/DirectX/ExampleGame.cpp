@@ -53,7 +53,7 @@ namespace MyGame
 		
 		if (input->IsKeyDown(DirectInputKey::Space))
 		{
-			_actor->SetRotation(_actor->GetRotation() + 5000 * dt);
+			_actor->SetRotation(_actor->GetRotation() + 200 * dt);
 		}
 	}
 }

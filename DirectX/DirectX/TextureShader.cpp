@@ -298,7 +298,7 @@ namespace MyEngine
 
 		result = deviceContext->Map(
 			_matrixBuffer, 
-			0, 
+			0, //Buffer Index
 			D3D11_MAP_WRITE_DISCARD, 
 			0, 
 			&mappedResource

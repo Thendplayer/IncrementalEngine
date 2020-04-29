@@ -118,21 +118,11 @@ namespace MyEngine
 
 	FloatRect Actor::GetLocalBounds()
 	{
-		D3DXVECTOR2 size(0.0f, 0.0f);
-
-		if (_texture != nullptr)
-		{
-			size = D3DXVECTOR2(
-				_texture->GetSize().x * _scale.x, 
-				_texture->GetSize().y * _scale.y
-			);
-		}
-
 		FloatRect bounds = { 
-			_position.x, 
-			_position.y, 
-			size.x, 
-			size.y 
+			0.f, 
+			0.f, 
+			_texture->GetSize().x,
+			_texture->GetSize().y
 		};
 
 		return bounds;
