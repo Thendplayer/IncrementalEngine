@@ -229,5 +229,8 @@
     <None Include="Config\Resources.json">
       <Filter>Source Files\Game</Filter>
     </None>
+    <None Include="Shaders\globals.fxh">
+      <Filter>Shader Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

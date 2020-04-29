@@ -9,7 +9,7 @@ namespace MyGame
 		_actor->SetPosition(0, 0);
 		_actor->SetRotation(0);
 		_actor->SetScale(1, 1);
-		_actor->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
+		_actor->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
 	}
 
 	void ExampleGame::DeInit()

@@ -1,5 +1,10 @@
-Texture2D shaderTexture;
-SamplerState SampleType;
+Texture2D shaderTexture : register( t0 );
+SamplerState SampleType : register( s0 );
+
+cbuffer TexturePixelBuffer : register( b1 )
+{
+	float4 cutoff;
+};
 
 struct PixelInputType
 {
@@ -9,10 +14,8 @@ struct PixelInputType
 
 float4 TexturePixelShader(PixelInputType input) : SV_TARGET
 {
-    float cutoff = 0.5f;
-
 	float4 textureColor = shaderTexture.Sample(SampleType, input.tex);
-    if(textureColor.a<=cutoff)
+    if(textureColor.a<=cutoff.a)
 	{
         clip(-1);
     }
