@@ -1,4 +1,4 @@
-#include "ThirdParty/OpenAL/include/alut.h"
+#include "alut.h"
 
 #include "Sound.h"
 

@@ -64,9 +64,6 @@
     <Filter Include="Source Files\Engine\SoundEngine">
       <UniqueIdentifier>{1c4a2069-9ff1-4f8a-825b-4e0e02ec2a9b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ThirdParty\OpenAL">
-      <UniqueIdentifier>{a2b6d7b5-d0d8-4a19-b6c3-22be34a081d3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -232,27 +229,6 @@
     </ClInclude>
     <ClInclude Include="Sound.h">
       <Filter>Source Files\Engine\SoundEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\al.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\alc.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\alut.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\efx.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\efx-creative.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\EFX-Util.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
-    </ClInclude>
-    <ClInclude Include="ThirdParty\OpenAL\include\xram.h">
-      <Filter>Source Files\ThirdParty\OpenAL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

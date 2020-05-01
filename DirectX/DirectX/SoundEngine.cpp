@@ -1,5 +1,5 @@
-#include "ThirdParty/OpenAL/include/alc.h"
-#include "ThirdParty/OpenAL/include/alut.h"
+#include "alc.h"
+#include "alut.h"
 
 #include <cassert>
 

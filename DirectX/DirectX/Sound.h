@@ -4,7 +4,7 @@
 #include <d3d11.h>
 #include <string>
 
-#include "ThirdParty/OpenAL/include/al.h"
+#include "al.h"
 
 namespace MyEngine 
 {
