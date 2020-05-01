@@ -6,6 +6,7 @@
 
 #include "Utils.h"
 #include "Texture.h"
+#include "Sound.h"
 
 using json11::Json;
 using namespace std;
@@ -25,6 +26,7 @@ namespace MyEngine
 
 		HRESULT Load();
 		Texture* GetTexture(string name);
+		Sound* GetSound(string name);
 
 	private:
 		struct ResourceItem
@@ -36,9 +38,9 @@ namespace MyEngine
 
 		Json _loadedResources = nullptr;
 		map<string, Texture*> _textures;
+		map<string, Sound*> _sounds;
 
 		void LoadResource(ResourceItem item);
-		void LoadTextures(ResourceItem item);
 		HRESULT GetResourceItem(ResourceItem& resourceItem, pair<const string, Json> item);
 	};
 }

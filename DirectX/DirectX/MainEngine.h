@@ -7,6 +7,7 @@
 #include "InputManager.h"
 #include "RenderingEngine.h"
 #include "RenderWindow.h"
+#include "SoundEngine.h"
 #include "Scene.h"
 #include "Resources.h"
 
@@ -32,6 +33,7 @@ namespace MyEngine
 		RenderingEngine* _renderingEngine;
 		RenderWindow* _renderWindow;
 		InputManager* _inputManager;
+		SoundEngine* _soundEngine;
 		Scene* _scene;
 		Resources* _resources;
 
