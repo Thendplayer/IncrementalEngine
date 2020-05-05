@@ -26,7 +26,8 @@ namespace MyEngine
 
 		HRESULT Load();
 		Texture* GetTexture(string name);
-		Sound* GetSound(string name);
+		//TODO: Uncomment
+		//Sound* GetSound(string name);
 
 	private:
 		struct ResourceItem
@@ -38,7 +39,8 @@ namespace MyEngine
 
 		Json _loadedResources = nullptr;
 		map<string, Texture*> _textures;
-		map<string, Sound*> _sounds;
+		//TODO: Uncomment
+		//map<string, Sound*> _sounds;
 
 		void LoadResource(ResourceItem item);
 		HRESULT GetResourceItem(ResourceItem& resourceItem, pair<const string, Json> item);

@@ -5,15 +5,17 @@ namespace MyEngine
 	Resources::Resources() :
 		Error(L""),
 		_loadedResources(0),
-		_textures(),
-		_sounds()
+		//TODO: Uncomment
+		//_sounds(),
+		_textures()
 	{
 	}
 
 	Resources::~Resources()
 	{
 		DELETE_RESOURCES(_textures);
-		DELETE_RESOURCES(_sounds);
+		//TODO: Uncomment
+		//DELETE_RESOURCES(_sounds);
 	}
 
 	HRESULT Resources::Load()
@@ -64,12 +66,13 @@ namespace MyEngine
 		return item->second;
 	}
 
-	Sound* Resources::GetSound(string name)
-	{
-		auto item = _sounds.find(name);
-		assert("The Sound requested is not loaded." && item != _sounds.end());
-		return item->second;
-	}
+	//TODO: Uncomment
+	//Sound* Resources::GetSound(string name)
+	//{
+	//	auto item = _sounds.find(name);
+	//	assert("The Sound requested is not loaded." && item != _sounds.end());
+	//	return item->second;
+	//}
 	
 	HRESULT Resources::GetResourceItem(ResourceItem& resourceItem, pair<const string, Json> item)
 	{
@@ -101,12 +104,13 @@ namespace MyEngine
 			return;
 		}
 		
-		if (item.Type == "Sound")
-		{
-			auto sound = new Sound(item.Fileroute);
-			_sounds.insert(_sounds.begin(), pair<string, Sound*>(item.Name, sound));
-
-			return;
-		}
+		//TODO: Uncomment
+		//if (item.Type == "Sound")
+		//{
+		//	auto sound = new Sound(item.Fileroute);
+		//	_sounds.insert(_sounds.begin(), pair<string, Sound*>(item.Name, sound));
+		//
+		//	return;
+		//}
 	}
 }

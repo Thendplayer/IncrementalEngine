@@ -33,7 +33,8 @@ namespace MyEngine
 		RenderingEngine* _renderingEngine;
 		RenderWindow* _renderWindow;
 		InputManager* _inputManager;
-		SoundEngine* _soundEngine;
+		//TODO: Uncomment
+		//SoundEngine* _soundEngine;
 		Scene* _scene;
 		Resources* _resources;
 

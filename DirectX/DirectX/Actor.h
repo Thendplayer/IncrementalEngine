@@ -4,7 +4,7 @@
 #include<vector>
 #include<algorithm>
 
-#include "Bitmap.h"
+#include "Drawable.h"
 #include "Transformable.h"
 
 namespace MyEngine
@@ -12,15 +12,11 @@ namespace MyEngine
 	class Actor : public Transformable, public Drawable
 	{
 	public:
-		Actor();
 		~Actor();
-
-		void SetTexture(Texture* texture);
-		void ClearTexture();
 
 		void Center();
 
-		FloatRect GetLocalBounds();
+		virtual FloatRect GetLocalBounds();
 		FloatRect GetGlobalBounds();
 
 		Actor* GetParent() const;
@@ -37,7 +33,6 @@ namespace MyEngine
 	private:
 		Actor* _parent;
 		vector<Actor*> _children;
-		TextureBase* _texture;
 
 		const Transform* GetWorldTransform() const;
 		

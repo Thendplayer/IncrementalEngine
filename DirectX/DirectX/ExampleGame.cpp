@@ -5,7 +5,7 @@ namespace MyGame
 {
 	void ExampleGame::Init()
 	{
-		_actor = Engine::Get()->GetScene()->Create<Actor>();
+		_actor = Engine::Get()->GetScene()->Create<Sprite>();
 		_actor->SetPosition(0, 0);
 		_actor->SetRotation(0);
 		_actor->SetScale(1, 1);

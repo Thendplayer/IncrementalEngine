@@ -1,6 +1,6 @@
 #pragma once
 #include "EngineGame.h"
-#include "Actor.h"
+#include "Sprite.h"
 
 using namespace MyEngine;
 
@@ -14,6 +14,6 @@ namespace MyGame
 		void Update(float dt) override;
 	
 	private:
-		Actor* _actor;
+		Sprite* _actor;
 	};
 }
