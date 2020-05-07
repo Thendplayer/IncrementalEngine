@@ -12,8 +12,9 @@ namespace MyEngine
 {
 	class TextureShader
 	{
-	#define VERTEX_SHADER_PATH L"../DirectX/Shaders/texture.vs"
-	#define PIXEL_SHADER_PATH L"../DirectX/Shaders/texture.ps"
+	#define VERTEX_SHADER_PATH L"Shaders/texture.vs"
+	#define PIXEL_SHADER_PATH L"Shaders/texture.ps"
+	#define ALPHA_CUTOFF .5f
 
 	public:
 		TextureShader();
@@ -24,24 +25,19 @@ namespace MyEngine
 		HRESULT Draw(
 			ID3D11DeviceContext* deviceContext,
 			int indexCount,
-			D3DXMATRIX worldMatrix,
-			D3DXMATRIX viewMatrix,
-			D3DXMATRIX projectionMatrix,
 			ID3D11ShaderResourceView* texture
 		);
 
 	private:
-		struct MatrixBufferType
+		struct TextureBufferType
 		{
-			D3DXMATRIX world;
-			D3DXMATRIX view;
-			D3DXMATRIX projection;
+			D3DXVECTOR4 cutoff;
 		};
 
 		ID3D11VertexShader* _vertexShader;
 		ID3D11PixelShader* _pixelShader;
+		ID3D11Buffer* _textureBuffer;
 		ID3D11InputLayout* _layout;
-		ID3D11Buffer* _matrixBuffer;
 		ID3D11SamplerState* _sampleState;
 
 		HRESULT InitializeShader(
@@ -67,9 +63,6 @@ namespace MyEngine
 
 		HRESULT SetShaderParameters(
 			ID3D11DeviceContext* deviceContext,
-			D3DXMATRIX worldMatrix,
-			D3DXMATRIX viewMatrix,
-			D3DXMATRIX projectionMatrix,
 			ID3D11ShaderResourceView* texture
 		);
 		

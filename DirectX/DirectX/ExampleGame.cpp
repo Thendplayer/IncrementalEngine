@@ -5,11 +5,11 @@ namespace MyGame
 {
 	void ExampleGame::Init()
 	{
-		_actor = Engine::Get()->GetScene()->Create<Actor>();
+		_actor = Engine::Get()->GetScene()->Create<Sprite>();
 		_actor->SetPosition(0, 0);
 		_actor->SetRotation(0);
 		_actor->SetScale(1, 1);
-		_actor->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
+		_actor->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
 	}
 
 	void ExampleGame::DeInit()
@@ -53,7 +53,7 @@ namespace MyGame
 		
 		if (input->IsKeyDown(DirectInputKey::Space))
 		{
-			_actor->SetRotation(_actor->GetRotation() + 5000 * dt);
+			_actor->SetRotation(_actor->GetRotation() + 200 * dt);
 		}
 	}
 }

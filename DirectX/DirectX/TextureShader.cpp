@@ -6,8 +6,8 @@ namespace MyEngine
 	TextureShader::TextureShader() :
 		_vertexShader(NULL),
 		_pixelShader(NULL),
+		_textureBuffer(NULL),
 		_layout(NULL),
-		_matrixBuffer(NULL),
 		_sampleState(NULL)
 	{
 	}
@@ -15,8 +15,8 @@ namespace MyEngine
 	TextureShader::~TextureShader()
 	{
 		CHECKED_RELEASE(_sampleState);
-		CHECKED_RELEASE(_matrixBuffer);
 		CHECKED_RELEASE(_layout);
+		CHECKED_RELEASE(_textureBuffer);
 		CHECKED_RELEASE(_pixelShader);
 		CHECKED_RELEASE(_vertexShader);
 	}
@@ -43,9 +43,6 @@ namespace MyEngine
 	HRESULT TextureShader::Draw(
 		ID3D11DeviceContext* deviceContext,
 		int indexCount,
-		D3DXMATRIX worldMatrix,
-		D3DXMATRIX viewMatrix,
-		D3DXMATRIX orthoProjectionMatrix,
 		ID3D11ShaderResourceView* texture
 	)
 	{
@@ -53,9 +50,6 @@ namespace MyEngine
 
 		result = SetShaderParameters(
 			deviceContext, 
-			worldMatrix, 
-			viewMatrix, 
-			orthoProjectionMatrix, 
 			texture
 		);
 
@@ -81,8 +75,8 @@ namespace MyEngine
 		ID3D10Blob* pixelShaderBuffer = NULL;
 
 		D3D11_INPUT_ELEMENT_DESC polygonLayout[2];
+		D3D11_BUFFER_DESC textureBufferDesc;
 		unsigned int numElements;
-		D3D11_BUFFER_DESC matrixBufferDesc;
 		D3D11_SAMPLER_DESC samplerDesc;
 
 		result = CompileShader(
@@ -169,24 +163,24 @@ namespace MyEngine
 		CHECKED_RELEASE(vertexShaderBuffer);
 		CHECKED_RELEASE(pixelShaderBuffer);
 
-		matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-		matrixBufferDesc.ByteWidth = sizeof(MatrixBufferType);
-		matrixBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		matrixBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		matrixBufferDesc.MiscFlags = 0;
-		matrixBufferDesc.StructureByteStride = 0;
+
+		textureBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+		textureBufferDesc.ByteWidth = sizeof(TextureBufferType);
+		textureBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		textureBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		textureBufferDesc.MiscFlags = 0;
+		textureBufferDesc.StructureByteStride = 0;
 
 		result = device->CreateBuffer(
-			&matrixBufferDesc, 
-			NULL, 
-			&_matrixBuffer
+			&textureBufferDesc,
+			NULL,
+			&_textureBuffer
 		);
 
 		if (FAILED(result))
 		{
 			return CO_E_ERRORINAPP;
 		}
-
 		samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 		samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
 		samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
@@ -281,23 +275,15 @@ namespace MyEngine
 
 	HRESULT TextureShader::SetShaderParameters(
 		ID3D11DeviceContext* deviceContext, 
-		D3DXMATRIX worldMatrix, 
-		D3DXMATRIX viewMatrix,
-		D3DXMATRIX orthoProjectionMatrix, 
 		ID3D11ShaderResourceView* texture
 	)
 	{
 		HRESULT result;
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
-		MatrixBufferType* dataPtr;
-		unsigned int bufferNumber;
-
-		D3DXMatrixTranspose(&worldMatrix, &worldMatrix);
-		D3DXMatrixTranspose(&viewMatrix, &viewMatrix);
-		D3DXMatrixTranspose(&orthoProjectionMatrix, &orthoProjectionMatrix);
-
+		TextureBufferType* dataPtr;
+		
 		result = deviceContext->Map(
-			_matrixBuffer, 
+			_textureBuffer, 
 			0, 
 			D3D11_MAP_WRITE_DISCARD, 
 			0, 
@@ -309,20 +295,13 @@ namespace MyEngine
 			return CO_E_ERRORINAPP;
 		}
 
-		dataPtr = (MatrixBufferType*)mappedResource.pData;
+		dataPtr = (TextureBufferType*)mappedResource.pData;
+		dataPtr->cutoff = D3DXVECTOR4(.0f, .0f, .0f, ALPHA_CUTOFF);
 
-		dataPtr->world = worldMatrix;
-		dataPtr->view = viewMatrix;
-		dataPtr->projection = orthoProjectionMatrix;
+		deviceContext->Unmap(_textureBuffer, 1);
 
-		deviceContext->Unmap(_matrixBuffer, 0);
-
-		bufferNumber = 0;
-
-		deviceContext->VSSetConstantBuffers(bufferNumber, 1, &_matrixBuffer);
+		deviceContext->PSSetConstantBuffers(1, 1, &_textureBuffer);
 		deviceContext->PSSetShaderResources(0, 1, &texture);
-
-		return S_OK;
 	}
 
 	void TextureShader::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)

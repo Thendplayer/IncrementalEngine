@@ -145,19 +145,22 @@ namespace MyEngine
     {
         if (_transformNeedUpdate)
         {
-            float angle = -_rotation * 3.141592654f / 180.f;
+            float angle  = -_rotation * 3.141592654f / 180.f;
             float cosine = static_cast<float>(std::cos(angle));
-            float sine = static_cast<float>(std::sin(angle));
-            float sxc = _scale.x * cosine;
-            float syc = _scale.y * cosine;
-            float sxs = _scale.x * sine;
-            float sys = _scale.y * sine;
-            float tx = -_origin.x * sxc - _origin.y * sys + _position.x;
-            float ty = _origin.x * sxs - _origin.y * syc + _position.y;
+            float sine   = static_cast<float>(std::sin(angle));
+            float sxc    = _scale.x * cosine;
+            float syc    = _scale.y * cosine;
+            float sxs    = _scale.x * sine;
+            float sys    = _scale.y * sine;
+            float tx     = -_origin.x * sxc - _origin.y * sys + _position.x;
+            float ty     =  _origin.x * sxs - _origin.y * syc + _position.y;
+            
+            _transform = Transform(
+                sxc, sys, tx,
+               -sxs, syc, ty,
+                0.f, 0.f, 1.f
+            );
 
-            _transform = Transform(sxc, sys, tx,
-                -sxs, syc, ty,
-                0.f, 0.f, 1.f);
             _transformNeedUpdate = false;
         }
 

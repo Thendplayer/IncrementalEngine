@@ -5,6 +5,7 @@ namespace MyEngine
 	Resources::Resources() :
 		Error(L""),
 		_loadedResources(0),
+		_sounds(),
 		_textures()
 	{
 	}
@@ -12,6 +13,7 @@ namespace MyEngine
 	Resources::~Resources()
 	{
 		DELETE_RESOURCES(_textures);
+		DELETE_RESOURCES(_sounds);
 	}
 
 	HRESULT Resources::Load()
@@ -61,6 +63,13 @@ namespace MyEngine
 		assert("The Texture requested is not loaded." && item != _textures.end());
 		return item->second;
 	}
+
+	Sound* Resources::GetSound(string name)
+	{
+		auto item = _sounds.find(name);
+		assert("The Sound requested is not loaded." && item != _sounds.end());
+		return item->second;
+	}
 	
 	HRESULT Resources::GetResourceItem(ResourceItem& resourceItem, pair<const string, Json> item)
 	{
@@ -86,14 +95,18 @@ namespace MyEngine
 	{
 		if (item.Type == "Texture")
 		{
-			LoadTextures(item);
+			auto texture = new Texture(item.Fileroute);
+			_textures.insert(_textures.begin(), pair<string, Texture*>(item.Name, texture));
+			
 			return;
 		}
-	}
-
-	void Resources::LoadTextures(ResourceItem item)
-	{
-		auto texture = new Texture(item.Fileroute);
-		_textures.insert(_textures.begin(), pair<string, Texture*>(item.Name, texture));
+		
+		if (item.Type == "Sound")
+		{
+			auto sound = new Sound(item.Fileroute);
+			_sounds.insert(_sounds.begin(), pair<string, Sound*>(item.Name, sound));
+		
+			return;
+		}
 	}
 }

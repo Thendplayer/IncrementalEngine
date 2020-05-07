@@ -2,16 +2,9 @@
 #include "Utils.h"
 
 namespace MyEngine 
-{
-	Actor::Actor() :
-		_texture(NULL)
-	{
-	}
-	
+{	
 	Actor::~Actor()
 	{
-		CHECKED_DELETE(_texture);
-
 		vector<Actor*> children = _children;
 		for (int i = 0; i < children.size(); i++)
 		{
@@ -20,43 +13,12 @@ namespace MyEngine
 		children.clear();
 	}
 
-	void Actor::SetTexture(Texture* texture)
-	{
-		if (_texture != nullptr)
-		{
-			if (_texture->GetTexture() == texture)
-			{
-				return;
-			}
-
-			CHECKED_DELETE(_texture);
-		}
-
-		auto bitmap = new Bitmap;
-		CopyParameters(bitmap);
-		HRESULT result = bitmap->Create(texture);
-
-		if (FAILED(result)) 
-		{
-			throw;
-		}
-
-		_texture = bitmap;
-		Center();
-	}
-
-	void Actor::ClearTexture()
-	{
-		CHECKED_DELETE(_texture);
-	}
-
 	void Actor::Init()
 	{
 	}
 
 	void Actor::Update()
 	{
-		_texture->Update(GetTransform(), GetLocalBounds());
 	}
 
 	void Actor::UpdateRecursive()
@@ -95,18 +57,6 @@ namespace MyEngine
 
 	HRESULT Actor::Draw(ID3D11DeviceContext* deviceContext)
 	{
-		HRESULT result;
-
-		if (_texture != nullptr)
-		{
-			result = _texture->Draw(deviceContext);
-		
-			if (FAILED(result))
-			{
-				return CO_E_ERRORINAPP;
-			}
-		}
-
 		return S_OK;
 	}
 
@@ -118,24 +68,7 @@ namespace MyEngine
 
 	FloatRect Actor::GetLocalBounds()
 	{
-		D3DXVECTOR2 size(0.0f, 0.0f);
-
-		if (_texture != nullptr)
-		{
-			size = D3DXVECTOR2(
-				_texture->GetSize().x * _scale.x, 
-				_texture->GetSize().y * _scale.y
-			);
-		}
-
-		FloatRect bounds = { 
-			_position.x, 
-			_position.y, 
-			size.x, 
-			size.y 
-		};
-
-		return bounds;
+		return FloatRect();
 	}
 
 	FloatRect Actor::GetGlobalBounds()

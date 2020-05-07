@@ -70,6 +70,12 @@ namespace MyEngine
 
 		_direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 		_camera->Draw();
+		
+		result = _shaderManager->SetupFrame();
+		if (FAILED(result))
+		{
+			return CO_E_ERRORINAPP;
+		}
 
 		result = target->Draw(_direct3D->GetDeviceContext());
 		if (FAILED(result))
@@ -77,6 +83,7 @@ namespace MyEngine
 			return CO_E_ERRORINAPP;
 		}
 
+		_shaderManager->ClearFrame();
 		_direct3D->EndScene();
 
 		return S_OK;

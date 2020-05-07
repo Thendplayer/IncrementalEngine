@@ -35,8 +35,8 @@ namespace MyEngine
 
     Transform::Transform()
     {
-        _matrix[0] = 1.f; _matrix[4] = 0.f; _matrix[8] = 0.f; _matrix[12] = 0.f;
-        _matrix[1] = 0.f; _matrix[5] = 1.f; _matrix[9] = 0.f; _matrix[13] = 0.f;
+        _matrix[0] = 1.f; _matrix[4] = 0.f; _matrix[8]  = 0.f; _matrix[12] = 0.f;
+        _matrix[1] = 0.f; _matrix[5] = 1.f; _matrix[9]  = 0.f; _matrix[13] = 0.f;
         _matrix[2] = 0.f; _matrix[6] = 0.f; _matrix[10] = 1.f; _matrix[14] = 0.f;
         _matrix[3] = 0.f; _matrix[7] = 0.f; _matrix[11] = 0.f; _matrix[15] = 1.f;
     }
@@ -47,8 +47,8 @@ namespace MyEngine
         float a20, float a21, float a22
     )
     {
-        _matrix[0] = a00; _matrix[4] = a01; _matrix[8] = 0.f; _matrix[12] = a02;
-        _matrix[1] = a10; _matrix[5] = a11; _matrix[9] = 0.f; _matrix[13] = a12;
+        _matrix[0] = a00; _matrix[4] = a01; _matrix[8]  = 0.f; _matrix[12] = a02;
+        _matrix[1] = a10; _matrix[5] = a11; _matrix[9]  = 0.f; _matrix[13] = a12;
         _matrix[2] = 0.f; _matrix[6] = 0.f; _matrix[10] = 1.f; _matrix[14] = 0.f;
         _matrix[3] = a20; _matrix[7] = a21; _matrix[11] = 0.f; _matrix[15] = a22;
     }
@@ -61,20 +61,20 @@ namespace MyEngine
     Transform Transform::GetInverse() const
     {
         float det = _matrix[0] * (_matrix[15] * _matrix[5] - _matrix[7] * _matrix[13]) -
-            _matrix[1] * (_matrix[15] * _matrix[4] - _matrix[7] * _matrix[12]) +
-            _matrix[3] * (_matrix[13] * _matrix[4] - _matrix[5] * _matrix[12]);
+                    _matrix[1] * (_matrix[15] * _matrix[4] - _matrix[7] * _matrix[12]) +
+                    _matrix[3] * (_matrix[13] * _matrix[4] - _matrix[5] * _matrix[12]);
 
         if (det != 0.f)
         {
-            return Transform((_matrix[15] * _matrix[5] - _matrix[7] * _matrix[13]) / det,
-                -(_matrix[15] * _matrix[4] - _matrix[7] * _matrix[12]) / det,
-                (_matrix[13] * _matrix[4] - _matrix[5] * _matrix[12]) / det,
-                -(_matrix[15] * _matrix[1] - _matrix[3] * _matrix[13]) / det,
-                (_matrix[15] * _matrix[0] - _matrix[3] * _matrix[12]) / det,
-                -(_matrix[13] * _matrix[0] - _matrix[1] * _matrix[12]) / det,
-                (_matrix[7] * _matrix[1] - _matrix[3] * _matrix[5]) / det,
-                -(_matrix[7] * _matrix[0] - _matrix[3] * _matrix[4]) / det,
-                (_matrix[5] * _matrix[0] - _matrix[1] * _matrix[4]) / det
+            return Transform( (_matrix[15] * _matrix[5] - _matrix[7] * _matrix[13]) / det,
+                             -(_matrix[15] * _matrix[4] - _matrix[7] * _matrix[12]) / det,
+                              (_matrix[13] * _matrix[4] - _matrix[5] * _matrix[12]) / det,
+                             -(_matrix[15] * _matrix[1] - _matrix[3] * _matrix[13]) / det,
+                              (_matrix[15] * _matrix[0] - _matrix[3] * _matrix[12]) / det,
+                             -(_matrix[13] * _matrix[0] - _matrix[1] * _matrix[12]) / det,
+                              (_matrix[7]  * _matrix[1] - _matrix[3] * _matrix[5])  / det,
+                             -(_matrix[7]  * _matrix[0] - _matrix[3] * _matrix[4])  / det,
+                              (_matrix[5]  * _matrix[0] - _matrix[1] * _matrix[4])  / det
             );
         }
         else
@@ -85,8 +85,10 @@ namespace MyEngine
 
     D3DXVECTOR2 Transform::TransformPoint(float x, float y) const
     {
-        return D3DXVECTOR2(_matrix[0] * x + _matrix[4] * y + _matrix[12],
-            _matrix[1] * x + _matrix[5] * y + _matrix[13]);
+        return D3DXVECTOR2(
+            _matrix[0] * x + _matrix[4] * y + _matrix[12],
+            _matrix[1] * x + _matrix[5] * y + _matrix[13]
+        );
     }
 
     D3DXVECTOR2 Transform::TransformPoint(const D3DXVECTOR2& point) const
@@ -125,15 +127,15 @@ namespace MyEngine
         const float* a = _matrix;
         const float* b = transform._matrix;
 
-        *this = Transform(a[0] * b[0] + a[4] * b[1] + a[12] * b[3],
-            a[0] * b[4] + a[4] * b[5] + a[12] * b[7],
-            a[0] * b[12] + a[4] * b[13] + a[12] * b[15],
-            a[1] * b[0] + a[5] * b[1] + a[13] * b[3],
-            a[1] * b[4] + a[5] * b[5] + a[13] * b[7],
-            a[1] * b[12] + a[5] * b[13] + a[13] * b[15],
-            a[3] * b[0] + a[7] * b[1] + a[15] * b[3],
-            a[3] * b[4] + a[7] * b[5] + a[15] * b[7],
-            a[3] * b[12] + a[7] * b[13] + a[15] * b[15]);
+        *this = Transform(a[0] * b[0]  + a[4] * b[1]  + a[12] * b[3],
+                          a[0] * b[4]  + a[4] * b[5]  + a[12] * b[7],
+                          a[0] * b[12] + a[4] * b[13] + a[12] * b[15],
+                          a[1] * b[0]  + a[5] * b[1]  + a[13] * b[3],
+                          a[1] * b[4]  + a[5] * b[5]  + a[13] * b[7],
+                          a[1] * b[12] + a[5] * b[13] + a[13] * b[15],
+                          a[3] * b[0]  + a[7] * b[1]  + a[15] * b[3],
+                          a[3] * b[4]  + a[7] * b[5]  + a[15] * b[7],
+                          a[3] * b[12] + a[7] * b[13] + a[15] * b[15]);
 
         return *this;
     }
@@ -141,8 +143,8 @@ namespace MyEngine
     Transform& Transform::Translate(float x, float y)
     {
         Transform translation(1, 0, x,
-            0, 1, y,
-            0, 0, 1);
+                              0, 1, y,
+                              0, 0, 1);
 
         return Combine(translation);
     }
@@ -159,8 +161,8 @@ namespace MyEngine
         float sin = std::sin(rad);
 
         Transform rotation(cos, -sin, 0,
-            sin, cos, 0,
-            0, 0, 1);
+                           sin,  cos, 0,
+                           0,    0,   1);
 
         return Combine(rotation);
     }
@@ -172,8 +174,8 @@ namespace MyEngine
         float sin = std::sin(rad);
 
         Transform rotation(cos, -sin, centerX * (1 - cos) + centerY * sin,
-            sin, cos, centerY * (1 - cos) - centerX * sin,
-            0, 0, 1);
+                           sin,  cos, centerY * (1 - cos) - centerX * sin,
+                           0,    0,   1);
 
         return Combine(rotation);
     }
@@ -185,18 +187,18 @@ namespace MyEngine
 
     Transform& Transform::Scale(float scaleX, float scaleY)
     {
-        Transform scaling(scaleX, 0, 0,
-            0, scaleY, 0,
-            0, 0, 1);
+        Transform scaling(scaleX, 0,      0,
+                          0,      scaleY, 0, 
+                          0,      0,      1);
 
         return Combine(scaling);
     }
 
     Transform& Transform::Scale(float scaleX, float scaleY, float centerX, float centerY)
     {
-        Transform scaling(scaleX, 0, centerX * (1 - scaleX),
-            0, scaleY, centerY * (1 - scaleY),
-            0, 0, 1);
+        Transform scaling(scaleX, 0,      centerX * (1 - scaleX),
+                          0,      scaleY, centerY * (1 - scaleY),
+                          0,      0,      1);
 
         return Combine(scaling);
     }
@@ -231,9 +233,9 @@ namespace MyEngine
         const float* a = left.GetMatrix();
         const float* b = right.GetMatrix();
 
-        return ((a[0] == b[0]) && (a[1] == b[1]) && (a[3] == b[3]) &&
-            (a[4] == b[4]) && (a[5] == b[5]) && (a[7] == b[7]) &&
-            (a[12] == b[12]) && (a[13] == b[13]) && (a[15] == b[15]));
+        return ((a[0] == b[0])   && (a[1] == b[1])   && (a[3] == b[3]) && 
+                (a[4] == b[4])   && (a[5] == b[5])   && (a[7] == b[7]) &&
+                (a[12] == b[12]) && (a[13] == b[13]) && (a[15] == b[15]));
     }
 
     bool operator !=(const Transform& left, const Transform& right)
