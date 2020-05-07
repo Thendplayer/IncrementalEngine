@@ -10,7 +10,7 @@ namespace MyEngine
 	{
 	public:
 		Bitmap();
-		~Bitmap();
+		~Bitmap() override;
 
 		HRESULT Create(Texture* texture);
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;

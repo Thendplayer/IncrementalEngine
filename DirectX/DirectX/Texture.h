@@ -18,7 +18,7 @@ namespace MyEngine
 		D3DXVECTOR2 GetSize();
 
 		Texture(string filename);
-		~Texture();
+		virtual ~Texture();
 
 	private:
 		ID3D11ShaderResourceView* _texture;

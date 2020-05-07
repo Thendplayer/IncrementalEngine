@@ -24,7 +24,7 @@ namespace MyEngine
 		void SetWorldMatrix(D3DXMATRIX& worldMatrix);
 
 		ShaderManager();
-		~ShaderManager();
+		virtual ~ShaderManager();
 
 	private:
 		struct MatrixBufferType

@@ -5,16 +5,15 @@ namespace MyGame
 {
 	void ExampleGame::Init()
 	{
-		_actor = Engine::Get()->GetScene()->Create<Sprite>();
-		_actor->SetPosition(0, 0);
-		_actor->SetRotation(0);
-		_actor->SetScale(1, 1);
-		_actor->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
+		_sprite = Engine::Get()->GetScene()->Create<Sprite>();
+		_sprite->SetPosition(0, 0);
+		_sprite->SetRotation(0);
+		_sprite->SetScale(1, 1);
+		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
 	}
 
 	void ExampleGame::DeInit()
 	{
-		delete this;
 	}
 
 	void ExampleGame::Update(float dt)
@@ -23,37 +22,37 @@ namespace MyGame
 		
 		if (input->IsKeyDown(DirectInputKey::W))
 		{
-			_actor->SetScale(_actor->GetScale().x + 2 * dt, _actor->GetScale().y + 2 * dt);
+			_sprite->SetScale(_sprite->GetScale().x + 2 * dt, _sprite->GetScale().y + 2 * dt);
 		}
 
 		if (input->IsKeyDown(DirectInputKey::S))
 		{
-			_actor->SetScale(_actor->GetScale().x - 2 * dt, _actor->GetScale().y - 2 * dt);
+			_sprite->SetScale(_sprite->GetScale().x - 2 * dt, _sprite->GetScale().y - 2 * dt);
 		}
 
 		if (input->IsKeyDown(DirectInputKey::UpArrow))
 		{
-			_actor->SetPosition(_actor->GetPosition().x, _actor->GetPosition().y - 100 * dt);
+			_sprite->SetPosition(_sprite->GetPosition().x, _sprite->GetPosition().y - 100 * dt);
 		}
 
 		if (input->IsKeyDown(DirectInputKey::DownArrow))
 		{
-			_actor->SetPosition(_actor->GetPosition().x, _actor->GetPosition().y + 100 * dt);
+			_sprite->SetPosition(_sprite->GetPosition().x, _sprite->GetPosition().y + 100 * dt);
 		}
 
 		if (input->IsKeyDown(DirectInputKey::RightArrow))
 		{
-			_actor->SetPosition(_actor->GetPosition().x + 100 * dt, _actor->GetPosition().y);
+			_sprite->SetPosition(_sprite->GetPosition().x + 100 * dt, _sprite->GetPosition().y);
 		}
 		
 		if (input->IsKeyDown(DirectInputKey::LeftArrow))
 		{
-			_actor->SetPosition(_actor->GetPosition().x - 100 * dt, _actor->GetPosition().y);
+			_sprite->SetPosition(_sprite->GetPosition().x - 100 * dt, _sprite->GetPosition().y);
 		}
 		
 		if (input->IsKeyDown(DirectInputKey::Space))
 		{
-			_actor->SetRotation(_actor->GetRotation() + 200 * dt);
+			_sprite->SetRotation(_sprite->GetRotation() + 200 * dt);
 		}
 	}
 }

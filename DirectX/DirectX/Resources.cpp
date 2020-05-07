@@ -95,7 +95,7 @@ namespace MyEngine
 	{
 		if (item.Type == "Texture")
 		{
-			auto texture = new Texture(item.Fileroute);
+			Texture* texture = new Texture(item.Fileroute);
 			_textures.insert(_textures.begin(), pair<string, Texture*>(item.Name, texture));
 			
 			return;
@@ -103,7 +103,7 @@ namespace MyEngine
 		
 		if (item.Type == "Sound")
 		{
-			auto sound = new Sound(item.Fileroute);
+			Sound* sound = new Sound(item.Fileroute);
 			_sounds.insert(_sounds.begin(), pair<string, Sound*>(item.Name, sound));
 		
 			return;

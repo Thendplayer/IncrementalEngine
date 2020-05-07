@@ -43,10 +43,6 @@ namespace MyEngine
     {
     }
 
-    Transformable::~Transformable()
-    {
-    }
-
     void Transformable::SetPosition(float x, float y)
     {
         _position.x = x;

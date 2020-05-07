@@ -18,7 +18,7 @@ namespace MyEngine
 
 	public:
 		TextureShader();
-		~TextureShader();
+		virtual ~TextureShader();
 
 		HRESULT Init(ID3D11Device* device, HWND hwnd);
 

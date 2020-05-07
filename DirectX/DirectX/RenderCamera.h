@@ -23,7 +23,7 @@ namespace MyEngine
 		void GetViewMatrix(D3DXMATRIX& viewMatrix);
 
 		RenderCamera();
-		~RenderCamera();
+		virtual ~RenderCamera();
 
 	private:
 		D3DXVECTOR3 _position;

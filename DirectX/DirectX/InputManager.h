@@ -19,7 +19,7 @@ namespace MyEngine
 	{
 	public:
 		InputManager();
-		~InputManager();
+		virtual ~InputManager();
 
 		HRESULT Init(RenderWindow* renderWindow);
 		HRESULT Update();

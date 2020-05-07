@@ -14,7 +14,7 @@ namespace MyEngine
 		ALuint Buffer;
 
 		Sound(std::string filename);
-		~Sound();
+		virtual ~Sound();
 
 		HRESULT Init();
 

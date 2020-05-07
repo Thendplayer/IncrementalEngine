@@ -14,6 +14,6 @@ namespace MyGame
 		void Update(float dt) override;
 	
 	private:
-		Sprite* _actor;
+		Sprite* _sprite;
 	};
 }

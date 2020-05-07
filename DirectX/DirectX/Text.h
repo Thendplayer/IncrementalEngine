@@ -12,7 +12,7 @@ namespace MyEngine
 	{
 	public:
 		Text();
-		~Text();
+		~Text() override;
 
 		void SetFont(const std::wstring& font);
 		void ClearFont();

@@ -14,6 +14,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	
 	engine->Run(game);
 	
+	delete game;
 	delete engine;
 	
 	return 0;

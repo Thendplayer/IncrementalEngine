@@ -9,6 +9,10 @@ namespace MyEngine
 		_bounds = { 0, 0, 0, 0 };
 	}
 
+	TextureBase::~TextureBase()
+	{
+	}
+
 	void TextureBase::Update(Transform transform, FloatRect bounds)
 	{
 		_transform = transform;

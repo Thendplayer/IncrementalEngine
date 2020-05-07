@@ -12,7 +12,7 @@ namespace MyEngine
 	class Actor : public Transformable, public Drawable
 	{
 	public:
-		~Actor();
+		virtual ~Actor();
 
 		void Center();
 

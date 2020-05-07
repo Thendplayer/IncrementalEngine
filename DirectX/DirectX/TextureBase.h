@@ -15,6 +15,7 @@ namespace MyEngine
 	{
 	public:
 		TextureBase();
+		virtual ~TextureBase();
 
 		void Update(Transform transform, FloatRect bounds);
 

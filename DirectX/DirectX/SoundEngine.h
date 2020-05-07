@@ -17,7 +17,7 @@ namespace MyEngine
 	{
 	public:
 		SoundEngine();
-		~SoundEngine();
+		virtual ~SoundEngine();
 
 		void Reset();
 		void Pause();

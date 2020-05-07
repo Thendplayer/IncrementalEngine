@@ -22,7 +22,7 @@ namespace MyEngine
 		ShaderManager* GetShaderManager();
 	
 		RenderingEngine();
-		~RenderingEngine();
+		virtual ~RenderingEngine();
 
 	private:
 		D3DImplementation* _direct3D;

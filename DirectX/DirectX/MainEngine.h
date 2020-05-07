@@ -19,7 +19,7 @@ namespace MyEngine
 		static Engine* Get();
 
 		Engine();
-		~Engine();
+		virtual ~Engine();
 		
 		void Run(EngineGame* game);
 		

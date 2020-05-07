@@ -7,7 +7,7 @@ namespace MyEngine
 	{
 	public:
 		EngineGame();
-		~EngineGame();
+		virtual ~EngineGame();
 		
 		virtual void Init() = 0;
 		virtual void DeInit() = 0;

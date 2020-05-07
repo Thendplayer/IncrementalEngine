@@ -38,7 +38,6 @@ namespace MyEngine
     {
     public:
         Transformable();
-        ~Transformable();
 
         void SetPosition(float x, float y);
         void SetPosition(const D3DXVECTOR2& position);

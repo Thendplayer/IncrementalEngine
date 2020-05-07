@@ -21,7 +21,7 @@ namespace MyEngine
 			int GetScreenHeight();
 
 			RenderWindow();
-			~RenderWindow();
+			virtual ~RenderWindow();
 	};
 }
 

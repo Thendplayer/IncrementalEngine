@@ -18,7 +18,7 @@ namespace MyEngine
 			ShaderManager* shaderManager,
 			ID3D11Device* device
 		);
-		~Scene();
+		virtual ~Scene();
 		
 		void Destroy(Actor* drawable);
 

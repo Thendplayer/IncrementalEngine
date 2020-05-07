@@ -22,7 +22,7 @@ namespace MyEngine
 		LPCWSTR Error = L"";
 
 		Resources();
-		~Resources();
+		virtual ~Resources();
 
 		HRESULT Load();
 		Texture* GetTexture(string name);

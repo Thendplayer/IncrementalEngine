@@ -38,7 +38,7 @@ namespace MyEngine
 		void TurnZBufferOff();
 
 		D3DImplementation();
-		~D3DImplementation();
+		virtual ~D3DImplementation();
 
 	private:
 		RenderWindow* _renderWindow;

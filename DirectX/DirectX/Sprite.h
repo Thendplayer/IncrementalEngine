@@ -10,7 +10,7 @@ namespace MyEngine
 	{
 	public:
 		Sprite();
-		~Sprite();
+		virtual ~Sprite() override;
 
 		void SetTexture(Texture* texture);
 		void ClearTexture();
