@@ -10,6 +10,8 @@ namespace MyGame
 		_sprite->SetRotation(0);
 		_sprite->SetScale(1, 1);
 		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
+
+		Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
 	}
 
 	void ExampleGame::DeInit()
@@ -53,6 +55,16 @@ namespace MyGame
 		if (input->IsKeyDown(DirectInputKey::Space))
 		{
 			_sprite->SetRotation(_sprite->GetRotation() + 200 * dt);
+		}
+
+		if (input->IsKeyDown(DirectInputKey::Keypad1))
+		{
+			Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points1"));
+		}
+
+		if (input->IsKeyDown(DirectInputKey::Keypad2))
+		{
+			Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points2"));
 		}
 	}
 }

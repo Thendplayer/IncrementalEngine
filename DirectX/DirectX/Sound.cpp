@@ -1,4 +1,5 @@
 #include "alut.h"
+#include <cassert>
 
 #include "Sound.h"
 
@@ -8,6 +9,8 @@ namespace MyEngine
 		_filename(filename),
 		Buffer(NULL)
 	{
+		bool formatCheck = IS_WAV(_filename);
+		assert("The sound format you tried to load is incompatible." && formatCheck);
 	}
 
 	Sound::~Sound()

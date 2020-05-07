@@ -25,6 +25,7 @@ namespace MyEngine
 		
 		Scene* GetScene();
 		Resources* GetResources();
+		SoundEngine* GetSoundEngine();
 		InputManager* GetInput();
 
 	private:

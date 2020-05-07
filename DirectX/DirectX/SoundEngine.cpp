@@ -32,7 +32,7 @@ namespace MyEngine
 		return gain;
 	}
 
-	bool SoundEngine::Play(const Sound& sound)
+	bool SoundEngine::Play(const Sound* sound)
 	{
 		if (_soundOn)
 		{
@@ -44,7 +44,7 @@ namespace MyEngine
 				return false;
 			}
 
-			alSourcei(_sources[index].Source, AL_BUFFER, sound.Buffer);
+			alSourcei(_sources[index].Source, AL_BUFFER, sound->Buffer);
 			alSourcei(_sources[index].Source, AL_SOURCE_RELATIVE, AL_TRUE);
 			alSourcef(_sources[index].Source, AL_PITCH, 1.0f);
 			alSourcef(_sources[index].Source, AL_GAIN, 1.0f);
@@ -116,7 +116,7 @@ namespace MyEngine
 		return true;
 	}
 
-	bool SoundEngine::PlaySource(unsigned int source, const Sound sound, bool loop)
+	bool SoundEngine::PlaySource(unsigned int source, const Sound* sound, bool loop)
 	{
 		if (_soundOn)
 		{
@@ -124,7 +124,7 @@ namespace MyEngine
 			{
 				StopSource(source);
 
-				alSourcei(_sources[source].Source, AL_BUFFER, sound.Buffer);
+				alSourcei(_sources[source].Source, AL_BUFFER, sound->Buffer);
 				alSourcef(_sources[source].Source, AL_PITCH, 1.0f);
 				alSourcef(_sources[source].Source, AL_GAIN, 1.0f);
 				alSourcei(_sources[source].Source, AL_LOOPING, loop ? AL_TRUE : AL_FALSE);

@@ -104,6 +104,7 @@ namespace MyEngine
 		if (item.Type == "Sound")
 		{
 			Sound* sound = new Sound(item.Fileroute);
+			sound->Init();
 			_sounds.insert(_sounds.begin(), pair<string, Sound*>(item.Name, sound));
 		
 			return;

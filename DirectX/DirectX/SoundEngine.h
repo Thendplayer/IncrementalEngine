@@ -27,11 +27,11 @@ namespace MyEngine
 		void SetGain(float gain);
 		float GetGain();
 
-		bool Play(const Sound& sound);
+		bool Play(const Sound* sound);
 
 		int CreateSource();
 		bool DeleteSource(unsigned int source);
-		bool PlaySource(unsigned int source, const Sound sound, bool loop);
+		bool PlaySource(unsigned int source, const Sound* sound, bool loop);
 		bool PauseSource(unsigned int source);
 		bool StopSource(unsigned int source);
 		bool SetSourceGain(unsigned int source, float inGain);

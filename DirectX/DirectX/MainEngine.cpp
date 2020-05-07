@@ -148,6 +148,11 @@ namespace MyEngine
 		return _resources;
 	}
 
+	SoundEngine* Engine::GetSoundEngine()
+	{
+		return _soundEngine;
+	}
+
 	InputManager* Engine::GetInput()
 	{
 		return _inputManager;

@@ -3,8 +3,12 @@
 		"Fileroute" : "Resources/avatar.png",
 		"Type" : "Texture"
 	},
-	"Sonic" : {
+	"Sonic": {
 		"Fileroute" : "Resources/pp.jpg",
 		"Type" : "Texture"
+	},
+	"Points": {
+		"Fileroute": "Resources/audio.wav",
+		"Type": "Sound"
 	}
 }

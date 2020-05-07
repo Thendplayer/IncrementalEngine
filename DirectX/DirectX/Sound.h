@@ -8,6 +8,8 @@
 
 namespace MyEngine 
 {
+	#define IS_WAV(fn) fn.substr(fn.find_last_of(".") + 1) == "wav";
+
 	class Sound
 	{
 	public:
