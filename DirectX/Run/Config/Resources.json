@@ -1,0 +1,10 @@
+{
+	"Avatar" : {
+		"Fileroute" : "Resources/avatar.png",
+		"Type" : "Texture"
+	},
+	"Sonic" : {
+		"Fileroute" : "Resources/pp.jpg",
+		"Type" : "Texture"
+	}
+}

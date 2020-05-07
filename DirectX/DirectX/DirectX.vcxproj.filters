@@ -280,11 +280,11 @@
     <None Include="ThirdParty\json11\json11.pc.in">
       <Filter>Source Files\ThirdParty\json11</Filter>
     </None>
-    <None Include="Config\Resources.json">
-      <Filter>Source Files\Game</Filter>
-    </None>
     <None Include="Shaders\globals.fxh">
       <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\Run\Config\Resources.json">
+      <Filter>Source Files\Game</Filter>
     </None>
   </ItemGroup>
 </Project>

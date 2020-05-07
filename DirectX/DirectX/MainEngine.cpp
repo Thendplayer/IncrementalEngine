@@ -26,8 +26,7 @@ namespace MyEngine
 		_renderingEngine(NULL),
 		_renderWindow(NULL),
 		_inputManager(NULL),
-		//TODO: Uncomment
-		//_soundEngine(NULL),
+		_soundEngine(NULL),
 		_scene(NULL),
 		_resources(NULL)
 	{
@@ -101,8 +100,7 @@ namespace MyEngine
 			direct3D->GetDevice()
 		);
 
-		//TODO: Uncomment
-		//_soundEngine = new SoundEngine;
+		_soundEngine = new SoundEngine;
 
 		_resources = new Resources;
 		result = _resources->Load();
@@ -129,8 +127,7 @@ namespace MyEngine
     {
 		CHECKED_DELETE(_resources);
 		CHECKED_DELETE(_scene);
-		//TODO: Uncomment
-		//CHECKED_DELETE(_soundEngine);
+		CHECKED_DELETE(_soundEngine);
 		CHECKED_DELETE(_renderingEngine);
 		CHECKED_DELETE(_renderWindow);
 		CHECKED_DELETE(_inputManager);
