@@ -35,13 +35,6 @@ namespace MyEngine
 	{
 		HRESULT result;
 
-		result = Draw(deviceContext);
-
-		if (FAILED(result))
-		{
-			return CO_E_ERRORINAPP;
-		}
-
 		for (int i = 0; i < _children.size(); i++)
 		{
 			result = _children[i]->DrawRecursive(deviceContext);
@@ -50,6 +43,13 @@ namespace MyEngine
 			{
 				return CO_E_ERRORINAPP;
 			}
+		}
+
+		result = Draw(deviceContext);
+
+		if (FAILED(result))
+		{
+			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -63,6 +63,12 @@ namespace MyEngine
 	void Actor::Center()
 	{
 		auto origin = D3DXVECTOR2(GetLocalBounds().width(), GetLocalBounds().height()) / 2.0f;
+
+		if (_parent != nullptr)
+		{
+			origin -= _parent->GetOrigin();
+		}
+
 		SetOrigin(origin);
 	}
 
@@ -74,6 +80,16 @@ namespace MyEngine
 	FloatRect Actor::GetGlobalBounds()
 	{
 		return GetWorldTransform()->TransformRect(GetLocalBounds());
+	}
+
+	const Transform Actor::GetCombinedTransform()
+	{
+		if (_parent != nullptr) 
+		{
+			return _parent->GetCombinedTransform() * GetTransform();
+		}
+
+		return GetTransform();
 	}
 
 	const Transform* Actor::GetWorldTransform() const

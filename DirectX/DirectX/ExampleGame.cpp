@@ -12,6 +12,7 @@ namespace MyGame
 		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
 
 		Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
+		_child = nullptr;
 	}
 
 	void ExampleGame::DeInit()
@@ -57,14 +58,22 @@ namespace MyGame
 			_sprite->SetRotation(_sprite->GetRotation() + 200 * dt);
 		}
 
-		if (input->IsKeyDown(DirectInputKey::Keypad1))
+		if (input->IsKeyDown(DirectInputKey::P))
 		{
-			Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points1"));
+			Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
 		}
 
-		if (input->IsKeyDown(DirectInputKey::Keypad2))
+		if (input->IsKeyDown(DirectInputKey::C))
 		{
-			Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points2"));
+			if (_child == nullptr)
+			{
+				_child = Engine::Get()->GetScene()->Create<Sprite>();
+				_child->SetParent(_sprite);
+				_child->SetPosition(0, 0);
+				_child->SetRotation(0);
+				_child->SetScale(1, 1);
+				_child->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
+			}
 		}
 	}
 }

@@ -57,7 +57,7 @@ namespace MyEngine
 	
 	void Sprite::Update()
 	{
-		_texture->Update(GetTransform(), GetLocalBounds());
+		_texture->Update(GetCombinedTransform(), GetLocalBounds());
 	}
 	
 	HRESULT Sprite::Draw(ID3D11DeviceContext* deviceContext)

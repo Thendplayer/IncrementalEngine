@@ -19,6 +19,8 @@ namespace MyEngine
 		virtual FloatRect GetLocalBounds();
 		FloatRect GetGlobalBounds();
 
+		const Transform GetCombinedTransform();
+
 		Actor* GetParent() const;
 		void SetParent(Actor* value);
 

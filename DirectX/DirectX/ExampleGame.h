@@ -15,5 +15,6 @@ namespace MyGame
 	
 	private:
 		Sprite* _sprite;
+		Sprite* _child;
 	};
 }
