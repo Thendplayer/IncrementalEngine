@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{1CA2640A-143E-471D-88E3-19800F00FAA7}</ProjectGuid>
-    <RootNamespace>DirectX</RootNamespace>
+    <RootNamespace>IncrementalEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,25 +70,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Run</OutDir>
     <TargetName>$(ProjectName)Debug</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Run</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Run</OutDir>
     <TargetName>$(ProjectName)Debug</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Run</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -99,13 +99,13 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>Default</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,13 +114,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,7 +134,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions); NDEBUG</PreprocessorDefinitions>
       <LanguageStandard>Default</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,7 +153,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)DirectX\ThirdParty\OpenAL\include;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -161,7 +161,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX\ThirdParty\OpenAL\libs;$(SolutionDir)DirectX\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)DirectX\ThirdParty\FW1FontWrapper\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
