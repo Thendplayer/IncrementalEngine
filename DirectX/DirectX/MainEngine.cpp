@@ -114,6 +114,7 @@ namespace MyEngine
 	void Engine::Update(float dt)
 	{
 		_renderingEngine->Update(dt);
+		_inputManager->Update();
 		_scene->Update();
 	}
 

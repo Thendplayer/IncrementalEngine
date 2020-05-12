@@ -123,8 +123,12 @@ enum class DirectInputKey : unsigned int
 	Help = VK_HELP,
 	Print = VK_PRINT,
 	LeftWindows = VK_LWIN,
-	RightWindows = VK_RWIN,
-	MouseRight = VK_RBUTTON,
-	MouseLeft = VK_LBUTTON,
-	MouseMiddle = VK_MBUTTON
+	RightWindows = VK_RWIN
+};
+
+enum class DirectInputMouseButton : unsigned int 
+{
+	MouseRight = 0,
+	MouseLeft = 1
+	//MouseMiddle = 2
 };

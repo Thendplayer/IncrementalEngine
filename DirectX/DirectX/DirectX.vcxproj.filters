@@ -85,6 +85,9 @@
     <Filter Include="Source Files\Engine\Text">
       <UniqueIdentifier>{1ddb1d03-8dfd-4ad8-bcc7-7d3dd71d8044}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Button">
+      <UniqueIdentifier>{ef909034-a9d3-412b-83c0-447ab6d0a076}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -170,6 +173,9 @@
     </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>Source Files\Engine\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\Engine\Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="Text.h">
       <Filter>Source Files\Engine\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Source Files\Engine\Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

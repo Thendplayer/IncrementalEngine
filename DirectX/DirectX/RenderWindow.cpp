@@ -56,15 +56,18 @@ namespace MyEngine
 			posY = (GetSystemMetrics(SM_CYSCREEN) - _screenHeight) / 2;
 		}
 
+		RECT wr = { 0, 0, _screenWidth, _screenHeight };
+		AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, FALSE);
+		
 		_hWnd = CreateWindowEx(
 			WS_EX_APPWINDOW,
 			APPLICATION_NAME,
 			APPLICATION_NAME,
-			WS_OVERLAPPEDWINDOW,
+			WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME,
 			posX,
 			posY,
-			_screenWidth,
-			_screenHeight,
+			wr.right - wr.left,
+			wr.bottom - wr.top,
 			NULL,
 			NULL,
 			_hInstance,

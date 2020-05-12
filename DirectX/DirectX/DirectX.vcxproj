@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Config.h" />
     <ClCompile Include="FloatRect.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -197,6 +198,7 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="DirectInputKey.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EngineGame.h" />

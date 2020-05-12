@@ -2,6 +2,7 @@
 #include "EngineGame.h"
 #include "Sprite.h"
 #include "Text.h"
+#include "Button.h"
 
 using namespace MyEngine;
 
@@ -16,7 +17,10 @@ namespace MyGame
 	
 	private:
 		Sprite* _sprite;
+		Button* _button;
 		Sprite* _child;
 		Text* _text;
+
+		float t;
 	};
 }
