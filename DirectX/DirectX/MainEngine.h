@@ -8,8 +8,10 @@
 #include "RenderingEngine.h"
 #include "RenderWindow.h"
 #include "SoundEngine.h"
+#include "FontFactory.h"
 #include "Scene.h"
 #include "Resources.h"
+#include "Utils.h"
 
 namespace MyEngine
 {

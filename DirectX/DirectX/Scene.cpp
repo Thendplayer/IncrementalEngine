@@ -81,7 +81,7 @@ namespace MyEngine
 	{
 		HRESULT result;
 
-		for (int i = 0; i < _items.size(); i++)
+		for (int i = _items.size() - 1; i >= 0 ; i--)
 		{
 			if (IS_ROOT(_items[i].Actor))
 			{

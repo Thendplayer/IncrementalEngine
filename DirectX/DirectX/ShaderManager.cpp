@@ -153,4 +153,11 @@ namespace MyEngine
 	{
 		_direct3D->SetWorldMatrix(worldMatrix);
 	}
+	
+	D3DXMATRIX& ShaderManager::GetOrthoProjectionMatrix()
+	{
+		D3DXMATRIX orthoProjectionMatrix;
+		_direct3D->GetOrthoProjectionMatrix(orthoProjectionMatrix);
+		return orthoProjectionMatrix;
+	}
 }

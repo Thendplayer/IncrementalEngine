@@ -13,4 +13,6 @@
 #define VSYNC_ENABLED true
 #define SHOW_CURSOR true
 
+#define DEFAULT_FONT_FAMILY L"Courier New"
+
 #endif

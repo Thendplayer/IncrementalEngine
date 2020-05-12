@@ -230,9 +230,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Run\Config\Resources.json" />
-    <None Include="Shaders\globals.fxh" />
-    <None Include="Shaders\texture.ps" />
-    <None Include="Shaders\texture.vs" />
+    <None Include="..\Run\Shaders\globals.fxh" />
+    <None Include="..\Run\Shaders\texture.ps" />
+    <None Include="..\Run\Shaders\texture.vs" />
     <None Include="ThirdParty\json11\json11.pc.in" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

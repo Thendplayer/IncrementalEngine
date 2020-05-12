@@ -3,7 +3,6 @@
 
 #include "MainEngine.h"
 #include "EngineGame.h"
-#include "Utils.h"
 
 namespace MyEngine
 {
@@ -125,6 +124,8 @@ namespace MyEngine
 
     void Engine::DeInit()
     {
+		FontFactory::Release();
+
 		CHECKED_DELETE(_resources);
 		CHECKED_DELETE(_scene);
 		CHECKED_DELETE(_soundEngine);

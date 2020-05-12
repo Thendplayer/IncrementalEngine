@@ -5,14 +5,33 @@ namespace MyGame
 {
 	void ExampleGame::Init()
 	{
-		_sprite = Engine::Get()->GetScene()->Create<Sprite>();
-		_sprite->SetPosition(0, 0);
-		_sprite->SetRotation(0);
-		_sprite->SetScale(1, 1);
-		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
+		//Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
 
-		Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
-		_child = nullptr;
+		//CYAN
+		_child = Engine::Get()->GetScene()->Create<Sprite>();
+		//_child->SetParent(_text);
+		_child->SetPosition(0, 0);
+		_child->SetRotation(0);
+		_child->SetScale(1, 1);
+		_child->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
+		
+		//YELLOW
+		_text = Engine::Get()->GetScene()->Create<Text>();
+		_text->SetPosition(100, 100);
+		_text->SetRotation(0);
+		_text->SetScale(1, 1);
+
+		_text->SetFont(L"FunnyKid");
+		_text->SetFontSize(120);
+		_text->SetText(L"TEST");
+		_text->SetTextColor(255, 255, 0, 1);
+		
+		//BLUE
+		_sprite = Engine::Get()->GetScene()->Create<Sprite>();
+		_sprite->SetPosition(200, 200);
+		_sprite->SetRotation(0);
+		_sprite->SetScale(.5f, .5f);
+		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
 	}
 
 	void ExampleGame::DeInit()
@@ -25,55 +44,42 @@ namespace MyGame
 		
 		if (input->IsKeyDown(DirectInputKey::W))
 		{
-			_sprite->SetScale(_sprite->GetScale().x + 2 * dt, _sprite->GetScale().y + 2 * dt);
+			_text->SetScale(_text->GetScale().x + 2 * dt, _text->GetScale().y + 2 * dt);
 		}
-
+		
 		if (input->IsKeyDown(DirectInputKey::S))
 		{
-			_sprite->SetScale(_sprite->GetScale().x - 2 * dt, _sprite->GetScale().y - 2 * dt);
+			_text->SetScale(_text->GetScale().x - 2 * dt, _text->GetScale().y - 2 * dt);
 		}
-
+		
 		if (input->IsKeyDown(DirectInputKey::UpArrow))
 		{
-			_sprite->SetPosition(_sprite->GetPosition().x, _sprite->GetPosition().y - 100 * dt);
+			_text->SetPosition(_text->GetPosition().x, _text->GetPosition().y - 100 * dt);
 		}
-
+		
 		if (input->IsKeyDown(DirectInputKey::DownArrow))
 		{
-			_sprite->SetPosition(_sprite->GetPosition().x, _sprite->GetPosition().y + 100 * dt);
+			_text->SetPosition(_text->GetPosition().x, _text->GetPosition().y + 100 * dt);
 		}
-
+		
 		if (input->IsKeyDown(DirectInputKey::RightArrow))
 		{
-			_sprite->SetPosition(_sprite->GetPosition().x + 100 * dt, _sprite->GetPosition().y);
+			_text->SetPosition(_text->GetPosition().x + 100 * dt, _text->GetPosition().y);
 		}
 		
 		if (input->IsKeyDown(DirectInputKey::LeftArrow))
 		{
-			_sprite->SetPosition(_sprite->GetPosition().x - 100 * dt, _sprite->GetPosition().y);
+			_text->SetPosition(_text->GetPosition().x - 100 * dt, _text->GetPosition().y);
 		}
 		
 		if (input->IsKeyDown(DirectInputKey::Space))
 		{
-			_sprite->SetRotation(_sprite->GetRotation() + 200 * dt);
+			_text->SetRotation(_text->GetRotation() + 200 * dt);
 		}
-
+		
 		if (input->IsKeyDown(DirectInputKey::P))
 		{
 			Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
-		}
-
-		if (input->IsKeyDown(DirectInputKey::C))
-		{
-			if (_child == nullptr)
-			{
-				_child = Engine::Get()->GetScene()->Create<Sprite>();
-				_child->SetParent(_sprite);
-				_child->SetPosition(0, 0);
-				_child->SetRotation(0);
-				_child->SetScale(1, 1);
-				_child->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
-			}
 		}
 	}
 }

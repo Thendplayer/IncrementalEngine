@@ -1,6 +1,7 @@
 #pragma once
 #include "EngineGame.h"
 #include "Sprite.h"
+#include "Text.h"
 
 using namespace MyEngine;
 
@@ -16,5 +17,6 @@ namespace MyGame
 	private:
 		Sprite* _sprite;
 		Sprite* _child;
+		Text* _text;
 	};
 }

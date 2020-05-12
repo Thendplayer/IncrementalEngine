@@ -73,7 +73,7 @@ namespace MyEngine
         Transform& Scale(const D3DXVECTOR2& factors, const D3DXVECTOR2& center);
 
     private:
-        float _matrix[16];
+        float _fontWrapperMatrix[16];
     };
 
     Transform operator *(const Transform& left, const Transform& right);

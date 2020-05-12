@@ -68,9 +68,10 @@ namespace MyEngine
         float _rotation;
         D3DXVECTOR2 _scale;
 
+        mutable bool _transformNeedUpdate;
+
     private:
         mutable Transform _transform;
-        mutable bool _transformNeedUpdate;
         mutable Transform _inverseTransform;
         mutable bool _inverseTransformNeedUpdate;
     };
