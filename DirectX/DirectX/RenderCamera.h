@@ -3,7 +3,7 @@
 
 #include <D3DX10math.h>
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	#define DEFAULT_UP D3DXVECTOR3(0.0f, 1.0f, 0.0f)
 	#define DEFAULT_LOOK_AT D3DXVECTOR3(0.0f, 0.0f, 1.0f)

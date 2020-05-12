@@ -3,7 +3,7 @@
 
 #include <windows.h>
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class WindowsInput
 	{

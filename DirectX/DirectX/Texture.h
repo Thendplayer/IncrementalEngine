@@ -7,7 +7,7 @@
 
 #include "StringUtils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Texture
 	{

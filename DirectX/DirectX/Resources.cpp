@@ -1,6 +1,6 @@
 #include "Resources.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Resources::Resources() :
 		Error(L""),

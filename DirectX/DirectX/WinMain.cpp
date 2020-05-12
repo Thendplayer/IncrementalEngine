@@ -5,7 +5,7 @@
 #include "ExampleGame.h"
 
 using namespace MyGame;
-using namespace MyEngine;
+using namespace IncrementalEngine;
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

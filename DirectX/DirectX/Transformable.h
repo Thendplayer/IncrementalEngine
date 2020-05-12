@@ -32,7 +32,7 @@
 
 #include "Transform.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
     class Transformable
     {

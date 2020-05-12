@@ -4,7 +4,7 @@
 #include "TextureBase.h"
 #include "RenderWindow.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Bitmap : public TextureBase
 	{

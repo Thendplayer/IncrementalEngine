@@ -5,7 +5,7 @@
 #include "DirectInputKey.h"
 #include "RenderWindow.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	#define KEY_NUM 256
 	

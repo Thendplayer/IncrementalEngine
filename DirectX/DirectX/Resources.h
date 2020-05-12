@@ -11,7 +11,7 @@
 using json11::Json;
 using namespace std;
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Resources 
 	{

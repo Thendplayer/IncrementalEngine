@@ -5,7 +5,7 @@
 
 #include "SoundEngine.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	SoundEngine::SoundEngine() : 
 		_soundOn(true), 

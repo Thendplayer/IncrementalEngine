@@ -6,7 +6,7 @@
 #include "ShaderManager.h"
 #include "Bitmap.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	#define DEFAULT_2D_CAMERA_POSITION D3DXVECTOR3(0.0f, 0.0f, -10.0f)
 

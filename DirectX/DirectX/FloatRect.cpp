@@ -1,6 +1,6 @@
 #include "FloatRect.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	FloatRect::FloatRect()
 	{

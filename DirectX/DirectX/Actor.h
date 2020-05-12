@@ -7,7 +7,7 @@
 #include "Drawable.h"
 #include "Transformable.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	class Actor : public Transformable, public Drawable
 	{

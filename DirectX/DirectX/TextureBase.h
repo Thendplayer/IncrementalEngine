@@ -9,7 +9,7 @@
 #include "Transform.h"
 #include "FloatRect.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class TextureBase : virtual public Drawable
 	{

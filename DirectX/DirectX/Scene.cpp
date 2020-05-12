@@ -3,7 +3,7 @@
 #include "Scene.h"
 #include "Utils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Scene::Scene(
 		RenderWindow* renderWindow, 

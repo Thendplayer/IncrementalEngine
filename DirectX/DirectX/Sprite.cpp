@@ -1,7 +1,7 @@
 #include "Sprite.h"
 #include "Utils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Sprite::Sprite() :
 		_texture(NULL)

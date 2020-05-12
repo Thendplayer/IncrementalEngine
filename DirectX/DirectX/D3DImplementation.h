@@ -15,7 +15,7 @@
 
 #include "RenderWindow.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	class D3DImplementation
 	{

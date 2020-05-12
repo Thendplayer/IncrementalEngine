@@ -2,7 +2,7 @@
 #include "Utils.h"
 #include "Transform.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Bitmap::Bitmap() : 
 		_vertexBuffer(NULL),

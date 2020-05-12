@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <windowsx.h>
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	class RenderWindow
 	{

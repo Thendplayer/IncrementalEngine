@@ -2,7 +2,7 @@
 #include "Utils.h"
 #include <cassert>
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	RenderingEngine::RenderingEngine() :
 		_direct3D(NULL),

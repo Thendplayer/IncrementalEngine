@@ -4,7 +4,7 @@
 #include "MainEngine.h"
 #include "EngineGame.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	#define FPS 60
 	#define DELTA_SECONDS (1.0 / FPS)

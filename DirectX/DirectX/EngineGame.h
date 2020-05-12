@@ -1,7 +1,7 @@
 #ifndef _EngineGame_H
 #define _EngineGame_H
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	class EngineGame
 	{

@@ -5,7 +5,7 @@
 #include "Config.h"
 #include "Text.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Text::Text() :
 		_fontWrapper(NULL),

@@ -29,7 +29,7 @@
 
 #include "Transformable.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
     Transformable::Transformable() :
         _origin(0, 0),

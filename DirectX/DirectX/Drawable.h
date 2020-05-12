@@ -5,7 +5,7 @@
 #include "RenderWindow.h"
 #include "ShaderManager.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Drawable 
 	{

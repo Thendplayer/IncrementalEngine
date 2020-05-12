@@ -36,7 +36,7 @@
 
 using namespace std;
 
-namespace MyEngine
+namespace IncrementalEngine
 {
     class Transform
     {

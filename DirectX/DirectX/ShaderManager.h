@@ -6,7 +6,7 @@
 #include "RenderCamera.h"
 #include "TextureShader.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	class ShaderManager
 	{

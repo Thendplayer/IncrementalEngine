@@ -1,7 +1,7 @@
 #include "Texture.h"
 #include "Utils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Texture::Texture(string filename) :
 		_texture(NULL),

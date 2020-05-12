@@ -7,7 +7,7 @@
 #include <string>
 #include <xnamath.h>
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Text : public Actor
 	{

@@ -1,7 +1,7 @@
 #include "RenderCamera.h"
 #include "Math.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	RenderCamera::RenderCamera() :
 		_position(0.0f, 0.0f, 0.0f),

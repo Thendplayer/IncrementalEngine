@@ -5,7 +5,7 @@
 #include "Config.h"
 #include "Utils.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	D3DImplementation::D3DImplementation() :
 		_swapChain(0),

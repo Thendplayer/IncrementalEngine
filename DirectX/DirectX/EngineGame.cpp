@@ -1,6 +1,6 @@
 #include "EngineGame.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	EngineGame::EngineGame()
 	{

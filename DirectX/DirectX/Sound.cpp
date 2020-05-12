@@ -3,7 +3,7 @@
 
 #include "Sound.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	Sound::Sound(std::string filename) :
 		_filename(filename),

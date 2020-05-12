@@ -2,7 +2,7 @@
 
 #include "WindowsInput.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	WindowsInput* WindowsInput::WINDOWS_INPUT = nullptr;
 

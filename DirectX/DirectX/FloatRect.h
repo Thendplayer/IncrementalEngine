@@ -3,7 +3,7 @@
 
 #include <D2d1helper.h>
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	struct FloatRect 
 	{

@@ -1,7 +1,7 @@
 #include "Button.h"
 #include "MainEngine.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	void Button::Update()
 	{

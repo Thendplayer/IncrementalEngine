@@ -4,7 +4,7 @@
 #include "Actor.h"
 #include "Bitmap.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Sprite : public Actor
 	{

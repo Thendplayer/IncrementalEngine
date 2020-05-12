@@ -1,7 +1,7 @@
 #include "FontFactory.h"
 #include "Utils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	IFW1Factory* FontFactory::FACTORY_INSTANCE = nullptr;
 

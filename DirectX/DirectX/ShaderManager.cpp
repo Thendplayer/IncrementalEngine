@@ -2,7 +2,7 @@
 #include <cassert>
 #include "Utils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	ShaderManager::ShaderManager() :
 		_textureShader(NULL),

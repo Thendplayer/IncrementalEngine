@@ -1,6 +1,6 @@
 #include "TextureBase.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	TextureBase::TextureBase() :
 		_texture(NULL)

@@ -3,7 +3,7 @@
 
 #include "Sprite.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
 	class Button : public Sprite
 	{

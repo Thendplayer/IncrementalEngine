@@ -3,7 +3,7 @@
 
 #include "FW1FontWrapper.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	static class FontFactory
 	{

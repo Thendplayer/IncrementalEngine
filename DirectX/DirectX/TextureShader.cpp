@@ -1,7 +1,7 @@
 #include "TextureShader.h"
 #include "Utils.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	TextureShader::TextureShader() :
 		_vertexShader(NULL),

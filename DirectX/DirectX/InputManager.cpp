@@ -1,7 +1,7 @@
 #include "InputManager.h"
 #include "Utils.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	InputManager::InputManager()
 	{

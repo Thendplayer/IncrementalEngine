@@ -4,7 +4,7 @@
 #include "WindowsInput.h"
 #include "Config.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {	
 	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 

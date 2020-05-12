@@ -4,7 +4,7 @@
 #include "Text.h"
 #include "Button.h"
 
-using namespace MyEngine;
+using namespace IncrementalEngine;
 
 namespace MyGame
 {

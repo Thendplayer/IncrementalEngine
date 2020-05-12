@@ -29,7 +29,7 @@
 
 #include "Transform.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {
     const Transform Transform::Identity;
 

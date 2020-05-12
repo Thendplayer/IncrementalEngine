@@ -1,7 +1,7 @@
 #include "Actor.h"
 #include "Utils.h"
 
-namespace MyEngine 
+namespace IncrementalEngine 
 {	
 	Actor::~Actor()
 	{

@@ -11,7 +11,7 @@
 
 #include "Sound.h"
 
-namespace MyEngine
+namespace IncrementalEngine
 {
 	class SoundEngine
 	{
