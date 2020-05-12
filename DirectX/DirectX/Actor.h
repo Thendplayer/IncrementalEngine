@@ -27,6 +27,9 @@ namespace MyEngine
 		virtual void Init();
 		virtual void Update();
 
+		void SetActive(bool active);
+		bool IsActive();
+
 		void UpdateRecursive();
 		HRESULT DrawRecursive(ID3D11DeviceContext* deviceContext);
 
@@ -35,6 +38,7 @@ namespace MyEngine
 	private:
 		Actor* _parent;
 		vector<Actor*> _children;
+		bool _active;
 
 		const Transform* GetWorldTransform() const;
 		

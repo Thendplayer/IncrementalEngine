@@ -43,6 +43,7 @@ namespace MyEngine
 			T* actor = new T();
 			CopyParameters(actor);
 
+			actor->SetActive(true);
 			actor->Init();
 
 			auto newItem = SceneItem();

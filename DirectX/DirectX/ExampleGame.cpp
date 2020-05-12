@@ -40,7 +40,7 @@ namespace MyGame
 		_button->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
 
 		_sprite = Engine::Get()->GetScene()->Create<Sprite>();
-		_sprite->SetPosition(t * 10, t * 10);
+		_sprite->SetPosition(0, 0);
 		_sprite->SetRotation(0);
 		_sprite->SetScale(.25f, .25f);
 		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
@@ -52,10 +52,9 @@ namespace MyGame
 
 	void ExampleGame::Update(float dt)
 	{
-		t -= dt * 10;
-		if (_button->Released()) 
+		if (_button->Pressed()) 
 		{
-			_sprite->SetPosition(t * 10, t * 10);
+			_sprite->SetActive(!_sprite->IsActive());
 		}
 
 		//auto input = Engine::Get()->GetInput();

@@ -20,7 +20,5 @@ namespace MyGame
 		Button* _button;
 		Sprite* _child;
 		Text* _text;
-
-		float t;
 	};
 }

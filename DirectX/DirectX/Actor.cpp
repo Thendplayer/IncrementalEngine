@@ -21,8 +21,20 @@ namespace MyEngine
 	{
 	}
 
+	void Actor::SetActive(bool active)
+	{
+		_active = active;
+	}
+
+	bool Actor::IsActive()
+	{
+		return _active;
+	}
+
 	void Actor::UpdateRecursive()
 	{
+		if (!_active) return;
+
 		Update();
 
 		for (int i = 0; i < _children.size(); i++)
@@ -34,6 +46,8 @@ namespace MyEngine
 	HRESULT Actor::DrawRecursive(ID3D11DeviceContext* deviceContext)
 	{
 		HRESULT result;
+
+		if (!_active) return S_OK;
 
 		for (int i = 0; i < _children.size(); i++)
 		{
