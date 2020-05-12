@@ -93,7 +93,7 @@ namespace IncrementalEngine
 
 	FloatRect Actor::GetGlobalBounds()
 	{
-		return GetWorldTransform()->TransformRect(GetLocalBounds());
+		return GetCombinedTransform().TransformRect(GetLocalBounds());
 	}
 
 	const Transform Actor::GetCombinedTransform()
@@ -106,19 +106,49 @@ namespace IncrementalEngine
 		return GetTransform();
 	}
 
-	const Transform* Actor::GetWorldTransform() const
+	const D3DXVECTOR2 Actor::GetCombinedTranslation()
 	{
 		if (_parent != nullptr)
 		{
-			return &(GetTransform() * *_parent->GetWorldTransform());
+			return _parent->GetCombinedTranslation() + GetPosition();
 		}
 
-		return &GetTransform();
+		return GetPosition();
+	}
+
+	const D3DXVECTOR2 Actor::GetCombinedScale()
+	{
+		if (_parent != nullptr)
+		{
+			return _parent->GetCombinedScale() + GetScale();
+		}
+
+		return GetScale();
+	}
+
+	const float Actor::GetCombinedRotation()
+	{
+		if (_parent != nullptr)
+		{
+			return _parent->GetCombinedRotation() + GetRotation();
+		}
+
+		return GetRotation();
+	}
+
+	const Transform Actor::GetWorldTransform() const
+	{
+		if (_parent != nullptr)
+		{
+			return GetTransform() * _parent->GetWorldTransform();
+		}
+
+		return GetTransform();
 	}
 
 	D3DXVECTOR2 Actor::GetWorldPosition() const
 	{
-		return (*GetWorldTransform() * GetOrigin());
+		return GetWorldTransform() * GetOrigin();
 	}
 
 	void Actor::SetWorldPosition(D3DXVECTOR2 value)
@@ -127,7 +157,7 @@ namespace IncrementalEngine
 
 		if (_parent != nullptr)
 		{
-			newPosition = _parent->GetWorldTransform()->GetInverse().TransformPoint(value);
+			newPosition = _parent->GetWorldTransform().GetInverse().TransformPoint(value);
 		}
 		else 
 		{

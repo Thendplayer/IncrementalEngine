@@ -1,5 +1,6 @@
 #include "RenderingEngine.h"
 #include "Utils.h"
+#include "Config.h"
 #include <cassert>
 
 namespace IncrementalEngine
@@ -68,7 +69,7 @@ namespace IncrementalEngine
 	{
 		HRESULT result;
 
-		_direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
+		_direct3D->BeginScene(BACKGROUND_COLOR);
 		_camera->Draw();
 		
 		result = _shaderManager->SetupFrame();

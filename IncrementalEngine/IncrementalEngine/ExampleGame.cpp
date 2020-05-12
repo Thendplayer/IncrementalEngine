@@ -5,45 +5,20 @@ namespace MyGame
 {
 	void ExampleGame::Init()
 	{
-		//Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
+		_displayText = Engine::Get()->GetScene()->Create<Text>();
+		_displayText->SetFont(L"Oswald");
+		_displayText->SetFontSize(140);
+		_displayText->SetText(L"Click the button.");
+		_displayText->SetTextColor(63, 161, 227);
+		_displayText->SetPosition(-125, -125);
 
-		////CYAN
-		//_child = Engine::Get()->GetScene()->Create<Sprite>();
-		////_child->SetParent(_text);
-		//_child->SetPosition(0, 0);
-		//_child->SetRotation(0);
-		//_child->SetScale(1, 1);
-		//_child->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
-		//
-		////YELLOW
-		//_text = Engine::Get()->GetScene()->Create<Text>();
-		//_text->SetPosition(100, 100);
-		//_text->SetRotation(0);
-		//_text->SetScale(1, 1);
-		//
-		//_text->SetFont(L"FunnyKid");
-		//_text->SetFontSize(120);
-		//_text->SetText(L"TEST");
-		//_text->SetTextColor(255, 255, 0, 1);
-		//
-		////BLUE
-		//_sprite = Engine::Get()->GetScene()->Create<Sprite>();
-		//_sprite->SetPosition(200, 200);
-		//_sprite->SetRotation(0);
-		//_sprite->SetScale(.5f, .5f);
-		//_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
+		_background = Engine::Get()->GetScene()->Create<Sprite>();
+		_background->SetTexture(Engine::Get()->GetResources()->GetTexture("Background"));
+		_background->SetScale(.5f, .5f);
 
-		_button = Engine::Get()->GetScene()->Create<Button>();
-		_button->SetPosition(200, 250);
-		_button->SetRotation(0);
-		_button->SetScale(1, 1);
-		_button->SetTexture(Engine::Get()->GetResources()->GetTexture("Sonic"));
-
-		_sprite = Engine::Get()->GetScene()->Create<Sprite>();
-		_sprite->SetPosition(0, 0);
-		_sprite->SetRotation(0);
-		_sprite->SetScale(.25f, .25f);
-		_sprite->SetTexture(Engine::Get()->GetResources()->GetTexture("Avatar"));
+		_tap = Engine::Get()->GetScene()->Create<Tap>();
+		_tap->SetScale(.5f, .5f);
+		_tap->SetPosition(170, 125);
 	}
 
 	void ExampleGame::DeInit()
@@ -52,51 +27,6 @@ namespace MyGame
 
 	void ExampleGame::Update(float dt)
 	{
-		if (_button->Pressed()) 
-		{
-			_sprite->SetActive(!_sprite->IsActive());
-		}
-
-		//auto input = Engine::Get()->GetInput();
-		//
-		//if (input->IsKeyDown(DirectInputKey::W))
-		//{
-		//	_text->SetScale(_text->GetScale().x + 2 * dt, _text->GetScale().y + 2 * dt);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::S))
-		//{
-		//	_text->SetScale(_text->GetScale().x - 2 * dt, _text->GetScale().y - 2 * dt);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::UpArrow))
-		//{
-		//	_text->SetPosition(_text->GetPosition().x, _text->GetPosition().y - 100 * dt);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::DownArrow))
-		//{
-		//	_text->SetPosition(_text->GetPosition().x, _text->GetPosition().y + 100 * dt);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::RightArrow))
-		//{
-		//	_text->SetPosition(_text->GetPosition().x + 100 * dt, _text->GetPosition().y);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::LeftArrow))
-		//{
-		//	_text->SetPosition(_text->GetPosition().x - 100 * dt, _text->GetPosition().y);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::Space))
-		//{
-		//	_text->SetRotation(_text->GetRotation() + 200 * dt);
-		//}
-		//
-		//if (input->IsKeyDown(DirectInputKey::P))
-		//{
-		//	Engine::Get()->GetSoundEngine()->Play(Engine::Get()->GetResources()->GetSound("Points"));
-		//}
+		_displayText->SetText(std::to_wstring(_tap->GetValue()));
 	}
 }

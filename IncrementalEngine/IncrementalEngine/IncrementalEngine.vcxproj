@@ -171,6 +171,7 @@
     <ClCompile Include="Config.h" />
     <ClCompile Include="FloatRect.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Tap.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="FontFactory.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="EngineGame.h" />
     <ClInclude Include="FloatRect.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Tap.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="FontFactory.h" />
     <ClInclude Include="InputManager.h" />

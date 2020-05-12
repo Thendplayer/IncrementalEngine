@@ -14,5 +14,6 @@
 #define SHOW_CURSOR true
 
 #define DEFAULT_FONT_FAMILY L"Courier New"
+#define BACKGROUND_COLOR 0.0f, .75f, 1.0f, 1.0f
 
 #endif

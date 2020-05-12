@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Text.h"
 #include "Button.h"
+#include "Tap.h"
 
 using namespace IncrementalEngine;
 
@@ -16,9 +17,8 @@ namespace MyGame
 		void Update(float dt) override;
 	
 	private:
-		Sprite* _sprite;
-		Button* _button;
-		Sprite* _child;
-		Text* _text;
+		Sprite* _background;
+		Tap* _tap;
+		Text* _displayText;
 	};
 }

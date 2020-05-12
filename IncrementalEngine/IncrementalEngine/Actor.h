@@ -20,6 +20,9 @@ namespace IncrementalEngine
 		FloatRect GetGlobalBounds();
 
 		const Transform GetCombinedTransform();
+		const D3DXVECTOR2 GetCombinedTranslation();
+		const D3DXVECTOR2 GetCombinedScale();
+		const float GetCombinedRotation();
 
 		Actor* GetParent() const;
 		void SetParent(Actor* value);
@@ -40,7 +43,7 @@ namespace IncrementalEngine
 		vector<Actor*> _children;
 		bool _active;
 
-		const Transform* GetWorldTransform() const;
+		const Transform GetWorldTransform() const;
 		
 		D3DXVECTOR2 GetWorldPosition() const;
 		void SetWorldPosition(D3DXVECTOR2 value);

@@ -106,20 +106,23 @@ namespace IncrementalEngine
 				SCREEN_DEPTH
 			);
 
+			D3DXVECTOR2 position = GetCombinedTranslation();
 			XMMATRIX translationMatrix = XMMatrixTranslation(
-				_position.x,
-				_position.y,
+				position.x,
+				position.y,
 				1.f
 			);
 
+			D3DXVECTOR2 scale = GetCombinedScale();
 			XMMATRIX scaleMatrix = XMMatrixScaling(
-				_scale.x,
-				_scale.y,
+				scale.x,
+				scale.y,
 				1.f
 			);
 
+			float rotation = GetCombinedRotation();
 			_fontWrapperMatrix = scaleMatrix
-				* XMMatrixRotationZ(_rotation * 0.01745f)
+				* XMMatrixRotationZ(rotation * 0.01745f)
 				* translationMatrix
 				* OrthoProjectionMatrix;
 

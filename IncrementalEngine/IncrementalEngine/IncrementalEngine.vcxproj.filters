@@ -88,6 +88,9 @@
     <Filter Include="Source Files\Engine\Button">
       <UniqueIdentifier>{ef909034-a9d3-412b-83c0-447ab6d0a076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Tap">
+      <UniqueIdentifier>{996a84e3-115b-4682-95d1-fb6653e1ad14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\Engine\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Tap.cpp">
+      <Filter>Source Files\Game\Tap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Source Files\Engine\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Tap.h">
+      <Filter>Source Files\Game\Tap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
