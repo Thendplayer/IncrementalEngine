@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{1CA2640A-143E-471D-88E3-19800F00FAA7}</ProjectGuid>
+    <RootNamespace>IncrementalEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Run</OutDir>
+    <TargetName>$(ProjectName)Debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Run</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Run</OutDir>
+    <TargetName>$(ProjectName)Debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Run</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions); NDEBUG</PreprocessorDefinitions>
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win32;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d11.lib;OpenAL32.lib;alut.lib;FW1FontWrapper.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\libs\Win64;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Config.h" />
+    <ClCompile Include="FloatRect.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Tap.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="FontFactory.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="MainEngine.cpp" />
+    <ClCompile Include="EngineGame.cpp" />
+    <ClCompile Include="ExampleGame.cpp" />
+    <ClCompile Include="D3DImplementation.cpp" />
+    <ClCompile Include="RenderCamera.cpp" />
+    <ClCompile Include="RenderingEngine.cpp" />
+    <ClCompile Include="RenderWindow.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundEngine.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureBase.cpp" />
+    <ClCompile Include="TextureShader.cpp" />
+    <ClCompile Include="ThirdParty\json11\json11.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Transformable.cpp" />
+    <ClCompile Include="WindowsInput.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="DirectInputKey.h" />
+    <ClInclude Include="Drawable.h" />
+    <ClInclude Include="EngineGame.h" />
+    <ClInclude Include="FloatRect.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Tap.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="FontFactory.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="MainEngine.h" />
+    <ClInclude Include="ExampleGame.h" />
+    <ClInclude Include="D3DImplementation.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="RenderCamera.h" />
+    <ClInclude Include="RenderingEngine.h" />
+    <ClInclude Include="RenderWindow.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundEngine.h" />
+    <ClInclude Include="StringUtils.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureBase.h" />
+    <ClInclude Include="TextureShader.h" />
+    <ClInclude Include="ThirdParty\json11\json11.hpp" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Transformable.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="WindowsInput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Run\Config\Resources.json" />
+    <None Include="..\Run\Shaders\globals.fxh" />
+    <None Include="..\Run\Shaders\texture.ps" />
+    <None Include="..\Run\Shaders\texture.vs" />
+    <None Include="ThirdParty\json11\json11.pc.in" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
