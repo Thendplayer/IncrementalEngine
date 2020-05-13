@@ -95,9 +95,10 @@ namespace IncrementalEngine
 	
 	void Text::Update()
 	{
-		if (_fontWrapperNeedUpdate || _transformNeedUpdate)
+		Transform transform = GetCombinedTransform();
+		if (_fontWrapperNeedUpdate || transform != _previousTransform)
 		{
-			Transform transform = GetCombinedTransform();
+			_previousTransform = transform;
 
 			XMMATRIX OrthoProjectionMatrix = XMMatrixOrthographicLH(
 				_renderWindow->GetScreenWidth(),
@@ -106,21 +107,21 @@ namespace IncrementalEngine
 				SCREEN_DEPTH
 			);
 
-			D3DXVECTOR2 position = GetCombinedTranslation();
+			D3DXVECTOR2 position = GetWorldPosition();
 			XMMATRIX translationMatrix = XMMatrixTranslation(
 				position.x,
 				position.y,
 				1.f
 			);
 
-			D3DXVECTOR2 scale = GetCombinedScale();
+			D3DXVECTOR2 scale = GetWorldScale();
 			XMMATRIX scaleMatrix = XMMatrixScaling(
 				scale.x,
 				scale.y,
 				1.f
 			);
 
-			float rotation = GetCombinedRotation();
+			float rotation = GetWorldRotation();
 			_fontWrapperMatrix = scaleMatrix
 				* XMMatrixRotationZ(rotation * 0.01745f)
 				* translationMatrix
@@ -133,7 +134,7 @@ namespace IncrementalEngine
 	HRESULT Text::Draw(ID3D11DeviceContext* deviceContext)
 	{
 		FW1_RECTF rect = { 0.f, 0.f, 0.f, 0.f };
-
+		
 		_fontWrapper->DrawString(
 			deviceContext,
 			_value.c_str(),

@@ -21,8 +21,6 @@ namespace IncrementalEngine
 	{
 	public:
 		HRESULT Init(RenderWindow* renderWindow);
-		void Update(float dt);
-		void Draw();
 
 		void BeginScene(float red, float green, float blue, float alpha);
 		void EndScene();
@@ -61,7 +59,7 @@ namespace IncrementalEngine
 		HRESULT CreateDeviceAndSwapChain(unsigned int numerator, unsigned int denominator);
 		HRESULT SetupRenderTarget();
 		HRESULT SetupDepthStencilBufferAndState();
-		HRESULT CreateDepthStencilState(bool enableZBuffer);
+		HRESULT CreateDepthStencilState(ID3D11DepthStencilState*& depthStencilState, bool enableZBuffer);
 		HRESULT SetupDeviceRasterizerState();
 		void SetupViewport();
 		void SetupD3DMatrices();

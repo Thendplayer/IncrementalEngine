@@ -22,7 +22,6 @@ namespace IncrementalEngine
 		void ClearFrame();
 
 		void SetWorldMatrix(D3DXMATRIX& worldMatrix);
-		D3DXMATRIX& GetOrthoProjectionMatrix();
 
 		ShaderManager();
 		virtual ~ShaderManager();

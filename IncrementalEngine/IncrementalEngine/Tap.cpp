@@ -5,18 +5,18 @@ namespace MyGame
 {
 	void Tap::Init()
 	{
-		_text = Engine::Get()->GetScene()->Create<Text>();
-		_text->SetFont(L"Oswald");
-		_text->SetFontSize(32);
-		_text->SetText(L"TAP");
-		_text->SetTextColor(63, 161, 227);
-
 		_button = Engine::Get()->GetScene()->Create<Button>();
 		_button->SetTexture(Engine::Get()->GetResources()->GetTexture("Button4"));
-		_button->SetScale(.5f, .5f);
-		
+		_button->SetScale(.4f, .4f);
 		_button->SetParent(this);
-		_text->SetParent(this);
+
+		_text = Engine::Get()->GetScene()->Create<Text>();
+		_text->SetFont(L"Oswald");
+		_text->SetFontSize(164);
+		_text->SetText(L"TAP");
+		_text->SetTextColor(63, 161, 227);
+		_text->SetParent(_button, false);
+		
 	}
 	
 	void Tap::Update()

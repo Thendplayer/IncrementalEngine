@@ -49,6 +49,13 @@ namespace IncrementalEngine
 
 		if (!_active) return S_OK;
 
+		result = Draw(deviceContext);
+
+		if (FAILED(result))
+		{
+			return CO_E_ERRORINAPP;
+		}
+
 		for (int i = 0; i < _children.size(); i++)
 		{
 			result = _children[i]->DrawRecursive(deviceContext);
@@ -57,13 +64,6 @@ namespace IncrementalEngine
 			{
 				return CO_E_ERRORINAPP;
 			}
-		}
-
-		result = Draw(deviceContext);
-
-		if (FAILED(result))
-		{
-			return CO_E_ERRORINAPP;
 		}
 
 		return S_OK;
@@ -106,31 +106,45 @@ namespace IncrementalEngine
 		return GetTransform();
 	}
 
-	const D3DXVECTOR2 Actor::GetCombinedTranslation()
+	const D3DXVECTOR2 Actor::GetWorldPosition()
 	{
 		if (_parent != nullptr)
 		{
-			return _parent->GetCombinedTranslation() + GetPosition();
+			return _parent->GetWorldPosition() + GetPosition();
 		}
 
 		return GetPosition();
 	}
 
-	const D3DXVECTOR2 Actor::GetCombinedScale()
+	const D3DXVECTOR2 Actor::GetWorldScale()
 	{
 		if (_parent != nullptr)
 		{
-			return _parent->GetCombinedScale() + GetScale();
+			D3DXVECTOR2 parentWorldScale = _parent->GetWorldScale();
+			D3DXVECTOR2 worldScale = { 
+				parentWorldScale.x * _scale.x, 
+				parentWorldScale.y * _scale.y
+			};
+
+			return worldScale;
 		}
 
 		return GetScale();
 	}
 
-	const float Actor::GetCombinedRotation()
+	const float Actor::GetWorldRotation()
 	{
 		if (_parent != nullptr)
 		{
-			return _parent->GetCombinedRotation() + GetRotation();
+			float worldRotation = _parent->GetWorldRotation() + GetRotation();
+			worldRotation = static_cast<float>(fmod(worldRotation, 360));
+			
+			if (worldRotation < 0)
+			{
+				worldRotation += 360.f;
+			}
+
+			return worldRotation;
 		}
 
 		return GetRotation();
@@ -144,11 +158,6 @@ namespace IncrementalEngine
 		}
 
 		return GetTransform();
-	}
-
-	D3DXVECTOR2 Actor::GetWorldPosition() const
-	{
-		return GetWorldTransform() * GetOrigin();
 	}
 
 	void Actor::SetWorldPosition(D3DXVECTOR2 value)
@@ -172,11 +181,11 @@ namespace IncrementalEngine
 		return _parent;
 	}
 	
-	void Actor::SetParent(Actor* value)
+	void Actor::SetParent(Actor* value, const bool fixWorldPosition)
 	{
 		if (value != _parent)
 		{
-			auto prevWorldPosition = GetWorldPosition();
+			auto prevWorldPosition = GetWorldTransform() * GetOrigin();
 
 			if (_parent != nullptr)
 			{
@@ -196,7 +205,11 @@ namespace IncrementalEngine
 			}
 
 			_parent = value;
-			SetWorldPosition(prevWorldPosition);
+
+			if (fixWorldPosition) 
+			{
+				SetWorldPosition(prevWorldPosition);
+			}
 		}
 	}
 }

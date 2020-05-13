@@ -81,11 +81,10 @@ namespace IncrementalEngine
 		}
 
 		SetupViewport();
-
 		SetupD3DMatrices();
 
-		const bool enable2dRendering = true;
-		result = CreateDepthStencilState(enable2dRendering);
+		const bool depth = false;
+		result = CreateDepthStencilState(_depthDisabledStencilState, depth);
 		if (FAILED(result))
 		{
 			return CO_E_ERRORINAPP;
@@ -96,19 +95,10 @@ namespace IncrementalEngine
 		return S_OK;
 	}
 
-	void D3DImplementation::Update(float dt)
-	{
-
-	}
-
-	void D3DImplementation::Draw()
-	{
-		
-	}
-
 	void D3DImplementation::BeginScene(float red, float green, float blue, float alpha)
 	{
 		float color[4] = { red, green, blue, alpha };
+		TurnZBufferOff();
 		_deviceContext->ClearRenderTargetView(_renderTargetView, color);
 		_deviceContext->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 	}
@@ -123,6 +113,8 @@ namespace IncrementalEngine
 		{
 			_swapChain->Present(0, 0);
 		}
+
+		TurnZBufferOn();
 	}
 
 	HRESULT D3DImplementation::SetupAdapterOutput(unsigned int& numerator, unsigned int& denominator)
@@ -263,14 +255,7 @@ namespace IncrementalEngine
 		swapChainDesc.SampleDesc.Count = 1;
 		swapChainDesc.SampleDesc.Quality = 0;
 
-		if (FULLSCREEN)
-		{
-			swapChainDesc.Windowed = false;
-		}
-		else
-		{
-			swapChainDesc.Windowed = true;
-		}
+		swapChainDesc.Windowed = !FULLSCREEN;
 
 		swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
 		swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
@@ -354,7 +339,7 @@ namespace IncrementalEngine
 		}
 
 		const bool depth = true;
-		CreateDepthStencilState(depth);
+		CreateDepthStencilState(_depthStencilState, depth);
 
 		_deviceContext->OMSetDepthStencilState(_depthStencilState, 1);
 
@@ -439,7 +424,7 @@ namespace IncrementalEngine
 		SetWorldMatrix(worldMatrix);
 	}
 
-	HRESULT D3DImplementation::CreateDepthStencilState(bool enableZBuffer)
+	HRESULT D3DImplementation::CreateDepthStencilState(ID3D11DepthStencilState*& depthStencilState, bool enableZBuffer)
 	{
 		HRESULT result;
 		D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
@@ -461,7 +446,7 @@ namespace IncrementalEngine
 		depthStencilDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
 		depthStencilDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
 
-		result = _device->CreateDepthStencilState(&depthStencilDesc, &_depthStencilState);
+		result = _device->CreateDepthStencilState(&depthStencilDesc, &depthStencilState);
 		if (FAILED(result))
 		{
 			return CO_E_ERRORINAPP;

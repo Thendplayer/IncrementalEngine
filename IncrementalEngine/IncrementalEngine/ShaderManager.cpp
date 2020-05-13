@@ -131,15 +131,11 @@ namespace IncrementalEngine
 		assert("SetupFrame() method has to be called before render a Shader." && _frameReady);
 		HRESULT result;
 
-		_direct3D->TurnZBufferOff();
-
 		result = _textureShader->Draw(
 			_direct3D->GetDeviceContext(),
 			indexCount,
 			texture
 		);
-
-		_direct3D->TurnZBufferOn();
 
 		if (FAILED(result))
 		{
@@ -152,12 +148,5 @@ namespace IncrementalEngine
 	void ShaderManager::SetWorldMatrix(D3DXMATRIX& worldMatrix)
 	{
 		_direct3D->SetWorldMatrix(worldMatrix);
-	}
-	
-	D3DXMATRIX& ShaderManager::GetOrthoProjectionMatrix()
-	{
-		D3DXMATRIX orthoProjectionMatrix;
-		_direct3D->GetOrthoProjectionMatrix(orthoProjectionMatrix);
-		return orthoProjectionMatrix;
 	}
 }

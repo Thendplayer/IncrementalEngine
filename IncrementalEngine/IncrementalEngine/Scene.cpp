@@ -81,7 +81,7 @@ namespace IncrementalEngine
 	{
 		HRESULT result;
 
-		for (int i = _items.size() - 1; i >= 0 ; i--)
+		for (int i = 0; i < _items.size(); i++)
 		{
 			if (IS_ROOT(_items[i].Actor))
 			{

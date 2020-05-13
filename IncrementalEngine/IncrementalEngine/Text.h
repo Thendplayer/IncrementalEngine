@@ -43,6 +43,7 @@ namespace IncrementalEngine
 		std::uint32_t _color;
 
 		mutable bool _fontWrapperNeedUpdate;
+		Transform _previousTransform;
 
 		D3DXVECTOR2 GetTextExtent();
 	};
