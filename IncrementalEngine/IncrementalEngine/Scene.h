@@ -6,17 +6,17 @@
 
 namespace IncrementalEngine 
 {
-	class Scene : public Drawable
+	class SceneManager : public Drawable
 	{
 	#define IS_ROOT(actor) actor->GetParent() == nullptr
 
 	public:
-		Scene(
+		SceneManager(
 			RenderWindow* renderWindow,
 			ShaderManager* shaderManager,
 			ID3D11Device* device
 		);
-		virtual ~Scene();
+		virtual ~SceneManager();
 		
 		void Destroy(Actor* actor);
 

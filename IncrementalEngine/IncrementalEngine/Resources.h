@@ -12,7 +12,7 @@ using json11::Json;
 
 namespace IncrementalEngine 
 {
-	class Resources 
+	class ResourcesManager 
 	{
 		#define PATH "Config/Resources.json"
 		#define DELETE_RESOURCES(x) for(auto i = x.begin(); i != x.end(); i++){CHECKED_DELETE(i->second);} x.clear();
@@ -20,8 +20,8 @@ namespace IncrementalEngine
 	public:
 		LPCWSTR Error = L"";
 
-		Resources();
-		virtual ~Resources();
+		ResourcesManager();
+		virtual ~ResourcesManager();
 
 		HRESULT Load();
 		Texture* GetTexture(std::string name);

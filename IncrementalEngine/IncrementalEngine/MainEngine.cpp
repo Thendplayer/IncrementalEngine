@@ -26,8 +26,9 @@ namespace IncrementalEngine
 		_renderWindow(NULL),
 		_inputManager(NULL),
 		_soundEngine(NULL),
-		_scene(NULL),
-		_resources(NULL)
+		_sceneManager(NULL),
+		_resourcesManager(NULL),
+		_saveSystem(NULL)
 	{
 	}
 
@@ -93,7 +94,7 @@ namespace IncrementalEngine
 		}
 
 		auto direct3D = _renderingEngine->GetDirect3DImplementation();
-		_scene = new Scene(
+		_sceneManager = new SceneManager(
 			_renderWindow,
 			_renderingEngine->GetShaderManager(),
 			direct3D->GetDevice()
@@ -101,12 +102,14 @@ namespace IncrementalEngine
 
 		_soundEngine = new SoundEngine;
 
-		_resources = new Resources;
-		result = _resources->Load();
+		_resourcesManager = new ResourcesManager;
+		result = _resourcesManager->Load();
+
+		_saveSystem = new SaveSystem;
 	
 		if (FAILED(result))
 		{
-			MessageBox(_renderWindow->GetHWND(), _resources->Error, L"Error", MB_OK);
+			MessageBox(_renderWindow->GetHWND(), _resourcesManager->Error, L"Error", MB_OK);
 			return;
 		}
 	}
@@ -115,20 +118,21 @@ namespace IncrementalEngine
 	{
 		_renderingEngine->Update(dt);
 		_inputManager->Update();
-		_scene->Update();
+		_sceneManager->Update();
 	}
 
 	void Engine::Draw()
 	{
-		_renderingEngine->Draw(_scene);
+		_renderingEngine->Draw(_sceneManager);
 	}
 
     void Engine::DeInit()
     {
 		FontFactory::Release();
 
-		CHECKED_DELETE(_resources);
-		CHECKED_DELETE(_scene);
+		CHECKED_DELETE(_saveSystem);
+		CHECKED_DELETE(_resourcesManager);
+		CHECKED_DELETE(_sceneManager);
 		CHECKED_DELETE(_soundEngine);
 		CHECKED_DELETE(_renderingEngine);
 		CHECKED_DELETE(_renderWindow);
@@ -140,23 +144,28 @@ namespace IncrementalEngine
         return true;
 	}
 
-	Scene* Engine::GetScene()
+	SceneManager* Engine::Scene()
 	{
-		return _scene;
+		return _sceneManager;
 	}
 
-	Resources* Engine::GetResources()
+	ResourcesManager* Engine::Resources()
 	{
-		return _resources;
+		return _resourcesManager;
 	}
 
-	SoundEngine* Engine::GetSoundEngine()
+	SoundEngine* Engine::Audio()
 	{
 		return _soundEngine;
 	}
 
-	InputManager* Engine::GetInput()
+	InputManager* Engine::Input()
 	{
 		return _inputManager;
+	}
+	
+	SaveSystem* Engine::Storage()
+	{
+		return _saveSystem;
 	}
 }

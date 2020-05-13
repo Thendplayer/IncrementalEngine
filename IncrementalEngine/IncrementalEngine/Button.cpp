@@ -10,7 +10,7 @@ namespace IncrementalEngine
 		_pressed = _released = false;
 
 		float mouseX, mouseY;
-		auto input = Engine::Get()->GetInput();
+		auto input = Engine::Get()->Input();
 		input->GetMousePosition(mouseX, mouseY);
 
 		if (_mousePosition.x != mouseX || _mousePosition.y != mouseY)

@@ -14,6 +14,7 @@ namespace MyGame
 		virtual void Update() override;
 
 		int GetValue();
+		void SetValue(int value);
 
 	private:
 		Button* _button;

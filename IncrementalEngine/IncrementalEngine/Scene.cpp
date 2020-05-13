@@ -5,7 +5,7 @@
 
 namespace IncrementalEngine 
 {
-	Scene::Scene(
+	SceneManager::SceneManager(
 		RenderWindow* renderWindow, 
 		ShaderManager* shaderManager, 
 		ID3D11Device* device
@@ -16,7 +16,7 @@ namespace IncrementalEngine
 		_device = device;
 	}
 
-	Scene::~Scene()
+	SceneManager::~SceneManager()
 	{
 		bool clear = false;
 		while (!clear) 
@@ -38,7 +38,7 @@ namespace IncrementalEngine
 		_items.clear();
 	}
 
-	void Scene::Destroy(Actor* actor)
+	void SceneManager::Destroy(Actor* actor)
 	{
 		for (int i = 0; i < _items.size(); i++)
 		{
@@ -52,7 +52,7 @@ namespace IncrementalEngine
 		_destroyInUpdate = true;
 	}
 
-	void Scene::Update()
+	void SceneManager::Update()
 	{
 		if (_destroyInUpdate)
 		{
@@ -87,7 +87,7 @@ namespace IncrementalEngine
 		}
 	}
 
-	HRESULT Scene::Draw(ID3D11DeviceContext* deviceContext)
+	HRESULT SceneManager::Draw(ID3D11DeviceContext* deviceContext)
 	{
 		HRESULT result;
 

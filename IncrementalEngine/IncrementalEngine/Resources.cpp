@@ -1,8 +1,9 @@
 #include "Resources.h"
+#include "StringUtils.h"
 
 namespace IncrementalEngine 
 {
-	Resources::Resources() :
+	ResourcesManager::ResourcesManager() :
 		Error(L""),
 		_loadedResources(0),
 		_sounds(),
@@ -10,13 +11,13 @@ namespace IncrementalEngine
 	{
 	}
 
-	Resources::~Resources()
+	ResourcesManager::~ResourcesManager()
 	{
 		DELETE_RESOURCES(_textures);
 		DELETE_RESOURCES(_sounds);
 	}
 
-	HRESULT Resources::Load()
+	HRESULT ResourcesManager::Load()
 	{
 		std::ifstream t(PATH);
 		std::string json(
@@ -57,21 +58,21 @@ namespace IncrementalEngine
 		return S_OK;
 	}
 
-	Texture* Resources::GetTexture(std::string name)
+	Texture* ResourcesManager::GetTexture(std::string name)
 	{
 		auto item = _textures.find(name);
 		assert("The Texture requested is not loaded." && item != _textures.end());
 		return item->second;
 	}
 
-	Sound* Resources::GetSound(std::string name)
+	Sound* ResourcesManager::GetSound(std::string name)
 	{
 		auto item = _sounds.find(name);
 		assert("The Sound requested is not loaded." && item != _sounds.end());
 		return item->second;
 	}
 	
-	HRESULT Resources::GetResourceItem(ResourceItem& resourceItem, std::pair<const std::string, Json> item)
+	HRESULT ResourcesManager::GetResourceItem(ResourceItem& resourceItem, std::pair<const std::string, Json> item)
 	{
 		try
 		{
@@ -91,7 +92,7 @@ namespace IncrementalEngine
 		}
 	}
 	
-	void Resources::LoadResource(ResourceItem item)
+	void ResourcesManager::LoadResource(ResourceItem item)
 	{
 		if (item.Type == "Texture")
 		{

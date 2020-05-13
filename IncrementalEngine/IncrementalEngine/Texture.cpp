@@ -21,10 +21,10 @@ namespace IncrementalEngine
 		ID3D11Texture2D* texture2D;
 		D3D11_TEXTURE2D_DESC desc;
 
-		StringAsWCHAR_ptr(_filename, WCHAR* filename);
+		std::wstring filename(_filename.begin(), _filename.end());
 		HRESULT result = D3DX11CreateShaderResourceViewFromFile(
 			device, 
-			filename,
+			filename.c_str(),
 			NULL, 
 			NULL, 
 			&_texture, 

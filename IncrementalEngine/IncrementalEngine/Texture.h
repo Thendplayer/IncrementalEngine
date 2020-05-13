@@ -5,7 +5,7 @@
 #include <d3dx11tex.h>
 #include <D3DX10.h>
 
-#include "StringUtils.h"
+#include <string>
 
 namespace IncrementalEngine 
 {
