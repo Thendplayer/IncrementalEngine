@@ -10,7 +10,7 @@ namespace IncrementalEngine
 		{
 			children[i]->SetParent(nullptr);
 		}
-		children.clear();
+		_children.clear();
 	}
 
 	void Actor::Init()

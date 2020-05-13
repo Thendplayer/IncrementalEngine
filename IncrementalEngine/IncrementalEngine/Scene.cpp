@@ -18,21 +18,31 @@ namespace IncrementalEngine
 
 	Scene::~Scene()
 	{
-		if (!_items.empty())
+		bool clear = false;
+		while (!clear) 
 		{
+			clear = true;
 			for (int i = 0; i < _items.size(); i++)
 			{
-				CHECKED_DELETE(_items[i].Actor);
+				if (_items[i].Destroy) continue;
+
+				if (IS_ROOT(_items[i].Actor))
+				{
+					CHECKED_DELETE(_items[i].Actor);
+					_items[i].Destroy = true;
+					clear = false;
+				}
 			}
-			_items.clear();
 		}
+
+		_items.clear();
 	}
 
-	void Scene::Destroy(Actor* drawable)
+	void Scene::Destroy(Actor* actor)
 	{
 		for (int i = 0; i < _items.size(); i++)
 		{
-			if (_items[i].Actor == drawable)
+			if (_items[i].Actor == actor)
 			{
 				_items[i].Destroy = true;
 				break;

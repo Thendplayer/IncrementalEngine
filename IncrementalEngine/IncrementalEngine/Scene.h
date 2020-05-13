@@ -20,7 +20,7 @@ namespace IncrementalEngine
 		);
 		virtual ~Scene();
 		
-		void Destroy(Actor* drawable);
+		void Destroy(Actor* actor);
 
 		void Update();
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
