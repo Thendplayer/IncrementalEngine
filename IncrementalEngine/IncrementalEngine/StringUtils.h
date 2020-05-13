@@ -8,9 +8,7 @@
 #include <locale>
 #include <codecvt>
 
-using namespace std;
-
-#define StringAsWCHAR_ptr(s, w) wstring_convert<codecvt_utf8_utf16<wchar_t>> c; \
-								wstring r = c.from_bytes(s); w = (WCHAR*)(r.c_str());
+#define StringAsWCHAR_ptr(s, w) std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> c; \
+								std::wstring r = c.from_bytes(s); w = (WCHAR*)(r.c_str());
 
 #endif

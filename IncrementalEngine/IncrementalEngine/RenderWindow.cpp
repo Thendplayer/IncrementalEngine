@@ -75,6 +75,7 @@ namespace IncrementalEngine
 		);
 
 		ShowWindow(_hWnd, SW_SHOW);
+		SetWindowLong(_hWnd, GWL_STYLE, GetWindowLong(_hWnd, GWL_STYLE) & ~WS_MAXIMIZEBOX);
 		SetForegroundWindow(_hWnd);
 		SetFocus(_hWnd);
 

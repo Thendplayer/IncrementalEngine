@@ -4,8 +4,6 @@
 #include <vector>
 #include "Actor.h"
 
-using namespace std;
-
 namespace IncrementalEngine 
 {
 	class Scene : public Drawable

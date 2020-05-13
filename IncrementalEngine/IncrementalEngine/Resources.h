@@ -9,7 +9,6 @@
 #include "Sound.h"
 
 using json11::Json;
-using namespace std;
 
 namespace IncrementalEngine 
 {
@@ -25,23 +24,23 @@ namespace IncrementalEngine
 		virtual ~Resources();
 
 		HRESULT Load();
-		Texture* GetTexture(string name);
-		Sound* GetSound(string name);
+		Texture* GetTexture(std::string name);
+		Sound* GetSound(std::string name);
 
 	private:
 		struct ResourceItem
 		{
-			string Name;
-			string Type;
-			string Fileroute;
+			std::string Name;
+			std::string Type;
+			std::string Fileroute;
 		};
 
 		Json _loadedResources = nullptr;
-		map<string, Texture*> _textures;
-		map<string, Sound*> _sounds;
+		std::map<std::string, Texture*> _textures;
+		std::map<std::string, Sound*> _sounds;
 
 		void LoadResource(ResourceItem item);
-		HRESULT GetResourceItem(ResourceItem& resourceItem, pair<const string, Json> item);
+		HRESULT GetResourceItem(ResourceItem& resourceItem, std::pair<const std::string, Json> item);
 	};
 }
 

@@ -18,13 +18,13 @@ namespace IncrementalEngine
 
 	HRESULT Resources::Load()
 	{
-		ifstream t(PATH);
-		string json(
-			(istreambuf_iterator<char>(t)),
-			istreambuf_iterator<char>()
+		std::ifstream t(PATH);
+		std::string json(
+			(std::istreambuf_iterator<char>(t)),
+			std::istreambuf_iterator<char>()
 		);
 
-		string error = "";
+		std::string error = "";
 		_loadedResources = Json::parse(json, error);
 
 		if (error != "")
@@ -57,21 +57,21 @@ namespace IncrementalEngine
 		return S_OK;
 	}
 
-	Texture* Resources::GetTexture(string name)
+	Texture* Resources::GetTexture(std::string name)
 	{
 		auto item = _textures.find(name);
 		assert("The Texture requested is not loaded." && item != _textures.end());
 		return item->second;
 	}
 
-	Sound* Resources::GetSound(string name)
+	Sound* Resources::GetSound(std::string name)
 	{
 		auto item = _sounds.find(name);
 		assert("The Sound requested is not loaded." && item != _sounds.end());
 		return item->second;
 	}
 	
-	HRESULT Resources::GetResourceItem(ResourceItem& resourceItem, pair<const string, Json> item)
+	HRESULT Resources::GetResourceItem(ResourceItem& resourceItem, std::pair<const std::string, Json> item)
 	{
 		try
 		{
@@ -85,7 +85,7 @@ namespace IncrementalEngine
 		}
 		catch (const std::exception& e)
 		{
-			string error = "Item load failed. Check file structure. [" + (string)e.what() + "]";
+			std::string error = "Item load failed. Check file structure. [" + (std::string)e.what() + "]";
 			StringAsWCHAR_ptr(error, Error);
 			return CO_E_ERRORINAPP;
 		}
@@ -96,7 +96,7 @@ namespace IncrementalEngine
 		if (item.Type == "Texture")
 		{
 			Texture* texture = new Texture(item.Fileroute);
-			_textures.insert(_textures.begin(), pair<string, Texture*>(item.Name, texture));
+			_textures.insert(_textures.begin(), std::pair<std::string, Texture*>(item.Name, texture));
 			
 			return;
 		}
@@ -105,7 +105,7 @@ namespace IncrementalEngine
 		{
 			Sound* sound = new Sound(item.Fileroute);
 			sound->Init();
-			_sounds.insert(_sounds.begin(), pair<string, Sound*>(item.Name, sound));
+			_sounds.insert(_sounds.begin(), std::pair<std::string, Sound*>(item.Name, sound));
 		
 			return;
 		}

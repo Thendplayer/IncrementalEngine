@@ -255,7 +255,7 @@ namespace IncrementalEngine
 		WCHAR* shaderFilename
 	)
 	{
-		ofstream fout;
+		std::ofstream fout;
 		
 		char* compileErrors = (char*)(errorMessage->GetBufferPointer());
 		unsigned long bufferSize = errorMessage->GetBufferSize();

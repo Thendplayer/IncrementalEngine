@@ -17,12 +17,12 @@ namespace IncrementalEngine
 		ID3D11ShaderResourceView* GetTexture();
 		D3DXVECTOR2 GetSize();
 
-		Texture(string filename);
+		Texture(std::string filename);
 		virtual ~Texture();
 
 	private:
 		ID3D11ShaderResourceView* _texture;
-		string _filename;
+		std::string _filename;
 		D3DXVECTOR2 _size;
 	};
 }

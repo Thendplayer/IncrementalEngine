@@ -3,7 +3,7 @@
 
 namespace IncrementalEngine 
 {
-	Texture::Texture(string filename) :
+	Texture::Texture(std::string filename) :
 		_texture(NULL),
 		_size(0, 0),
 		_filename(filename)

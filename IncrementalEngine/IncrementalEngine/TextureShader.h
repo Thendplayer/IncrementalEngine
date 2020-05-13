@@ -6,8 +6,6 @@
 #include <d3dx11async.h>
 #include <fstream>
 
-using namespace std;
-
 namespace IncrementalEngine 
 {
 	class TextureShader

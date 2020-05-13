@@ -91,6 +91,9 @@
     <Filter Include="Source Files\Game\Tap">
       <UniqueIdentifier>{996a84e3-115b-4682-95d1-fb6653e1ad14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Core\SaveSystem">
+      <UniqueIdentifier>{dde924e5-8d2c-49f7-ac1b-ee1d2b9f0145}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -182,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="Tap.cpp">
       <Filter>Source Files\Game\Tap</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveSystem.cpp">
+      <Filter>Source Files\Engine\Core\SaveSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="Tap.h">
       <Filter>Source Files\Game\Tap</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveSystem.h">
+      <Filter>Source Files\Engine\Core\SaveSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
