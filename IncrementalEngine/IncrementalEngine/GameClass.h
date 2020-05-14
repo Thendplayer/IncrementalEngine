@@ -4,9 +4,9 @@
 
 using namespace IncrementalEngine;
 
-namespace MyGame 
+namespace GameNamespace
 {
-	class ExampleGame : public EngineGame 
+	class GameClass : public EngineGame 
 	{
 		virtual void Init() override {};
 		virtual void DeInit() override {};

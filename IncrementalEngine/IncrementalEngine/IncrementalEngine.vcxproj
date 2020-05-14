@@ -204,7 +204,7 @@
     <ClInclude Include="DirectInputKey.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EngineGame.h" />
-    <ClInclude Include="ExampleGame.h" />
+    <ClInclude Include="GameClass.h" />
     <ClInclude Include="FloatRect.h" />
     <ClInclude Include="SaveSystem.h" />
     <ClInclude Include="Sprite.h" />

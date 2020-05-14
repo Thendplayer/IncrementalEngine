@@ -1,9 +1,9 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
-	#define PROJECT_NAMESPACE MyGame
-	#define GAME_HEADER "ExampleGame.h"
-	#define GAME_CLASS ExampleGame
+	#define PROJECT_NAMESPACE GameNamespace
+	#define GAME_HEADER "GameClass.h"
+	#define GAME_CLASS GameClass
 	
 	#define APPLICATION_NAME L"MyGame"
 	#define FULLSCREEN false
