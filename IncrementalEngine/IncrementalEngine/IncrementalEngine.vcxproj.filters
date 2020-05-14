@@ -177,9 +177,6 @@
     <ClCompile Include="SaveSystem.cpp">
       <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Config.h">
-      <Filter>Config</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h">
@@ -283,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="ExampleGame.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Run\Config\Config.h">
+      <Filter>Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
