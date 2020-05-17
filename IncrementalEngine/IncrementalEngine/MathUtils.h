@@ -1,5 +1,5 @@
-#ifndef _Math_H
-#define _Math_H
+#ifndef _Math_Utils_H
+#define _Math_Utils_H
 
 #define PI 3.14159265358979323846
 
