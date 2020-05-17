@@ -91,6 +91,9 @@
     <Filter Include="Engine\Incremental Engine\Button">
       <UniqueIdentifier>{ef909034-a9d3-412b-83c0-447ab6d0a076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\Config">
+      <UniqueIdentifier>{500d4eb4-a2d6-448d-88e8-35ced096ca27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="SaveSystem.cpp">
       <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Engine\Incremental Engine\Core\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -278,11 +284,14 @@
     <ClInclude Include="SaveSystem.h">
       <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
     </ClInclude>
-    <ClInclude Include="..\Run\Config\Config.h">
-      <Filter>Config</Filter>
-    </ClInclude>
     <ClInclude Include="GameClass.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Engine\Incremental Engine\Core\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Run\Config\Description.h">
+      <Filter>Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +308,9 @@
       <Filter>Engine\Shader Files</Filter>
     </None>
     <None Include="..\Run\Config\Resources.json">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\Run\Config\Config.json">
       <Filter>Config</Filter>
     </None>
   </ItemGroup>

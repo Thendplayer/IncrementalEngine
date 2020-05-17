@@ -26,26 +26,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -170,6 +170,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="FloatRect.cpp" />
     <ClCompile Include="SaveSystem.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -197,10 +198,11 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Run\Config\Config.h" />
+    <ClInclude Include="..\Run\Config\Description.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="DirectInputKey.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EngineGame.h" />
@@ -234,6 +236,7 @@
     <ClInclude Include="WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Run\Config\Config.json" />
     <None Include="..\Run\Config\Resources.json" />
     <None Include="..\Run\Shaders\globals.fxh" />
     <None Include="..\Run\Shaders\texture.ps" />

@@ -2,9 +2,10 @@
 #define _RENDERINGENGINE_H
 
 #include "D3DImplementation.h"
-#include "RenderCamera.h"
 #include "ShaderManager.h"
+#include "RenderCamera.h"
 #include "Bitmap.h"
+#include "Config.h"
 
 namespace IncrementalEngine
 {
@@ -13,6 +14,9 @@ namespace IncrementalEngine
 	class RenderingEngine
 	{
 	public:
+		RenderingEngine(Config config);
+		virtual ~RenderingEngine();
+	
 		HRESULT Init(RenderWindow* renderWindow);
 		void Update(float dt);
 		HRESULT Draw(Drawable* target);
@@ -20,11 +24,9 @@ namespace IncrementalEngine
 		D3DImplementation* GetDirect3DImplementation();
 		RenderCamera* GetCamera();
 		ShaderManager* GetShaderManager();
-	
-		RenderingEngine();
-		virtual ~RenderingEngine();
 
 	private:
+		Config _config;
 		D3DImplementation* _direct3D;
 		RenderCamera* _camera;
 		ShaderManager* _shaderManager;

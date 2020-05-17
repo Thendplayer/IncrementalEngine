@@ -2,14 +2,13 @@
 #include <DirectXPackedVector.h>
 
 #include "Utils.h"
-#include "Config.h"
 #include "Text.h"
 
 namespace IncrementalEngine 
 {
 	Text::Text() :
 		_fontWrapper(NULL),
-		_fontFamily(DEFAULT_FONT_FAMILY),
+		_fontFamily(L""),
 		_value(L""),
 		_fontSize(12),
 		_color(0)
@@ -23,6 +22,11 @@ namespace IncrementalEngine
 
 	void Text::Init()
 	{
+		if (_fontFamily.empty())
+		{
+			_fontFamily = DEFAULT_FONT_FAMILY;
+		}
+
 		HRESULT result = FontFactory::Get()->CreateFontWrapper(
 			_device,
 			_fontFamily.c_str(),
@@ -103,8 +107,8 @@ namespace IncrementalEngine
 			XMMATRIX OrthoProjectionMatrix = XMMatrixOrthographicLH(
 				_renderWindow->GetScreenWidth(),
 				-_renderWindow->GetScreenHeight(),
-				SCREEN_NEAR,
-				SCREEN_DEPTH
+				_renderWindow->GetScreenNear(),
+				_renderWindow->GetScreenDepth()
 			);
 
 			D3DXVECTOR2 position = GetWorldPosition();

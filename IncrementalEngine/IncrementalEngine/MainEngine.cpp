@@ -28,7 +28,8 @@ namespace IncrementalEngine
 		_soundEngine(NULL),
 		_sceneManager(NULL),
 		_resourcesManager(NULL),
-		_saveSystem(NULL)
+		_saveSystem(NULL),
+		_config(Config())
 	{
 	}
 
@@ -75,7 +76,7 @@ namespace IncrementalEngine
 		HRESULT result;
 
 		_inputManager = new InputManager;
-		_renderWindow = new RenderWindow;
+		_renderWindow = new RenderWindow(_config);
 		result = _inputManager->Init(_renderWindow);
 
 		if (FAILED(result))
@@ -84,7 +85,7 @@ namespace IncrementalEngine
 			return;
 		}
 
-		_renderingEngine = new RenderingEngine;
+		_renderingEngine = new RenderingEngine(_config);
 		result = _renderingEngine->Init(_renderWindow);
 
 		if (FAILED(result))

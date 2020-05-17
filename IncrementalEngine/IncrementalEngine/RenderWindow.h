@@ -3,25 +3,28 @@
 
 #include <windows.h>
 #include <windowsx.h>
+#include "Config.h"
 
 namespace IncrementalEngine
 {
 	class RenderWindow
 	{
-		private:
-			HINSTANCE _hInstance;
-			HWND _hWnd;
-			int _screenWidth, _screenHeight;
-
 		public:
-
+			RenderWindow(Config config);
+			virtual ~RenderWindow();
+			
 			HWND GetHWND();
 			HINSTANCE* GetHInstance();
 			int GetScreenWidth();
 			int GetScreenHeight();
+			float GetScreenNear();
+			float GetScreenDepth();
 
-			RenderWindow();
-			virtual ~RenderWindow();
+		private:
+			HINSTANCE _hInstance;
+			HWND _hWnd;
+			Config _config;
+			int _screenWidth, _screenHeight;
 	};
 }
 

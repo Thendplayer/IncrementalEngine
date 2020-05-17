@@ -1,13 +1,12 @@
 #include <windows.h>
 #include <windowsx.h>
 
-#include "Config.h"
-
+#include "Description.h"
 #include "MainEngine.h"
 #include GAME_HEADER
 
 using namespace IncrementalEngine;
-using namespace PROJECT_NAMESPACE;
+using namespace GAME_NAMESPACE;
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
