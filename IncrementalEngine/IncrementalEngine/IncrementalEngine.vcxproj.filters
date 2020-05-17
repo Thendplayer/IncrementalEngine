@@ -96,9 +96,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="MainEngine.cpp">
       <Filter>Engine\Incremental Engine</Filter>
     </ClCompile>
@@ -248,9 +245,6 @@
     <ClInclude Include="StringUtils.h">
       <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Engine\Incremental Engine\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
@@ -290,8 +284,8 @@
     <ClInclude Include="Config.h">
       <Filter>Engine\Incremental Engine\Core\Config</Filter>
     </ClInclude>
-    <ClInclude Include="..\Run\Config\Description.h">
-      <Filter>Config</Filter>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
