@@ -1,0 +1,38 @@
+{
+	"ApplicationName": {
+		"string" : "MyGame"
+	},
+
+	"Fullscreen": {
+		"bool": false
+	},
+	"WindowSize" : {
+		"vector2": {
+			"x": 800,
+			"y": 600
+		}
+	},
+
+	"ScreenDepth": {
+		"float": 1000.0
+	},
+	"ScreenNear": {
+		"float": 0.1
+	},
+	"VsyncEnabled": {
+		"bool": true
+	},
+
+	"ShowCursor": {
+		"bool": true
+	},
+
+	"BackgroundColor": {
+		"color": {
+			"r": 0,
+			"g": 192,
+			"b": 255,
+			"a": 1
+		}
+	}
+}

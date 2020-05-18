@@ -11,6 +11,8 @@ namespace IncrementalEngine
 {
 	class Text : public Actor
 	{
+	#define DEFAULT_FONT_FAMILY L"Courier New"
+
 	public:
 		Text();
 		~Text() override;

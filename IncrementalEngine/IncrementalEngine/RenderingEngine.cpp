@@ -1,14 +1,14 @@
 #include "RenderingEngine.h"
 #include "Utils.h"
-#include "Config.h"
 #include <cassert>
 
 namespace IncrementalEngine
 {
-	RenderingEngine::RenderingEngine() :
+	RenderingEngine::RenderingEngine(Config config) :
 		_direct3D(NULL),
 		_camera(NULL),
-		_shaderManager(NULL)
+		_shaderManager(NULL),
+		_config(config)
 	{
 	}
 
@@ -23,7 +23,7 @@ namespace IncrementalEngine
 	{
 		HRESULT result;
 		
-		_direct3D = new D3DImplementation;
+		_direct3D = new D3DImplementation(_config);
 		if (!_direct3D)
 		{
 			return CO_E_ERRORINAPP;
@@ -69,7 +69,13 @@ namespace IncrementalEngine
 	{
 		HRESULT result;
 
-		_direct3D->BeginScene(BACKGROUND_COLOR);
+		_direct3D->BeginScene(
+			_config.BackgroundColor.x / 255,
+			_config.BackgroundColor.y / 255, 
+			_config.BackgroundColor.z / 255, 
+			_config.BackgroundColor.w
+		);
+
 		_camera->Draw();
 		
 		result = _shaderManager->SetupFrame();

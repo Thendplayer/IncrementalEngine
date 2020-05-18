@@ -1,317 +1,311 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="Game">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Source Files\Game">
-      <UniqueIdentifier>{fa0fb1b9-9723-42fc-ab6b-27d74ef3ea67}</UniqueIdentifier>
+    <Filter Include="Config">
+      <UniqueIdentifier>{c2bf613b-c740-4395-822f-f625ec0b3987}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine">
-      <UniqueIdentifier>{1ee300a9-5b08-48b8-b0ea-d1276fb7b8c2}</UniqueIdentifier>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\Engine\EngineGame">
-      <UniqueIdentifier>{6d80e838-5405-4872-93ed-93245b1107f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader Files">
+    <Filter Include="Engine\Shader Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Engine\Scene">
-      <UniqueIdentifier>{11c14920-6142-4415-ad5d-d145c2788588}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Actor">
-      <UniqueIdentifier>{477ef3d0-b1b9-4733-b906-ac0ef26526e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ThirdParty">
+    <Filter Include="Engine\Third Party">
       <UniqueIdentifier>{42494a71-4a1e-4d8a-b77f-bcec495b7fba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ThirdParty\json11">
+    <Filter Include="Engine\Third Party\json11">
       <UniqueIdentifier>{07c3fb65-9996-447e-999e-428e3ca5742f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\Utilities">
-      <UniqueIdentifier>{5ae06f59-ef3e-470a-8394-3996b8f57810}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core">
-      <UniqueIdentifier>{7ec10fce-04dd-470b-adef-5b0146890527}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\HumanInterfaceDevices">
-      <UniqueIdentifier>{b69ee674-e18e-4f59-8de6-4c3e388d8978}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine">
-      <UniqueIdentifier>{66585748-d4ca-4726-8bf0-e64ce903f536}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\D3DImplementation">
-      <UniqueIdentifier>{543f34f1-a0e6-4f39-80d4-1d03da83971a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\RenderCamera">
-      <UniqueIdentifier>{ded5669c-2cf5-4188-bdde-ab927a15c578}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\Bitmap">
-      <UniqueIdentifier>{a10f8a73-4b77-4cef-b44f-99aa98f11f92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\Shaders">
-      <UniqueIdentifier>{3945f2a8-6a03-43f9-94e3-2a3b5bb27d04}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\Shaders\TextureShader">
-      <UniqueIdentifier>{2945c586-bfb3-49f3-8f7c-bea40c10a906}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\Texture">
-      <UniqueIdentifier>{0eb0eb9a-5b70-454e-af43-2cbece43ff27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderingEngine\Font">
-      <UniqueIdentifier>{096e1685-5832-4c73-b78d-3f4a135dfc5d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\RenderWindow">
-      <UniqueIdentifier>{70ba7f77-c267-4d85-8e4d-fdb89aaf79d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\Sound">
-      <UniqueIdentifier>{1c4a2069-9ff1-4f8a-825b-4e0e02ec2a9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ThirdParty\SFML">
+    <Filter Include="Engine\Third Party\SFML">
       <UniqueIdentifier>{4d7f1a2d-9fba-44cd-8428-1ce34aeca5f5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\Resources">
+    <Filter Include="Engine\Incremental Engine">
+      <UniqueIdentifier>{1ee300a9-5b08-48b8-b0ea-d1276fb7b8c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\EngineGame">
+      <UniqueIdentifier>{6d80e838-5405-4872-93ed-93245b1107f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Scene">
+      <UniqueIdentifier>{11c14920-6142-4415-ad5d-d145c2788588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Actor">
+      <UniqueIdentifier>{477ef3d0-b1b9-4733-b906-ac0ef26526e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Utilities">
+      <UniqueIdentifier>{5ae06f59-ef3e-470a-8394-3996b8f57810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core">
+      <UniqueIdentifier>{7ec10fce-04dd-470b-adef-5b0146890527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\HumanInterfaceDevices">
+      <UniqueIdentifier>{b69ee674-e18e-4f59-8de6-4c3e388d8978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine">
+      <UniqueIdentifier>{66585748-d4ca-4726-8bf0-e64ce903f536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\D3DImplementation">
+      <UniqueIdentifier>{543f34f1-a0e6-4f39-80d4-1d03da83971a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\RenderCamera">
+      <UniqueIdentifier>{ded5669c-2cf5-4188-bdde-ab927a15c578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\Bitmap">
+      <UniqueIdentifier>{a10f8a73-4b77-4cef-b44f-99aa98f11f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\Shaders">
+      <UniqueIdentifier>{3945f2a8-6a03-43f9-94e3-2a3b5bb27d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\Shaders\TextureShader">
+      <UniqueIdentifier>{2945c586-bfb3-49f3-8f7c-bea40c10a906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\Texture">
+      <UniqueIdentifier>{0eb0eb9a-5b70-454e-af43-2cbece43ff27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderingEngine\Font">
+      <UniqueIdentifier>{096e1685-5832-4c73-b78d-3f4a135dfc5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\RenderWindow">
+      <UniqueIdentifier>{70ba7f77-c267-4d85-8e4d-fdb89aaf79d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\Sound">
+      <UniqueIdentifier>{1c4a2069-9ff1-4f8a-825b-4e0e02ec2a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\SaveSystem">
+      <UniqueIdentifier>{dde924e5-8d2c-49f7-ac1b-ee1d2b9f0145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Resources">
       <UniqueIdentifier>{22c9ddf5-e7ba-4035-928b-edaa0432d20b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\Sprite">
+    <Filter Include="Engine\Incremental Engine\Sprite">
       <UniqueIdentifier>{5cef2aa3-6a3d-4650-9c2e-8634ba166c7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\Text">
+    <Filter Include="Engine\Incremental Engine\Text">
       <UniqueIdentifier>{1ddb1d03-8dfd-4ad8-bcc7-7d3dd71d8044}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\Button">
+    <Filter Include="Engine\Incremental Engine\Button">
       <UniqueIdentifier>{ef909034-a9d3-412b-83c0-447ab6d0a076}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game\Tap">
-      <UniqueIdentifier>{996a84e3-115b-4682-95d1-fb6653e1ad14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Core\SaveSystem">
-      <UniqueIdentifier>{dde924e5-8d2c-49f7-ac1b-ee1d2b9f0145}</UniqueIdentifier>
+    <Filter Include="Engine\Incremental Engine\Core\Config">
+      <UniqueIdentifier>{500d4eb4-a2d6-448d-88e8-35ced096ca27}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MainEngine.cpp">
-      <Filter>Source Files\Engine</Filter>
+      <Filter>Engine\Incremental Engine</Filter>
     </ClCompile>
     <ClCompile Include="EngineGame.cpp">
-      <Filter>Source Files\Engine\EngineGame</Filter>
-    </ClCompile>
-    <ClCompile Include="ExampleGame.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.h">
-      <Filter>Source Files\Engine</Filter>
+      <Filter>Engine\Incremental Engine\EngineGame</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files\Engine\Core\HumanInterfaceDevices</Filter>
+      <Filter>Engine\Incremental Engine\Core\HumanInterfaceDevices</Filter>
     </ClCompile>
     <ClCompile Include="WindowsInput.cpp">
-      <Filter>Source Files\Engine\Core\HumanInterfaceDevices</Filter>
+      <Filter>Engine\Incremental Engine\Core\HumanInterfaceDevices</Filter>
     </ClCompile>
     <ClCompile Include="RenderWindow.cpp">
-      <Filter>Source Files\Engine\Core\RenderWindow</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderWindow</Filter>
     </ClCompile>
     <ClCompile Include="D3DImplementation.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\D3DImplementation</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\D3DImplementation</Filter>
     </ClCompile>
     <ClCompile Include="RenderingEngine.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine</Filter>
     </ClCompile>
     <ClCompile Include="RenderCamera.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\RenderCamera</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\RenderCamera</Filter>
     </ClCompile>
     <ClCompile Include="Bitmap.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Bitmap</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Bitmap</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Texture</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Texture</Filter>
     </ClCompile>
     <ClCompile Include="TextureShader.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Shaders\TextureShader</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Shaders\TextureShader</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Engine\Scene</Filter>
+      <Filter>Engine\Incremental Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>Source Files\Engine\Actor</Filter>
+      <Filter>Engine\Incremental Engine\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Shaders</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="ThirdParty\json11\json11.cpp">
-      <Filter>Source Files\ThirdParty\json11</Filter>
+      <Filter>Engine\Third Party\json11</Filter>
     </ClCompile>
     <ClCompile Include="SoundEngine.cpp">
-      <Filter>Source Files\Engine\Core\Sound</Filter>
+      <Filter>Engine\Incremental Engine\Core\Sound</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
-      <Filter>Source Files\Engine\Core\Sound</Filter>
+      <Filter>Engine\Incremental Engine\Core\Sound</Filter>
     </ClCompile>
     <ClCompile Include="FontFactory.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Font</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Font</Filter>
     </ClCompile>
     <ClCompile Include="FloatRect.cpp">
-      <Filter>Source Files\Engine\Utilities</Filter>
+      <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\ThirdParty\SFML</Filter>
+      <Filter>Engine\Third Party\SFML</Filter>
     </ClCompile>
     <ClCompile Include="Transformable.cpp">
-      <Filter>Source Files\ThirdParty\SFML</Filter>
+      <Filter>Engine\Third Party\SFML</Filter>
     </ClCompile>
     <ClCompile Include="Resources.cpp">
-      <Filter>Source Files\Engine\Resources</Filter>
+      <Filter>Engine\Incremental Engine\Resources</Filter>
     </ClCompile>
     <ClCompile Include="TextureBase.cpp">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Texture</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\Engine\Sprite</Filter>
+      <Filter>Engine\Incremental Engine\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Source Files\Engine\Text</Filter>
+      <Filter>Engine\Incremental Engine\Text</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source Files\Engine\Button</Filter>
-    </ClCompile>
-    <ClCompile Include="Tap.cpp">
-      <Filter>Source Files\Game\Tap</Filter>
+      <Filter>Engine\Incremental Engine\Button</Filter>
     </ClCompile>
     <ClCompile Include="SaveSystem.cpp">
-      <Filter>Source Files\Engine\Core\SaveSystem</Filter>
+      <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Engine\Incremental Engine\Core\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainEngine.h">
-      <Filter>Source Files\Engine</Filter>
+      <Filter>Engine\Incremental Engine</Filter>
     </ClInclude>
     <ClInclude Include="EngineGame.h">
-      <Filter>Source Files\Engine\EngineGame</Filter>
-    </ClInclude>
-    <ClInclude Include="ExampleGame.h">
-      <Filter>Source Files\Game</Filter>
+      <Filter>Engine\Incremental Engine\EngineGame</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Source Files\Engine\Core\HumanInterfaceDevices</Filter>
+      <Filter>Engine\Incremental Engine\Core\HumanInterfaceDevices</Filter>
     </ClInclude>
     <ClInclude Include="WindowsInput.h">
-      <Filter>Source Files\Engine\Core\HumanInterfaceDevices</Filter>
+      <Filter>Engine\Incremental Engine\Core\HumanInterfaceDevices</Filter>
     </ClInclude>
     <ClInclude Include="RenderWindow.h">
-      <Filter>Source Files\Engine\Core\RenderWindow</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderWindow</Filter>
     </ClInclude>
     <ClInclude Include="D3DImplementation.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\D3DImplementation</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\D3DImplementation</Filter>
     </ClInclude>
     <ClInclude Include="RenderingEngine.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine</Filter>
     </ClInclude>
     <ClInclude Include="RenderCamera.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\RenderCamera</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\RenderCamera</Filter>
     </ClInclude>
     <ClInclude Include="Bitmap.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Bitmap</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Bitmap</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Texture</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Texture</Filter>
     </ClInclude>
     <ClInclude Include="TextureShader.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Shaders\TextureShader</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Shaders\TextureShader</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Source Files\Engine\Scene</Filter>
+      <Filter>Engine\Incremental Engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>Source Files\Engine\Actor</Filter>
+      <Filter>Engine\Incremental Engine\Actor</Filter>
     </ClInclude>
     <ClInclude Include="ShaderManager.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Shaders</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="DirectInputKey.h">
-      <Filter>Source Files\Engine\Core\HumanInterfaceDevices</Filter>
+      <Filter>Engine\Incremental Engine\Core\HumanInterfaceDevices</Filter>
     </ClInclude>
     <ClInclude Include="Drawable.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\json11\json11.hpp">
-      <Filter>Source Files\ThirdParty\json11</Filter>
+      <Filter>Engine\Third Party\json11</Filter>
     </ClInclude>
     <ClInclude Include="SoundEngine.h">
-      <Filter>Source Files\Engine\Core\Sound</Filter>
+      <Filter>Engine\Incremental Engine\Core\Sound</Filter>
     </ClInclude>
     <ClInclude Include="Sound.h">
-      <Filter>Source Files\Engine\Core\Sound</Filter>
+      <Filter>Engine\Incremental Engine\Core\Sound</Filter>
     </ClInclude>
     <ClInclude Include="FontFactory.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Font</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Font</Filter>
     </ClInclude>
     <ClInclude Include="StringUtils.h">
-      <Filter>Source Files\Engine\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Source Files\Engine\Utilities</Filter>
+      <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
-      <Filter>Source Files\Engine\Utilities</Filter>
+      <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="FloatRect.h">
-      <Filter>Source Files\Engine\Utilities</Filter>
+      <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Source Files\ThirdParty\SFML</Filter>
+      <Filter>Engine\Third Party\SFML</Filter>
     </ClInclude>
     <ClInclude Include="Transformable.h">
-      <Filter>Source Files\ThirdParty\SFML</Filter>
+      <Filter>Engine\Third Party\SFML</Filter>
     </ClInclude>
     <ClInclude Include="Resources.h">
-      <Filter>Source Files\Engine\Resources</Filter>
+      <Filter>Engine\Incremental Engine\Resources</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Source Files\Engine\Resources</Filter>
+      <Filter>Engine\Incremental Engine\Resources</Filter>
     </ClInclude>
     <ClInclude Include="TextureBase.h">
-      <Filter>Source Files\Engine\Core\RenderingEngine\Texture</Filter>
+      <Filter>Engine\Incremental Engine\Core\RenderingEngine\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Source Files\Engine\Sprite</Filter>
+      <Filter>Engine\Incremental Engine\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Source Files\Engine\Text</Filter>
+      <Filter>Engine\Incremental Engine\Text</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Source Files\Engine\Button</Filter>
-    </ClInclude>
-    <ClInclude Include="Tap.h">
-      <Filter>Source Files\Game\Tap</Filter>
+      <Filter>Engine\Incremental Engine\Button</Filter>
     </ClInclude>
     <ClInclude Include="SaveSystem.h">
-      <Filter>Source Files\Engine\Core\SaveSystem</Filter>
+      <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClass.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Engine\Incremental Engine\Core\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Engine\Incremental Engine\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ThirdParty\json11\json11.pc.in">
-      <Filter>Source Files\ThirdParty\json11</Filter>
-    </None>
-    <None Include="..\Run\Config\Resources.json">
-      <Filter>Source Files\Game</Filter>
+      <Filter>Engine\Third Party\json11</Filter>
     </None>
     <None Include="..\Run\Shaders\globals.fxh">
-      <Filter>Shader Files</Filter>
+      <Filter>Engine\Shader Files</Filter>
     </None>
     <None Include="..\Run\Shaders\texture.ps">
-      <Filter>Shader Files</Filter>
+      <Filter>Engine\Shader Files</Filter>
     </None>
     <None Include="..\Run\Shaders\texture.vs">
-      <Filter>Shader Files</Filter>
+      <Filter>Engine\Shader Files</Filter>
+    </None>
+    <None Include="..\Run\Config\Resources.json">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\Run\Config\Config.json">
+      <Filter>Config</Filter>
     </None>
   </ItemGroup>
 </Project>

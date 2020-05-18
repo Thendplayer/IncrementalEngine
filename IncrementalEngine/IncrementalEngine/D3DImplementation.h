@@ -14,12 +14,16 @@
 #include <windowsx.h>
 
 #include "RenderWindow.h"
+#include "Config.h"
 
 namespace IncrementalEngine
 {
 	class D3DImplementation
 	{
 	public:
+		D3DImplementation(Config config);
+		virtual ~D3DImplementation();
+
 		HRESULT Init(RenderWindow* renderWindow);
 
 		void BeginScene(float red, float green, float blue, float alpha);
@@ -35,11 +39,9 @@ namespace IncrementalEngine
 		void TurnZBufferOn();
 		void TurnZBufferOff();
 
-		D3DImplementation();
-		virtual ~D3DImplementation();
-
 	private:
 		RenderWindow* _renderWindow;
+		Config _config;
 		int _videoCardMemory;
 		char _videoCardDescription[128];
 		IDXGISwapChain* _swapChain;

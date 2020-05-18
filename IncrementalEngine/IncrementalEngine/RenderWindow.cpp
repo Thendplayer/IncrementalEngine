@@ -2,18 +2,21 @@
 
 #include "RenderWindow.h"
 #include "WindowsInput.h"
-#include "Config.h"
+
+#include "StringUtils.h"
 
 namespace IncrementalEngine
 {	
 	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-	RenderWindow::RenderWindow()
+	RenderWindow::RenderWindow(Config config)
 	{
 		WNDCLASSEX wc;
 		DEVMODE dmScreenSettings;
 		int posX, posY;
+		StringAsWCHAR_ptr(config.ApplicationName, LPCWSTR applicationName);
 
+		_config = config;
 		_hInstance = GetModuleHandle(NULL);
 
 		wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
@@ -26,7 +29,7 @@ namespace IncrementalEngine
 		wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 		wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 		wc.lpszMenuName = NULL;
-		wc.lpszClassName = APPLICATION_NAME;
+		wc.lpszClassName = applicationName;
 		wc.cbSize = sizeof(WNDCLASSEX);
 
 		RegisterClassEx(&wc);
@@ -34,7 +37,7 @@ namespace IncrementalEngine
 		_screenWidth = GetSystemMetrics(SM_CXSCREEN);
 		_screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
-		if (FULLSCREEN)
+		if (config.Fullscreen)
 		{
 			memset(&dmScreenSettings, 0, sizeof(dmScreenSettings));
 			dmScreenSettings.dmSize = sizeof(dmScreenSettings);
@@ -49,8 +52,8 @@ namespace IncrementalEngine
 		}
 		else
 		{
-			_screenWidth = DEFAULT_WINDOWED_SCREEN_WIDTH;
-			_screenHeight = DEFAULT_WINDOWED_SCREEN_HEIGHT;
+			_screenWidth = config.WindowSize.x;
+			_screenHeight = config.WindowSize.y;
 
 			posX = (GetSystemMetrics(SM_CXSCREEN) - _screenWidth) / 2;
 			posY = (GetSystemMetrics(SM_CYSCREEN) - _screenHeight) / 2;
@@ -61,8 +64,8 @@ namespace IncrementalEngine
 		
 		_hWnd = CreateWindowEx(
 			WS_EX_APPWINDOW,
-			APPLICATION_NAME,
-			APPLICATION_NAME,
+			applicationName,
+			applicationName,
 			WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME,
 			posX,
 			posY,
@@ -79,14 +82,14 @@ namespace IncrementalEngine
 		SetForegroundWindow(_hWnd);
 		SetFocus(_hWnd);
 
-		ShowCursor(SHOW_CURSOR);
+		ShowCursor(config.ShowCursor);
 	}
 
 	RenderWindow::~RenderWindow()
 	{
 		ShowCursor(true);
 
-		if (FULLSCREEN)
+		if (_config.Fullscreen)
 		{
 			ChangeDisplaySettings(NULL, 0);
 		}
@@ -94,7 +97,8 @@ namespace IncrementalEngine
 		DestroyWindow(_hWnd);
 		_hWnd = NULL;
 
-		UnregisterClass(APPLICATION_NAME, _hInstance);
+		StringAsWCHAR_ptr(_config.ApplicationName, LPCWSTR applicationName);
+		UnregisterClass(applicationName, _hInstance);
 		_hInstance = NULL;
 	}
 
@@ -116,6 +120,16 @@ namespace IncrementalEngine
 	int RenderWindow::GetScreenHeight()
 	{
 		return _screenHeight;
+	}
+
+	float RenderWindow::GetScreenNear()
+	{
+		return _config.ScreenNear;
+	}
+
+	float RenderWindow::GetScreenDepth()
+	{
+		return _config.ScreenDepth;
 	}
 
 	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

@@ -4,15 +4,16 @@
 #include <windows.h>
 
 #include "EngineGame.h"
-#include "InputManager.h"
 #include "RenderingEngine.h"
 #include "RenderWindow.h"
+#include "InputManager.h"
 #include "SoundEngine.h"
 #include "FontFactory.h"
 #include "SaveSystem.h"
 #include "Scene.h"
 #include "Resources.h"
 #include "Utils.h"
+#include "Config.h"
 
 namespace IncrementalEngine
 {
@@ -42,6 +43,8 @@ namespace IncrementalEngine
 		SceneManager* _sceneManager;
 		ResourcesManager* _resourcesManager;
 		SaveSystem* _saveSystem;
+		
+		Config _config;
 
 		void Init();
 		void Update(float dt);

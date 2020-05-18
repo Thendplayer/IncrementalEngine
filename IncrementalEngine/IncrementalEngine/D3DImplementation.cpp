@@ -2,12 +2,11 @@
 #include <cassert>
 
 #include "D3DImplementation.h"
-#include "Config.h"
 #include "Utils.h"
 
 namespace IncrementalEngine
 {
-	D3DImplementation::D3DImplementation() :
+	D3DImplementation::D3DImplementation(Config config) :
 		_swapChain(0),
 		_device(0),
 		_deviceContext(0),
@@ -16,7 +15,8 @@ namespace IncrementalEngine
 		_depthStencilState(0),
 		_depthStencilView(0),
 		_rasterState(0),
-		_depthDisabledStencilState(0)
+		_depthDisabledStencilState(0),
+		_config(config)
 	{
 	}
 
@@ -105,7 +105,7 @@ namespace IncrementalEngine
 
 	void D3DImplementation::EndScene()
 	{
-		if (VSYNC_ENABLED)
+		if (_config.VsyncEnabled)
 		{
 			_swapChain->Present(1, 0);
 		}
@@ -237,7 +237,7 @@ namespace IncrementalEngine
 		swapChainDesc.BufferDesc.Height = _renderWindow->GetScreenHeight();
 		swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 
-		if (VSYNC_ENABLED)
+		if (_config.VsyncEnabled)
 		{
 			swapChainDesc.BufferDesc.RefreshRate.Numerator = numerator;
 			swapChainDesc.BufferDesc.RefreshRate.Denominator = denominator;
@@ -255,7 +255,7 @@ namespace IncrementalEngine
 		swapChainDesc.SampleDesc.Count = 1;
 		swapChainDesc.SampleDesc.Quality = 0;
 
-		swapChainDesc.Windowed = !FULLSCREEN;
+		swapChainDesc.Windowed = !_config.Fullscreen;
 
 		swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
 		swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
@@ -406,11 +406,23 @@ namespace IncrementalEngine
 		float fieldOfView = (float)D3DX_PI / 4.0f;
 		float screenAspect = (float)_renderWindow->GetScreenWidth() / (float)_renderWindow->GetScreenHeight();
 
-		D3DXMatrixPerspectiveFovLH(&_projectionMatrix, fieldOfView, screenAspect, SCREEN_NEAR, SCREEN_DEPTH);
+		D3DXMatrixPerspectiveFovLH(
+			&_projectionMatrix, 
+			fieldOfView, 
+			screenAspect, 
+			_config.ScreenNear, 
+			_config.ScreenDepth
+		);
 
 		D3DXMatrixIdentity(&_worldMatrix);
 
-		D3DXMatrixOrthoLH(&_orthoProjectionMatrix, (float)_renderWindow->GetScreenWidth(), (float)_renderWindow->GetScreenHeight(), SCREEN_NEAR, SCREEN_DEPTH);
+		D3DXMatrixOrthoLH(
+			&_orthoProjectionMatrix, 
+			(float)_renderWindow->GetScreenWidth(), 
+			(float)_renderWindow->GetScreenHeight(), 
+			_config.ScreenNear, 
+			_config.ScreenDepth
+		);
 	
 		D3DXMATRIX scaling, rotation, translation, worldMatrix;
 		
