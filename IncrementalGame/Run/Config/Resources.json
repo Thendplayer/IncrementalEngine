@@ -1,0 +1,10 @@
+{
+	"ActionButtonOn": {
+		"Fileroute": "Resources/ButtonBackgroundMagicCrystalOn.png",
+		"Type": "Texture"
+	},
+	"ActionButtonOff": {
+		"Fileroute": "Resources/ButtonBackgroundMagicCrystalOff.png",
+		"Type": "Texture"
+	}
+}

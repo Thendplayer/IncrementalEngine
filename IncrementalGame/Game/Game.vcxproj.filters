@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Config">
+      <UniqueIdentifier>{c2bf613b-c740-4395-822f-f625ec0b3987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{0c3e5694-75e8-4093-8ff3-0277904efffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{456c5484-8724-49da-baa1-ca4a768d5b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ActionButton">
+      <UniqueIdentifier>{acf3a805-7af8-4ba7-88da-99646208d5d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\EarningsCalculator">
+      <UniqueIdentifier>{f7c00cdf-1d9b-42e7-8616-3a89abaaf5f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\KmbNumber">
+      <UniqueIdentifier>{5778b88d-b6b2-4dc2-b734-863cb79dcc9e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Run\Config\Resources.json">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\Run\Config\Config.json">
+      <Filter>Config</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Run\Config\Description.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionButton.h">
+      <Filter>Game\ActionButton</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EarningsCalculator.h">
+      <Filter>Game\EarningsCalculator</Filter>
+    </ClInclude>
+    <ClInclude Include="KmbNumber.h">
+      <Filter>Game\KmbNumber</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\IncrementalEngine\WinMain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionButton.cpp">
+      <Filter>Game\ActionButton</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EarningsCalculator.cpp">
+      <Filter>Game\EarningsCalculator</Filter>
+    </ClCompile>
+    <ClCompile Include="KmbNumber.cpp">
+      <Filter>Game\KmbNumber</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
