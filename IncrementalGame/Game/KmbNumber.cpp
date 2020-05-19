@@ -6,77 +6,70 @@ namespace MagicIdle
 {
 	KmbNumber KmbNumber::Zero = KmbNumber(0, 0, 0);
 
+	KmbNumber::KmbNumber()
+	{
+		FirstDigits = 0;
+		TrailingPercentage = 0;
+		Exponent = 0;
+	}
+
 	KmbNumber::KmbNumber(const KmbNumber& kmbNumber)
 	{
-		_firstDigits = kmbNumber._firstDigits;
-		_trailingPercentage = kmbNumber._trailingPercentage;
-		_exponent = kmbNumber._exponent;
+		FirstDigits = kmbNumber.FirstDigits;
+		TrailingPercentage = kmbNumber.TrailingPercentage;
+		Exponent = kmbNumber.Exponent;
 	}
 
 	KmbNumber::KmbNumber(float firstDigits, float trailing, int exponent)
 	{
-		_firstDigits = firstDigits;
-		_trailingPercentage = trailing;
-		_exponent = exponent;
+		FirstDigits = firstDigits;
+		TrailingPercentage = trailing;
+		Exponent = exponent;
 	}
 
 	KmbNumber::KmbNumber(float number, int exponent)
 	{
-		auto newKmb = Refactor(number, exponent);
-
-		_firstDigits = newKmb._firstDigits;
-		_trailingPercentage = newKmb._trailingPercentage;
-		_exponent = newKmb._exponent;
+		Refactor(number, exponent);
 	}
 
-	KmbNumber KmbNumber::operator=(float number1)
+	void KmbNumber::RoundUp(KmbNumber& number)
 	{
-		auto newKmb = Zero;
-		return newKmb.Refactor(number1, 0);
-	}
-
-	double KmbNumber::operator=(KmbNumber number1)
-	{
-		double castedNumber = GetRawNumber() * std::pow(10, _exponent);
-		return castedNumber;
-	}
-
-	KmbNumber KmbNumber::RoundUp(KmbNumber& number)
-	{
-		if (number._trailingPercentage > 0)
+		if (number.TrailingPercentage > 0)
 		{
-			number._trailingPercentage = (float)(std::round(number._trailingPercentage * std::pow(10, 2))) / std::pow(10, 2);
-			number._firstDigits += 1;
-			return number;
+			number.TrailingPercentage = (float)(std::round(number.TrailingPercentage * std::pow(10, 2))) / std::pow(10, 2);
+			number.FirstDigits += 1;
 		}
-
-		return number;
 	}
 
-	std::string KmbNumber::ToString()
+	std::wstring KmbNumber::ToString()
 	{
 		SetSuffix();
 
-		if (_firstDigits == 0)
+		if (FirstDigits == 0)
 		{
-			std::stringstream stream;
+			if (GetStringTrailingPercentage() == 0)
+			{
+				return L"0" + Suffix;
+			}
+
+			std::wstringstream stream;
 			stream << std::fixed << std::setprecision(DECIMALS_TO_SHOW) << GetStringTrailingPercentage();
-			return stream.str() + suffix;
+			return stream.str() + Suffix;
 		}
 
-		if (_exponent == 0)
+		if (Exponent == 0)
 		{
-			return std::to_string(_firstDigits);
+			return std::to_wstring((int)FirstDigits);
 		}
 
-		std::stringstream stream;
+		std::wstringstream stream;
 		stream << std::fixed << std::setprecision(DECIMALS_TO_SHOW) << GetStringTrailingPercentage();
-		return stream.str() + suffix;
+		return stream.str() + Suffix;
 	}
 
 	float KmbNumber::GetStringTrailingPercentage()
 	{
-		auto trailingPercentage1000 = (_firstDigits + _trailingPercentage) * 1000.0f;
+		auto trailingPercentage1000 = (FirstDigits + TrailingPercentage) * 1000.0f;
 		trailingPercentage1000 = std::floor(trailingPercentage1000);
 		auto trailingPercentage = trailingPercentage1000 / 1000;
 		return trailingPercentage;
@@ -84,176 +77,165 @@ namespace MagicIdle
 
 	float KmbNumber::GetRawNumber()
 	{
-		return _firstDigits + _trailingPercentage;
+		return FirstDigits + TrailingPercentage;
 	}
 
 	float KmbNumber::GetInt()
 	{
-		return (int)_firstDigits * 
-			   (int)std::pow(10, _exponent) + 
-			   (int)_trailingPercentage * (int)std::pow(10, _exponent);
+		return ((int)FirstDigits) * 
+			   ((int)std::pow(10, Exponent)) + 
+			   ((int)TrailingPercentage) * 
+			   ((int)std::pow(10, Exponent));
 	}
 
 	void KmbNumber::SetSuffix()
 	{
-		std::string suffixArray[] = SUFFIX;
-		for (int i = 0; i < suffixArray->size(); i++)
+		std::wstring suffixArray[] = SUFFIX;
+		for (int i = 0; i < sizeof(suffixArray) / sizeof(suffixArray[0]); i++)
 		{
-			if (_exponent == i)
+			if (Exponent / 3 == i)
 			{
-				suffix = suffixArray[i];
+				Suffix = suffixArray[i];
 			}
 		}
 	}
 
-	KmbNumber KmbNumber::Refactor(float value, int exponent)
+	void KmbNumber::Refactor(float value, int exponent)
 	{
 		auto trail = std::fmod(value, 1);
-		value = value - trail;
 
-		auto result = KmbNumber(value, trail, exponent);
-		result = Refactor(result);
+		FirstDigits = value - trail;
+		TrailingPercentage = trail;
+		Exponent = exponent;
 
-		return result;
+		Refactor();
 	}
 
-	KmbNumber KmbNumber::Refactor(KmbNumber number)
+	void KmbNumber::Refactor()
 	{
-		while (number._trailingPercentage < 0)
+		while (TrailingPercentage < 0)
 		{
-			number._trailingPercentage = 1 + number._trailingPercentage;
-			number._firstDigits -= 1;
+			TrailingPercentage = 1 + TrailingPercentage;
+			FirstDigits -= 1;
 		}
 
-		while (number._trailingPercentage >= 1)
+		while (TrailingPercentage >= 1)
 		{
-			number._trailingPercentage -= 1;
-			number._firstDigits++;
+			TrailingPercentage -= 1;
+			FirstDigits++;
 		}
 
-		while (number._firstDigits > 999)
+		while (FirstDigits > 999)
 		{
-			number._trailingPercentage = (number._trailingPercentage / 1000) + std::fmod(number._firstDigits, 1000) / 1000;
-			number._firstDigits /= 1000;
+			TrailingPercentage = (TrailingPercentage / 1000) + std::fmod(FirstDigits, 1000) / 1000;
+			FirstDigits /= 1000;
 			
-			auto a = std::trunc(number._firstDigits);
-			number._firstDigits = (float)a;
-			number._exponent += 3;
+			auto a = std::trunc(FirstDigits);
+			FirstDigits = (float)a;
+			Exponent += 3;
 		}
 
-		if (number._firstDigits < 1 && number._firstDigits >= 0 && _exponent > 0)
+		if (FirstDigits < 1 && FirstDigits >= 0 && Exponent > 0)
 		{
-			if (number._firstDigits == 0 && number._trailingPercentage == 0)
+			if (FirstDigits == 0 && TrailingPercentage == 0)
 			{
-				number._exponent = 1;
-				return number;
+				Exponent = 1;
+				return;
 			}
 
-			number._trailingPercentage = number._trailingPercentage * 1000;
-			number._exponent -= 3;
-			Refactor(number);
+			TrailingPercentage = TrailingPercentage * 1000;
+			Exponent -= 3;
+			Refactor();
 		}
 
-		if (number._trailingPercentage >= 1)
+		if (TrailingPercentage >= 1)
 		{
-			Refactor(number);
+			Refactor();
 		}
-
-
-		return number;
 	}
 
-	KmbNumber KmbNumber::Add(KmbNumber adder)
+	void KmbNumber::Add(KmbNumber adder)
 	{
-		if (adder._exponent == _exponent)
+		if (adder.Exponent == Exponent)
 		{
-			KmbNumber result = KmbNumber(_firstDigits + adder._firstDigits, 
-				_trailingPercentage + adder._trailingPercentage, _exponent);
-			return Refactor(result);
+			FirstDigits += adder.FirstDigits;
+			TrailingPercentage += adder.TrailingPercentage;
+			Refactor();
+			return;
 		}
 
-		if (_exponent > adder._exponent)
+		if (Exponent > adder.Exponent)
 		{
-			_trailingPercentage = 
-				_trailingPercentage + adder._firstDigits * (float)(std::pow(10, -(_exponent - adder._exponent)));
-			KmbNumber result = KmbNumber(_firstDigits, _trailingPercentage, _exponent);
-			return Refactor(result);
+			TrailingPercentage += adder.FirstDigits * (float)(std::pow(10, -(Exponent - adder.Exponent)));
+			Refactor();
+			return;
 		}
 
-		if (adder._exponent > _exponent)
+		if (adder.Exponent > Exponent)
 		{
-			adder._trailingPercentage = 
-				adder._trailingPercentage + _firstDigits * (float)(std::pow(10, -(adder._exponent - _exponent)));
-			KmbNumber result = KmbNumber(adder._firstDigits, adder._trailingPercentage, adder._exponent);
-			return Refactor(result);
+			adder.TrailingPercentage += FirstDigits * (float)(std::pow(10, -(adder.Exponent - Exponent)));
+
+			FirstDigits = adder.FirstDigits;
+			TrailingPercentage = adder.TrailingPercentage;
+			Exponent = adder.Exponent;
+
+			Refactor();
+			return;
 		}
-
-		return NULL;
-
 	}
 
-	KmbNumber KmbNumber::Subtract(KmbNumber subtractor)
+	void KmbNumber::Subtract(KmbNumber subtractor)
 	{
-		KmbNumber result = KmbNumber(Zero);
-
-		if (_exponent == subtractor._exponent)
+		if (Exponent == subtractor.Exponent)
 		{
-			result._firstDigits = _firstDigits - subtractor._firstDigits;
-			result._trailingPercentage = _trailingPercentage - subtractor._trailingPercentage;
-			result._exponent = _exponent;
-			result = KmbNumber(result._firstDigits, result._trailingPercentage, result._exponent);
-
-			result = Refactor(result);
-			return result;
+			FirstDigits -= subtractor.FirstDigits;
+			TrailingPercentage -= subtractor.TrailingPercentage;
+			Refactor();
+			return;
 		}
 
-		auto exponentDif = _exponent - subtractor._exponent;
+		auto exponentDif = Exponent - subtractor.Exponent;
 
-		auto value1 = _firstDigits + _trailingPercentage;
-		auto value2 = subtractor._firstDigits + subtractor._trailingPercentage;
+		auto value1 = FirstDigits + TrailingPercentage;
+		auto value2 = subtractor.FirstDigits + subtractor.TrailingPercentage;
+		
 		if (exponentDif > MAXFLOATEXPONENT)
 		{
-			result = Refactor(*this);
-			return result;
+			Refactor();
+			return;
 		}
+		
 		value1 *= (float)(std::pow(10, exponentDif));
-		result = Refactor(value1 - value2, _exponent - exponentDif);
-
-		return result;
+		Refactor(value1 - value2, Exponent - exponentDif);
 	}
 
-	KmbNumber KmbNumber::Multiply(KmbNumber multiplier)
+	void KmbNumber::Multiply(KmbNumber multiplier)
 	{
-		auto firstNumber = _firstDigits + _trailingPercentage;
-		auto secondNumber = multiplier._firstDigits + multiplier._trailingPercentage;
+		auto firstNumber = FirstDigits + TrailingPercentage;
+		auto secondNumber = multiplier.FirstDigits + multiplier.TrailingPercentage;
 		auto resultFloat = firstNumber * secondNumber;
-		auto resultExponents = _exponent + multiplier._exponent;
+		auto resultExponents = Exponent + multiplier.Exponent;
 
-		auto result = Refactor(resultFloat, resultExponents);
-		return result;
-
+		Refactor(resultFloat, resultExponents);
 	}
 
-	KmbNumber KmbNumber::Divide(KmbNumber divider)
+	void KmbNumber::Divide(KmbNumber divider)
 	{
-		auto firstNumber = _firstDigits + _trailingPercentage;
-		auto secondNumber = divider._firstDigits + divider._trailingPercentage;
+		auto firstNumber = FirstDigits + TrailingPercentage;
+		auto secondNumber = divider.FirstDigits + divider.TrailingPercentage;
 		
 		if (secondNumber != 0)
 		{
 			auto resultFloat = firstNumber / secondNumber;
-			auto resultExponents = _exponent - divider._exponent;
+			auto resultExponents = Exponent - divider.Exponent;
 
-			auto result = Refactor(resultFloat, resultExponents);
-			return result;
+			Refactor(resultFloat, resultExponents);
 		}
-
-		return NULL;
 	}
 
-	bool KmbNumber::Equals(KmbNumber other)
+	bool KmbNumber::Equals(KmbNumber& other)
 	{
-		float trailingDiff = std::abs(_trailingPercentage - other._trailingPercentage);
+		float trailingDiff = std::abs(TrailingPercentage - other.TrailingPercentage);
 		bool isTralingEqual = trailingDiff > std::numeric_limits<float>::epsilon() && trailingDiff < 0.000000001f;
 		
 		if (trailingDiff == 0)
@@ -261,62 +243,91 @@ namespace MagicIdle
 			isTralingEqual = true;
 		}
 
-		return _exponent == other._exponent && isTralingEqual && _firstDigits == other._firstDigits && suffix == other.suffix;
+		return Exponent == other.Exponent && isTralingEqual && FirstDigits == other.FirstDigits && Suffix == other.Suffix;
 	}
 
-	KmbNumber operator+(KmbNumber& number1, KmbNumber& number2)
+	void KmbNumber::operator=(float number1)
 	{
-		auto result = KmbNumber(number1);
-		return result.Add(number2);
-
+		Refactor(number1, 0);
 	}
 
-	KmbNumber operator-(KmbNumber& number1, KmbNumber& number2)
+	double KmbNumber::operator=(KmbNumber& number1)
 	{
-		auto result = KmbNumber(number1);
-		return result.Subtract(number2);
-
+		double castedNumber = GetRawNumber() * std::pow(10, Exponent);
+		return castedNumber;
 	}
 
-	KmbNumber operator*(KmbNumber& number1, KmbNumber& number2)
+	KmbNumber operator+(KmbNumber number1, KmbNumber number2)
 	{
-		auto result = KmbNumber(number1);
-		return result.Multiply(number2);
+		number1.Add(number2);
+		return number1;
 	}
 
-	KmbNumber operator/(KmbNumber& number1, KmbNumber& number2)
+	void operator+=(KmbNumber& number1, KmbNumber number2)
 	{
-		auto result = KmbNumber(number1);
-		return result.Divide(number2);
+		number1.Add(number2);
+	}
+
+	KmbNumber operator-(KmbNumber number1, KmbNumber number2)
+	{
+		number1.Subtract(number2);
+		return number1;
+	}
+
+	void operator-=(KmbNumber& number1, KmbNumber number2)
+	{
+		number1.Subtract(number2);
+	}
+
+	KmbNumber operator*(KmbNumber number1, KmbNumber number2)
+	{
+		number1.Multiply(number2);
+		return number1;
+	}
+
+	void operator*=(KmbNumber& number1, KmbNumber number2)
+	{
+		number1.Multiply(number2);
+	}
+
+	KmbNumber operator/(KmbNumber number1, KmbNumber number2)
+	{
+		number1.Divide(number2);
+		return number1;
+	}
+
+	void operator/=(KmbNumber& number1, KmbNumber number2)
+	{
+		number1.Divide(number2);
 	}
 
 	bool operator<(KmbNumber& number1, KmbNumber& number2)
 	{
-		auto number1Refactored = number1.Refactor(number1);
-		auto number2Refactored = number2.Refactor(number2);
+		number1.Refactor();
+		number2.Refactor();
 
-		if (number1Refactored._firstDigits >= 0 && number2Refactored._firstDigits < 0)
+		if (number1.FirstDigits >= 0 && number2.FirstDigits < 0)
 		{
 			return false;
 		}
-		if (number1Refactored._trailingPercentage >= 0 && number2Refactored._trailingPercentage < 0)
+		if (number1.TrailingPercentage >= 0 && number2.TrailingPercentage < 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._exponent < number2Refactored._exponent)
+		if (number1.Exponent < number2.Exponent)
 		{
 			return true;
 		}
-		if (number1Refactored._exponent == number2Refactored._exponent)
+		if (number1.Exponent == number2.Exponent)
 		{
-			if (number1Refactored._firstDigits < number2Refactored._firstDigits)
+			if (number1.FirstDigits < number2.FirstDigits)
 			{
 				return true;
 			}
-			if (number1Refactored._firstDigits == number2Refactored._firstDigits)
+			if (number1.FirstDigits == number2.FirstDigits)
 			{
-				if (number1Refactored._trailingPercentage < number2Refactored._trailingPercentage)
+				if (number1.TrailingPercentage < number2.TrailingPercentage)
 				{
 					return true;
 				}
@@ -324,37 +335,36 @@ namespace MagicIdle
 		}
 
 		return false;
-
 	}
 
 	bool operator<=(KmbNumber& number1, KmbNumber& number2)
 	{
-		auto number1Refactored = number1.Refactor(number1);
-		auto number2Refactored = number2.Refactor(number2);
+		number1.Refactor();
+		number2.Refactor();
 
-		if (number1Refactored._firstDigits >= 0 && number2Refactored._firstDigits < 0)
+		if (number1.FirstDigits >= 0 && number2.FirstDigits < 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._trailingPercentage >= 0 && number2Refactored._trailingPercentage < 0)
+		if (number1.TrailingPercentage >= 0 && number2.TrailingPercentage < 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._exponent < number2Refactored._exponent)
+		if (number1.Exponent < number2.Exponent)
 		{
 			return true;
 		}
-		if (number1Refactored._exponent == number2Refactored._exponent)
+		if (number1.Exponent == number2.Exponent)
 		{
-			if (number1Refactored._firstDigits < number2Refactored._firstDigits)
+			if (number1.FirstDigits < number2.FirstDigits)
 			{
 				return true;
 			}
-			if (number1Refactored._firstDigits == number2Refactored._firstDigits)
+			if (number1.FirstDigits == number2.FirstDigits)
 			{
-				if (number1Refactored._trailingPercentage < number2Refactored._trailingPercentage)
+				if (number1.TrailingPercentage < number2.TrailingPercentage)
 				{
 					return true;
 				}
@@ -362,43 +372,42 @@ namespace MagicIdle
 		}
 
 		return number1.Equals(number2);
-
 	}
 	
 	bool operator>(KmbNumber& number1, KmbNumber& number2)
 	{
-		auto number1Refactored = number1.Refactor(number1);
-		auto number2Refactored = number2.Refactor(number2);
+		number1.Refactor();
+		number2.Refactor();
 
-		if (number1Refactored._firstDigits < 0 && number2Refactored._firstDigits >= 0)
+		if (number1.FirstDigits < 0 && number2.FirstDigits >= 0)
 		{
 			return false;
 		}
-		if (number1Refactored._trailingPercentage < 0 && number2Refactored._trailingPercentage >= 0)
+		if (number1.TrailingPercentage < 0 && number2.TrailingPercentage >= 0)
 		{
 			return false;
 		}
-		if (number1Refactored._firstDigits < 0 && number2Refactored._firstDigits >= 0)
+		if (number1.FirstDigits < 0 && number2.FirstDigits >= 0)
 		{
 			return false;
 		}
-		if (number1Refactored._trailingPercentage < 0 && number2Refactored._trailingPercentage >= 0)
+		if (number1.TrailingPercentage < 0 && number2.TrailingPercentage >= 0)
 		{
 			return false;
 		}
-		if (number1Refactored._exponent > number2Refactored._exponent)
+		if (number1.Exponent > number2.Exponent)
 		{
 			return true;
 		}
-		if (number1Refactored._exponent == number2Refactored._exponent)
+		if (number1.Exponent == number2.Exponent)
 		{
-			if (number1Refactored._firstDigits > number2Refactored._firstDigits)
+			if (number1.FirstDigits > number2.FirstDigits)
 			{
 				return true;
 			}
-			if (number1Refactored._firstDigits == number2Refactored._firstDigits)
+			if (number1.FirstDigits == number2.FirstDigits)
 			{
-				if (number1Refactored._trailingPercentage > number2Refactored._trailingPercentage)
+				if (number1.TrailingPercentage > number2.TrailingPercentage)
 				{
 					return true;
 				}
@@ -406,47 +415,47 @@ namespace MagicIdle
 		}
 
 		return false;
-
 	}
 	
 	bool operator>=(KmbNumber& number1, KmbNumber& number2)
 	{
-		auto number1Refactored = number1.Refactor(number1);
-		auto number2Refactored = number2.Refactor(number2);
+		number1.Refactor();
+		number2.Refactor();
 
-		if (number1Refactored._firstDigits < 0 && number2Refactored._firstDigits >= 0)
+		if (number1.FirstDigits < 0 && number2.FirstDigits >= 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._trailingPercentage < 0 && number2Refactored._trailingPercentage >= 0)
+		if (number1.TrailingPercentage < 0 && number2.TrailingPercentage >= 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._firstDigits < 0 && number2Refactored._firstDigits >= 0)
+		if (number1.FirstDigits < 0 && number2.FirstDigits >= 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._trailingPercentage < 0 && number2Refactored._trailingPercentage >= 0)
+		if (number1.TrailingPercentage < 0 && number2.TrailingPercentage >= 0)
 		{
 			return false;
 		}
 
-		if (number1Refactored._exponent > number2Refactored._exponent)
+		if (number1.Exponent > number2.Exponent)
 		{
 			return true;
 		}
-		if (number1Refactored._exponent == number2Refactored._exponent)
+
+		if (number1.Exponent == number2.Exponent)
 		{
-			if (number1Refactored._firstDigits > number2Refactored._firstDigits)
+			if (number1.FirstDigits > number2.FirstDigits)
 			{
 				return true;
 			}
-			if (number1Refactored._firstDigits == number2Refactored._firstDigits)
+			if (number1.FirstDigits == number2.FirstDigits)
 			{
-				if (number1Refactored._trailingPercentage > number2Refactored._trailingPercentage)
+				if (number1.TrailingPercentage > number2.TrailingPercentage)
 				{
 					return true;
 				}
@@ -454,7 +463,6 @@ namespace MagicIdle
 		}
 
 		return number1.Equals(number2);
-
 	}
 
 	bool operator==(KmbNumber& left, KmbNumber& right)

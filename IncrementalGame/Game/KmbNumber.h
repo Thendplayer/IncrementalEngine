@@ -8,55 +8,60 @@ namespace MagicIdle
 {
 	class KmbNumber
 	{
-	#define SUFFIX {"K", "M", "B", "T", "Q", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"\
-				  , "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"\
-				  , "AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK", "LL", "MM"\
-				  , "NN", "OO", "PP", "QQ", "RR", "SS", "TT", "UU", "VV", "WW", "XX", "YY", "ZZ"}
+	#define SUFFIX {L"", L"K", L"M", L"B", L"T", L"Q", L"A", L"B", L"C", L"D", L"E", L"F", L"G", L"H", L"I", L"J"\
+				  , L"K", L"L", L"M", L"N", L"O", L"P", L"Q", L"R", L"S", L"T", L"U", L"V", L"W", L"X", L"Y", L"Z"\
+				  , L"AA", L"BB", L"CC", L"DD", L"EE", L"FF", L"GG", L"HH", L"II", L"JJ", L"KK", L"LL", L"MM"\
+				  , L"NN", L"OO", L"PP", L"QQ", L"RR", L"SS", L"TT", L"UU", L"VV", L"WW", L"XX", L"YY", L"ZZ"}
 	
 	#define DECIMALS_TO_SHOW 2
 	#define MAXFLOATEXPONENT 34
 
 	public:
-		float _firstDigits = 0;
-		float _trailingPercentage = 0;
-		int _exponent = 0;
-
-		std::string suffix = "";
-
 		static KmbNumber Zero;
 
+		float FirstDigits = 0;
+		float TrailingPercentage = 0;
+		int Exponent = 0;
+
+		std::wstring Suffix = L"";
+
+		KmbNumber();
 		KmbNumber(const KmbNumber& kmbNumber);
 		KmbNumber(float firstDigits, float trailing, int exponent);
 		KmbNumber(float number, int exponent = 0);
 
-		KmbNumber operator= (float number1);
-		double operator= (KmbNumber number1);
+		static void RoundUp(KmbNumber& number);
 
-		static KmbNumber RoundUp(KmbNumber& number);
-
-		std::string ToString();
-		bool Equals(KmbNumber other);
+		std::wstring ToString();
+		bool Equals(KmbNumber& other);
 
 		float GetRawNumber();
 		float GetInt();
 
-		KmbNumber Refactor(float value, int exponent);
-		KmbNumber Refactor(KmbNumber number);
+		void Refactor(float value, int exponent);
+		void Refactor();
 
-		KmbNumber Add(KmbNumber adder);
-		KmbNumber Subtract(KmbNumber subtractor);
-		KmbNumber Multiply(KmbNumber multiplier);
-		KmbNumber Divide(KmbNumber divider);
+		void Add(KmbNumber adder);
+		void Subtract(KmbNumber subtractor);
+		void Multiply(KmbNumber multiplier);
+		void Divide(KmbNumber divider);
+
+		void operator= (float number1);
+		double operator= (KmbNumber& number1);
 
 	private:
 		void SetSuffix();
 		float GetStringTrailingPercentage();
 	};
 
-	KmbNumber operator + (KmbNumber& number1, KmbNumber& number2);
-	KmbNumber operator - (KmbNumber& number1, KmbNumber& number2);
-	KmbNumber operator * (KmbNumber& number1, KmbNumber& number2);
-	KmbNumber operator / (KmbNumber& number1, KmbNumber& number2);
+	KmbNumber operator + (KmbNumber number1, KmbNumber number2);
+	void operator += (KmbNumber& number1, KmbNumber number2);
+	KmbNumber operator - (KmbNumber number1, KmbNumber number2);
+	void operator -= (KmbNumber& number1, KmbNumber number2);
+	KmbNumber operator * (KmbNumber number1, KmbNumber number2);
+	void operator *= (KmbNumber& number1, KmbNumber number2);
+	KmbNumber operator / (KmbNumber number1, KmbNumber number2);
+	void operator /= (KmbNumber& number1, KmbNumber number2);
 
 	bool operator <  (KmbNumber& number1, KmbNumber& number2);
 	bool operator <= (KmbNumber& number1, KmbNumber& number2);
