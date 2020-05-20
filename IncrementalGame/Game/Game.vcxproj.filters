@@ -19,6 +19,12 @@
     <Filter Include="Game\KmbNumber">
       <UniqueIdentifier>{5778b88d-b6b2-4dc2-b734-863cb79dcc9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\DisplayPanel">
+      <UniqueIdentifier>{fad163ab-bca3-4af8-9cb5-3929ff14bbfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradeElement">
+      <UniqueIdentifier>{a3174d2c-9ccd-41ed-b23c-a4d28bc6be85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Run\Config\Resources.json">
@@ -44,6 +50,12 @@
     <ClInclude Include="KmbNumber.h">
       <Filter>Game\KmbNumber</Filter>
     </ClInclude>
+    <ClInclude Include="DisplayPanel.h">
+      <Filter>Game\DisplayPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeElement.h">
+      <Filter>Game\UpgradeElement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\IncrementalEngine\WinMain.cpp">
@@ -60,6 +72,12 @@
     </ClCompile>
     <ClCompile Include="KmbNumber.cpp">
       <Filter>Game\KmbNumber</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayPanel.cpp">
+      <Filter>Game\DisplayPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeElement.cpp">
+      <Filter>Game\UpgradeElement</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

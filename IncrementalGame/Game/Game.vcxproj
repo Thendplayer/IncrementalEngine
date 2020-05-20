@@ -177,16 +177,20 @@
   <ItemGroup>
     <ClInclude Include="..\Run\Config\Description.h" />
     <ClInclude Include="ActionButton.h" />
+    <ClInclude Include="DisplayPanel.h" />
     <ClInclude Include="EarningsCalculator.h" />
     <ClInclude Include="KmbNumber.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="UpgradeElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\IncrementalEngine\WinMain.cpp" />
     <ClCompile Include="ActionButton.cpp" />
+    <ClCompile Include="DisplayPanel.cpp" />
     <ClCompile Include="EarningsCalculator.cpp" />
     <ClCompile Include="KmbNumber.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="UpgradeElement.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

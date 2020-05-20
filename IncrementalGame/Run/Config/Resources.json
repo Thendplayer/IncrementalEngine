@@ -6,5 +6,29 @@
 	"ActionButtonOff": {
 		"Fileroute": "Resources/ButtonBackgroundMagicCrystalOff.png",
 		"Type": "Texture"
+	},
+	"DisplayPanelBackground": {
+		"Fileroute": "Resources/DisplayPanelBackground.png",
+		"Type": "Texture"
+	},
+	"UpgradeElementBackground": {
+		"Fileroute": "Resources/UpgradeElementBackground.png",
+		"Type": "Texture"
+	},
+	"UpgradeLocked": {
+		"Fileroute": "Resources/UpgradeLocked.png",
+		"Type": "Texture"
+	},
+	"UpgradeUnlocked": {
+		"Fileroute": "Resources/UpgradeUnlocked.png",
+		"Type": "Texture"
+	},
+	"UpgradeForeground": {
+		"Fileroute": "Resources/UpgradeForeground.png",
+		"Type": "Texture"
+	},
+	"Sapphire amulet": {
+		"Fileroute": "Resources/Upgrades/amulet_sapphire.png",
+		"Type": "Texture"
 	}
 }

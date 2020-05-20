@@ -13,6 +13,7 @@ namespace IncrementalEngine
 		_fontSize(12),
 		_color(0)
 	{
+		_flags = FontAlignment::CENTER;
 	}
 
 	Text::~Text()
@@ -53,6 +54,11 @@ namespace IncrementalEngine
 		_fontSize = fontSize;
 		Center();
 		_fontWrapperNeedUpdate = true;
+	}
+
+	void Text::SetFontAlignment(FontAlignment alignment)
+	{
+		_flags = alignment;
 	}
 
 	void Text::SetText(const std::wstring& value)
@@ -148,7 +154,7 @@ namespace IncrementalEngine
 			_color,
 			NULL,
 			reinterpret_cast<FLOAT*>(&_fontWrapperMatrix),
-			FW1_CENTER | FW1_VCENTER | FW1_NOWORDWRAP | FW1_RESTORESTATE
+			_flags | FW1_NOWORDWRAP | FW1_RESTORESTATE
 		);
 
 		return S_OK;

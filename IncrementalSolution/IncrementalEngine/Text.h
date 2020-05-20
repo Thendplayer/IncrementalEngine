@@ -14,6 +14,19 @@ namespace IncrementalEngine
 	#define DEFAULT_FONT_FAMILY L"Courier New"
 
 	public:
+		enum FontAlignment
+		{
+			TOP_LEFT = FW1_TOP | FW1_LEFT,
+			TOP_CENTER = FW1_TOP | FW1_CENTER,
+			TOP_RIGHT = FW1_TOP | FW1_RIGHT,
+			CENTER_LEFT = FW1_VCENTER | FW1_LEFT,
+			CENTER = FW1_VCENTER | FW1_CENTER,
+			CENTER_RIGHT = FW1_VCENTER | FW1_RIGHT,
+			BOTTOM_LEFT = FW1_BOTTOM | FW1_LEFT,
+			BOTTOM_CENTER = FW1_BOTTOM | FW1_CENTER,
+			BOTTOM_RIGHT = FW1_BOTTOM | FW1_RIGHT
+		};
+
 		Text();
 		~Text() override;
 
@@ -22,6 +35,7 @@ namespace IncrementalEngine
 		void SetFont(const std::wstring& fontFamily);
 
 		void SetFontSize(float fontSize);
+		void SetFontAlignment(FontAlignment alignment);
 
 		void SetText(const std::wstring& value);
 		void ClearText();
@@ -43,6 +57,7 @@ namespace IncrementalEngine
 		std::wstring _fontFamily;
 		float _fontSize;
 		std::uint32_t _color;
+		UINT _flags;
 
 		mutable bool _fontWrapperNeedUpdate;
 		Transform _previousTransform;
