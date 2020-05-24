@@ -57,7 +57,7 @@ namespace IncrementalEngine
 	
 	void Sprite::Update()
 	{
-		_texture->Update(GetCombinedTransform(), GetLocalBounds());
+		_texture->Update(GetWorldTransform(), GetLocalBounds());
 	}
 	
 	HRESULT Sprite::Draw(ID3D11DeviceContext* deviceContext)

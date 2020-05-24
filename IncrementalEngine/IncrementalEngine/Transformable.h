@@ -63,14 +63,14 @@ namespace IncrementalEngine
         const Transform& GetInverseTransform() const;
 
     protected:
-        D3DXVECTOR2 _origin;
-        D3DXVECTOR2 _position;
-        float _rotation;
-        D3DXVECTOR2 _scale;
-
         mutable bool _transformNeedUpdate;
 
     private:
+        D3DXVECTOR2 _origin;
+        D3DXVECTOR2 _position;
+        D3DXVECTOR2 _scale;
+        float _rotation;
+
         mutable Transform _transform;
         mutable Transform _inverseTransform;
         mutable bool _inverseTransformNeedUpdate;

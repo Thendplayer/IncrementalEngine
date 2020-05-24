@@ -26,7 +26,7 @@ namespace IncrementalEngine
 
 		void Center();
 
-		const Transform GetCombinedTransform();
+		const Transform GetWorldTransform();
 		const D3DXVECTOR2 GetWorldPosition();
 		const D3DXVECTOR2 GetWorldScale();
 		const float GetWorldRotation();
@@ -43,8 +43,6 @@ namespace IncrementalEngine
 		Actor* _parent;
 		vector<Actor*> _children;
 		bool _active;
-
-		const Transform GetWorldTransform() const;
 	};
 }
 

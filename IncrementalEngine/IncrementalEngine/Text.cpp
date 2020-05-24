@@ -105,12 +105,12 @@ namespace IncrementalEngine
 	
 	void Text::Update()
 	{
-		Transform transform = GetCombinedTransform();
+		Transform transform = GetWorldTransform();
 		if (_fontWrapperNeedUpdate || transform != _previousTransform)
 		{
 			_previousTransform = transform;
 
-			XMMATRIX OrthoProjectionMatrix = XMMatrixOrthographicLH(
+			XMMATRIX orthoProjectionMatrix = XMMatrixOrthographicLH(
 				_renderWindow->GetScreenWidth(),
 				-_renderWindow->GetScreenHeight(),
 				_renderWindow->GetScreenNear(),
@@ -135,7 +135,7 @@ namespace IncrementalEngine
 			_fontWrapperMatrix = scaleMatrix
 				* XMMatrixRotationZ(rotation * 0.01745f)
 				* translationMatrix
-				* OrthoProjectionMatrix;
+				* orthoProjectionMatrix;
 
 			_fontWrapperNeedUpdate = false;
 		}

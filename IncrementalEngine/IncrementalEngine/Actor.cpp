@@ -76,13 +76,7 @@ namespace IncrementalEngine
 
 	void Actor::Center()
 	{
-		auto origin = D3DXVECTOR2(GetLocalBounds().width(), GetLocalBounds().height()) / 2.0f;
-
-		if (_parent != nullptr)
-		{
-			origin -= _parent->GetOrigin();
-		}
-
+		auto origin = D3DXVECTOR2(GetLocalBounds().width() * .5f, GetLocalBounds().height() * .5f);
 		SetOrigin(origin);
 	}
 
@@ -93,17 +87,19 @@ namespace IncrementalEngine
 
 	FloatRect Actor::GetGlobalBounds()
 	{
-		return GetCombinedTransform().TransformRect(GetLocalBounds());
+		return GetWorldTransform().TransformRect(GetLocalBounds());
 	}
 
-	const Transform Actor::GetCombinedTransform()
+	const Transform Actor::GetWorldTransform()
 	{
-		if (_parent != nullptr) 
-		{
-			return _parent->GetCombinedTransform() * GetTransform();
-		}
+		auto worldTransform = Transformable();
+		
+		worldTransform.SetPosition(GetWorldPosition());
+		worldTransform.SetRotation(GetWorldRotation());
+		worldTransform.SetScale(GetWorldScale());
+		worldTransform.SetOrigin(GetOrigin());
 
-		return GetTransform();
+		return worldTransform.GetTransform();
 	}
 
 	const D3DXVECTOR2 Actor::GetWorldPosition()
@@ -120,10 +116,11 @@ namespace IncrementalEngine
 	{
 		if (_parent != nullptr)
 		{
+			D3DXVECTOR2 scale = GetScale();
 			D3DXVECTOR2 parentWorldScale = _parent->GetWorldScale();
-			D3DXVECTOR2 worldScale = { 
-				parentWorldScale.x * _scale.x, 
-				parentWorldScale.y * _scale.y
+			D3DXVECTOR2 worldScale = {
+				parentWorldScale.x * scale.x,
+				parentWorldScale.y * scale.y
 			};
 
 			return worldScale;
@@ -138,7 +135,7 @@ namespace IncrementalEngine
 		{
 			float worldRotation = _parent->GetWorldRotation() + GetRotation();
 			worldRotation = static_cast<float>(fmod(worldRotation, 360));
-			
+
 			if (worldRotation < 0)
 			{
 				worldRotation += 360.f;
@@ -150,16 +147,6 @@ namespace IncrementalEngine
 		return GetRotation();
 	}
 
-	const Transform Actor::GetWorldTransform() const
-	{
-		if (_parent != nullptr)
-		{
-			return GetTransform() * _parent->GetWorldTransform();
-		}
-
-		return GetTransform();
-	}
-
 	void Actor::SetWorldPosition(D3DXVECTOR2 value)
 	{
 		D3DXVECTOR2 newPosition;
@@ -168,19 +155,19 @@ namespace IncrementalEngine
 		{
 			newPosition = _parent->GetWorldTransform().GetInverse().TransformPoint(value);
 		}
-		else 
+		else
 		{
 			newPosition = value;
 		}
 
 		SetPosition(newPosition);
 	}
-	
+
 	Actor* Actor::GetParent() const
 	{
 		return _parent;
 	}
-	
+
 	void Actor::SetParent(Actor* value, const bool fixWorldPosition)
 	{
 		if (value != _parent)
