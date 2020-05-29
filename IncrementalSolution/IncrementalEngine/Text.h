@@ -63,6 +63,7 @@ namespace IncrementalEngine
 		Transform _previousTransform;
 
 		D3DXVECTOR2 GetTextExtent();
+		XMMATRIX GetWorldMatrix(Actor* actor);
 	};
 }
 

@@ -3,7 +3,8 @@
 #include <EngineGame.h>
 #include "ActionButton.h"
 #include "DisplayPanel.h"
-#include "UpgradeElement.h"
+#include "UpgradesPerSecondPanel.h"
+#include "MultiPanel.h"
 
 using namespace IncrementalEngine;
 
@@ -19,6 +20,7 @@ namespace MagicIdle
 	private:
 		ActionButton* _actionButton;
 		DisplayPanel* _displayPanel;
+		MultiPanel* _multiPanel;
 		UpgradeElement* _upgradeElement;
 	};
 }

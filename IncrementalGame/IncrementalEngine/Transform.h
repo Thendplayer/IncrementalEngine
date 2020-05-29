@@ -73,7 +73,7 @@ namespace IncrementalEngine
         Transform& Scale(const D3DXVECTOR2& factors, const D3DXVECTOR2& center);
 
     private:
-        float _fontWrapperMatrix[16];
+        float _matrix[16];
     };
 
     Transform operator *(const Transform& left, const Transform& right);

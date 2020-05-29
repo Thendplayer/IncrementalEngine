@@ -181,7 +181,10 @@
     <ClInclude Include="EarningsCalculator.h" />
     <ClInclude Include="KmbNumber.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MultiPanel.h" />
+    <ClInclude Include="Panel.h" />
     <ClInclude Include="UpgradeElement.h" />
+    <ClInclude Include="UpgradesPerSecondPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\IncrementalEngine\WinMain.cpp" />
@@ -190,7 +193,10 @@
     <ClCompile Include="EarningsCalculator.cpp" />
     <ClCompile Include="KmbNumber.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="MultiPanel.cpp" />
+    <ClCompile Include="Panel.cpp" />
     <ClCompile Include="UpgradeElement.cpp" />
+    <ClCompile Include="UpgradesPerSecondPanel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

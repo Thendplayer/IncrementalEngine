@@ -21,7 +21,7 @@ namespace MagicIdle
 		_currencyPerSecondText->SetParent(this);
 
 		_currencyPerSecondText->SetFont(L"Edo SZ");
-		_currencyPerSecondText->SetPosition(164, 20);
+		_currencyPerSecondText->SetPosition(246, 30);
 		_currencyPerSecondText->SetTextColor(255, 255, 255);
 		_currencyPerSecondText->SetFontSize(35.5f);
 		_currencyPerSecondText->SetText(L"999.99W/S");

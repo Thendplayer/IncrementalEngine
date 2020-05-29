@@ -25,6 +25,15 @@
     <Filter Include="Game\UpgradeElement">
       <UniqueIdentifier>{a3174d2c-9ccd-41ed-b23c-a4d28bc6be85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Panel">
+      <UniqueIdentifier>{ae633352-ef19-4d68-8457-2a34fc20609d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradesPerSecondPanel">
+      <UniqueIdentifier>{7d0faa1c-2cdd-43d5-8ad9-1acf584936e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MultiPanel">
+      <UniqueIdentifier>{bd6b4b08-300e-4f6e-9686-6db167cfab1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Run\Config\Resources.json">
@@ -56,6 +65,15 @@
     <ClInclude Include="UpgradeElement.h">
       <Filter>Game\UpgradeElement</Filter>
     </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>Game\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradesPerSecondPanel.h">
+      <Filter>Game\UpgradesPerSecondPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiPanel.h">
+      <Filter>Game\MultiPanel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\IncrementalEngine\WinMain.cpp">
@@ -78,6 +96,15 @@
     </ClCompile>
     <ClCompile Include="UpgradeElement.cpp">
       <Filter>Game\UpgradeElement</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
+      <Filter>Game\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradesPerSecondPanel.cpp">
+      <Filter>Game\UpgradesPerSecondPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiPanel.cpp">
+      <Filter>Game\MultiPanel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,11 +9,14 @@ namespace MagicIdle
 		_actionButton->SetPosition(355, -7);
 
 		_displayPanel = Engine::Get()->Scene()->Create<DisplayPanel>();
-		_displayPanel->SetPosition(-332, -272);
+		_displayPanel->SetPosition(-332, -275);
 		_displayPanel->SetScale(.66f, .66f);
 
-		_upgradeElement = Engine::Get()->Scene()->Create<UpgradeElement>();
-		_upgradeElement->SetPosition(-332, -120);
+		auto upgradesPerSecondPanel = Engine::Get()->Scene()->Create<UpgradesPerSecondPanel>();
+		upgradesPerSecondPanel->SetPosition(-315, -205);
+		
+		_multiPanel = Engine::Get()->Scene()->Create<MultiPanel>();
+		_multiPanel->AddPair(upgradesPerSecondPanel, upgradesPerSecondPanel->GetPanelButton());
 	}
 	
 	void MainGame::DeInit()

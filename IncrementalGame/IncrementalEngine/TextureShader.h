@@ -12,7 +12,7 @@ namespace IncrementalEngine
 	{
 	#define VERTEX_SHADER_PATH L"Shaders/texture.vs"
 	#define PIXEL_SHADER_PATH L"Shaders/texture.ps"
-	#define ALPHA_CUTOFF .8f
+	#define ALPHA_CUTOFF .5f
 
 	public:
 		TextureShader();

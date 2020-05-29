@@ -36,13 +36,14 @@ namespace IncrementalEngine
 	public:
 		//T must inherit from Actor
 		template<typename T>
-		typename std::enable_if<std::is_base_of<Actor, T>::value, T*>::type Create()
+		typename std::enable_if<std::is_base_of<Actor, T>::value, T*>::type Create(Actor* parent = nullptr)
 		{
 			T* actor = new T();
 			CopyParameters(actor);
 
 			actor->SetActive(true);
 			actor->Init();
+			actor->SetParent(parent);
 
 			auto newItem = SceneItem();
 			newItem.Actor = actor;

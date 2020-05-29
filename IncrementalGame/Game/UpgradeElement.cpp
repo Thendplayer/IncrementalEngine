@@ -7,54 +7,63 @@ namespace MagicIdle
 	void UpgradeElement::Init()
 	{
 		SetTexture(Engine::Get()->Resources()->GetTexture("UpgradeElementBackground"));
-		SetScale(.66f, .66f);
 
-		_foreground = Engine::Get()->Scene()->Create<Sprite>();
-		_foreground->SetParent(this);
+		_foreground = Engine::Get()->Scene()->Create<Sprite>(this);
 		_foreground->SetTexture(Engine::Get()->Resources()->GetTexture("UpgradeForeground"));
 		_foreground->SetPosition(0, 0);
 		_foreground->SetActive(false);
 
-		_name = Engine::Get()->Scene()->Create<Text>();
-		_name->SetParent(this);
+		_sprite = Engine::Get()->Scene()->Create<Sprite>(this);
+		_sprite->SetTexture(Engine::Get()->Resources()->GetTexture("Sapphire amulet"));
+		_sprite->SetScale(1.2f, 1.2f);
+		_sprite->SetPosition(-240, 5);
+
+		_name = Engine::Get()->Scene()->Create<Text>(this);
 		_name->SetFontAlignment(Text::TOP_LEFT);
 		_name->SetFontSize(48);
 		_name->SetTextColor(88, 62, 62);
 		_name->SetText(L"UNKNOWN UPGRADE");
 		_name->SetFont(L"Edo SZ");
-		_name->SetPosition(-90, -45);
+		_name->SetPosition(-130, -70);
 
-		_upgrade = Engine::Get()->Scene()->Create<Text>();
-		_upgrade->SetParent(this);
+		_upgrade = Engine::Get()->Scene()->Create<Text>(this);
 		_upgrade->SetFontAlignment(Text::CENTER_LEFT);
 		_upgrade->SetFontSize(32);
 		_upgrade->SetTextColor(128, 92, 92);
 		_upgrade->SetText(L"999.99W/s");
 		_upgrade->SetFont(L"Edo SZ");
-		_upgrade->SetPosition(-90, 0);
+		_upgrade->SetPosition(-130, 5);
 
-		_level = Engine::Get()->Scene()->Create<Text>();
-		_level->SetParent(this);
+		_level = Engine::Get()->Scene()->Create<Text>(this);
 		_level->SetFontAlignment(Text::BOTTOM_LEFT);
 		_level->SetFontSize(32);
 		_level->SetTextColor(88, 62, 62);
 		_level->SetText(L"Lv. 999W");
 		_level->SetFont(L"Edo SZ");
-		_level->SetPosition(-90, 50);
+		_level->SetPosition(-130, 75);
 
-		_cost = Engine::Get()->Scene()->Create<Text>();
-		_cost->SetParent(this);
+		_cost = Engine::Get()->Scene()->Create<Text>(this);
 		_cost->SetFontAlignment(Text::BOTTOM_RIGHT);
 		_cost->SetFontSize(42);
 		_cost->SetTextColor(88, 62, 62);
 		_cost->SetText(L"999.99W");
 		_cost->SetFont(L"Edo SZ");
-		_cost->SetPosition(195, 47);
+		_cost->SetPosition(290, 70);
 	}
 	
 	void UpgradeElement::Update()
 	{
 		Button::Update();
+
+		if (Pressed()) 
+		{
+			SetScale(1.03f, 1.03f);
+		}
+
+		if (Released()) 
+		{
+			SetScale(1, 1);
+		}
 	}
 	
 	void UpgradeElement::SetValues(
