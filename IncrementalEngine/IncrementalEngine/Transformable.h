@@ -40,12 +40,12 @@ namespace IncrementalEngine
         Transformable();
 
         virtual void SetPosition(float x, float y);
-        void SetPosition(const D3DXVECTOR2& position);
-        virtual  void SetRotation(float angle);
-        void SetScale(const D3DXVECTOR2& factors);
-        virtual void SetOrigin(float x, float y);
-        void SetOrigin(const D3DXVECTOR2& origin);
+        virtual void SetPosition(const D3DXVECTOR2& position);
         virtual void SetScale(float factorX, float factorY);
+        virtual void SetScale(const D3DXVECTOR2& factors);
+        virtual void SetOrigin(float x, float y);
+        virtual void SetOrigin(const D3DXVECTOR2& origin);
+        virtual void SetRotation(float angle);
         
         virtual const D3DXVECTOR2& GetPosition() const;
         virtual float GetRotation() const;

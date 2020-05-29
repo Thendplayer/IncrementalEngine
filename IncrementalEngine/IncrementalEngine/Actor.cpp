@@ -174,6 +174,11 @@ namespace IncrementalEngine
 		Transformable::SetPosition(x, y);
 	}
 
+	void Actor::SetPosition(const D3DXVECTOR2& position)
+	{
+		Transformable::SetPosition(position);
+	}
+
 	const D3DXVECTOR2& Actor::GetPosition() const
 	{
 		D3DXVECTOR2 position = Transformable::GetPosition();
