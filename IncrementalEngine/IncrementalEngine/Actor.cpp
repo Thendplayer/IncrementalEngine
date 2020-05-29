@@ -92,21 +92,20 @@ namespace IncrementalEngine
 
 	const Transform Actor::GetWorldTransform()
 	{
-		auto worldTransform = Transformable();
+		if (_parent != nullptr)
+		{
+			return _parent->GetWorldTransform() * GetTransform();
+		}
 		
-		worldTransform.SetPosition(GetWorldPosition());
-		worldTransform.SetRotation(GetWorldRotation());
-		worldTransform.SetScale(GetWorldScale());
-		worldTransform.SetOrigin(GetOrigin());
-
-		return worldTransform.GetTransform();
+		return GetTransform();
 	}
 
 	const D3DXVECTOR2 Actor::GetWorldPosition()
 	{
 		if (_parent != nullptr)
 		{
-			return _parent->GetWorldPosition() + GetPosition();
+			auto position = GetPosition();
+			return _parent->GetWorldPosition() + position;
 		}
 
 		return GetPosition();
@@ -160,7 +159,33 @@ namespace IncrementalEngine
 			newPosition = value;
 		}
 
-		SetPosition(newPosition);
+		Transformable::SetPosition(newPosition);
+	}
+
+	void Actor::SetPosition(float x, float y)
+	{
+		if (_parent != nullptr)
+		{
+			D3DXVECTOR2 origin = _parent->GetOrigin();
+			x += origin.x;
+			y += origin.y;
+		}
+
+		Transformable::SetPosition(x, y);
+	}
+
+	const D3DXVECTOR2& Actor::GetPosition() const
+	{
+		D3DXVECTOR2 position = Transformable::GetPosition();
+
+		if (_parent != nullptr)
+		{
+			D3DXVECTOR2 origin = _parent->GetOrigin();
+			position.x -= origin.x;
+			position.y -= origin.y;
+		}
+
+		return position;
 	}
 
 	Actor* Actor::GetParent() const

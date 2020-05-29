@@ -33,6 +33,9 @@ namespace IncrementalEngine
 		
 		void SetWorldPosition(D3DXVECTOR2 value);
 
+		virtual void SetPosition(float x, float y) override;
+		virtual const D3DXVECTOR2& GetPosition() const override;
+
 		Actor* GetParent() const;
 		virtual void SetParent(Actor* value, const bool fixWorldPosition = true);
 

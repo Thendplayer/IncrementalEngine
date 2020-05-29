@@ -2,6 +2,7 @@
 #include <DirectXPackedVector.h>
 
 #include "Utils.h"
+#include "MathUtils.h"
 #include "Text.h"
 
 namespace IncrementalEngine 
@@ -117,26 +118,7 @@ namespace IncrementalEngine
 				_renderWindow->GetScreenDepth()
 			);
 
-			D3DXVECTOR2 position = GetWorldPosition();
-			XMMATRIX translationMatrix = XMMatrixTranslation(
-				position.x,
-				position.y,
-				1.f
-			);
-
-			D3DXVECTOR2 scale = GetWorldScale();
-			XMMATRIX scaleMatrix = XMMatrixScaling(
-				scale.x,
-				scale.y,
-				1.f
-			);
-
-			float rotation = GetWorldRotation();
-			_fontWrapperMatrix = scaleMatrix
-				* XMMatrixRotationZ(rotation * 0.01745f)
-				* translationMatrix
-				* orthoProjectionMatrix;
-
+			_fontWrapperMatrix = GetWorldMatrix(this) * orthoProjectionMatrix;
 			_fontWrapperNeedUpdate = false;
 		}
 	}
@@ -172,5 +154,47 @@ namespace IncrementalEngine
 		);
 
 		return { rect.Right - rect.Left, rect.Bottom - rect.Top };
+	}
+
+	XMMATRIX Text::GetWorldMatrix(Actor* actor)
+	{
+		XMMATRIX parentMatrix = XMMatrixIdentity();
+
+		auto parent = actor->GetParent();
+		if (parent != nullptr)
+		{
+			parentMatrix = GetWorldMatrix(parent);
+		}
+
+		D3DXVECTOR2 origin = actor->GetOrigin();
+		D3DXVECTOR2 scale = actor->GetScale();
+		D3DXVECTOR2 position = actor->GetPosition();
+		float rotation = DEG2RAD(actor->GetRotation());
+
+		XMMATRIX originMatrix = XMMatrixTranslation(
+			origin.x,
+			origin.y,
+			0.f
+		);
+
+		XMMATRIX rotationMatrix = XMMatrixRotationZ(rotation);
+		
+		XMMATRIX translationMatrix = XMMatrixTranslation(
+			position.x,
+			position.y,
+			1.f
+		);
+		
+		XMMATRIX scaleMatrix = XMMatrixScaling(
+			scale.x,
+			scale.y,
+			1.f
+		);
+		
+		XMMATRIX actorMatrix = scaleMatrix 
+			* rotationMatrix
+			* translationMatrix;
+
+		return actorMatrix * parentMatrix;
 	}
 }
