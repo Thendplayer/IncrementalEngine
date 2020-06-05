@@ -18,7 +18,7 @@ namespace MagicIdle
 		upgradesPerSecondPanel->AddElements(
 			UpgradesPerSecondPanelData, 
 			displayPanelModel->GetCurrency(), 
-			_actionButton->GetTapValue()
+			displayPanelModel->GetCurrencyPerSecond()
 		);
 
 		auto upgradesPerClickPanel = Engine::Get()->Scene()->Create<UpgradesPanel>();

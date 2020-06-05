@@ -29,7 +29,7 @@ namespace MagicIdle
 	void DisplayPanelView::UpdateValues(std::wstring& currency, std::wstring& earningsPerSecond)
 	{
 		_currencyText->SetText(currency);
-		_currencyPerSecondText->SetText(earningsPerSecond);
+		_currencyPerSecondText->SetText(earningsPerSecond + L"/S");
 	}
 	
 	void DisplayPanelView::SetCurrency(std::wstring& value)
@@ -39,6 +39,6 @@ namespace MagicIdle
 	
 	void DisplayPanelView::SetCurrencyPerSecond(std::wstring& value)
 	{
-		_currencyPerSecondText->SetText(value);
+		_currencyPerSecondText->SetText(value + L"/S");
 	}
 }

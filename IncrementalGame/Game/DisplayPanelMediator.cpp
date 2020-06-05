@@ -19,11 +19,13 @@ namespace MagicIdle
 	
 	void DisplayPanelMediator::Update()
 	{
-		auto currency = _model->GetCurrency()->ToString();
-		auto currencyPerSecond = _model->GetCurrencyPerSecond()->ToString();
+		auto currencyPerSecond = *_model->GetCurrencyPerSecond();
 
-		_view->SetCurrency(currency);
-		_view->SetCurrencyPerSecond(currencyPerSecond);
+		auto currencyPerSecondString = currencyPerSecond.ToString();
+		auto currencyString = _model->GetCurrency()->ToString();
+
+		_view->SetCurrency(currencyString);
+		_view->SetCurrencyPerSecond(currencyPerSecondString);
 	}
 	
 	DisplayPanelModel* DisplayPanelMediator::GetModel()
