@@ -58,5 +58,81 @@
 	"Sapphire amulet": {
 		"Fileroute": "Resources/Upgrades/amulet_sapphire.png",
 		"Type": "Texture"
+	},
+	"Book": {
+		"Fileroute": "Resources/Upgrades/book.png",
+		"Type": "Texture"
+	},
+	"Card club": {
+		"Fileroute": "Resources/Upgrades/card_club.png",
+		"Type": "Texture"
+	},
+	"Magic feather": {
+		"Fileroute": "Resources/Upgrades/feather.png",
+		"Type": "Texture"
+	},
+	"Green potion": {
+		"Fileroute": "Resources/Upgrades/potion_green_medium.png",
+		"Type": "Texture"
+	},
+	"Yellow potion": {
+		"Fileroute": "Resources/Upgrades/potion_yellow_small.png",
+		"Type": "Texture"
+	},
+	"Ruby ring": {
+		"Fileroute": "Resources/Upgrades/ring_ruby.png",
+		"Type": "Texture"
+	},
+	"Skull": {
+		"Fileroute": "Resources/Upgrades/skull.png",
+		"Type": "Texture"
+	},
+	"Dark spells": {
+		"Fileroute": "Resources/Upgrades/spell_darkness_major.png",
+		"Type": "Texture"
+	},
+	"Fire spells": {
+		"Fileroute": "Resources/Upgrades/spell_fire_minor.png",
+		"Type": "Texture"
+	},
+	"Regeneration spells": {
+		"Fileroute": "Resources/Upgrades/spell_regeneration_superior.png",
+		"Type": "Texture"
+	},
+	"Fire staff": {
+		"Fileroute": "Resources/Upgrades/staff_elemental_fire.png",
+		"Type": "Texture"
+	},
+	"Enchanted willow": {
+		"Fileroute": "Resources/Upgrades/staff_enhanced_willow.png",
+		"Type": "Texture"
+	},
+	"Willow": {
+		"Fileroute": "Resources/Upgrades/staff_nature_willow.png",
+		"Type": "Texture"
+	},
+	"Oak staff": {
+		"Fileroute": "Resources/Upgrades/staff_regular_oak.png",
+		"Type": "Texture"
+	},
+	"Oak wand": {
+		"Fileroute": "Resources/Upgrades/wand_oak.png",
+		"Type": "Texture"
+	},
+	"Wool": {
+		"Fileroute": "Resources/Upgrades/wool.png",
+		"Type": "Texture"
+	},
+	"Bomb": {
+		"Fileroute": "Resources/Upgrades/bomb_basic.png",
+		"Type": "Texture"
+	},
+	"Mace": {
+		"Fileroute": "Resources/Upgrades/mace_iron.png",
+		"Type": "Texture"
+	},
+	"Pitchfork": {
+		"Fileroute": "Resources/Upgrades/pitchfork_iron.png",
+		"Type": "Texture"
 	}
 }
