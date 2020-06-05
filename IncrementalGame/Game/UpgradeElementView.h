@@ -14,7 +14,7 @@ namespace MagicIdle
 	{
 	public:
 		virtual void Init() override;
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 		void SetAvailability(bool available);
 		void SetName(std::wstring& name);

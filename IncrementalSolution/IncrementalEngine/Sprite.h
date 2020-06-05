@@ -17,7 +17,7 @@ namespace IncrementalEngine
 
 		virtual FloatRect GetLocalBounds() override;
 
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
 
 	private:

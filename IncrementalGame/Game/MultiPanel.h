@@ -12,7 +12,7 @@ namespace MagicIdle
 		MultiPanel();
 		virtual ~MultiPanel() override;
 
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 		void AddPair(
 			Panel* panel, Button* button, 

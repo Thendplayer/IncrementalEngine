@@ -14,7 +14,7 @@ namespace MagicIdle
 		SetTexture(_offTexture);
 	}
 	
-	void ActionButtonView::Update()
+	void ActionButtonView::Update(float dt)
 	{
 		if (Pressed()) 
 		{
@@ -26,6 +26,6 @@ namespace MagicIdle
 			SetTexture(_offTexture);
 		}
 
-		Button::Update();
+		Button::Update(dt);
 	}
 }

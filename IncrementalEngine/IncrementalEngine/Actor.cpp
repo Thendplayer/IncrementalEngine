@@ -17,7 +17,7 @@ namespace IncrementalEngine
 	{
 	}
 
-	void Actor::Update()
+	void Actor::Update(float dt)
 	{
 	}
 
@@ -31,15 +31,15 @@ namespace IncrementalEngine
 		return _active;
 	}
 
-	void Actor::UpdateRecursive()
+	void Actor::UpdateRecursive(float dt)
 	{
 		if (!_active) return;
 
-		Update();
+		Update(dt);
 
 		for (int i = 0; i < _children.size(); i++)
 		{
-			_children[i]->UpdateRecursive();
+			_children[i]->UpdateRecursive(dt);
 		}
 	}
 

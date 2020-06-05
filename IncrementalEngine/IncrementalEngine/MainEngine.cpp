@@ -119,7 +119,7 @@ namespace IncrementalEngine
 	{
 		_renderingEngine->Update(dt);
 		_inputManager->Update();
-		_sceneManager->Update();
+		_sceneManager->Update(dt);
 	}
 
 	void Engine::Draw()

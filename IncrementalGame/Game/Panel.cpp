@@ -12,9 +12,9 @@ namespace MagicIdle
 		_elements.clear();
 	}
 	
-	void Panel::Update()
+	void Panel::Update(float dt)
 	{
-		Sprite::Update();
+		Sprite::Update(dt);
 
 		if (_upButton->Pressed())
 		{

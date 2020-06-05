@@ -10,7 +10,7 @@ namespace MagicIdle
 	{
 	public:
 		virtual void Init() override;
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 	private:
 		Texture* _onTexture;

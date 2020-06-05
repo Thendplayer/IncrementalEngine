@@ -13,7 +13,7 @@ namespace MagicIdle
 	public:
 		virtual ~UpgradeElementMediator() override;
 		virtual void Init() override;
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 		void SetCurrencyPtr(KmbNumber* currency);
 		void SetValueToUpgradePtr(KmbNumber* value);

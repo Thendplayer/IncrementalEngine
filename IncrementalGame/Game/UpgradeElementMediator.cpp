@@ -14,7 +14,7 @@ namespace MagicIdle
 		_model = new UpgradeElementModel();
 	}
 
-	void UpgradeElementMediator::Update()
+	void UpgradeElementMediator::Update(float dt)
 	{
 		bool available = _model->IsAvailable(*_currency);
 		_view->SetAvailability(available);

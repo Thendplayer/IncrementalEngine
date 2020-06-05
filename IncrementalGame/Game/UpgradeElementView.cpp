@@ -51,9 +51,9 @@ namespace MagicIdle
 		_costText->SetPosition(290, 70);
 	}
 
-	void UpgradeElementView::Update()
+	void UpgradeElementView::Update(float dt)
 	{
-		Button::Update();
+		Button::Update(dt);
 
 		if (Pressed())
 		{

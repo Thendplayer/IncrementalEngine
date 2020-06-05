@@ -16,7 +16,7 @@ namespace MagicIdle
 		_model = new ActionButtonModel();
 	}
 	
-	void ActionButtonMediator::Update()
+	void ActionButtonMediator::Update(float dt)
 	{
 		if (_view->Pressed()) 
 		{

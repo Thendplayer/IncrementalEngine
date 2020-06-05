@@ -52,7 +52,7 @@ namespace IncrementalEngine
 		_destroyInUpdate = true;
 	}
 
-	void SceneManager::Update()
+	void SceneManager::Update(float dt)
 	{
 		if (_destroyInUpdate)
 		{
@@ -82,7 +82,7 @@ namespace IncrementalEngine
 		{
 			if (IS_ROOT(_items[i].Actor))
 			{
-				_items[i].Actor->UpdateRecursive();
+				_items[i].Actor->UpdateRecursive(dt);
 			}
 		}
 	}

@@ -104,7 +104,7 @@ namespace IncrementalEngine
 		return bounds;
 	}
 	
-	void Text::Update()
+	void Text::Update(float dt)
 	{
 		Transform transform = GetWorldTransform();
 		if (_fontWrapperNeedUpdate || transform != _previousTransform)

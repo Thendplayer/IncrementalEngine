@@ -15,10 +15,10 @@ namespace IncrementalEngine
 		virtual ~Actor();
 
 		virtual void Init();
-		virtual void Update();
+		virtual void Update(float dt);
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
 
-		void UpdateRecursive();
+		void UpdateRecursive(float dt);
 		HRESULT DrawRecursive(ID3D11DeviceContext* deviceContext);
 
 		virtual FloatRect GetLocalBounds();

@@ -14,7 +14,7 @@ namespace MagicIdle
 		Panel();
 		virtual ~Panel() override;
 
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 		void SetValues(int elementsToShow, float distanceBetweenElements);
 		void AddElement(Actor* actor);

@@ -15,7 +15,7 @@ namespace MagicIdle
 		virtual ~ActionButtonMediator() override;
 
 		virtual void Init() override;
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 		void SetDisplayPanelModel(DisplayPanelModel* displayPanelModel);
 		KmbNumber* GetTapValue();

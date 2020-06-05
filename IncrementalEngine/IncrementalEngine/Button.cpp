@@ -3,9 +3,9 @@
 
 namespace IncrementalEngine 
 {
-	void Button::Update()
+	void Button::Update(float dt)
 	{
-		Sprite::Update();
+		Sprite::Update(dt);
 
 		_pressed = _released = false;
 

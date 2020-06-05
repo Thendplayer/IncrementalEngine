@@ -8,7 +8,7 @@ namespace IncrementalEngine
 	class Button : public Sprite
 	{
 	public:
-		virtual void Update() override;
+		virtual void Update(float dt) override;
 
 		bool Pressed();
 		bool Hold();

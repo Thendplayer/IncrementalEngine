@@ -12,7 +12,7 @@ namespace MagicIdle
 		_panelButtonPairs.clear();
 	}
 
-	void MultiPanel::Update()
+	void MultiPanel::Update(float dt)
 	{
 		auto newSelectedPanel = -1;
 		for (int i = 0; i < _panelButtonPairs.size(); i++)

@@ -17,9 +17,12 @@ namespace MagicIdle
 		_model = new DisplayPanelModel();
 	}
 	
-	void DisplayPanelMediator::Update()
+	void DisplayPanelMediator::Update(float dt)
 	{
 		auto currencyPerSecond = *_model->GetCurrencyPerSecond();
+
+		KmbNumber currencyToAdd = currencyPerSecond * dt;
+		_model->AddCurrency(currencyToAdd);
 
 		auto currencyPerSecondString = currencyPerSecond.ToString();
 		auto currencyString = _model->GetCurrency()->ToString();

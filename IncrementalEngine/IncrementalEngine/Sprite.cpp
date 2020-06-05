@@ -55,7 +55,7 @@ namespace IncrementalEngine
 		return bounds;
 	}
 	
-	void Sprite::Update()
+	void Sprite::Update(float dt)
 	{
 		_texture->Update(GetWorldTransform(), GetLocalBounds());
 	}
