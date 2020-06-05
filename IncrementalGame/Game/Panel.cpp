@@ -16,6 +16,16 @@ namespace MagicIdle
 	{
 		Sprite::Update();
 
+		if (_upButton->Pressed())
+		{
+			MoveUp();
+		}
+
+		if (_downButton->Pressed())
+		{
+			MoveDown();
+		}
+
 		if (_panelNeedsUpdate) 
 		{
 			SetOrigin(GetOrigin().x, 0);

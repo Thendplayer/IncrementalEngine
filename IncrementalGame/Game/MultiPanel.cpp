@@ -11,7 +11,7 @@ namespace MagicIdle
 	{
 		_panelButtonPairs.clear();
 	}
-	
+
 	void MultiPanel::Update()
 	{
 		auto newSelectedPanel = -1;
@@ -52,6 +52,14 @@ namespace MagicIdle
 		Texture* buttonUnselectedTexture
 	)
 	{
+		bool firstPair = _panelButtonPairs.size() == 0;
+		panel->SetActive(firstPair);
+
+		if (buttonSelectedTexture != nullptr && buttonUnselectedTexture != nullptr)
+		{
+			button->SetTexture(firstPair ? buttonSelectedTexture : buttonUnselectedTexture);
+		}
+
 		_panelButtonPairs.push_back({
 			panel, 
 			button, 

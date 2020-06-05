@@ -251,10 +251,13 @@ namespace MagicIdle
 		Refactor(number1, 0);
 	}
 
-	double KmbNumber::operator=(KmbNumber& number1)
+	void KmbNumber::operator=(KmbNumber& number1)
 	{
-		double castedNumber = GetRawNumber() * std::pow(10, Exponent);
-		return castedNumber;
+		FirstDigits = number1.FirstDigits;
+		TrailingPercentage = number1.TrailingPercentage;
+		Exponent = number1.Exponent;
+
+		Refactor();
 	}
 
 	KmbNumber operator+(KmbNumber number1, KmbNumber number2)

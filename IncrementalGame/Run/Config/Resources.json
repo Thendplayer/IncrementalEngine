@@ -31,6 +31,26 @@
 		"Fileroute": "Resources/UpgradesPerSecondPanelButton.png",
 		"Type": "Texture"
 	},
+	"UpgradesPerSecondPanelButtonPressed": {
+		"Fileroute": "Resources/UpgradesPerSecondPanelButtonPressed.png",
+		"Type": "Texture"
+	},
+	"UpgradesPerClickPanelButton": {
+		"Fileroute": "Resources/UpgradesPerClickPanelButton.png",
+		"Type": "Texture"
+	},
+	"UpgradesPerClickPanelButtonPressed": {
+		"Fileroute": "Resources/UpgradesPerClickPanelButtonPressed.png",
+		"Type": "Texture"
+	},
+	"PanelDownButton": {
+		"Fileroute": "Resources/PanelDownButton.png",
+		"Type": "Texture"
+	},
+	"PanelUpButton": {
+		"Fileroute": "Resources/PanelUpButton.png",
+		"Type": "Texture"
+	},
 	"UpgradesPerSecondPanelBackground": {
 		"Fileroute": "Resources/UpgradesPerSecondPanelBackground.png",
 		"Type": "Texture"

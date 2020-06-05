@@ -1,9 +1,11 @@
 #pragma once
 
 #include <EngineGame.h>
-#include "ActionButton.h"
-#include "DisplayPanel.h"
-#include "UpgradesPerSecondPanel.h"
+
+#include "ActionButtonMediator.h"
+#include "DisplayPanelMediator.h"
+
+#include "UpgradesPanel.h"
 #include "MultiPanel.h"
 
 using namespace IncrementalEngine;
@@ -18,9 +20,12 @@ namespace MagicIdle
 		virtual void Update(float dt) override;
 
 	private:
-		ActionButton* _actionButton;
-		DisplayPanel* _displayPanel;
+		Button* _upgradesPerSecondButton;
+		Button* _upgradesPerClickButton;
+		
+		ActionButtonMediator* _actionButton;
+		DisplayPanelMediator* _displayPanel;
+		
 		MultiPanel* _multiPanel;
-		UpgradeElement* _upgradeElement;
 	};
 }

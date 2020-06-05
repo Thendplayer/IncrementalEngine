@@ -2,6 +2,7 @@
 
 #include <Sprite.h>
 #include <vector>
+#include <Button.h>
 
 using namespace IncrementalEngine;
 
@@ -21,6 +22,10 @@ namespace MagicIdle
 		void MoveUp();
 		void MoveDown();
 
+	protected:
+		Button* _upButton;
+		Button* _downButton;
+	
 	private:
 		vector<Actor*> _elements;
 
