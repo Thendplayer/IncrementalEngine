@@ -19,6 +19,21 @@ namespace MagicIdle
 		_downButton->SetPosition(170, 300);
 	}
 
+	void UpgradesPanel::Update(float dt)
+	{
+		Panel::Update(dt);
+
+		if (_upButton->Pressed()) 
+		{
+			Engine::Get()->Audio()->Play(Engine::Get()->Resources()->GetSound("ButtonSound"));
+		}
+
+		if (_downButton->Pressed())
+		{
+			Engine::Get()->Audio()->Play(Engine::Get()->Resources()->GetSound("ButtonSound"));
+		}
+	}
+
 	void UpgradesPanel::AddElements(
 		std::vector<UpgradeData> data, 
 		KmbNumber* currency, 

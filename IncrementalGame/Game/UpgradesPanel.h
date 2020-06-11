@@ -12,6 +12,8 @@ namespace MagicIdle
 	{
 	public:
 		virtual void Init() override;
+		virtual void Update(float dt) override;
+		
 		void AddElements(
 			std::vector<UpgradeData> data, 
 			KmbNumber* currency, 

@@ -21,8 +21,8 @@ namespace MagicIdle
 		
 		void SetValues(
 			std::wstring& name, 
-			Formula& costFormula, 
 			Formula& upgradeFormula, 
+			Formula& costFormula, 
 			std::wstring upgradeSuffix
 		);
 

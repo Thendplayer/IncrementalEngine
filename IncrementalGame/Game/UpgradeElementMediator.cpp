@@ -25,6 +25,8 @@ namespace MagicIdle
 			_totalSpent->Add(_model->GetCost());
 			_valueToUpgrade->Add(_model->GetUpgrade());
 			Upgrade();
+
+			Engine::Get()->Audio()->Play(Engine::Get()->Resources()->GetSound("UpgradeSound"));
 		}
 	}
 	
@@ -51,8 +53,8 @@ namespace MagicIdle
 
 	void UpgradeElementMediator::SetValues(
 		std::wstring& name,
-		Formula& costFormula,
 		Formula& upgradeFormula,
+		Formula& costFormula,
 		std::wstring upgradeSuffix
 	)
 	{

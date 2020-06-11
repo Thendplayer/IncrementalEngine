@@ -166,5 +166,21 @@
 	"MainTheme": {
 		"Fileroute": "Resources/Audio/Tranquillity.wav",
 		"Type": "Sound"
+	},
+	"Crystal": {
+		"Fileroute": "Resources/Audio/Crystal.wav",
+		"Type": "Sound"
+	},
+	"OrbSound": {
+		"Fileroute": "Resources/Audio/Orb.wav",
+		"Type": "Sound"
+	},
+	"ButtonSound": {
+		"Fileroute": "Resources/Audio/Button.wav",
+		"Type": "Sound"
+	},
+	"UpgradeSound": {
+		"Fileroute": "Resources/Audio/Upgrade.wav",
+		"Type": "Sound"
 	}
 }

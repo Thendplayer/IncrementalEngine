@@ -47,6 +47,8 @@ namespace MagicIdle
 				_totalEarnedPtr->Add(*_currencyPtr * .5f);
 				_currencyPtr->Add(*_currencyPtr * .5f);
 				_orb->SetActive(false);
+
+				Engine::Get()->Audio()->Play(Engine::Get()->Resources()->GetSound("OrbSound"));
 			}
 		}
 

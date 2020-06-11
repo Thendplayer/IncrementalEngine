@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Button.h>
+#include <Sound.h>
 
 using namespace IncrementalEngine;
 
@@ -13,7 +14,7 @@ namespace MagicIdle
 		virtual void Update(float dt) override;
 
 	private:
-		Texture* _onTexture;
-		Texture* _offTexture;
+		Sprite* _pressedSprite;
+		Sound* _buttonSound;
 	};
 }
