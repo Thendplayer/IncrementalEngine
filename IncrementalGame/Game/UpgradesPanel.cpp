@@ -22,14 +22,16 @@ namespace MagicIdle
 	void UpgradesPanel::AddElements(
 		std::vector<UpgradeData> data, 
 		KmbNumber* currency, 
-		KmbNumber* valueToUpgrade
+		KmbNumber* totalSpent, 
+		KmbNumber* valueToUpgrade,
+		std::wstring upgradeSuffix
 	)
 	{
 		for (int i = 0; i < data.size(); i++)
 		{
 			auto element = Engine::Get()->Scene()->Create<UpgradeElementMediator>();
-			element->SetValues(data[i].Name, data[i].Upgrade, data[i].Cost);
-			element->SetCurrencyPtr(currency);
+			element->SetValues(data[i].Name, data[i].Upgrade, data[i].Cost, upgradeSuffix);
+			element->SetCurrencyPtrs(currency, totalSpent);
 			element->SetValueToUpgradePtr(valueToUpgrade);
 			AddElement(element->GetView());
 		}

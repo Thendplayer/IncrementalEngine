@@ -18,9 +18,12 @@ namespace MagicIdle
 		virtual void Update(float dt) override;
 
 		DisplayPanelModel* GetModel();
+		void SetTotalEarnedPtr(KmbNumber* totalEarnedPtr);
 
 	private:
 		DisplayPanelModel* _model;
 		DisplayPanelView* _view;
+
+		KmbNumber* _totalEarnedPtr;
 	};
 }

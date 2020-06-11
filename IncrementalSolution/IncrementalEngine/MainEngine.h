@@ -26,7 +26,8 @@ namespace IncrementalEngine
 		virtual ~Engine();
 		
 		void Run(EngineGame* game);
-		
+		void Close();
+
 		SceneManager* Scene();
 		ResourcesManager* Resources();
 		InputManager* Input();
@@ -45,13 +46,12 @@ namespace IncrementalEngine
 		SaveSystem* _saveSystem;
 		
 		Config _config;
+		bool _open;
 
 		void Init();
 		void Update(float dt);
 		void Draw();
 		void DeInit();
-
-		bool IsOpen();
 	};
 }
 

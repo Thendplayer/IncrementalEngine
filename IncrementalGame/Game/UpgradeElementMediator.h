@@ -15,23 +15,27 @@ namespace MagicIdle
 		virtual void Init() override;
 		virtual void Update(float dt) override;
 
-		void SetCurrencyPtr(KmbNumber* currency);
+		void SetCurrencyPtrs(KmbNumber* currency, KmbNumber* totalSpent);
 		void SetValueToUpgradePtr(KmbNumber* value);
 		void Upgrade();
 		
 		void SetValues(
 			std::wstring& name, 
 			Formula& costFormula, 
-			Formula& upgradeFormula
+			Formula& upgradeFormula, 
+			std::wstring upgradeSuffix
 		);
 
 		UpgradeElementView* GetView();
 
 	private:
+		std::wstring _upgradeSuffix;
+
 		UpgradeElementModel* _model;
 		UpgradeElementView* _view;
 
 		KmbNumber* _valueToUpgrade;
 		KmbNumber* _currency;
+		KmbNumber* _totalSpent;
 	};
 }

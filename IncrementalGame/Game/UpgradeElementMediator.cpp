@@ -22,14 +22,16 @@ namespace MagicIdle
 		if (_view->Pressed() && available)
 		{
 			_currency->Subtract(_model->GetCost());
+			_totalSpent->Add(_model->GetCost());
 			_valueToUpgrade->Add(_model->GetUpgrade());
 			Upgrade();
 		}
 	}
 	
-	void UpgradeElementMediator::SetCurrencyPtr(KmbNumber* currency)
+	void UpgradeElementMediator::SetCurrencyPtrs(KmbNumber* currency, KmbNumber* totalSpent)
 	{
 		_currency = currency;
+		_totalSpent = totalSpent;
 	}
 
 	void UpgradeElementMediator::SetValueToUpgradePtr(KmbNumber* value)
@@ -42,7 +44,7 @@ namespace MagicIdle
 		_model->LevelUp();
 
 		std::wstring cost = _model->GetCost().ToString();
-		std::wstring upgrade = _model->GetUpgrade().ToString();
+		std::wstring upgrade = _model->GetUpgrade().ToString() + _upgradeSuffix;
 
 		_view->SetValues(_model->GetLevel(), cost, upgrade);
 	}
@@ -50,13 +52,15 @@ namespace MagicIdle
 	void UpgradeElementMediator::SetValues(
 		std::wstring& name,
 		Formula& costFormula,
-		Formula& upgradeFormula
+		Formula& upgradeFormula,
+		std::wstring upgradeSuffix
 	)
 	{
+		_upgradeSuffix = upgradeSuffix;
 		_model->SetValues(name, costFormula, upgradeFormula);
 
 		std::wstring cost = _model->GetCost().ToString();
-		std::wstring upgrade = _model->GetUpgrade().ToString();
+		std::wstring upgrade = _model->GetUpgrade().ToString() + _upgradeSuffix;
 		
 		_view->SetName(name);
 		_view->SetValues(_model->GetLevel(), cost, upgrade);

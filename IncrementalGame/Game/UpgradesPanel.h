@@ -15,7 +15,9 @@ namespace MagicIdle
 		void AddElements(
 			std::vector<UpgradeData> data, 
 			KmbNumber* currency, 
-			KmbNumber* valueToUpgrade
+			KmbNumber* totalSpent,
+			KmbNumber* valueToUpgrade,
+			std::wstring upgradeSuffix
 		);
 	};
 }

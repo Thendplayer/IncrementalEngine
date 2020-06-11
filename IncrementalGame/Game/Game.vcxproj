@@ -102,6 +102,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)IncrementalEngine;$(SolutionDir)IncrementalEngine\ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
       <CompileAs>Default</CompileAs>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,6 +120,7 @@
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <CompileAs>Default</CompileAs>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -186,7 +188,13 @@
     <ClInclude Include="KmbNumber.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MultiPanel.h" />
+    <ClInclude Include="Orb.h" />
+    <ClInclude Include="OrbSpawner.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="ProfileMediator.h" />
+    <ClInclude Include="ProfileModel.h" />
+    <ClInclude Include="ProfileView.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="UpgradeData.h" />
     <ClInclude Include="UpgradeElementMediator.h" />
     <ClInclude Include="UpgradeElementModel.h" />
@@ -207,11 +215,22 @@
     <ClCompile Include="KmbNumber.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MultiPanel.cpp" />
+    <ClCompile Include="Orb.cpp" />
+    <ClCompile Include="OrbSpawner.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="ProfileMediator.cpp" />
+    <ClCompile Include="ProfileModel.cpp" />
+    <ClCompile Include="ProfileView.cpp" />
     <ClCompile Include="UpgradeElementMediator.cpp" />
     <ClCompile Include="UpgradeElementModel.cpp" />
     <ClCompile Include="UpgradeElementView.cpp" />
     <ClCompile Include="UpgradesPanel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MagicIdle_Logo.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

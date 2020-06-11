@@ -29,7 +29,8 @@ namespace IncrementalEngine
 		_sceneManager(NULL),
 		_resourcesManager(NULL),
 		_saveSystem(NULL),
-		_config(Config())
+		_config(Config()),
+		_open(true)
 	{
 	}
 
@@ -49,7 +50,7 @@ namespace IncrementalEngine
         MSG msg;
         ZeroMemory(&msg, sizeof(msg));
 		
-        while (msg.message != WM_QUIT)
+        while (msg.message != WM_QUIT && _open)
         {
 			if (PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE))
 			{
@@ -140,9 +141,14 @@ namespace IncrementalEngine
 		CHECKED_DELETE(_inputManager);
     }
 
-	bool Engine::IsOpen()
+	void Engine::Close()
 	{
-        return true;
+        _open = false;
+	}
+
+	void Engine::SetIcon(LPCWSTR icon)
+	{
+		_renderWindow->SetIcon(icon);
 	}
 
 	SceneManager* Engine::Scene()

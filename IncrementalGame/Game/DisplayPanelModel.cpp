@@ -34,21 +34,6 @@ namespace MagicIdle
 		Engine::Get()->Storage()->SaveInt(_currencyPerSecond.Exponent, "CurrencyPerSecond_Exponent");
 	}
 	
-	void DisplayPanelModel::AddCurrency(KmbNumber& value)
-	{
-		_currency += value;
-	}
-	
-	void DisplayPanelModel::SubstractCurrency(KmbNumber& value)
-	{
-		_currency -= value;
-	}
-	
-	void DisplayPanelModel::AddCurrencyPerSecond(KmbNumber& value)
-	{
-		_currencyPerSecond += value;
-	}
-	
 	KmbNumber* DisplayPanelModel::GetCurrency()
 	{
 		return &_currency;

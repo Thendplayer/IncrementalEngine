@@ -101,6 +101,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -117,6 +118,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

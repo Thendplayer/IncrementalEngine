@@ -22,7 +22,8 @@ namespace MagicIdle
 		auto currencyPerSecond = *_model->GetCurrencyPerSecond();
 
 		KmbNumber currencyToAdd = currencyPerSecond * dt;
-		_model->AddCurrency(currencyToAdd);
+		_model->GetCurrency()->Add(currencyToAdd);
+		_totalEarnedPtr->Add(currencyToAdd);
 
 		auto currencyPerSecondString = currencyPerSecond.ToString();
 		auto currencyString = _model->GetCurrency()->ToString();
@@ -34,5 +35,10 @@ namespace MagicIdle
 	DisplayPanelModel* DisplayPanelMediator::GetModel()
 	{
 		return _model;
+	}
+	
+	void DisplayPanelMediator::SetTotalEarnedPtr(KmbNumber* totalEarnedPtr)
+	{
+		_totalEarnedPtr = totalEarnedPtr;
 	}
 }

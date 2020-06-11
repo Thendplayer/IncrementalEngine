@@ -67,6 +67,27 @@
     <Filter Include="Game\UpgradesPanel\Data">
       <UniqueIdentifier>{4cf85290-00f6-48bd-87b4-e5cb87321eeb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Profile">
+      <UniqueIdentifier>{a346d6fd-5afd-4133-8aff-ba59906cef9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile\ProfileView">
+      <UniqueIdentifier>{69bc09af-5439-4965-8629-52404107574e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Orb">
+      <UniqueIdentifier>{373d5139-2140-4f95-bea5-0174b3615308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Orb\OrbSpawner">
+      <UniqueIdentifier>{dcfc64af-c194-49ac-9790-3cbf612c69b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile\ProfileMediator">
+      <UniqueIdentifier>{4d702c92-ca27-4a51-bb51-b95f943d9625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile\ProfileModel">
+      <UniqueIdentifier>{3a9856c3-6bd8-4f76-99cf-946083664576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{6aaf5301-d3ed-4da7-9a44-5fad7f58365d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Run\Config\Resources.json">
@@ -134,6 +155,24 @@
     <ClInclude Include="UpgradesPerClickPanelData.h">
       <Filter>Game\UpgradesPanel\Data</Filter>
     </ClInclude>
+    <ClInclude Include="ProfileView.h">
+      <Filter>Game\Profile\ProfileView</Filter>
+    </ClInclude>
+    <ClInclude Include="Orb.h">
+      <Filter>Game\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbSpawner.h">
+      <Filter>Game\Orb\OrbSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileMediator.h">
+      <Filter>Game\Profile\ProfileMediator</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileModel.h">
+      <Filter>Game\Profile\ProfileModel</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\IncrementalEngine\WinMain.cpp">
@@ -184,5 +223,30 @@
     <ClCompile Include="UpgradesPanel.cpp">
       <Filter>Game\UpgradesPanel</Filter>
     </ClCompile>
+    <ClCompile Include="ProfileView.cpp">
+      <Filter>Game\Profile\ProfileView</Filter>
+    </ClCompile>
+    <ClCompile Include="Orb.cpp">
+      <Filter>Game\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="OrbSpawner.cpp">
+      <Filter>Game\Orb\OrbSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileMediator.cpp">
+      <Filter>Game\Profile\ProfileMediator</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileModel.cpp">
+      <Filter>Game\Profile\ProfileModel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MagicIdle_Logo.ico">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

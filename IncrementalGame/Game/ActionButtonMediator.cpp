@@ -21,7 +21,8 @@ namespace MagicIdle
 		if (_view->Pressed()) 
 		{
 			auto tapValue = _model->Tap();
-			_displayPanelModel->AddCurrency(tapValue);
+			_currencyPtr->Add(tapValue);
+			_totalEarnedPtr->Add(tapValue);
 		}
 	}
 	
@@ -33,5 +34,16 @@ namespace MagicIdle
 	KmbNumber* ActionButtonMediator::GetTapValue()
 	{
 		return _model->GetTapValue();
+	}
+	
+	ActionButtonModel* ActionButtonMediator::GetModel()
+	{
+		return _model;
+	}
+	
+	void ActionButtonMediator::SetCurrencyPtrs(KmbNumber* currencyPtr, KmbNumber* totalEarnedPtr)
+	{
+		_totalEarnedPtr = totalEarnedPtr;
+		_currencyPtr = currencyPtr;
 	}
 }

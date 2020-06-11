@@ -15,8 +15,10 @@ namespace MagicIdle
 
 		KmbNumber* GetTapValue();
 
+		void SetTotalTapsPtr(KmbNumber* totalTapsPtr);
+
 	private:
-		KmbNumber _taps = KmbNumber::Zero;
 		KmbNumber _tapValue = KmbNumber::Zero;
+		KmbNumber* _totalTapsPtr;
 	};
 }

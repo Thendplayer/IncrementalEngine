@@ -55,6 +55,34 @@
 		"Fileroute": "Resources/UpgradesPerSecondPanelBackground.png",
 		"Type": "Texture"
 	},
+	"Orb": {
+		"Fileroute": "Resources/Orb.png",
+		"Type": "Texture"
+	},
+	"CreditsScreen": {
+		"Fileroute": "Resources/CreditsScreen.png",
+		"Type": "Texture"
+	},
+	"ProfileBackground": {
+		"Fileroute": "Resources/ProfileBackground.png",
+		"Type": "Texture"
+	},
+	"ProfileButton": {
+		"Fileroute": "Resources/ProfileButton.png",
+		"Type": "Texture"
+	},
+	"ProfileCreditsButton": {
+		"Fileroute": "Resources/ProfileCreditsButton.png",
+		"Type": "Texture"
+	},
+	"ProfileExitButton": {
+		"Fileroute": "Resources/ProfileExitButton.png",
+		"Type": "Texture"
+	},
+	"ProfileCrossButton": {
+		"Fileroute": "Resources/ProfileCrossButton.png",
+		"Type": "Texture"
+	},
 	"Sapphire amulet": {
 		"Fileroute": "Resources/Upgrades/amulet_sapphire.png",
 		"Type": "Texture"
@@ -134,5 +162,9 @@
 	"Pitchfork": {
 		"Fileroute": "Resources/Upgrades/pitchfork_iron.png",
 		"Type": "Texture"
+	},
+	"MainTheme": {
+		"Fileroute": "Resources/Audio/Tranquillity.wav",
+		"Type": "Sound"
 	}
 }

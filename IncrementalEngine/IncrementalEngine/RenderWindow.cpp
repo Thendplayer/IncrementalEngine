@@ -24,7 +24,7 @@ namespace IncrementalEngine
 		wc.cbClsExtra = 0;
 		wc.cbWndExtra = 0;
 		wc.hInstance = _hInstance;
-		wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
+		wc.hIcon = LoadIcon(_hInstance, IDI_WINLOGO);
 		wc.hIconSm = wc.hIcon;
 		wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 		wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
@@ -130,6 +130,13 @@ namespace IncrementalEngine
 	float RenderWindow::GetScreenDepth()
 	{
 		return _config.ScreenDepth;
+	}
+
+	void RenderWindow::SetIcon(LPCWSTR icon)
+	{
+		HICON hIcon = LoadIcon(_hInstance, MAKEINTRESOURCE(icon));
+		SendMessage(_hWnd, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+		SendMessage(_hWnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
 	}
 
 	LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

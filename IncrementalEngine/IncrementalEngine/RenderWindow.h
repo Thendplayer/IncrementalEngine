@@ -20,6 +20,8 @@ namespace IncrementalEngine
 			float GetScreenNear();
 			float GetScreenDepth();
 
+			void SetIcon(LPCWSTR icon);
+
 		private:
 			HINSTANCE _hInstance;
 			HWND _hWnd;

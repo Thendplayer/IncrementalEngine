@@ -10,11 +10,6 @@ namespace MagicIdle
 		DisplayPanelModel();
 		virtual ~DisplayPanelModel();
 
-		void AddCurrency(KmbNumber& value);
-		void SubstractCurrency(KmbNumber& value);
-
-		void AddCurrencyPerSecond(KmbNumber& value);
-
 		KmbNumber* GetCurrency();
 		KmbNumber* GetCurrencyPerSecond();
 

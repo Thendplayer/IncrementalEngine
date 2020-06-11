@@ -20,9 +20,15 @@ namespace MagicIdle
 		void SetDisplayPanelModel(DisplayPanelModel* displayPanelModel);
 		KmbNumber* GetTapValue();
 
+		ActionButtonModel* GetModel();
+		void SetCurrencyPtrs(KmbNumber* currencyPtr, KmbNumber* totalEarnedPtr);
+
 	private:
 		ActionButtonModel* _model;
 		ActionButtonView* _view;
 		DisplayPanelModel* _displayPanelModel;
+
+		KmbNumber* _totalEarnedPtr;
+		KmbNumber* _currencyPtr;
 	};
 }
