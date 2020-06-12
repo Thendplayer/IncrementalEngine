@@ -39,17 +39,18 @@ namespace IncrementalEngine
     public:
         Transformable();
 
-        void SetPosition(float x, float y);
-        void SetPosition(const D3DXVECTOR2& position);
-        void SetRotation(float angle);
-        void SetScale(float factorX, float factorY);
-        void SetScale(const D3DXVECTOR2& factors);
-        void SetOrigin(float x, float y);
-        void SetOrigin(const D3DXVECTOR2& origin);
-        const D3DXVECTOR2& GetPosition() const;
-        float GetRotation() const;
-        const D3DXVECTOR2& GetScale() const;
-        const D3DXVECTOR2& GetOrigin() const;
+        virtual void SetPosition(float x, float y);
+        virtual void SetPosition(const D3DXVECTOR2& position);
+        virtual void SetScale(float factorX, float factorY);
+        virtual void SetScale(const D3DXVECTOR2& factors);
+        virtual void SetOrigin(float x, float y);
+        virtual void SetOrigin(const D3DXVECTOR2& origin);
+        virtual void SetRotation(float angle);
+        
+        virtual const D3DXVECTOR2& GetPosition() const;
+        virtual float GetRotation() const;
+        virtual const D3DXVECTOR2& GetScale() const;
+        virtual const D3DXVECTOR2& GetOrigin() const;
 
         void Move(float offsetX, float offsetY);
         void Move(const D3DXVECTOR2& offset);
@@ -63,14 +64,14 @@ namespace IncrementalEngine
         const Transform& GetInverseTransform() const;
 
     protected:
-        D3DXVECTOR2 _origin;
-        D3DXVECTOR2 _position;
-        float _rotation;
-        D3DXVECTOR2 _scale;
-
         mutable bool _transformNeedUpdate;
 
     private:
+        D3DXVECTOR2 _origin;
+        D3DXVECTOR2 _position;
+        D3DXVECTOR2 _scale;
+        float _rotation;
+
         mutable Transform _transform;
         mutable Transform _inverseTransform;
         mutable bool _inverseTransformNeedUpdate;

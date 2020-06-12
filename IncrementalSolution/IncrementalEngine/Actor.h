@@ -15,10 +15,10 @@ namespace IncrementalEngine
 		virtual ~Actor();
 
 		virtual void Init();
-		virtual void Update();
+		virtual void Update(float dt);
 		virtual HRESULT Draw(ID3D11DeviceContext* deviceContext) override;
 
-		void UpdateRecursive();
+		void UpdateRecursive(float dt);
 		HRESULT DrawRecursive(ID3D11DeviceContext* deviceContext);
 
 		virtual FloatRect GetLocalBounds();
@@ -26,12 +26,16 @@ namespace IncrementalEngine
 
 		void Center();
 
-		const Transform GetCombinedTransform();
+		const Transform GetWorldTransform();
 		const D3DXVECTOR2 GetWorldPosition();
 		const D3DXVECTOR2 GetWorldScale();
 		const float GetWorldRotation();
 		
 		void SetWorldPosition(D3DXVECTOR2 value);
+
+		virtual void SetPosition(float x, float y) override;
+		virtual void SetPosition(const D3DXVECTOR2& position) override;
+		virtual const D3DXVECTOR2& GetPosition() const override;
 
 		Actor* GetParent() const;
 		virtual void SetParent(Actor* value, const bool fixWorldPosition = true);
@@ -43,8 +47,6 @@ namespace IncrementalEngine
 		Actor* _parent;
 		vector<Actor*> _children;
 		bool _active;
-
-		const Transform GetWorldTransform() const;
 	};
 }
 

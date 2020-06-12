@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Config">
+      <UniqueIdentifier>{c2bf613b-c740-4395-822f-f625ec0b3987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{0c3e5694-75e8-4093-8ff3-0277904efffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{456c5484-8724-49da-baa1-ca4a768d5b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ActionButton">
+      <UniqueIdentifier>{acf3a805-7af8-4ba7-88da-99646208d5d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\DisplayPanel">
+      <UniqueIdentifier>{fad163ab-bca3-4af8-9cb5-3929ff14bbfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradeElement">
+      <UniqueIdentifier>{a3174d2c-9ccd-41ed-b23c-a4d28bc6be85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Formulas">
+      <UniqueIdentifier>{90abf82a-9a5a-478d-acbf-b2572b4782ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ActionButton\ActionButtonMediator">
+      <UniqueIdentifier>{7d71d6c8-c8f2-42e8-97e0-556b734ba0f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ActionButton\ActionButtonView">
+      <UniqueIdentifier>{2b4acddc-c32f-42f3-9dce-ba0cba11b40b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ActionButton\ActionButtonModel">
+      <UniqueIdentifier>{11bdec4d-abe1-45af-984c-76aa9223f91c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\DisplayPanel\DisplayPanelView">
+      <UniqueIdentifier>{e8a35b47-e7e1-4e1e-95e1-8ee9ada97d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\DisplayPanel\DisplayPanelModel">
+      <UniqueIdentifier>{77b05980-4632-4a5a-9dd5-38cfc2341dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\DisplayPanel\DisplayPanelMediator">
+      <UniqueIdentifier>{7202f07e-3c2d-43df-b1ec-d16c9967504b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradeElement\UpgradeElementView">
+      <UniqueIdentifier>{72eb900c-079b-4aef-9d8d-24f28c5ed4ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradeElement\UpgradeElementMediator">
+      <UniqueIdentifier>{69de3c5e-36f7-44ef-9aea-54857120d8a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradeElement\UpgradeElementModel">
+      <UniqueIdentifier>{68b58e4b-7170-4eae-8dbc-7aac50d1ebae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradesPanel">
+      <UniqueIdentifier>{83752bbf-89ed-4096-b45e-04553667659e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UpgradesPanel\Data">
+      <UniqueIdentifier>{4cf85290-00f6-48bd-87b4-e5cb87321eeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile">
+      <UniqueIdentifier>{a346d6fd-5afd-4133-8aff-ba59906cef9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile\ProfileView">
+      <UniqueIdentifier>{69bc09af-5439-4965-8629-52404107574e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Orb">
+      <UniqueIdentifier>{373d5139-2140-4f95-bea5-0174b3615308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Orb\OrbSpawner">
+      <UniqueIdentifier>{dcfc64af-c194-49ac-9790-3cbf612c69b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile\ProfileMediator">
+      <UniqueIdentifier>{4d702c92-ca27-4a51-bb51-b95f943d9625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Profile\ProfileModel">
+      <UniqueIdentifier>{3a9856c3-6bd8-4f76-99cf-946083664576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{6aaf5301-d3ed-4da7-9a44-5fad7f58365d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Run\Config\Resources.json">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\Run\Config\Config.json">
+      <Filter>Config</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Run\Config\Description.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Formula.h">
+      <Filter>Game\Formulas</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionButtonMediator.h">
+      <Filter>Game\ActionButton\ActionButtonMediator</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionButtonView.h">
+      <Filter>Game\ActionButton\ActionButtonView</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionButtonModel.h">
+      <Filter>Game\ActionButton\ActionButtonModel</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayPanelView.h">
+      <Filter>Game\DisplayPanel\DisplayPanelView</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayPanelModel.h">
+      <Filter>Game\DisplayPanel\DisplayPanelModel</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayPanelMediator.h">
+      <Filter>Game\DisplayPanel\DisplayPanelMediator</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeElementView.h">
+      <Filter>Game\UpgradeElement\UpgradeElementView</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeElementModel.h">
+      <Filter>Game\UpgradeElement\UpgradeElementModel</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeElementMediator.h">
+      <Filter>Game\UpgradeElement\UpgradeElementMediator</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradesPanel.h">
+      <Filter>Game\UpgradesPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeData.h">
+      <Filter>Game\UpgradesPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradesPerSecondPanelData.h">
+      <Filter>Game\UpgradesPanel\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradesPerClickPanelData.h">
+      <Filter>Game\UpgradesPanel\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileView.h">
+      <Filter>Game\Profile\ProfileView</Filter>
+    </ClInclude>
+    <ClInclude Include="Orb.h">
+      <Filter>Game\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbSpawner.h">
+      <Filter>Game\Orb\OrbSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileMediator.h">
+      <Filter>Game\Profile\ProfileMediator</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileModel.h">
+      <Filter>Game\Profile\ProfileModel</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\IncrementalEngine\WinMain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Formula.cpp">
+      <Filter>Game\Formulas</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionButtonMediator.cpp">
+      <Filter>Game\ActionButton\ActionButtonMediator</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionButtonView.cpp">
+      <Filter>Game\ActionButton\ActionButtonView</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionButtonModel.cpp">
+      <Filter>Game\ActionButton\ActionButtonModel</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayPanelView.cpp">
+      <Filter>Game\DisplayPanel\DisplayPanelView</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayPanelModel.cpp">
+      <Filter>Game\DisplayPanel\DisplayPanelModel</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayPanelMediator.cpp">
+      <Filter>Game\DisplayPanel\DisplayPanelMediator</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeElementView.cpp">
+      <Filter>Game\UpgradeElement\UpgradeElementView</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeElementModel.cpp">
+      <Filter>Game\UpgradeElement\UpgradeElementModel</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradeElementMediator.cpp">
+      <Filter>Game\UpgradeElement\UpgradeElementMediator</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradesPanel.cpp">
+      <Filter>Game\UpgradesPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileView.cpp">
+      <Filter>Game\Profile\ProfileView</Filter>
+    </ClCompile>
+    <ClCompile Include="Orb.cpp">
+      <Filter>Game\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="OrbSpawner.cpp">
+      <Filter>Game\Orb\OrbSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileMediator.cpp">
+      <Filter>Game\Profile\ProfileMediator</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileModel.cpp">
+      <Filter>Game\Profile\ProfileModel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MagicIdle_Logo.ico">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

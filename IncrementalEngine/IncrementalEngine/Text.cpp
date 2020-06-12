@@ -2,6 +2,7 @@
 #include <DirectXPackedVector.h>
 
 #include "Utils.h"
+#include "MathUtils.h"
 #include "Text.h"
 
 namespace IncrementalEngine 
@@ -13,6 +14,7 @@ namespace IncrementalEngine
 		_fontSize(12),
 		_color(0)
 	{
+		_flags = FontAlignment::CENTER;
 	}
 
 	Text::~Text()
@@ -53,6 +55,11 @@ namespace IncrementalEngine
 		_fontSize = fontSize;
 		Center();
 		_fontWrapperNeedUpdate = true;
+	}
+
+	void Text::SetFontAlignment(FontAlignment alignment)
+	{
+		_flags = alignment;
 	}
 
 	void Text::SetText(const std::wstring& value)
@@ -97,40 +104,21 @@ namespace IncrementalEngine
 		return bounds;
 	}
 	
-	void Text::Update()
+	void Text::Update(float dt)
 	{
-		Transform transform = GetCombinedTransform();
+		Transform transform = GetWorldTransform();
 		if (_fontWrapperNeedUpdate || transform != _previousTransform)
 		{
 			_previousTransform = transform;
 
-			XMMATRIX OrthoProjectionMatrix = XMMatrixOrthographicLH(
+			XMMATRIX orthoProjectionMatrix = XMMatrixOrthographicLH(
 				_renderWindow->GetScreenWidth(),
 				-_renderWindow->GetScreenHeight(),
 				_renderWindow->GetScreenNear(),
 				_renderWindow->GetScreenDepth()
 			);
 
-			D3DXVECTOR2 position = GetWorldPosition();
-			XMMATRIX translationMatrix = XMMatrixTranslation(
-				position.x,
-				position.y,
-				1.f
-			);
-
-			D3DXVECTOR2 scale = GetWorldScale();
-			XMMATRIX scaleMatrix = XMMatrixScaling(
-				scale.x,
-				scale.y,
-				1.f
-			);
-
-			float rotation = GetWorldRotation();
-			_fontWrapperMatrix = scaleMatrix
-				* XMMatrixRotationZ(rotation * 0.01745f)
-				* translationMatrix
-				* OrthoProjectionMatrix;
-
+			_fontWrapperMatrix = GetWorldMatrix(this) * orthoProjectionMatrix;
 			_fontWrapperNeedUpdate = false;
 		}
 	}
@@ -148,7 +136,7 @@ namespace IncrementalEngine
 			_color,
 			NULL,
 			reinterpret_cast<FLOAT*>(&_fontWrapperMatrix),
-			FW1_CENTER | FW1_VCENTER | FW1_NOWORDWRAP | FW1_RESTORESTATE
+			_flags | FW1_NOWORDWRAP | FW1_RESTORESTATE
 		);
 
 		return S_OK;
@@ -166,5 +154,47 @@ namespace IncrementalEngine
 		);
 
 		return { rect.Right - rect.Left, rect.Bottom - rect.Top };
+	}
+
+	XMMATRIX Text::GetWorldMatrix(Actor* actor)
+	{
+		XMMATRIX parentMatrix = XMMatrixIdentity();
+
+		auto parent = actor->GetParent();
+		if (parent != nullptr)
+		{
+			parentMatrix = GetWorldMatrix(parent);
+		}
+
+		D3DXVECTOR2 origin = actor->GetOrigin();
+		D3DXVECTOR2 scale = actor->GetScale();
+		D3DXVECTOR2 position = actor->GetPosition();
+		float rotation = DEG2RAD(actor->GetRotation());
+
+		XMMATRIX originMatrix = XMMatrixTranslation(
+			origin.x,
+			origin.y,
+			0.f
+		);
+
+		XMMATRIX rotationMatrix = XMMatrixRotationZ(rotation);
+		
+		XMMATRIX translationMatrix = XMMatrixTranslation(
+			position.x,
+			position.y,
+			1.f
+		);
+		
+		XMMATRIX scaleMatrix = XMMatrixScaling(
+			scale.x,
+			scale.y,
+			1.f
+		);
+		
+		XMMATRIX actorMatrix = scaleMatrix 
+			* rotationMatrix
+			* translationMatrix;
+
+		return actorMatrix * parentMatrix;
 	}
 }

@@ -35,10 +35,10 @@ namespace IncrementalEngine
 
     Transform::Transform()
     {
-        _fontWrapperMatrix[0] = 1.f; _fontWrapperMatrix[4] = 0.f; _fontWrapperMatrix[8]  = 0.f; _fontWrapperMatrix[12] = 0.f;
-        _fontWrapperMatrix[1] = 0.f; _fontWrapperMatrix[5] = 1.f; _fontWrapperMatrix[9]  = 0.f; _fontWrapperMatrix[13] = 0.f;
-        _fontWrapperMatrix[2] = 0.f; _fontWrapperMatrix[6] = 0.f; _fontWrapperMatrix[10] = 1.f; _fontWrapperMatrix[14] = 0.f;
-        _fontWrapperMatrix[3] = 0.f; _fontWrapperMatrix[7] = 0.f; _fontWrapperMatrix[11] = 0.f; _fontWrapperMatrix[15] = 1.f;
+        _matrix[0] = 1.f; _matrix[4] = 0.f; _matrix[8]  = 0.f; _matrix[12] = 0.f;
+        _matrix[1] = 0.f; _matrix[5] = 1.f; _matrix[9]  = 0.f; _matrix[13] = 0.f;
+        _matrix[2] = 0.f; _matrix[6] = 0.f; _matrix[10] = 1.f; _matrix[14] = 0.f;
+        _matrix[3] = 0.f; _matrix[7] = 0.f; _matrix[11] = 0.f; _matrix[15] = 1.f;
     }
 
     Transform::Transform(
@@ -47,34 +47,34 @@ namespace IncrementalEngine
         float a20, float a21, float a22
     )
     {
-        _fontWrapperMatrix[0] = a00; _fontWrapperMatrix[4] = a01; _fontWrapperMatrix[8]  = 0.f; _fontWrapperMatrix[12] = a02;
-        _fontWrapperMatrix[1] = a10; _fontWrapperMatrix[5] = a11; _fontWrapperMatrix[9]  = 0.f; _fontWrapperMatrix[13] = a12;
-        _fontWrapperMatrix[2] = 0.f; _fontWrapperMatrix[6] = 0.f; _fontWrapperMatrix[10] = 1.f; _fontWrapperMatrix[14] = 0.f;
-        _fontWrapperMatrix[3] = a20; _fontWrapperMatrix[7] = a21; _fontWrapperMatrix[11] = 0.f; _fontWrapperMatrix[15] = a22;
+        _matrix[0] = a00; _matrix[4] = a01; _matrix[8]  = 0.f; _matrix[12] = a02;
+        _matrix[1] = a10; _matrix[5] = a11; _matrix[9]  = 0.f; _matrix[13] = a12;
+        _matrix[2] = 0.f; _matrix[6] = 0.f; _matrix[10] = 1.f; _matrix[14] = 0.f;
+        _matrix[3] = a20; _matrix[7] = a21; _matrix[11] = 0.f; _matrix[15] = a22;
     }
 
     const float* Transform::GetMatrix() const
     {
-        return _fontWrapperMatrix;
+        return _matrix;
     }
 
     Transform Transform::GetInverse() const
     {
-        float det = _fontWrapperMatrix[0] * (_fontWrapperMatrix[15] * _fontWrapperMatrix[5] - _fontWrapperMatrix[7] * _fontWrapperMatrix[13]) -
-                    _fontWrapperMatrix[1] * (_fontWrapperMatrix[15] * _fontWrapperMatrix[4] - _fontWrapperMatrix[7] * _fontWrapperMatrix[12]) +
-                    _fontWrapperMatrix[3] * (_fontWrapperMatrix[13] * _fontWrapperMatrix[4] - _fontWrapperMatrix[5] * _fontWrapperMatrix[12]);
+        float det = _matrix[0] * (_matrix[15] * _matrix[5] - _matrix[7] * _matrix[13]) -
+                    _matrix[1] * (_matrix[15] * _matrix[4] - _matrix[7] * _matrix[12]) +
+                    _matrix[3] * (_matrix[13] * _matrix[4] - _matrix[5] * _matrix[12]);
 
         if (det != 0.f)
         {
-            return Transform( (_fontWrapperMatrix[15] * _fontWrapperMatrix[5] - _fontWrapperMatrix[7] * _fontWrapperMatrix[13]) / det,
-                             -(_fontWrapperMatrix[15] * _fontWrapperMatrix[4] - _fontWrapperMatrix[7] * _fontWrapperMatrix[12]) / det,
-                              (_fontWrapperMatrix[13] * _fontWrapperMatrix[4] - _fontWrapperMatrix[5] * _fontWrapperMatrix[12]) / det,
-                             -(_fontWrapperMatrix[15] * _fontWrapperMatrix[1] - _fontWrapperMatrix[3] * _fontWrapperMatrix[13]) / det,
-                              (_fontWrapperMatrix[15] * _fontWrapperMatrix[0] - _fontWrapperMatrix[3] * _fontWrapperMatrix[12]) / det,
-                             -(_fontWrapperMatrix[13] * _fontWrapperMatrix[0] - _fontWrapperMatrix[1] * _fontWrapperMatrix[12]) / det,
-                              (_fontWrapperMatrix[7]  * _fontWrapperMatrix[1] - _fontWrapperMatrix[3] * _fontWrapperMatrix[5])  / det,
-                             -(_fontWrapperMatrix[7]  * _fontWrapperMatrix[0] - _fontWrapperMatrix[3] * _fontWrapperMatrix[4])  / det,
-                              (_fontWrapperMatrix[5]  * _fontWrapperMatrix[0] - _fontWrapperMatrix[1] * _fontWrapperMatrix[4])  / det
+            return Transform( (_matrix[15] * _matrix[5] - _matrix[7] * _matrix[13]) / det,
+                             -(_matrix[15] * _matrix[4] - _matrix[7] * _matrix[12]) / det,
+                              (_matrix[13] * _matrix[4] - _matrix[5] * _matrix[12]) / det,
+                             -(_matrix[15] * _matrix[1] - _matrix[3] * _matrix[13]) / det,
+                              (_matrix[15] * _matrix[0] - _matrix[3] * _matrix[12]) / det,
+                             -(_matrix[13] * _matrix[0] - _matrix[1] * _matrix[12]) / det,
+                              (_matrix[7]  * _matrix[1] - _matrix[3] * _matrix[5])  / det,
+                             -(_matrix[7]  * _matrix[0] - _matrix[3] * _matrix[4])  / det,
+                              (_matrix[5]  * _matrix[0] - _matrix[1] * _matrix[4])  / det
             );
         }
         else
@@ -86,8 +86,8 @@ namespace IncrementalEngine
     D3DXVECTOR2 Transform::TransformPoint(float x, float y) const
     {
         return D3DXVECTOR2(
-            _fontWrapperMatrix[0] * x + _fontWrapperMatrix[4] * y + _fontWrapperMatrix[12],
-            _fontWrapperMatrix[1] * x + _fontWrapperMatrix[5] * y + _fontWrapperMatrix[13]
+            _matrix[0] * x + _matrix[4] * y + _matrix[12],
+            _matrix[1] * x + _matrix[5] * y + _matrix[13]
         );
     }
 
@@ -124,8 +124,8 @@ namespace IncrementalEngine
 
     Transform& Transform::Combine(const Transform& transform)
     {
-        const float* a = _fontWrapperMatrix;
-        const float* b = transform._fontWrapperMatrix;
+        const float* a = _matrix;
+        const float* b = transform._matrix;
 
         *this = Transform(a[0] * b[0]  + a[4] * b[1]  + a[12] * b[3],
                           a[0] * b[4]  + a[4] * b[5]  + a[12] * b[7],

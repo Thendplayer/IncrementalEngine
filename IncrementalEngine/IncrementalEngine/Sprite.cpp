@@ -55,9 +55,9 @@ namespace IncrementalEngine
 		return bounds;
 	}
 	
-	void Sprite::Update()
+	void Sprite::Update(float dt)
 	{
-		_texture->Update(GetCombinedTransform(), GetLocalBounds());
+		_texture->Update(GetWorldTransform(), GetLocalBounds());
 	}
 	
 	HRESULT Sprite::Draw(ID3D11DeviceContext* deviceContext)

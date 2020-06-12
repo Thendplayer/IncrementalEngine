@@ -1,0 +1,38 @@
+{
+	"ApplicationName": {
+		"string" : "Magic Idle"
+	},
+
+	"Fullscreen": {
+		"bool": false
+	},
+	"WindowSize" : {
+		"vector2": {
+			"x": 1280,
+			"y": 720
+		}
+	},
+
+	"ScreenDepth": {
+		"float": 1000.0
+	},
+	"ScreenNear": {
+		"float": 0.1
+	},
+	"VsyncEnabled": {
+		"bool": true
+	},
+
+	"ShowCursor": {
+		"bool": true
+	},
+
+	"BackgroundColor": {
+		"color": {
+			"r": 177,
+			"g": 219,
+			"b": 245,
+			"a": 1
+		}
+	}
+}
