@@ -7,8 +7,9 @@
 #include "ProfileMediator.h"
 
 #include "UpgradesPanel.h"
-#include "MultiPanel.h"
 #include "OrbSpawner.h"
+
+#include <MultiPanel.h>
 
 using namespace IncrementalEngine;
 

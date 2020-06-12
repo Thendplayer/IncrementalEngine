@@ -28,6 +28,8 @@ namespace IncrementalEngine
 		void Run(EngineGame* game);
 		void Close();
 
+		void SetIcon(LPCWSTR icon);
+
 		SceneManager* Scene();
 		ResourcesManager* Resources();
 		InputManager* Input();

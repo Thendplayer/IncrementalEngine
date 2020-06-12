@@ -1,8 +1,5 @@
 #include "ProfileModel.h"
-
 #include <MainEngine.h>
-
-using namespace IncrementalEngine;
 
 namespace MagicIdle 
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Panel.h"
+#include <Panel.h>
 #include "UpgradeElementMediator.h"
 #include "UpgradeData.h"
 

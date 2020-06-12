@@ -22,18 +22,6 @@
     <Filter Include="Game\Formulas">
       <UniqueIdentifier>{90abf82a-9a5a-478d-acbf-b2572b4782ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Core">
-      <UniqueIdentifier>{8e76664c-3eba-4fb6-a0d5-1d1b1b0b6d55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Core\MultiPanel">
-      <UniqueIdentifier>{bd6b4b08-300e-4f6e-9686-6db167cfab1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Core\KmbNumber">
-      <UniqueIdentifier>{5778b88d-b6b2-4dc2-b734-863cb79dcc9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Core\Panel">
-      <UniqueIdentifier>{ae633352-ef19-4d68-8457-2a34fc20609d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\ActionButton\ActionButtonMediator">
       <UniqueIdentifier>{7d71d6c8-c8f2-42e8-97e0-556b734ba0f2}</UniqueIdentifier>
     </Filter>
@@ -104,15 +92,6 @@
     <ClInclude Include="MainGame.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="KmbNumber.h">
-      <Filter>Game\Core\KmbNumber</Filter>
-    </ClInclude>
-    <ClInclude Include="Panel.h">
-      <Filter>Game\Core\Panel</Filter>
-    </ClInclude>
-    <ClInclude Include="MultiPanel.h">
-      <Filter>Game\Core\MultiPanel</Filter>
-    </ClInclude>
     <ClInclude Include="Formula.h">
       <Filter>Game\Formulas</Filter>
     </ClInclude>
@@ -180,15 +159,6 @@
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="KmbNumber.cpp">
-      <Filter>Game\Core\KmbNumber</Filter>
-    </ClCompile>
-    <ClCompile Include="Panel.cpp">
-      <Filter>Game\Core\Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="MultiPanel.cpp">
-      <Filter>Game\Core\MultiPanel</Filter>
     </ClCompile>
     <ClCompile Include="Formula.cpp">
       <Filter>Game\Formulas</Filter>

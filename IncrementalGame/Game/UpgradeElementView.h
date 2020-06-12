@@ -2,8 +2,8 @@
 
 #include <Text.h>
 #include <Button.h>
+#include <KmbNumber.h>
 
-#include "KmbNumber.h"
 #include "Formula.h"
 
 using namespace IncrementalEngine;

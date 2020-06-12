@@ -142,6 +142,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)IncrementalEngine;$(SolutionDir)IncrementalEngine\ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
       <CompileAs>Default</CompileAs>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -163,6 +164,7 @@
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <CompileAs>Default</CompileAs>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -185,12 +187,9 @@
     <ClInclude Include="DisplayPanelModel.h" />
     <ClInclude Include="DisplayPanelView.h" />
     <ClInclude Include="Formula.h" />
-    <ClInclude Include="KmbNumber.h" />
     <ClInclude Include="MainGame.h" />
-    <ClInclude Include="MultiPanel.h" />
     <ClInclude Include="Orb.h" />
     <ClInclude Include="OrbSpawner.h" />
-    <ClInclude Include="Panel.h" />
     <ClInclude Include="ProfileMediator.h" />
     <ClInclude Include="ProfileModel.h" />
     <ClInclude Include="ProfileView.h" />
@@ -212,12 +211,9 @@
     <ClCompile Include="DisplayPanelModel.cpp" />
     <ClCompile Include="DisplayPanelView.cpp" />
     <ClCompile Include="Formula.cpp" />
-    <ClCompile Include="KmbNumber.cpp" />
     <ClCompile Include="MainGame.cpp" />
-    <ClCompile Include="MultiPanel.cpp" />
     <ClCompile Include="Orb.cpp" />
     <ClCompile Include="OrbSpawner.cpp" />
-    <ClCompile Include="Panel.cpp" />
     <ClCompile Include="ProfileMediator.cpp" />
     <ClCompile Include="ProfileModel.cpp" />
     <ClCompile Include="ProfileView.cpp" />

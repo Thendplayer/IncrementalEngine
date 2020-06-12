@@ -1,6 +1,8 @@
 #pragma once
 
-#include "KmbNumber.h"
+#include <KmbNumber.h>
+
+using namespace IncrementalEngine;
 
 namespace MagicIdle 
 {

@@ -139,6 +139,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -159,6 +160,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\;$(SolutionDir)IncrementalEngine\ThirdParty\OpenAL\include;$(SolutionDir)IncrementalEngine\ThirdParty\FW1FontWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-16 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -174,6 +176,9 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="FloatRect.cpp" />
+    <ClCompile Include="KmbNumber.cpp" />
+    <ClCompile Include="MultiPanel.cpp" />
+    <ClCompile Include="Panel.cpp" />
     <ClCompile Include="SaveSystem.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Text.cpp" />
@@ -208,6 +213,9 @@
     <ClInclude Include="EngineGame.h" />
     <ClInclude Include="GameClass.h" />
     <ClInclude Include="FloatRect.h" />
+    <ClInclude Include="KmbNumber.h" />
+    <ClInclude Include="MultiPanel.h" />
+    <ClInclude Include="Panel.h" />
     <ClInclude Include="SaveSystem.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Text.h" />
@@ -219,7 +227,6 @@
     <ClInclude Include="RenderCamera.h" />
     <ClInclude Include="RenderingEngine.h" />
     <ClInclude Include="RenderWindow.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ShaderManager.h" />

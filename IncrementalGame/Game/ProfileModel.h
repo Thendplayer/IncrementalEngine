@@ -2,6 +2,8 @@
 
 #include <KmbNumber.h>
 
+using namespace IncrementalEngine;
+
 namespace MagicIdle 
 {
 	class ProfileModel
@@ -15,8 +17,8 @@ namespace MagicIdle
 		KmbNumber* GetTotalTaps();
 
 	private:
-		KmbNumber _totalEarned = KmbNumber::Zero;;
-		KmbNumber _totalSpent = KmbNumber::Zero;;
-		KmbNumber _totalTaps = KmbNumber::Zero;;
+		KmbNumber _totalEarned = KmbNumber::Zero;
+		KmbNumber _totalSpent = KmbNumber::Zero;
+		KmbNumber _totalTaps = KmbNumber::Zero;
 	};
 }

@@ -2,7 +2,9 @@
 
 #include <string>
 #include <cmath>
-#include "KmbNumber.h"
+#include <KmbNumber.h>
+
+using namespace IncrementalEngine;
 
 namespace MagicIdle 
 {

@@ -31,9 +31,6 @@
     <Filter Include="Engine\Incremental Engine\EngineGame">
       <UniqueIdentifier>{6d80e838-5405-4872-93ed-93245b1107f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Incremental Engine\Scene">
-      <UniqueIdentifier>{11c14920-6142-4415-ad5d-d145c2788588}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Incremental Engine\Actor">
       <UniqueIdentifier>{477ef3d0-b1b9-4733-b906-ac0ef26526e4}</UniqueIdentifier>
     </Filter>
@@ -79,20 +76,35 @@
     <Filter Include="Engine\Incremental Engine\Core\SaveSystem">
       <UniqueIdentifier>{dde924e5-8d2c-49f7-ac1b-ee1d2b9f0145}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Incremental Engine\Resources">
-      <UniqueIdentifier>{22c9ddf5-e7ba-4035-928b-edaa0432d20b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Incremental Engine\Sprite">
-      <UniqueIdentifier>{5cef2aa3-6a3d-4650-9c2e-8634ba166c7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Incremental Engine\Text">
-      <UniqueIdentifier>{1ddb1d03-8dfd-4ad8-bcc7-7d3dd71d8044}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Incremental Engine\Button">
-      <UniqueIdentifier>{ef909034-a9d3-412b-83c0-447ab6d0a076}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Incremental Engine\Core\Config">
       <UniqueIdentifier>{500d4eb4-a2d6-448d-88e8-35ced096ca27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Components">
+      <UniqueIdentifier>{8394e02c-ef78-4ef8-9290-86c3acafc72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Components\Button">
+      <UniqueIdentifier>{ef909034-a9d3-412b-83c0-447ab6d0a076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Components\Text">
+      <UniqueIdentifier>{1ddb1d03-8dfd-4ad8-bcc7-7d3dd71d8044}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Components\Sprite">
+      <UniqueIdentifier>{5cef2aa3-6a3d-4650-9c2e-8634ba166c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Components\Panel">
+      <UniqueIdentifier>{e33c0e65-0695-4f88-83b7-774a6b15fcc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\Scene">
+      <UniqueIdentifier>{11c14920-6142-4415-ad5d-d145c2788588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Core\Resources">
+      <UniqueIdentifier>{22c9ddf5-e7ba-4035-928b-edaa0432d20b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\Components\MultiPanel">
+      <UniqueIdentifier>{14710f70-137d-4dc2-bc09-d7306f3fc65f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Incremental Engine\KmbNumber">
+      <UniqueIdentifier>{b5c26ace-5776-4e6f-b848-a10b16dfed9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +142,7 @@
       <Filter>Engine\Incremental Engine\Core\RenderingEngine\Shaders\TextureShader</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Engine\Incremental Engine\Scene</Filter>
+      <Filter>Engine\Incremental Engine\Core\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>Engine\Incremental Engine\Actor</Filter>
@@ -160,25 +172,34 @@
       <Filter>Engine\Third Party\SFML</Filter>
     </ClCompile>
     <ClCompile Include="Resources.cpp">
-      <Filter>Engine\Incremental Engine\Resources</Filter>
+      <Filter>Engine\Incremental Engine\Core\Resources</Filter>
     </ClCompile>
     <ClCompile Include="TextureBase.cpp">
       <Filter>Engine\Incremental Engine\Core\RenderingEngine\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Engine\Incremental Engine\Sprite</Filter>
+      <Filter>Engine\Incremental Engine\Components\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Engine\Incremental Engine\Text</Filter>
+      <Filter>Engine\Incremental Engine\Components\Text</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Engine\Incremental Engine\Button</Filter>
+      <Filter>Engine\Incremental Engine\Components\Button</Filter>
     </ClCompile>
     <ClCompile Include="SaveSystem.cpp">
       <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>Engine\Incremental Engine\Core\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="KmbNumber.cpp">
+      <Filter>Engine\Incremental Engine\KmbNumber</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiPanel.cpp">
+      <Filter>Engine\Incremental Engine\Components\MultiPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
+      <Filter>Engine\Incremental Engine\Components\Panel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,7 +237,7 @@
       <Filter>Engine\Incremental Engine\Core\RenderingEngine\Shaders\TextureShader</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Engine\Incremental Engine\Scene</Filter>
+      <Filter>Engine\Incremental Engine\Core\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Engine\Incremental Engine\Actor</Filter>
@@ -258,22 +279,19 @@
       <Filter>Engine\Third Party\SFML</Filter>
     </ClInclude>
     <ClInclude Include="Resources.h">
-      <Filter>Engine\Incremental Engine\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Engine\Incremental Engine\Resources</Filter>
+      <Filter>Engine\Incremental Engine\Core\Resources</Filter>
     </ClInclude>
     <ClInclude Include="TextureBase.h">
       <Filter>Engine\Incremental Engine\Core\RenderingEngine\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Engine\Incremental Engine\Sprite</Filter>
+      <Filter>Engine\Incremental Engine\Components\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Engine\Incremental Engine\Text</Filter>
+      <Filter>Engine\Incremental Engine\Components\Text</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Engine\Incremental Engine\Button</Filter>
+      <Filter>Engine\Incremental Engine\Components\Button</Filter>
     </ClInclude>
     <ClInclude Include="SaveSystem.h">
       <Filter>Engine\Incremental Engine\Core\SaveSystem</Filter>
@@ -286,6 +304,15 @@
     </ClInclude>
     <ClInclude Include="MathUtils.h">
       <Filter>Engine\Incremental Engine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="KmbNumber.h">
+      <Filter>Engine\Incremental Engine\KmbNumber</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiPanel.h">
+      <Filter>Engine\Incremental Engine\Components\MultiPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>Engine\Incremental Engine\Components\Panel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
